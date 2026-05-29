@@ -1,0 +1,3542 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="読書管理">
+  <meta name="theme-color" content="#1f3434">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f3434'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23f4c95d' font-family='sans-serif' font-weight='bold'%3E本%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='38' fill='%231f3434'/%3E%3Ctext x='90' y='128' font-size='104' text-anchor='middle' fill='%23f4c95d' font-family='sans-serif' font-weight='bold'%3E本%3C/text%3E%3C/svg%3E">
+  <title>読書管理</title>
+  <style>
+    :root {
+      --bg: #f7f7f3;
+      --ink: #202526;
+      --muted: #65706f;
+      --line: #d9ded8;
+      --panel: #ffffff;
+      --green: #2f7d68;
+      --green-dark: #225f50;
+      --blue: #3867a7;
+      --orange: #b85d2b;
+      --yellow: #f4c95d;
+      --red: #b94747;
+      --shadow: 0 12px 30px rgba(32, 37, 38, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(47, 125, 104, 0.08), transparent 280px),
+        var(--bg);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      background: #1f3434;
+      color: #f8fbf8;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 48px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #f4c95d;
+      color: #1f3434;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: rgba(248, 251, 248, 0.72);
+      font-size: 12px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button {
+      width: 100%;
+      min-height: 42px;
+      border-radius: 8px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(248, 251, 248, 0.8);
+      background: transparent;
+      text-align: left;
+    }
+
+    .nav button.active,
+    .nav button:hover {
+      background: rgba(248, 251, 248, 0.12);
+      color: #ffffff;
+    }
+
+    .nav .icon,
+    .tool-button .icon,
+    .primary .icon,
+    .ghost .icon {
+      width: 22px;
+      min-width: 22px;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .sidebar-note {
+      margin-top: auto;
+      padding: 14px;
+      border-radius: 8px;
+      background: rgba(248, 251, 248, 0.1);
+      color: rgba(248, 251, 248, 0.78);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    main {
+      padding: 28px;
+      display: grid;
+      gap: 22px;
+      align-content: start;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .topbar p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .primary,
+    .ghost,
+    .tool-button {
+      min-height: 40px;
+      border-radius: 8px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .primary {
+      background: var(--green);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(47, 125, 104, 0.2);
+    }
+
+    .primary:hover {
+      background: var(--green-dark);
+    }
+
+    .ghost,
+    .tool-button {
+      background: #ffffff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .ghost:hover,
+    .tool-button:hover {
+      border-color: #b8c2bd;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      min-height: 112px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .stat small {
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(180px, 1.4fr) repeat(4, minmax(140px, 1fr));
+      gap: 10px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      min-height: 40px;
+      padding: 9px 11px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(47, 125, 104, 0.14);
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .panel-head h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .panel-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .book-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(32, 37, 38, 0.06);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(32, 37, 38, 0.12);
+    }
+
+    .cover {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: #eef2ee;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cover-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .cover-fallback .emoji {
+      font-size: 36px;
+    }
+
+    .cover-fallback .fb-title {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .status-badge.want { color: var(--blue); }
+    .status-badge.reading { color: #805800; }
+    .status-badge.done { color: var(--green-dark); }
+    .status-badge.pause { color: var(--red); }
+
+    .card-body {
+      padding: 10px 12px;
+      display: grid;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 14px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .card-sub {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .genre-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #225f50;
+      background: #edf4f1;
+      border-radius: 999px;
+      padding: 3px 9px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      font-size: 21px;
+      line-height: 1;
+      background: none;
+      border: 0;
+      padding: 0 1px;
+      color: #d7d2c4;
+      cursor: pointer;
+    }
+
+    .star.on { color: #f2b705; }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 12px 12px;
+    }
+
+    .card-sub-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .card-sub-actions .edit-btn {
+      flex: 1;
+      width: auto;
+    }
+
+    .buy-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .buy-check input {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+
+    .buy-check.is-bought {
+      background: #fff4e0;
+      border-color: var(--yellow);
+      color: #9a6b00;
+    }
+
+    .done-btn {
+      flex: 1;
+      min-height: 38px;
+      border-radius: 10px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .done-btn.is-done {
+      background: #e9f5ee;
+      color: var(--green-dark);
+    }
+
+    .edit-btn {
+      width: 42px;
+      min-height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .edit-btn:hover { border-color: #aab6b0; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      min-height: 22px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: #edf4f1;
+      color: #225f50;
+      font-size: 11px;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+
+    .chip.blue {
+      background: #edf2fa;
+      color: #31598f;
+    }
+
+    .chip.orange {
+      background: #fff1e8;
+      color: #954718;
+    }
+
+    .chip.level-chip {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .chip.own-chip {
+      font-weight: 700;
+    }
+
+    .chip.own-bought {
+      background: #fff4e0;
+      color: #9a6b00;
+    }
+
+    .chip.own-borrowed {
+      background: #e7f0ff;
+      color: #2f5fb3;
+    }
+
+    .chip.rating-chip {
+      background: #fff3cd;
+      color: #8a6d00;
+      font-weight: 700;
+    }
+
+    .info-tools {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .info-tools .ghost {
+      min-height: 34px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .rating-info {
+      font-size: 12px;
+      font-weight: 700;
+      color: #8a6d00;
+    }
+
+    .icon-button {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+    }
+
+    .icon-button:hover {
+      border-color: #aab6b0;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .suggestion {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .suggestion:last-child {
+      border-bottom: 0;
+    }
+
+    .suggestion strong {
+      display: block;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .suggestion p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .score {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: #e8ece8;
+      overflow: hidden;
+    }
+
+    .score span {
+      display: block;
+      height: 100%;
+      background: var(--green);
+    }
+
+    .score-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .score-label {
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .suggestion-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sg-go {
+      flex: 1;
+      min-height: 34px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .sg-go:hover {
+      background: var(--green-dark);
+    }
+
+    .sg-icon {
+      width: 38px;
+      min-height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .sg-icon:hover {
+      border-color: #aab6b0;
+    }
+
+    .empty {
+      padding: 32px 18px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      background: rgba(20, 28, 29, 0.42);
+      padding: 20px;
+      overflow: auto;
+    }
+
+    .drawer.open {
+      display: grid;
+      place-items: start center;
+    }
+
+    .modal {
+      width: min(860px, 100%);
+      margin-top: 24px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 26px 80px rgba(20, 28, 29, 0.3);
+      overflow: hidden;
+    }
+
+    .modal-head {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-head h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .modal-body {
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .modal-actions {
+      padding: 16px 20px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .import-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .template {
+      width: 100%;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+      padding: 12px;
+      color: #354140;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .profile-area {
+      display: grid;
+      gap: 8px;
+    }
+
+    .profile-tabs {
+      display: grid;
+      gap: 6px;
+    }
+
+    .profile-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(248, 251, 248, 0.06);
+      color: rgba(248, 251, 248, 0.85);
+      text-align: left;
+    }
+
+    .profile-tab:hover {
+      background: rgba(248, 251, 248, 0.14);
+    }
+
+    .profile-tab.active {
+      background: rgba(244, 201, 93, 0.18);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(244, 201, 93, 0.5);
+    }
+
+    .ptab-avatar {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .ptab-text {
+      display: grid;
+      line-height: 1.25;
+    }
+
+    .ptab-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .ptab-meta {
+      font-size: 11px;
+      color: rgba(248, 251, 248, 0.6);
+    }
+
+    .profile-manage {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: transparent;
+      color: rgba(248, 251, 248, 0.7);
+      border: 1px dashed rgba(248, 251, 248, 0.25);
+      font-size: 13px;
+    }
+
+    .profile-manage:hover {
+      color: #fff;
+      border-color: rgba(248, 251, 248, 0.5);
+    }
+
+    .fit-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #e8590c;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    .profile-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .profile-row.active {
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px rgba(47, 125, 104, 0.12);
+    }
+
+    .prow-avatar {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .prow-text {
+      flex: 1;
+      display: grid;
+      line-height: 1.3;
+    }
+
+    .prow-name {
+      font-weight: 700;
+    }
+
+    .prow-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .profile-row .ghost {
+      min-height: 34px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .radio-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .radio-row .radio {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .radio-row .radio input {
+      width: auto;
+      min-height: 0;
+    }
+
+    .finished-row {
+      display: flex;
+      gap: 14px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .finished-row:last-child {
+      border-bottom: 0;
+    }
+
+    .fin-cover {
+      position: relative;
+      align-self: flex-start;
+      width: 92px;
+      min-width: 92px;
+      aspect-ratio: 3 / 4;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #eef2ee;
+      cursor: pointer;
+    }
+
+    .fin-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fin-cover-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .fin-main {
+      flex: 1;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .fin-title {
+      font-size: 15px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+    }
+
+    .fin-sub {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .fin-tools {
+      display: flex;
+      gap: 8px;
+    }
+
+    .fin-amazon {
+      min-height: 32px;
+      padding: 0 10px;
+      font-size: 12px;
+    }
+
+    .records-body {
+      padding: 20px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .records-body h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    .records-summary {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .rec-stat {
+      flex: 1;
+      min-width: 120px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .rec-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .rec-stat strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 150px;
+      padding-top: 16px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .bar-col {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .bar {
+      width: 62%;
+      min-height: 2px;
+      background: linear-gradient(180deg, var(--green), var(--yellow));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .bar-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .bar-label {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+      gap: 12px;
+    }
+
+    .badge {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+      display: grid;
+      gap: 6px;
+      background: #fff;
+      opacity: 0.5;
+      filter: grayscale(1);
+    }
+
+    .badge.earned {
+      opacity: 1;
+      filter: none;
+      background: #fff8e6;
+      border-color: var(--yellow);
+    }
+
+    .b-icon {
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .b-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .b-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .archived-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .archived-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .archived-title {
+      display: grid;
+      gap: 2px;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .archived-sub {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #eaf5f0, #fff7e6);
+      border: 1px solid var(--line);
+    }
+
+    .hero-avatar {
+      font-size: 52px;
+      line-height: 1;
+    }
+
+    .hero-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .xp-bar {
+      margin: 8px 0 4px;
+      height: 12px;
+      border-radius: 999px;
+      background: #e3e8e3;
+      overflow: hidden;
+    }
+
+    .xp-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--yellow));
+      transition: width .4s ease;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-streak {
+      text-align: center;
+      display: grid;
+      gap: 2px;
+    }
+
+    .streak-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: #e8590c;
+    }
+
+    .streak-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .goal-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .goal-ring {
+      width: 84px;
+      height: 84px;
+      min-width: 84px;
+      border-radius: 50%;
+      background: conic-gradient(var(--green) calc(var(--p) * 1%), #e8ece8 0);
+      display: grid;
+      place-items: center;
+    }
+
+    .goal-ring-hole {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .goal-ring-hole small {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .goal-text {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .goal-head {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .goal-head .ghost {
+      min-height: 30px;
+      padding: 0 10px;
+      font-size: 12px;
+    }
+
+    .goal-sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .checkin-btn {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    .checkin-btn.done {
+      background: #e9f5ee;
+      color: var(--green-dark);
+      box-shadow: none;
+    }
+
+    .celebrate {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 28, 29, 0.12);
+      overflow: hidden;
+    }
+
+    .celebrate-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px 30px;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.4;
+      box-shadow: 0 24px 70px rgba(20, 28, 29, 0.3);
+      animation: pop .35s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -24px;
+      width: 10px;
+      height: 14px;
+      border-radius: 2px;
+      animation: confetti-fall 1.9s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      to { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    .fin-dates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .fin-date {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .fin-date input {
+      min-height: 36px;
+      width: auto;
+    }
+
+    .fin-review {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .fin-review textarea {
+      min-height: 64px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    @media (max-width: 980px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+        padding: 14px;
+      }
+
+      .nav {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .nav button {
+        justify-content: center;
+        padding: 0 8px;
+      }
+
+      .nav span:last-child {
+        display: none;
+      }
+
+      .sidebar-note {
+        display: none;
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      .stats,
+      .filters,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        justify-content: stretch;
+      }
+
+      .toolbar button {
+        flex: 1 1 160px;
+      }
+
+      .book-list {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">本</div>
+        <div>
+          <h1>読書管理</h1>
+          <p>推薦図書と読書記録</p>
+        </div>
+      </div>
+
+      <div class="profile-area">
+        <div class="profile-tabs" id="profileTabs"></div>
+        <button class="profile-manage" id="profileManage">＋ プロフィール設定</button>
+      </div>
+
+      <nav class="nav" aria-label="画面切り替え">
+        <button class="active" data-view="library"><span class="icon">□</span><span>本棚（さがす）</span></button>
+        <button data-view="reading"><span class="icon">▶</span><span>いま読んでる</span></button>
+        <button data-view="finished"><span class="icon">✓</span><span>読み終わった</span></button>
+        <button data-view="records"><span class="icon">★</span><span>きろく</span></button>
+        <button data-view="next"><span class="icon">→</span><span>次の候補</span></button>
+        <button data-view="trend"><span class="icon">◇</span><span>傾向</span></button>
+        <button data-view="import"><span class="icon">＋</span><span>取り込み</span></button>
+      </nav>
+
+      <div class="sidebar-note">
+        推薦リストを登録しておくと、読了日・評価・好みのタグから、次に読みやすい本を並べ替えます。
+      </div>
+    </aside>
+
+    <main>
+      <section class="topbar">
+        <div>
+          <h2 id="viewTitle">本棚</h2>
+          <p id="viewLead">推薦図書を一覧し、読んだ日・反応・メモを残します。</p>
+        </div>
+        <div class="toolbar">
+          <button class="ghost" id="exportButton"><span class="icon">↓</span>CSV保存</button>
+          <button class="ghost" id="scanButton"><span class="icon">📷</span>バーコード追加</button>
+          <button class="primary" id="addButton"><span class="icon">＋</span>本を追加</button>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="読書状況">
+        <div class="stat">
+          <span>登録冊数</span>
+          <strong id="statTotal">0</strong>
+          <small>推薦図書リスト全体</small>
+        </div>
+        <div class="stat">
+          <span>読了</span>
+          <strong id="statDone">0</strong>
+          <small id="statDoneRate">0%</small>
+        </div>
+        <div class="stat">
+          <span>読書中</span>
+          <strong id="statReading">0</strong>
+          <small>途中の本</small>
+        </div>
+        <div class="stat">
+          <span>好きな傾向</span>
+          <strong id="statTopTag">-</strong>
+          <small>高評価と読了から推定</small>
+        </div>
+      </section>
+
+      <section class="filters" id="libraryFilters">
+        <div class="field">
+          <label for="searchInput">検索</label>
+          <input id="searchInput" type="search" placeholder="タイトル・著者・タグ">
+        </div>
+        <div class="field">
+          <label for="statusFilter">状態</label>
+          <select id="statusFilter">
+            <option value="">すべて</option>
+            <option value="want">未読</option>
+            <option value="reading">読書中</option>
+            <option value="done">読了</option>
+            <option value="pause">保留</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="levelFilter">難易度（推奨学年）</label>
+          <select id="levelFilter">
+            <option value="">すべて</option>
+            <option value="1">低学年向き</option>
+            <option value="2">低学年〜中学年</option>
+            <option value="3">中学年向き</option>
+            <option value="4">中学年〜高学年</option>
+            <option value="5">高学年〜一般</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="tagFilter">タグ</label>
+          <select id="tagFilter">
+            <option value="">すべて</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ownershipFilter">持ち物</label>
+          <select id="ownershipFilter">
+            <option value="">すべて</option>
+            <option value="bought">買った</option>
+            <option value="borrowed">借りた</option>
+            <option value="unset">未設定</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="content-grid" id="libraryView">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>推薦図書</h3>
+              <p id="listCount">0冊を表示</p>
+            </div>
+          </div>
+          <div class="book-list" id="bookList"></div>
+        </div>
+
+        <div class="side-stack">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>次に読みやすい候補</h3>
+                <p>好み・順番・読みやすさから計算</p>
+              </div>
+            </div>
+            <div id="quickSuggestions"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="nextView">
+        <div class="panel-head">
+          <div>
+            <h3>次の候補</h3>
+            <p>読了した本と高評価のタグをもとに、未読の本を並べています。</p>
+          </div>
+        </div>
+        <div id="nextList"></div>
+      </section>
+
+      <section class="panel hidden" id="readingView">
+        <div class="panel-head">
+          <div>
+            <h3>いま読んでる</h3>
+            <p>手元にある（読書中の）本です。読み終わったらボタンで棚に移します。</p>
+          </div>
+        </div>
+        <div class="book-list" id="readingList"></div>
+      </section>
+
+      <section class="panel hidden" id="finishedView">
+        <div class="panel-head">
+          <div>
+            <h3>読み終わった</h3>
+            <p>読み終わった本に、あとから読んだ期間と感想を書き残せます。</p>
+          </div>
+        </div>
+        <div id="finishedList"></div>
+      </section>
+
+      <section class="panel hidden" id="recordsView">
+        <div class="panel-head">
+          <div>
+            <h3>きろく</h3>
+            <p>読んだ数とごほうびバッジ（お子さんごと）。</p>
+          </div>
+        </div>
+        <div class="records-body" id="recordsBody"></div>
+      </section>
+
+      <section class="panel hidden" id="trendView">
+        <div class="panel-head">
+          <div>
+            <h3>傾向</h3>
+            <p>どんな本に反応がよいかを、タグと評価で見ます。</p>
+          </div>
+        </div>
+        <div id="trendList"></div>
+      </section>
+
+      <section class="panel hidden" id="importView">
+        <div class="panel-head">
+          <div>
+            <h3>バックアップ・取り込み</h3>
+            <p>記録のバックアップ／復元と、推薦リストの貼り付け取り込みができます。</p>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
+            <div class="hint">
+              <strong>バックアップ</strong>：すべての子どもの記録・プロフィール・本のデータをファイルに保存します。機種変更やブラウザのデータ消去に備えて、ときどき保存しておくと安心です。復元すると<strong>今のデータは上書き</strong>されます。
+            </div>
+            <div class="toolbar" style="justify-content:flex-start;">
+              <button class="primary" id="backupExportButton"><span class="icon">↓</span>バックアップを保存</button>
+              <button class="ghost" id="backupImportButton"><span class="icon">↑</span>バックアップから復元</button>
+              <input type="file" id="backupFileInput" accept="application/json,.json" class="hidden">
+            </div>
+          </div>
+          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
+            <div class="hint">
+              <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書（648冊）の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>各お子さんの記録（読んだ・評価・感想・買った/借りた）は本ごとに引き継がれます。</strong>
+            </div>
+            <div class="toolbar" style="justify-content:flex-start;">
+              <button class="ghost" id="loadOcrButton"><span class="icon">⟳</span>おすすめ図書リストを読み込み直す</button>
+            </div>
+          </div>
+          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
+            <div class="hint">
+              <strong>隠した本</strong>：本棚から隠した本の一覧です。「戻す」で本棚に戻せます（記録もそのまま残っています）。
+            </div>
+            <div id="archivedList" class="archived-list"></div>
+          </div>
+          <div class="import-box">
+            <div class="hint">
+              1行目に見出しを入れてください。使える見出しは「タイトル」「著者」「分類」「タグ」「読みやすさ」「次におすすめ」「メモ」です。
+            </div>
+            <textarea id="importText" placeholder="タイトル,著者,分類,タグ,読みやすさ,次におすすめ,メモ"></textarea>
+            <div class="toolbar">
+              <button class="ghost" id="sampleButton"><span class="icon">□</span>見本を入れる</button>
+              <button class="primary" id="importButton"><span class="icon">＋</span>取り込む</button>
+            </div>
+            <pre class="template">タイトル,著者,分類,タグ,読みやすさ,次におすすめ,メモ
+エルマーのぼうけん,ルース・スタイルス・ガネット,物語,"冒険;動物;友情",2,,最初の長めの物語に
+ふたりはともだち,アーノルド・ローベル,物語,"友情;短編;ユーモア",1,エルマーのぼうけん,短い章で読みやすい</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="modalTitle">本を追加</h3>
+        <button class="icon-button" id="closeModal" aria-label="閉じる">×</button>
+      </div>
+      <form id="bookForm">
+        <div class="modal-body">
+          <input type="hidden" id="bookId">
+          <input type="hidden" id="coverInput">
+          <div class="form-grid">
+            <div class="field">
+              <label for="titleInput">タイトル</label>
+              <input id="titleInput" required>
+            </div>
+            <div class="field">
+              <label for="authorInput">著者</label>
+              <input id="authorInput">
+            </div>
+            <div class="field">
+              <label for="categoryInput">分類</label>
+              <input id="categoryInput" placeholder="物語、科学、歴史など">
+            </div>
+            <div class="field">
+              <label for="publisherInput">出版社</label>
+              <input id="publisherInput">
+            </div>
+            <div class="field">
+              <label for="isbnInput">ISBN</label>
+              <input id="isbnInput" placeholder="978...（表紙の取得に使います）">
+            </div>
+            <div class="field">
+              <label for="ownershipInput">持ち物（兄弟共通）</label>
+              <select id="ownershipInput">
+                <option value="">未設定</option>
+                <option value="bought">買った</option>
+                <option value="borrowed">借りた</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="levelInput">難易度（推奨学年）</label>
+              <select id="levelInput">
+                <option value="1">低学年向き</option>
+                <option value="2">低学年〜中学年</option>
+                <option value="3" selected>中学年向き</option>
+                <option value="4">中学年〜高学年</option>
+                <option value="5">高学年〜一般</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="statusInput">状態</label>
+              <select id="statusInput">
+                <option value="want">未読</option>
+                <option value="reading">読書中</option>
+                <option value="done">読了</option>
+                <option value="pause">保留</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="startDateInput">読み始めた日</label>
+              <input id="startDateInput" type="date">
+            </div>
+            <div class="field">
+              <label for="readDateInput">読み終わった日</label>
+              <input id="readDateInput" type="date">
+            </div>
+            <div class="field">
+              <label for="ratingInput">反応</label>
+              <select id="ratingInput">
+                <option value="0">未評価</option>
+                <option value="1">1 あまり合わない</option>
+                <option value="2">2 まあまあ</option>
+                <option value="3">3 よかった</option>
+                <option value="4">4 かなり好き</option>
+                <option value="5">5 とても好き</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="nextAfterInput">この本のあとにおすすめ</label>
+              <input id="nextAfterInput" placeholder="前に読むとよい本のタイトル">
+            </div>
+            <div class="field wide">
+              <label for="tagsInput">タグ</label>
+              <input id="tagsInput" placeholder="冒険; 友情; 科学">
+            </div>
+            <div class="field wide">
+              <label for="descriptionInput">あらすじ・みんなの評価（兄弟共通）</label>
+              <div class="info-tools">
+                <button type="button" class="ghost" id="fetchInfoButton"><span class="icon">📖</span>ネットから取得</button>
+                <button type="button" class="ghost" id="reviewButton"><span class="icon">📝</span>レビューを見る</button>
+                <span id="ratingInfo" class="rating-info"></span>
+              </div>
+              <textarea id="descriptionInput" placeholder="あらすじ（「ネットから取得」で自動入力できます。手で書いてもOK）"></textarea>
+              <input type="hidden" id="gRatingInput">
+              <input type="hidden" id="gRatingsCountInput">
+            </div>
+            <div class="field wide">
+              <label for="reviewInput">感想（このお子さんの）</label>
+              <textarea id="reviewInput" placeholder="おもしろかったところ、印象に残った場面など"></textarea>
+            </div>
+            <div class="field wide">
+              <label for="memoInput">メモ</label>
+              <textarea id="memoInput" placeholder="反応、難しかったところ、読み聞かせ向きなど"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="ghost" id="hideButton"><span class="icon">🙈</span>棚から隠す</button>
+          <button type="button" class="ghost" id="amazonButton"><span class="icon">🛒</span>Amazon</button>
+          <button type="button" class="ghost" id="libraryButton"><span class="icon">📚</span>図書館</button>
+          <button type="button" class="ghost" id="cancelButton">キャンセル</button>
+          <button type="submit" class="primary"><span class="icon">✓</span>保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="drawer" id="profileDrawer" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="profileModalTitle">プロフィール設定</h3>
+        <button class="icon-button" id="closeProfile" aria-label="閉じる">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-list" id="profileEditList"></div>
+        <button type="button" class="ghost" id="newProfileButton" style="justify-self:start"><span class="icon">＋</span>あたらしく追加</button>
+        <form id="profileForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="pNameInput">なまえ</label>
+              <input id="pNameInput" required placeholder="お子さんの名前">
+            </div>
+            <div class="field">
+              <label for="pBirthInput">生年月日</label>
+              <input id="pBirthInput" type="date">
+            </div>
+            <div class="field wide">
+              <label>せいべつ（おすすめの参考に使います）</label>
+              <div class="radio-row">
+                <label class="radio"><input type="radio" name="pGender" value="girl">女の子</label>
+                <label class="radio"><input type="radio" name="pGender" value="boy">男の子</label>
+                <label class="radio"><input type="radio" name="pGender" value="" checked>未設定</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <input type="hidden" id="profileId">
+            <button type="button" class="ghost" id="pCancelButton">クリア</button>
+            <button type="submit" class="primary"><span class="icon">✓</span>保存</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer" id="scanDrawer" role="dialog" aria-modal="true" aria-labelledby="scanModalTitle">
+    <div class="modal" style="width:min(520px,100%)">
+      <div class="modal-head">
+        <h3 id="scanModalTitle">バーコードで追加</h3>
+        <button class="icon-button" id="closeScan" aria-label="閉じる">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="hint" id="scanStatus">本の裏のバーコード（978〜で始まるISBN）をカメラに映してください。</p>
+        <video id="scanVideo" playsinline muted style="width:100%;border-radius:8px;background:#000;aspect-ratio:4/3;object-fit:cover"></video>
+        <div class="toolbar" style="justify-content:flex-start;">
+          <button class="ghost" id="scanManualButton"><span class="icon">⌨</span>番号を手で入力</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="books-data.js"></script>
+  <script>
+    const storageKey = "reading-manager-v2";
+    const legacyKey = "reading-manager-books-v1";
+    const GENDER_AFFINITY = {
+      girl: ["友だち", "友情", "家族", "動物", "ファンタジー", "魔法", "詩", "おはなし", "生活", "学校"],
+      boy: ["冒険", "恐竜", "のりもの", "乗り物", "宇宙", "科学・自然", "科学", "歴史", "スポーツ", "図鑑", "昔話・神話"]
+    };
+    const BADGES = [
+      { icon: "🌱", name: "はじめの一冊", desc: "1さつ読み終えた", test: (s) => s.done >= 1 },
+      { icon: "📚", name: "5さつ読破", desc: "5さつ読んだ", test: (s) => s.done >= 5 },
+      { icon: "🏅", name: "10さつ読破", desc: "10さつ読んだ", test: (s) => s.done >= 10 },
+      { icon: "🥉", name: "30さつ読破", desc: "30さつ読んだ", test: (s) => s.done >= 30 },
+      { icon: "🥈", name: "50さつ読破", desc: "50さつ読んだ", test: (s) => s.done >= 50 },
+      { icon: "🥇", name: "100さつ読破", desc: "100さつ読んだ", test: (s) => s.done >= 100 },
+      { icon: "🔥", name: "今月3さつ", desc: "今月3さつ読んだ", test: (s) => s.thisMonth >= 3 },
+      { icon: "🌈", name: "いろんな本", desc: "5ジャンル以上読んだ", test: (s) => s.genres >= 5 },
+      { icon: "⭐", name: "お気に入り名人", desc: "★5を5さつつけた", test: (s) => s.fiveStars >= 5 },
+      { icon: "🚀", name: "チャレンジャー", desc: "高学年向けを読んだ", test: (s) => s.hardDone >= 1 }
+    ];
+    const sampleBooks = [
+      {
+        id: crypto.randomUUID(),
+        title: "エルマーのぼうけん",
+        author: "ルース・スタイルス・ガネット",
+        category: "物語",
+        tags: ["冒険", "友情", "動物"],
+        level: 2,
+        status: "want",
+        readDate: "",
+        rating: 0,
+        nextAfter: "",
+        memo: "最初の長めの物語に"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "ふたりはともだち",
+        author: "アーノルド・ローベル",
+        category: "物語",
+        tags: ["友情", "短編", "ユーモア"],
+        level: 1,
+        status: "want",
+        readDate: "",
+        rating: 0,
+        nextAfter: "",
+        memo: "短い章で読みやすい"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "いやいやえん",
+        author: "中川李枝子",
+        category: "物語",
+        tags: ["生活", "ユーモア", "園生活"],
+        level: 2,
+        status: "want",
+        readDate: "",
+        rating: 0,
+        nextAfter: "ふたりはともだち",
+        memo: "日常の話が好きなら"
+      }
+    ];
+
+    let state = loadState();
+    let books = buildBooks();
+    let activeView = "library";
+
+    const els = {
+      viewTitle: document.getElementById("viewTitle"),
+      viewLead: document.getElementById("viewLead"),
+      statTotal: document.getElementById("statTotal"),
+      statDone: document.getElementById("statDone"),
+      statDoneRate: document.getElementById("statDoneRate"),
+      statReading: document.getElementById("statReading"),
+      statTopTag: document.getElementById("statTopTag"),
+      searchInput: document.getElementById("searchInput"),
+      statusFilter: document.getElementById("statusFilter"),
+      levelFilter: document.getElementById("levelFilter"),
+      tagFilter: document.getElementById("tagFilter"),
+      ownershipFilter: document.getElementById("ownershipFilter"),
+      bookList: document.getElementById("bookList"),
+      listCount: document.getElementById("listCount"),
+      quickSuggestions: document.getElementById("quickSuggestions"),
+      nextList: document.getElementById("nextList"),
+      readingList: document.getElementById("readingList"),
+      finishedList: document.getElementById("finishedList"),
+      recordsBody: document.getElementById("recordsBody"),
+      archivedList: document.getElementById("archivedList"),
+      scanDrawer: document.getElementById("scanDrawer"),
+      trendList: document.getElementById("trendList"),
+      drawer: document.getElementById("drawer"),
+      bookForm: document.getElementById("bookForm"),
+      hideButton: document.getElementById("hideButton"),
+      importText: document.getElementById("importText"),
+      profileTabs: document.getElementById("profileTabs"),
+      profileManage: document.getElementById("profileManage"),
+      profileDrawer: document.getElementById("profileDrawer"),
+      profileEditList: document.getElementById("profileEditList"),
+      profileForm: document.getElementById("profileForm")
+    };
+
+    document.querySelectorAll(".nav button").forEach((button) => {
+      button.addEventListener("click", () => setView(button.dataset.view));
+    });
+
+    document.getElementById("addButton").addEventListener("click", () => openModal());
+    document.getElementById("scanButton").addEventListener("click", openScan);
+    document.getElementById("closeScan").addEventListener("click", stopScan);
+    document.getElementById("scanManualButton").addEventListener("click", scanManual);
+    els.scanDrawer.addEventListener("click", (event) => {
+      if (event.target === els.scanDrawer) stopScan();
+    });
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("cancelButton").addEventListener("click", closeModal);
+    document.getElementById("sampleButton").addEventListener("click", insertImportSample);
+    document.getElementById("importButton").addEventListener("click", importBooks);
+    document.getElementById("exportButton").addEventListener("click", exportCsv);
+    document.getElementById("backupExportButton").addEventListener("click", exportBackup);
+    document.getElementById("backupImportButton").addEventListener("click", () => document.getElementById("backupFileInput").click());
+    document.getElementById("backupFileInput").addEventListener("change", handleBackupFile);
+    document.getElementById("loadOcrButton").addEventListener("click", loadRecommendedBooks);
+    let searchTimer;
+    els.searchInput.addEventListener("input", () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(render, 160);
+    });
+    els.statusFilter.addEventListener("change", render);
+    els.levelFilter.addEventListener("change", render);
+    els.tagFilter.addEventListener("change", render);
+    els.ownershipFilter.addEventListener("change", render);
+    els.bookForm.addEventListener("submit", saveFromForm);
+    els.hideButton.addEventListener("click", hideCurrentBook);
+    document.getElementById("amazonButton").addEventListener("click", () => {
+      const isbn = document.getElementById("isbnInput").value.replace(/[^0-9Xx]/g, "");
+      const title = document.getElementById("titleInput").value.trim();
+      const author = document.getElementById("authorInput").value.trim();
+      const query = isbn || [title, author].filter(Boolean).join(" ");
+      if (query) openAmazonQuery(query);
+    });
+    document.getElementById("libraryButton").addEventListener("click", () => {
+      const isbn = document.getElementById("isbnInput").value;
+      const title = document.getElementById("titleInput").value.trim();
+      const author = document.getElementById("authorInput").value.trim();
+      if (isbn || title) openLibraryByBook(isbn, title, author);
+    });
+    document.getElementById("fetchInfoButton").addEventListener("click", fetchInfoForModal);
+    document.getElementById("reviewButton").addEventListener("click", openReviewForModal);
+    els.drawer.addEventListener("click", (event) => {
+      if (event.target === els.drawer) closeModal();
+    });
+
+    els.profileManage.addEventListener("click", openProfileDrawer);
+    document.getElementById("closeProfile").addEventListener("click", closeProfileDrawer);
+    document.getElementById("pCancelButton").addEventListener("click", resetProfileForm);
+    document.getElementById("newProfileButton").addEventListener("click", () => {
+      resetProfileForm();
+      document.getElementById("pNameInput").focus();
+    });
+    els.profileForm.addEventListener("submit", saveProfileFromForm);
+    els.profileDrawer.addEventListener("click", (event) => {
+      if (event.target === els.profileDrawer) closeProfileDrawer();
+    });
+
+    render();
+
+    function uid() {
+      return crypto.randomUUID();
+    }
+
+    function visibleBooks() {
+      return books.filter((book) => !book.archived);
+    }
+
+    function defaultRecord() {
+      return { status: "want", rating: 0, startDate: "", readDate: "", review: "", memo: "" };
+    }
+
+    function isDefaultRecord(r) {
+      return r.status === "want" && !Number(r.rating) && !r.startDate && !r.readDate && !r.review && !r.memo;
+    }
+
+    function catalogFromBook(b) {
+      return {
+        id: b.id,
+        title: b.title || "無題",
+        author: b.author || "",
+        publisher: b.publisher || "",
+        isbn: b.isbn || "",
+        cover: b.cover || "",
+        category: b.category || "物語",
+        tags: Array.isArray(b.tags) ? b.tags : [],
+        level: Number(b.level) || 3,
+        course: b.course || "",
+        courseGrade: b.courseGrade || "",
+        nextAfter: b.nextAfter || "",
+        ownership: b.ownership || "",
+        archived: !!b.archived,
+        description: b.description || "",
+        gRating: b.gRating || "",
+        gRatingsCount: b.gRatingsCount || ""
+      };
+    }
+
+    function recordFromBook(b) {
+      return {
+        status: b.status || "want",
+        rating: Number(b.rating) || 0,
+        startDate: b.startDate || "",
+        readDate: b.readDate || "",
+        review: b.review || "",
+        memo: b.memo || ""
+      };
+    }
+
+    function initialCatalog() {
+      if (Array.isArray(window.recommendedBooksData) && window.recommendedBooksData.length) {
+        return window.recommendedBooksData.map((book, index) => ({
+          id: `ocr-${index + 1}-${normalize(book.title).slice(0, 12)}`,
+          title: book.title || "無題",
+          author: book.author || "",
+          publisher: book.publisher || "",
+          isbn: book.isbn || "",
+          cover: book.cover || "",
+          category: book.genre || "物語",
+          tags: Array.isArray(book.tags) && book.tags.length ? book.tags : (book.genre ? [book.genre] : []),
+          level: Number(book.level) || 3,
+          course: book.course || "",
+          courseGrade: book.courseGrade || "",
+          nextAfter: "",
+          ownership: "",
+          archived: false,
+          description: book.description || "",
+          gRating: "",
+          gRatingsCount: ""
+        }));
+      }
+      return sampleBooks.map(catalogFromBook);
+    }
+
+    function newProfile(name) {
+      return { id: uid(), name: name || "こども", birthdate: "", gender: "", monthlyGoal: 0, readingDays: [] };
+    }
+
+    function freshState() {
+      const p = newProfile("こども");
+      return { v: 2, catalog: initialCatalog(), profiles: [p], activeProfileId: p.id, records: { [p.id]: {} } };
+    }
+
+    function migrateFromV1(arr) {
+      const p = newProfile("こども");
+      const records = {};
+      arr.forEach((b) => {
+        const r = recordFromBook(b);
+        if (!isDefaultRecord(r)) records[b.id] = r;
+      });
+      return { v: 2, catalog: arr.map(catalogFromBook), profiles: [p], activeProfileId: p.id, records: { [p.id]: records } };
+    }
+
+    function normalizeState(s) {
+      if (!s || s.v !== 2 || !Array.isArray(s.catalog) || !Array.isArray(s.profiles)) throw new Error("bad state");
+      if (!s.records || typeof s.records !== "object") s.records = {};
+      if (!s.profiles.length) {
+        s.profiles = [newProfile("こども")];
+      }
+      s.profiles.forEach((p) => {
+        if (!s.records[p.id]) s.records[p.id] = {};
+        if (typeof p.monthlyGoal !== "number") p.monthlyGoal = 0;
+        if (!Array.isArray(p.readingDays)) p.readingDays = [];
+      });
+      if (!s.activeProfileId || !s.profiles.some((p) => p.id === s.activeProfileId)) {
+        s.activeProfileId = s.profiles[0].id;
+      }
+      return s;
+    }
+
+    function loadState() {
+      const v2 = localStorage.getItem(storageKey);
+      if (v2) {
+        try { return normalizeState(JSON.parse(v2)); } catch {}
+      }
+      const v1 = localStorage.getItem(legacyKey);
+      if (v1) {
+        try {
+          const arr = JSON.parse(v1);
+          if (Array.isArray(arr) && arr.length) return migrateFromV1(arr);
+        } catch {}
+      }
+      return freshState();
+    }
+
+    function buildBooks() {
+      const rec = state.records[state.activeProfileId] || {};
+      return state.catalog.map((c) => ({ ...defaultRecord(), ...(rec[c.id] || {}), ...c }));
+    }
+
+    function saveState() {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    }
+
+    function persist() {
+      state.catalog = books.map(catalogFromBook);
+      const rec = {};
+      books.forEach((b) => {
+        const r = recordFromBook(b);
+        if (!isDefaultRecord(r)) rec[b.id] = r;
+      });
+      state.records[state.activeProfileId] = rec;
+      saveState();
+    }
+
+    function activeProfile() {
+      return state.profiles.find((p) => p.id === state.activeProfileId) || state.profiles[0] || null;
+    }
+
+    function activeGradeInfo() {
+      const p = activeProfile();
+      return p ? gradeInfo(p.birthdate) : null;
+    }
+
+    function switchProfile(pid) {
+      if (pid === state.activeProfileId) return;
+      persist();
+      state.activeProfileId = pid;
+      books = buildBooks();
+      saveState();
+      render();
+    }
+
+    function ageFromBirthdate(bd) {
+      if (!bd) return null;
+      const b = new Date(bd);
+      if (isNaN(b.getTime())) return null;
+      const now = new Date();
+      let age = now.getFullYear() - b.getFullYear();
+      const m = now.getMonth() - b.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < b.getDate())) age -= 1;
+      return age;
+    }
+
+    // 日本の学年（4月始まり・早生まれ考慮）を誕生日から算出
+    function gradeInfo(birthdate) {
+      if (!birthdate) return null;
+      const parts = String(birthdate).split("-").map(Number);
+      if (parts.length < 3 || parts.some(isNaN)) return null;
+      const [by, bm, bd] = parts;
+      const now = new Date();
+      // 今の年度（4月開始）
+      const currentNendo = (now.getMonth() + 1) >= 4 ? now.getFullYear() : now.getFullYear() - 1;
+      // 早生まれ（1/1〜4/1）は同学年が1年早い
+      const early = bm < 4 || (bm === 4 && bd === 1);
+      const entranceNendo = early ? by + 6 : by + 7; // 小1に入った年度
+      const grade = currentNendo - entranceNendo + 1;
+      if (grade < 1) return { grade, label: "未就学", targetLevel: 1, band: [1] };
+      if (grade <= 2) return { grade, label: `小${grade}`, targetLevel: 1, band: [1, 2] };
+      if (grade <= 4) return { grade, label: `小${grade}`, targetLevel: 3, band: [2, 3, 4] };
+      if (grade <= 6) return { grade, label: `小${grade}`, targetLevel: 5, band: [4, 5] };
+      if (grade <= 9) return { grade, label: `中${grade - 6}`, targetLevel: 5, band: [5] };
+      return { grade, label: "一般", targetLevel: 5, band: [5] };
+    }
+
+    function fitRank(book, gi) {
+      if (!gi) return 1;
+      const lv = Number(book.level);
+      if (lv === gi.targetLevel) return 0;
+      if (gi.band.includes(lv)) return 1;
+      return 2;
+    }
+
+    function fitBadge(book) {
+      const gi = activeGradeInfo();
+      if (!gi || Number(book.level) !== gi.targetLevel) return "";
+      return `<span class="fit-badge">ぴったり</span>`;
+    }
+
+    function genderColor(gender) {
+      return { girl: "#e64980", boy: "#4263eb" }[gender] || "#2f7d68";
+    }
+
+    function genderLabel(gender) {
+      return { girl: "女の子", boy: "男の子" }[gender] || "";
+    }
+
+    function renderProfiles() {
+      els.profileTabs.innerHTML = state.profiles.map((p) => {
+        const gi = gradeInfo(p.birthdate);
+        const meta = gi ? gi.label : "年齢未設定";
+        const active = p.id === state.activeProfileId;
+        return `<button class="profile-tab ${active ? "active" : ""}" data-profile="${p.id}">
+          <span class="ptab-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
+          <span class="ptab-text"><span class="ptab-name">${escapeHtml(p.name || "こども")}</span><span class="ptab-meta">${escapeHtml(meta)}</span></span>
+        </button>`;
+      }).join("");
+      els.profileTabs.querySelectorAll("[data-profile]").forEach((btn) => {
+        btn.addEventListener("click", () => switchProfile(btn.dataset.profile));
+      });
+    }
+
+    function openProfileDrawer() {
+      renderProfileEditList();
+      resetProfileForm();
+      els.profileDrawer.classList.add("open");
+    }
+
+    function closeProfileDrawer() {
+      els.profileDrawer.classList.remove("open");
+    }
+
+    function renderProfileEditList() {
+      els.profileEditList.innerHTML = state.profiles.map((p) => {
+        const age = ageFromBirthdate(p.birthdate);
+        const gi = gradeInfo(p.birthdate);
+        const meta = [gi ? gi.label : null, age != null ? `${age}さい` : null, genderLabel(p.gender)].filter(Boolean).join(" ・ ") || "未設定";
+        const active = p.id === state.activeProfileId;
+        return `<div class="profile-row ${active ? "active" : ""}">
+          <span class="prow-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
+          <span class="prow-text"><span class="prow-name">${escapeHtml(p.name || "こども")}${active ? ' <span style="font-size:11px;color:var(--green)">●使用中</span>' : ""}</span><span class="prow-meta">${escapeHtml(meta)}</span></span>
+          <button type="button" class="ghost" data-switch="${p.id}">切替</button>
+          <button type="button" class="ghost" data-edit-profile="${p.id}">編集</button>
+          <button type="button" class="ghost" data-del-profile="${p.id}">削除</button>
+        </div>`;
+      }).join("");
+      els.profileEditList.querySelectorAll("[data-switch]").forEach((b) => {
+        b.addEventListener("click", () => { switchProfile(b.dataset.switch); renderProfileEditList(); });
+      });
+      els.profileEditList.querySelectorAll("[data-edit-profile]").forEach((b) => {
+        b.addEventListener("click", () => editProfileInForm(b.dataset.editProfile));
+      });
+      els.profileEditList.querySelectorAll("[data-del-profile]").forEach((b) => {
+        b.addEventListener("click", () => deleteProfile(b.dataset.delProfile));
+      });
+    }
+
+    function editProfileInForm(id) {
+      const p = state.profiles.find((x) => x.id === id);
+      if (!p) return;
+      document.getElementById("profileId").value = p.id;
+      document.getElementById("pNameInput").value = p.name || "";
+      document.getElementById("pBirthInput").value = p.birthdate || "";
+      const radio = document.querySelector(`input[name="pGender"][value="${p.gender || ""}"]`);
+      if (radio) radio.checked = true;
+      document.getElementById("pNameInput").focus();
+    }
+
+    function resetProfileForm() {
+      els.profileForm.reset();
+      document.getElementById("profileId").value = "";
+      const radio = document.querySelector('input[name="pGender"][value=""]');
+      if (radio) radio.checked = true;
+    }
+
+    function saveProfileFromForm(event) {
+      event.preventDefault();
+      const id = document.getElementById("profileId").value || uid();
+      const name = document.getElementById("pNameInput").value.trim() || "こども";
+      const birthdate = document.getElementById("pBirthInput").value;
+      const gender = (document.querySelector('input[name="pGender"]:checked') || {}).value || "";
+      const existing = state.profiles.find((p) => p.id === id);
+      if (existing) {
+        existing.name = name;
+        existing.birthdate = birthdate;
+        existing.gender = gender;
+      } else {
+        state.profiles.push({ id, name, birthdate, gender, monthlyGoal: 0, readingDays: [] });
+        if (!state.records[id]) state.records[id] = {};
+      }
+      saveState();
+      resetProfileForm();
+      renderProfileEditList();
+      render();
+    }
+
+    function deleteProfile(id) {
+      if (state.profiles.length <= 1) {
+        alert("プロフィールは1人以上必要です。");
+        return;
+      }
+      const p = state.profiles.find((x) => x.id === id);
+      if (!confirm(`「${p?.name || "こども"}」のプロフィールと読書記録を削除しますか？`)) return;
+      state.profiles = state.profiles.filter((x) => x.id !== id);
+      delete state.records[id];
+      if (state.activeProfileId === id) {
+        state.activeProfileId = state.profiles[0].id;
+        books = buildBooks();
+      }
+      saveState();
+      resetProfileForm();
+      renderProfileEditList();
+      render();
+    }
+
+    function setView(view) {
+      activeView = view;
+      document.querySelectorAll(".nav button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.view === view);
+      });
+
+      document.getElementById("libraryView").classList.toggle("hidden", view !== "library");
+      document.getElementById("readingView").classList.toggle("hidden", view !== "reading");
+      document.getElementById("finishedView").classList.toggle("hidden", view !== "finished");
+      document.getElementById("recordsView").classList.toggle("hidden", view !== "records");
+      document.getElementById("nextView").classList.toggle("hidden", view !== "next");
+      document.getElementById("trendView").classList.toggle("hidden", view !== "trend");
+      document.getElementById("importView").classList.toggle("hidden", view !== "import");
+      document.getElementById("libraryFilters").classList.toggle("hidden", view !== "library");
+
+      const copy = {
+        library: ["本棚（さがす）", "推薦図書から読みたい本を選びます。「読みはじめる」で手元に移ります。"],
+        reading: ["いま読んでる", "手元にある本です。読み終わったらボタンで棚に移します。"],
+        finished: ["読み終わった", "読み終わった本に、あとから期間と感想を書き残せます。"],
+        records: ["きろく", "読んだ数とごほうびバッジ。お子さんのやる気アップに。"],
+        next: ["次の候補", "今の好みと読書の順番から、次に合いそうな本を見ます。"],
+        trend: ["傾向", "どんな分類・タグをよく読んでいるかを確認します。"],
+        import: ["取り込み・バックアップ", "推薦図書リストの取り込みと、記録のバックアップができます。"]
+      };
+      els.viewTitle.textContent = copy[view][0];
+      els.viewLead.textContent = copy[view][1];
+      render();
+    }
+
+    function render() {
+      renderProfiles();
+      renderStats();
+      renderTagFilter();
+      renderLibrary();
+      renderReading();
+      renderFinished();
+      renderRecords();
+      renderArchived();
+      renderSuggestions();
+      renderTrends();
+    }
+
+    function renderStats() {
+      const shown = visibleBooks();
+      const total = shown.length;
+      const done = shown.filter((book) => book.status === "done").length;
+      const reading = shown.filter((book) => book.status === "reading").length;
+      const topTag = getTagScores()[0]?.tag || "-";
+      els.statTotal.textContent = total;
+      els.statDone.textContent = done;
+      els.statDoneRate.textContent = total ? `${Math.round((done / total) * 100)}%` : "0%";
+      els.statReading.textContent = reading;
+      els.statTopTag.textContent = topTag;
+    }
+
+    function renderTagFilter() {
+      const current = els.tagFilter.value;
+      const tags = [...new Set(visibleBooks().flatMap((book) => book.tags || []))].sort((a, b) => a.localeCompare(b, "ja"));
+      els.tagFilter.innerHTML = '<option value="">すべて</option>' + tags.map((tag) => {
+        return `<option value="${escapeHtml(tag)}">${escapeHtml(tag)}</option>`;
+      }).join("");
+      els.tagFilter.value = tags.includes(current) ? current : "";
+    }
+
+    function renderLibrary() {
+      const visible = getFilteredBooks();
+      els.listCount.textContent = `${visible.length}冊を表示`;
+      if (!visible.length) {
+        els.bookList.innerHTML = '<div class="empty">条件に合う本がありません。</div>';
+        return;
+      }
+
+      els.bookList.innerHTML = visible.map((book) => bookCard(book)).join("");
+      wireCardHandlers(els.bookList);
+    }
+
+    function wireCardHandlers(container) {
+      container.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openModal(b.dataset.edit)));
+      container.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => openModal(b.dataset.open)));
+      container.querySelectorAll("[data-amazon]").forEach((b) => b.addEventListener("click", () => openAmazon(b.dataset.amazon)));
+      container.querySelectorAll("[data-library]").forEach((b) => b.addEventListener("click", () => openLibrary(b.dataset.library)));
+      container.querySelectorAll("[data-stage]").forEach((b) => b.addEventListener("click", () => setStage(b.dataset.stage, b.dataset.to)));
+      container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
+      container.querySelectorAll("[data-buy]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.buy, b.checked ? "bought" : "")));
+    }
+
+    function renderReading() {
+      const reading = visibleBooks()
+        .filter((book) => book.status === "reading")
+        .sort((a, b) => (b.startDate || "").localeCompare(a.startDate || "") || a.title.localeCompare(b.title, "ja"));
+      if (!reading.length) {
+        els.readingList.innerHTML = '<div class="empty">「本棚（さがす）」で気になる本の「読みはじめる」を押すと、ここに入ります。</div>';
+        return;
+      }
+      els.readingList.innerHTML = reading.map((book) => bookCard(book)).join("");
+      wireCardHandlers(els.readingList);
+    }
+
+    function getFilteredBooks() {
+      const search = normalize(els.searchInput.value);
+      const status = els.statusFilter.value;
+      const level = els.levelFilter.value;
+      const tag = els.tagFilter.value;
+      const own = els.ownershipFilter.value;
+      const gi = activeGradeInfo();
+      return visibleBooks().filter((book) => {
+        const haystack = normalize([book.title, book.author, book.category, (book.tags || []).join(" "), book.memo].join(" "));
+        if (search && !haystack.includes(search)) return false;
+        if (status && book.status !== status) return false;
+        if (level && String(book.level) !== level) return false;
+        if (tag && !(book.tags || []).includes(tag)) return false;
+        if (own === "unset" && book.ownership) return false;
+        if (own && own !== "unset" && book.ownership !== own) return false;
+        return true;
+      }).sort((a, b) =>
+        (a.status === "done") - (b.status === "done")
+        || fitRank(a, gi) - fitRank(b, gi)
+        || statusWeight(a.status) - statusWeight(b.status)
+        || Number(a.level) - Number(b.level)
+        || a.title.localeCompare(b.title, "ja"));
+    }
+
+    function stageButton(book) {
+      if (book.status === "reading") {
+        return `<button type="button" class="done-btn" data-stage="${book.id}" data-to="done">読み終わった！</button>`;
+      }
+      if (book.status === "done") {
+        return `<button type="button" class="done-btn is-done" data-stage="${book.id}" data-to="reading" title="もう一度読む">✓ 読了</button>`;
+      }
+      return `<button type="button" class="done-btn" data-stage="${book.id}" data-to="reading">読みはじめる</button>`;
+    }
+
+    function setStage(id, to) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      const before = to === "done" ? motivationSnapshot() : null;
+      book.status = to;
+      const today = new Date().toISOString().slice(0, 10);
+      if (to === "reading" && !book.startDate) book.startDate = today;
+      if (to === "done" && !book.readDate) book.readDate = today;
+      if (to === "want") book.startDate = "";
+      if (to === "reading" || to === "done") addReadingDayToday();
+      persist();
+      if (to === "done") celebrateFinish(before);
+      render();
+    }
+
+    // ===== モチベーション（レベル・連続・目標・お祝い）=====
+    function todayStr() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    }
+
+    function addReadingDayToday() {
+      const p = activeProfile();
+      if (!p) return;
+      if (!Array.isArray(p.readingDays)) p.readingDays = [];
+      const t = todayStr();
+      if (!p.readingDays.includes(t)) p.readingDays.push(t);
+    }
+
+    function xpTotal() {
+      return visibleBooks()
+        .filter((b) => b.status === "done")
+        .reduce((sum, b) => sum + (Number(b.level) || 3) * 10, 0);
+    }
+
+    function levelInfo(xp) {
+      const level = Math.floor(xp / 100) + 1;
+      const xpInLevel = xp % 100;
+      const stages = [
+        { min: 1, avatar: "🥚", title: "よみだしたまご" },
+        { min: 2, avatar: "🐣", title: "ひよこ読者" },
+        { min: 4, avatar: "🐥", title: "よちよち読者" },
+        { min: 6, avatar: "🐤", title: "げんき読者" },
+        { min: 9, avatar: "🦉", title: "もの知りふくろう" },
+        { min: 13, avatar: "🦅", title: "よむのたつじん" },
+        { min: 18, avatar: "🐉", title: "でんせつの読書家" }
+      ];
+      let stage = stages[0];
+      stages.forEach((s) => { if (level >= s.min) stage = s; });
+      return { level, xpInLevel, remain: 100 - xpInLevel, avatar: stage.avatar, title: stage.title };
+    }
+
+    function streakCount() {
+      const p = activeProfile();
+      if (!p || !Array.isArray(p.readingDays) || !p.readingDays.length) return 0;
+      const set = new Set(p.readingDays);
+      const fmt = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      const cur = new Date();
+      cur.setHours(0, 0, 0, 0);
+      if (!set.has(fmt(cur))) cur.setDate(cur.getDate() - 1);
+      let n = 0;
+      while (set.has(fmt(cur))) { n += 1; cur.setDate(cur.getDate() - 1); }
+      return n;
+    }
+
+    function motivationSnapshot() {
+      return { level: levelInfo(xpTotal()).level, badges: BADGES.filter((b) => b.test(readingStats())).length };
+    }
+
+    function celebrateFinish(before) {
+      const after = motivationSnapshot();
+      if (before && after.level > before.level) {
+        const li = levelInfo(xpTotal());
+        celebrate(`⬆️ レベルアップ！\n${li.avatar} Lv${li.level}「${li.title}」`);
+      } else if (before && after.badges > before.badges) {
+        celebrate("🏅 あたらしいバッジをゲット！");
+      } else {
+        celebrate("🎉 よみ終わったね！");
+      }
+    }
+
+    function recordCheckin() {
+      addReadingDayToday();
+      saveState();
+      render();
+      const n = streakCount();
+      celebrate(n >= 2 ? `🔥 ${n}日れんぞく中！` : "📖 よんだね！えらい！");
+    }
+
+    function setMonthlyGoal() {
+      const p = activeProfile();
+      if (!p) return;
+      const input = prompt("今月の目標さっすう（数字）を入れてください", p.monthlyGoal ? String(p.monthlyGoal) : "5");
+      if (input === null) return;
+      const num = Math.max(0, Math.min(999, Math.floor(Number(input) || 0)));
+      p.monthlyGoal = num;
+      saveState();
+      render();
+    }
+
+    function celebrate(message) {
+      const overlay = document.createElement("div");
+      overlay.className = "celebrate";
+      overlay.innerHTML = `<div class="celebrate-card">${message.split("\n").map((line) => escapeHtml(line)).join("<br>")}</div>`;
+      const colors = ["#2f7d68", "#f4c95d", "#b94747", "#3867a7", "#e8590c", "#12b886"];
+      for (let i = 0; i < 40; i += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.style.left = `${Math.round(Math.random() * 100)}%`;
+        piece.style.background = colors[i % colors.length];
+        piece.style.animationDelay = `${(Math.random() * 0.4).toFixed(2)}s`;
+        overlay.appendChild(piece);
+      }
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click", () => overlay.remove());
+      setTimeout(() => overlay.remove(), 2200);
+    }
+
+    function bookCard(book) {
+      const coverSrc = bookCoverSrc(book);
+      return `
+        <article class="card">
+          <div class="cover" data-open="${book.id}" title="詳細・編集" role="button">
+            <div class="cover-fallback" style="background:${genreGradient(book.category)}">
+              <span class="emoji">${genreEmoji(book.category)}</span>
+              <span class="fb-title">${escapeHtml(book.title)}</span>
+            </div>
+            ${coverSrc ? `<img loading="lazy" src="${escapeHtml(coverSrc)}" alt="" onerror="this.style.display='none'">` : ""}
+            <span class="status-badge ${book.status}">${statusLabel(book.status)}</span>
+            ${fitBadge(book)}
+          </div>
+          <div class="card-body">
+            <strong class="card-title">${escapeHtml(book.title)}</strong>
+            <span class="card-sub">${escapeHtml(book.author || "著者不明")}</span>
+            <div class="card-meta">
+              <span class="genre-chip">${genreEmoji(book.category)} ${escapeHtml(book.category || "物語")}</span>
+              ${gradeChip(book)}
+              ${book.ownership === "borrowed" ? ownershipChip(book) : ""}
+              ${ratingChip(book)}
+            </div>
+            <div class="stars" aria-label="反応">
+              ${[1, 2, 3, 4, 5].map((n) => `<button type="button" class="star ${n <= Number(book.rating) ? "on" : ""}" data-rate="${book.id}" data-val="${n}" aria-label="星${n}">★</button>`).join("")}
+            </div>
+            <label class="buy-check ${book.ownership === "bought" ? "is-bought" : ""}">
+              <input type="checkbox" data-buy="${book.id}" ${book.ownership === "bought" ? "checked" : ""}>🛒 買った
+            </label>
+          </div>
+          <div class="card-actions">
+            ${stageButton(book)}
+            <div class="card-sub-actions">
+              ${book.status === "reading" ? `<button type="button" class="edit-btn" data-stage="${book.id}" data-to="want" aria-label="本棚にもどす" title="本棚にもどす（まだ読まない）">↩</button>` : ""}
+              <button type="button" class="edit-btn" data-amazon="${book.id}" aria-label="Amazonで見る" title="Amazonで見る">🛒</button>
+              <button type="button" class="edit-btn" data-library="${book.id}" aria-label="図書館で探す" title="図書館で探す">📚</button>
+              <button type="button" class="edit-btn" data-edit="${book.id}" aria-label="詳細・編集" title="詳細・編集">✎</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function bookCoverSrc(book) {
+      return book.cover || "";
+    }
+
+    function openAmazonQuery(query) {
+      const url = "https://www.amazon.co.jp/s?k=" + encodeURIComponent(query) + "&i=stripbooks";
+      window.open(url, "_blank", "noopener");
+    }
+
+    function openAmazon(id) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      const isbn = String(book.isbn || "").replace(/[^0-9Xx]/g, "");
+      openAmazonQuery(isbn || [book.title, book.author].filter(Boolean).join(" "));
+    }
+
+    function openLibraryByBook(isbn, title, author) {
+      const clean = String(isbn || "").replace(/[^0-9Xx]/g, "");
+      const url = clean
+        ? "https://calil.jp/book/" + clean
+        : "https://calil.jp/search?q=" + encodeURIComponent([title, author].filter(Boolean).join(" "));
+      window.open(url, "_blank", "noopener");
+    }
+
+    function openLibrary(id) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      openLibraryByBook(book.isbn, book.title, book.author);
+    }
+
+    let scanStream = null;
+    let scanTimer = null;
+
+    async function openScan() {
+      els.scanDrawer.classList.add("open");
+      const status = document.getElementById("scanStatus");
+      const video = document.getElementById("scanVideo");
+      if (!("BarcodeDetector" in window)) {
+        status.textContent = "このブラウザはカメラ読み取りに未対応です。番号を手で入力してください。";
+        scanManual();
+        return;
+      }
+      try {
+        scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+      } catch (err) {
+        status.textContent = "カメラを使えませんでした（許可と、localhostまたはhttpsが必要です）。番号を手で入力してください。";
+        scanManual();
+        return;
+      }
+      video.srcObject = scanStream;
+      await video.play().catch(() => {});
+      const detector = new BarcodeDetector({ formats: ["ean_13"] });
+      scanTimer = setInterval(async () => {
+        try {
+          const codes = await detector.detect(video);
+          const hit = codes.map((c) => c.rawValue).find((v) => /^97[89]\d{10}$/.test(v));
+          if (hit) {
+            stopScan();
+            lookupIsbn(hit);
+          }
+        } catch (err) { /* フレーム読み取り失敗は無視 */ }
+      }, 400);
+    }
+
+    function stopScan() {
+      if (scanTimer) { clearInterval(scanTimer); scanTimer = null; }
+      if (scanStream) { scanStream.getTracks().forEach((t) => t.stop()); scanStream = null; }
+      const video = document.getElementById("scanVideo");
+      if (video) video.srcObject = null;
+      els.scanDrawer.classList.remove("open");
+    }
+
+    function scanManual() {
+      const input = prompt("本の裏のISBN（978 から始まる13桁など）を入力してください");
+      if (!input) return;
+      const isbn = input.replace(/[^0-9Xx]/g, "");
+      if (!isbn) return;
+      stopScan();
+      lookupIsbn(isbn);
+    }
+
+    async function fetchBookInfo(isbn, title, author) {
+      const cleanIsbn = String(isbn || "").replace(/[^0-9Xx]/g, "");
+      const query = cleanIsbn
+        ? "isbn:" + encodeURIComponent(cleanIsbn)
+        : encodeURIComponent([title, author].filter(Boolean).join(" "));
+      if (!query) return null;
+      const res = await fetch("https://www.googleapis.com/books/v1/volumes?country=JP&maxResults=1&q=" + query);
+      const json = await res.json();
+      const info = json.items && json.items[0] && json.items[0].volumeInfo;
+      if (!info) return null;
+      const img = info.imageLinks && (info.imageLinks.thumbnail || info.imageLinks.smallThumbnail);
+      return {
+        isbn: cleanIsbn,
+        title: info.title || "",
+        author: (info.authors || []).join("、"),
+        publisher: info.publisher || "",
+        cover: img ? img.replace(/^http:/, "https:") : "",
+        description: info.description || "",
+        gRating: info.averageRating ? String(info.averageRating) : "",
+        gRatingsCount: info.ratingsCount ? String(info.ratingsCount) : ""
+      };
+    }
+
+    async function lookupIsbn(isbn) {
+      let data = { isbn };
+      try {
+        const info = await fetchBookInfo(isbn, "", "");
+        if (info) data = { ...info, isbn: info.isbn || isbn };
+      } catch (err) { /* オフライン等は番号だけ埋める */ }
+      fillAddForm(data);
+      if (!data.title) {
+        alert("書誌情報が取れませんでした。タイトルなどを手で入力して保存してください。");
+      }
+    }
+
+    function fillAddForm(data) {
+      openModal();
+      if (data.title) document.getElementById("titleInput").value = data.title;
+      if (data.author) document.getElementById("authorInput").value = data.author;
+      if (data.publisher) document.getElementById("publisherInput").value = data.publisher;
+      if (data.isbn) document.getElementById("isbnInput").value = data.isbn;
+      if (data.cover) document.getElementById("coverInput").value = data.cover;
+      if (data.description) document.getElementById("descriptionInput").value = data.description;
+      if (data.gRating) document.getElementById("gRatingInput").value = data.gRating;
+      if (data.gRatingsCount) document.getElementById("gRatingsCountInput").value = data.gRatingsCount;
+      renderRatingInfo();
+    }
+
+    async function fetchInfoForModal() {
+      const isbn = document.getElementById("isbnInput").value;
+      const title = document.getElementById("titleInput").value.trim();
+      const author = document.getElementById("authorInput").value.trim();
+      if (!isbn.replace(/[^0-9Xx]/g, "") && !title) {
+        alert("先にタイトルかISBNを入れてください。");
+        return;
+      }
+      const info = document.getElementById("ratingInfo");
+      info.textContent = "取得中…";
+      try {
+        const data = await fetchBookInfo(isbn, title, author);
+        if (!data) { info.textContent = "見つかりませんでした"; return; }
+        if (data.description) document.getElementById("descriptionInput").value = data.description;
+        if (data.gRating) document.getElementById("gRatingInput").value = data.gRating;
+        if (data.gRatingsCount) document.getElementById("gRatingsCountInput").value = data.gRatingsCount;
+        if (data.cover && !document.getElementById("coverInput").value) document.getElementById("coverInput").value = data.cover;
+        if (data.publisher && !document.getElementById("publisherInput").value) document.getElementById("publisherInput").value = data.publisher;
+        renderRatingInfo();
+        if (!data.description && !data.gRating) info.textContent = "あらすじ・評価は見つかりませんでした（レビューを見るから探せます）";
+      } catch (err) {
+        info.textContent = "取得できませんでした（ネット接続が必要です）";
+      }
+    }
+
+    function openReviewForModal() {
+      const isbn = document.getElementById("isbnInput").value.replace(/[^0-9Xx]/g, "");
+      const title = document.getElementById("titleInput").value.trim();
+      const author = document.getElementById("authorInput").value.trim();
+      const keyword = isbn || [title, author].filter(Boolean).join(" ");
+      if (!keyword) { alert("先にタイトルかISBNを入れてください。"); return; }
+      window.open("https://bookmeter.com/search?keyword=" + encodeURIComponent(keyword), "_blank", "noopener");
+    }
+
+    function renderFinished() {
+      const done = visibleBooks()
+        .filter((book) => book.status === "done")
+        .sort((a, b) => (b.readDate || "").localeCompare(a.readDate || "") || a.title.localeCompare(b.title, "ja"));
+      if (!done.length) {
+        els.finishedList.innerHTML = '<div class="empty">「読んだ！」を押すと、ここに読み終わった本が並びます。あとから読んだ期間と感想を書けます。</div>';
+        return;
+      }
+      els.finishedList.innerHTML = done.map((book) => {
+        const cover = bookCoverSrc(book);
+        return `
+        <article class="finished-row">
+          <div class="fin-cover" data-open="${book.id}" title="詳細・編集" role="button">
+            <div class="fin-cover-fallback" style="background:${genreGradient(book.category)}">${genreEmoji(book.category)}</div>
+            ${cover ? `<img loading="lazy" src="${escapeHtml(cover)}" alt="" onerror="this.style.display='none'">` : ""}
+          </div>
+          <div class="fin-main">
+            <strong class="fin-title" data-open="${book.id}">${escapeHtml(book.title)}${ownershipChip(book)}</strong>
+            <span class="fin-sub">${escapeHtml(book.author || "著者不明")}</span>
+            <div class="fin-tools">
+              <button type="button" class="ghost fin-amazon" data-amazon="${book.id}"><span class="icon">🛒</span>Amazon</button>
+              <button type="button" class="ghost fin-amazon" data-library="${book.id}"><span class="icon">📚</span>図書館</button>
+              <button type="button" class="ghost fin-amazon" data-stage="${book.id}" data-to="reading" title="押し間違い時：いま読んでるに戻す">↩ 戻す</button>
+            </div>
+            <div class="stars" aria-label="反応">
+              ${[1, 2, 3, 4, 5].map((n) => `<button type="button" class="star ${n <= Number(book.rating) ? "on" : ""}" data-rate="${book.id}" data-val="${n}" aria-label="星${n}">★</button>`).join("")}
+            </div>
+            <div class="fin-dates">
+              <label class="fin-date">読み始め<input type="date" data-field="startDate" data-book="${book.id}" value="${escapeHtml(book.startDate || "")}"></label>
+              <label class="fin-date">読み終わり<input type="date" data-field="readDate" data-book="${book.id}" value="${escapeHtml(book.readDate || "")}"></label>
+              <label class="fin-date">持ち物（兄弟共通）<select data-own="${book.id}">
+                <option value=""${book.ownership ? "" : " selected"}>未設定</option>
+                <option value="bought"${book.ownership === "bought" ? " selected" : ""}>買った</option>
+                <option value="borrowed"${book.ownership === "borrowed" ? " selected" : ""}>借りた</option>
+              </select></label>
+            </div>
+            <label class="fin-review">感想<textarea data-field="review" data-book="${book.id}" placeholder="おもしろかったところ、印象に残った場面など">${escapeHtml(book.review || "")}</textarea></label>
+          </div>
+        </article>`;
+      }).join("");
+
+      els.finishedList.querySelectorAll("[data-field]").forEach((el) => {
+        el.addEventListener("change", () => updateRecordField(el.dataset.book, el.dataset.field, el.value));
+      });
+      els.finishedList.querySelectorAll("[data-rate]").forEach((button) => {
+        button.addEventListener("click", () => setRating(button.dataset.rate, Number(button.dataset.val)));
+      });
+      els.finishedList.querySelectorAll("[data-open]").forEach((el) => {
+        el.addEventListener("click", () => openModal(el.dataset.open));
+      });
+      els.finishedList.querySelectorAll("[data-amazon]").forEach((el) => {
+        el.addEventListener("click", () => openAmazon(el.dataset.amazon));
+      });
+      els.finishedList.querySelectorAll("[data-library]").forEach((el) => {
+        el.addEventListener("click", () => openLibrary(el.dataset.library));
+      });
+      els.finishedList.querySelectorAll("[data-own]").forEach((el) => {
+        el.addEventListener("change", () => setOwnership(el.dataset.own, el.value));
+      });
+      els.finishedList.querySelectorAll("[data-stage]").forEach((el) => {
+        el.addEventListener("click", () => setStage(el.dataset.stage, el.dataset.to));
+      });
+    }
+
+    function updateRecordField(id, field, value) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book[field] = value;
+      persist();
+    }
+
+    function setOwnership(id, value) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.ownership = value;
+      persist();
+      render();
+    }
+
+    function levelGradeLabel(level) {
+      return {
+        1: "低学年向き",
+        2: "低学年〜中学年",
+        3: "中学年向き",
+        4: "中学年〜高学年",
+        5: "高学年〜一般"
+      }[Number(level)] || "";
+    }
+
+    function levelColor(level) {
+      return {
+        1: "#2f9e44",
+        2: "#12b886",
+        3: "#1c7ed6",
+        4: "#f08c00",
+        5: "#e8590c"
+      }[Number(level)] || "#868e96";
+    }
+
+    function gradeChip(book) {
+      const label = book.courseGrade || levelGradeLabel(book.level);
+      if (!label) return "";
+      const course = book.course ? ` data-course="${escapeHtml(book.course)}"` : "";
+      return `<span class="chip level-chip" style="background:${levelColor(book.level)}"${course}>${escapeHtml(label)}</span>`;
+    }
+
+    function ownershipLabel(value) {
+      return { bought: "買った", borrowed: "借りた" }[value] || "";
+    }
+
+    function ownershipChip(book) {
+      if (book.ownership === "bought") return `<span class="chip own-chip own-bought">🛒 買った</span>`;
+      if (book.ownership === "borrowed") return `<span class="chip own-chip own-borrowed">📚 借りた</span>`;
+      return "";
+    }
+
+    function ratingChip(book) {
+      if (!book.gRating) return "";
+      return `<span class="chip rating-chip" title="みんなの評価">★${escapeHtml(book.gRating)}</span>`;
+    }
+
+    function genreEmoji(genre) {
+      return {
+        "物語": "📖",
+        "科学・自然": "🔬",
+        "伝記": "🧑",
+        "歴史": "🏯",
+        "昔話・神話": "🐉",
+        "詩": "✏️",
+        "図鑑": "🔍"
+      }[genre] || "📖";
+    }
+
+    function genreGradient(genre) {
+      return {
+        "物語": "linear-gradient(135deg, #5aa9e6, #7fc8a9)",
+        "科学・自然": "linear-gradient(135deg, #2f9e7a, #9fd8c8)",
+        "伝記": "linear-gradient(135deg, #b85d2b, #f4c95d)",
+        "歴史": "linear-gradient(135deg, #8e6e53, #c9a66b)",
+        "昔話・神話": "linear-gradient(135deg, #6a3093, #a044ff)",
+        "詩": "linear-gradient(135deg, #3867a7, #92b4e3)",
+        "図鑑": "linear-gradient(135deg, #2f9e44, #a9e34b)"
+      }[genre] || "linear-gradient(135deg, #5aa9e6, #7fc8a9)";
+    }
+
+    function setRating(id, val) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.rating = Number(book.rating) === val ? 0 : val;
+      persist();
+      render();
+    }
+
+    function renderSuggestions() {
+      const suggestions = getSuggestions();
+      const quick = suggestions.slice(0, 4);
+      els.quickSuggestions.innerHTML = quick.length ? quick.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
+      els.nextList.innerHTML = suggestions.length ? suggestions.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
+      wireCardHandlers(els.quickSuggestions);
+      wireCardHandlers(els.nextList);
+    }
+
+    function getSuggestions() {
+      const tagScores = getTagScores();
+      const scoreByTag = Object.fromEntries(tagScores.map((entry) => [entry.tag, entry.score]));
+      const shown = visibleBooks();
+      const readTitles = new Set(shown.filter((book) => book.status === "done").map((book) => normalize(book.title)));
+      const readingLevels = shown.filter((book) => book.status === "done").map((book) => Number(book.level) || 3);
+      const gi = activeGradeInfo();
+      const prof = activeProfile();
+      const genderTags = prof ? (GENDER_AFFINITY[prof.gender] || []) : [];
+      const comfortableLevel = readingLevels.length
+        ? Math.round(readingLevels.reduce((sum, level) => sum + level, 0) / readingLevels.length)
+        : (gi ? gi.targetLevel : 2);
+
+      return shown
+        .filter((book) => book.status === "want")
+        .map((book) => {
+          let score = 35;
+          const matchedTags = (book.tags || []).filter((tag) => scoreByTag[tag]);
+          score += matchedTags.reduce((sum, tag) => sum + scoreByTag[tag] * 8, 0);
+          if (book.nextAfter && readTitles.has(normalize(book.nextAfter))) score += 22;
+          if (book.nextAfter && !readTitles.has(normalize(book.nextAfter))) score -= 14;
+          score += Math.max(0, 12 - Math.abs((Number(book.level) || 3) - comfortableLevel) * 5);
+
+          const lv = Number(book.level) || 3;
+          let ageFit = false;
+          if (gi) {
+            if (lv === gi.targetLevel) { score += 14; ageFit = true; }
+            else if (gi.band.includes(lv)) { score += 7; ageFit = true; }
+            else score -= 6;
+          }
+          const genderMatch = genderTags.length && (book.tags || []).some((tag) => genderTags.includes(tag));
+          if (genderMatch) score += 5;
+          score = Math.max(5, Math.min(100, Math.round(score)));
+
+          const reasons = [];
+          if (ageFit) reasons.push(`${gi.label}にちょうどよい難易度`);
+          if (matchedTags.length) reasons.push(`好きそうなタグ: ${matchedTags.slice(0, 3).join("、")}`);
+          if (book.nextAfter && readTitles.has(normalize(book.nextAfter))) reasons.push(`「${book.nextAfter}」の次に置ける`);
+          if (!reasons.length) reasons.push(`${book.courseGrade || levelGradeLabel(book.level) || "ちょうどよい難易度"}で始めやすい`);
+          return { book, score, reasons };
+        })
+        .sort((a, b) => b.score - a.score || Number(a.book.level) - Number(b.book.level));
+    }
+
+    function scoreColor(score) {
+      if (score >= 70) return "#2f9e44";
+      if (score >= 45) return "#1c7ed6";
+      return "#f08c00";
+    }
+
+    function scoreLabel(score) {
+      if (score >= 70) return "よく合いそう";
+      if (score >= 45) return "合いそう";
+      return "ためしに";
+    }
+
+    function suggestionRow(item) {
+      const { book, score, reasons } = item;
+      const color = scoreColor(score);
+      return `
+        <article class="suggestion">
+          <strong>${escapeHtml(book.title)}</strong>
+          <p>${escapeHtml(reasons.join("。"))}</p>
+          <div class="chips">
+            ${(book.tags || []).slice(0, 4).map((tag) => `<span class="chip">${escapeHtml(tag)}</span>`).join("")}
+          </div>
+          <div class="score-row">
+            <div class="score" aria-label="おすすめ度 ${score}"><span style="width:${score}%;background:${color}"></span></div>
+            <span class="score-label" style="color:${color}">${scoreLabel(score)}</span>
+          </div>
+          <div class="suggestion-actions">
+            <button type="button" class="sg-go" data-stage="${book.id}" data-to="reading">読みはじめる</button>
+            <button type="button" class="sg-icon" data-amazon="${book.id}" aria-label="Amazonで買う" title="Amazonで買う">🛒</button>
+            <button type="button" class="sg-icon" data-library="${book.id}" aria-label="図書館で借りる" title="図書館で借りる">📚</button>
+            <button type="button" class="sg-icon" data-open="${book.id}" aria-label="詳細・編集" title="詳細・編集">✎</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function readingStats() {
+      const shown = visibleBooks();
+      const done = shown.filter((b) => b.status === "done");
+      const now = new Date();
+      const ym = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+      return {
+        done: done.length,
+        thisMonth: done.filter((b) => String(b.readDate || "").startsWith(ym)).length,
+        genres: new Set(done.map((b) => b.category).filter(Boolean)).size,
+        fiveStars: shown.filter((b) => Number(b.rating) === 5).length,
+        hardDone: done.filter((b) => Number(b.level) === 5).length
+      };
+    }
+
+    function monthlyCounts() {
+      const shown = visibleBooks();
+      const now = new Date();
+      const out = [];
+      for (let i = 11; i >= 0; i -= 1) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+        out.push({
+          label: `${d.getMonth() + 1}月`,
+          count: shown.filter((b) => b.status === "done" && String(b.readDate || "").startsWith(ym)).length
+        });
+      }
+      return out;
+    }
+
+    function renderRecords() {
+      const s = readingStats();
+      const months = monthlyCounts();
+      const maxCount = Math.max(1, ...months.map((m) => m.count));
+      const earned = BADGES.filter((b) => b.test(s)).length;
+      const li = levelInfo(xpTotal());
+      const streak = streakCount();
+      const prof = activeProfile();
+      const goal = prof ? Number(prof.monthlyGoal) || 0 : 0;
+      const goalPct = goal ? Math.min(100, Math.round((s.thisMonth / goal) * 100)) : 0;
+      const goalRemain = goal ? Math.max(0, goal - s.thisMonth) : 0;
+      const readToday = prof && Array.isArray(prof.readingDays) && prof.readingDays.includes(todayStr());
+
+      const chart = months.map((m) =>
+        `<div class="bar-col"><span class="bar-num">${m.count || ""}</span><div class="bar" style="height:${Math.round((m.count / maxCount) * 100)}%"></div><span class="bar-label">${m.label}</span></div>`
+      ).join("");
+      const badges = BADGES.map((b) =>
+        `<div class="badge ${b.test(s) ? "earned" : ""}"><span class="b-icon">${b.icon}</span><span class="b-name">${escapeHtml(b.name)}</span><span class="b-desc">${escapeHtml(b.desc)}</span></div>`
+      ).join("");
+
+      els.recordsBody.innerHTML = `
+        <div class="hero">
+          <div class="hero-avatar">${li.avatar}</div>
+          <div class="hero-main">
+            <div class="hero-title">Lv${li.level}「${escapeHtml(li.title)}」</div>
+            <div class="xp-bar"><span style="width:${li.xpInLevel}%"></span></div>
+            <div class="hero-sub">よみXP ${xpTotal()}（つぎのレベルまで あと${li.remain}）</div>
+          </div>
+          <div class="hero-streak"><span class="streak-num">🔥${streak}</span><span class="streak-label">日れんぞく</span></div>
+        </div>
+
+        <div class="goal-block">
+          <div class="goal-ring" style="--p:${goalPct}"><div class="goal-ring-hole">${s.thisMonth}<small>/${goal || "—"}</small></div></div>
+          <div class="goal-text">
+            <div class="goal-head">今月の目標 <button type="button" class="ghost" id="setGoalBtn">${goal ? "変える" : "決める"}</button></div>
+            <div class="goal-sub">${goal ? (goalRemain > 0 ? `あと <strong>${goalRemain}</strong> さつ！` : "目標たっせい！おめでとう🎉") : "目標を決めるとやる気アップ"}</div>
+          </div>
+          <button type="button" class="primary checkin-btn ${readToday ? "done" : ""}" id="checkinBtn">${readToday ? "✓ 今日は読んだ" : "今日も読んだ！"}</button>
+        </div>
+
+        <div class="records-summary">
+          <div class="rec-stat"><span>読み終わった</span><strong>${s.done}<small style="font-size:14px"> さつ</small></strong></div>
+          <div class="rec-stat"><span>今月</span><strong>${s.thisMonth}<small style="font-size:14px"> さつ</small></strong></div>
+          <div class="rec-stat"><span>ごほうびバッジ</span><strong>${earned}<small style="font-size:14px"> / ${BADGES.length}</small></strong></div>
+        </div>
+        <div><h4>月べつの冊数（この12かげつ）</h4><div class="chart">${chart}</div></div>
+        <div><h4>ごほうびバッジ</h4><div class="badge-grid">${badges}</div></div>
+      `;
+      document.getElementById("checkinBtn").addEventListener("click", recordCheckin);
+      document.getElementById("setGoalBtn").addEventListener("click", setMonthlyGoal);
+    }
+
+    function renderTrends() {
+      const scores = getTagScores();
+      if (!scores.length) {
+        els.trendList.innerHTML = '<div class="empty">読了や評価を入れると傾向が見えます。</div>';
+        return;
+      }
+
+      els.trendList.innerHTML = scores.map((entry) => `
+        <article class="suggestion">
+          <strong>${escapeHtml(entry.tag)}</strong>
+          <p>読了・高評価に ${entry.count} 回登場。次の候補ではこのタグを少し優先します。</p>
+          <div class="score"><span style="width: ${Math.min(100, entry.score * 12)}%"></span></div>
+        </article>
+      `).join("");
+    }
+
+    function getTagScores() {
+      const map = new Map();
+      visibleBooks().forEach((book) => {
+        if (book.status !== "done" && Number(book.rating) < 3) return;
+        (book.tags || []).forEach((tag) => {
+          const current = map.get(tag) || { tag, score: 0, count: 0 };
+          current.score += (book.status === "done" ? 1 : 0) + Math.max(0, Number(book.rating) - 2);
+          current.count += 1;
+          map.set(tag, current);
+        });
+      });
+      return [...map.values()].sort((a, b) => b.score - a.score || b.count - a.count);
+    }
+
+    function openModal(id = "") {
+      const book = books.find((item) => item.id === id);
+      document.getElementById("modalTitle").textContent = book ? "本を編集" : "本を追加";
+      document.getElementById("bookId").value = book?.id || "";
+      document.getElementById("coverInput").value = book?.cover || "";
+      document.getElementById("titleInput").value = book?.title || "";
+      document.getElementById("authorInput").value = book?.author || "";
+      document.getElementById("categoryInput").value = book?.category || "";
+      document.getElementById("publisherInput").value = book?.publisher || "";
+      document.getElementById("isbnInput").value = book?.isbn || "";
+      document.getElementById("ownershipInput").value = book?.ownership || "";
+      document.getElementById("levelInput").value = book?.level || "3";
+      document.getElementById("statusInput").value = book?.status || "want";
+      document.getElementById("startDateInput").value = book?.startDate || "";
+      document.getElementById("readDateInput").value = book?.readDate || "";
+      document.getElementById("ratingInput").value = book?.rating || "0";
+      document.getElementById("nextAfterInput").value = book?.nextAfter || "";
+      document.getElementById("tagsInput").value = (book?.tags || []).join("; ");
+      document.getElementById("descriptionInput").value = book?.description || "";
+      document.getElementById("gRatingInput").value = book?.gRating || "";
+      document.getElementById("gRatingsCountInput").value = book?.gRatingsCount || "";
+      document.getElementById("reviewInput").value = book?.review || "";
+      document.getElementById("memoInput").value = book?.memo || "";
+      renderRatingInfo();
+      els.hideButton.classList.toggle("hidden", !book);
+      els.drawer.classList.add("open");
+      document.getElementById("titleInput").focus();
+    }
+
+    function renderRatingInfo() {
+      const rating = document.getElementById("gRatingInput").value;
+      const count = document.getElementById("gRatingsCountInput").value;
+      const el = document.getElementById("ratingInfo");
+      el.textContent = rating ? `みんなの評価 ★${rating}${count ? `（${count}件）` : ""}` : "";
+    }
+
+    function closeModal() {
+      els.drawer.classList.remove("open");
+      els.bookForm.reset();
+    }
+
+    function saveFromForm(event) {
+      event.preventDefault();
+      const id = document.getElementById("bookId").value || crypto.randomUUID();
+      const existing = books.find((item) => item.id === id) || {};
+      const book = {
+        ...existing,
+        id,
+        title: document.getElementById("titleInput").value.trim(),
+        author: document.getElementById("authorInput").value.trim(),
+        cover: document.getElementById("coverInput").value.trim(),
+        category: document.getElementById("categoryInput").value.trim(),
+        publisher: document.getElementById("publisherInput").value.trim(),
+        isbn: document.getElementById("isbnInput").value.trim(),
+        ownership: document.getElementById("ownershipInput").value,
+        level: Number(document.getElementById("levelInput").value),
+        status: document.getElementById("statusInput").value,
+        startDate: document.getElementById("startDateInput").value,
+        readDate: document.getElementById("readDateInput").value,
+        rating: Number(document.getElementById("ratingInput").value),
+        nextAfter: document.getElementById("nextAfterInput").value.trim(),
+        tags: splitTags(document.getElementById("tagsInput").value),
+        description: document.getElementById("descriptionInput").value.trim(),
+        gRating: document.getElementById("gRatingInput").value,
+        gRatingsCount: document.getElementById("gRatingsCountInput").value,
+        review: document.getElementById("reviewInput").value.trim(),
+        memo: document.getElementById("memoInput").value.trim()
+      };
+
+      if (book.status === "done" && !book.readDate) {
+        book.readDate = new Date().toISOString().slice(0, 10);
+      }
+
+      const index = books.findIndex((item) => item.id === id);
+      if (index >= 0) books[index] = book;
+      else books.push(book);
+      persist();
+      closeModal();
+      render();
+    }
+
+    function hideCurrentBook() {
+      const id = document.getElementById("bookId").value;
+      if (!id) return;
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      if (!confirm(`「${book.title}」を本棚から隠します。\n（データは消えません。「取り込み・バックアップ」画面からいつでも戻せます）\n\n隠しますか？`)) return;
+      book.archived = true;
+      persist();
+      closeModal();
+      render();
+    }
+
+    function restoreBook(id) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.archived = false;
+      persist();
+      render();
+    }
+
+    function renderArchived() {
+      const hidden = books
+        .filter((book) => book.archived)
+        .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+      if (!hidden.length) {
+        els.archivedList.innerHTML = '<div class="hint">隠した本はありません。</div>';
+        return;
+      }
+      els.archivedList.innerHTML = hidden.map((book) =>
+        `<div class="archived-row"><span class="archived-title">${escapeHtml(book.title)}<span class="archived-sub">${escapeHtml(book.author || "")}</span></span><button type="button" class="ghost" data-restore="${book.id}"><span class="icon">↩</span>戻す</button></div>`
+      ).join("");
+      els.archivedList.querySelectorAll("[data-restore]").forEach((b) => {
+        b.addEventListener("click", () => restoreBook(b.dataset.restore));
+      });
+    }
+
+    function loadRecommendedBooks() {
+      const fresh = initialCatalog().filter((c) => String(c.id).startsWith("ocr-"));
+      if (!fresh.length) return;
+      if (!confirm("おすすめ図書リスト（648冊）を読み込み直します。\n各お子さんの記録（読んだ・評価・感想・買った/借りた）は本ごとに引き継がれます。\n\n読み込み直しますか？")) return;
+      const oldByIsbn = new Map();
+      const oldByTitle = new Map();
+      state.catalog.forEach((c) => {
+        const isbn = String(c.isbn || "").replace(/[^0-9Xx]/g, "");
+        if (isbn) oldByIsbn.set(isbn, c.id);
+        oldByTitle.set(normalize(c.title), c.id);
+      });
+      const idMap = new Map();
+      fresh.forEach((c) => {
+        const isbn = String(c.isbn || "").replace(/[^0-9Xx]/g, "");
+        const oldId = (isbn && oldByIsbn.get(isbn)) || oldByTitle.get(normalize(c.title));
+        if (oldId) idMap.set(oldId, c.id);
+      });
+      const newRecords = {};
+      state.profiles.forEach((p) => {
+        const old = state.records[p.id] || {};
+        const remapped = {};
+        Object.entries(old).forEach(([oldId, rec]) => {
+          remapped[idMap.get(oldId) || oldId] = rec;
+        });
+        newRecords[p.id] = remapped;
+      });
+      state.catalog = fresh;
+      state.records = newRecords;
+      books = buildBooks();
+      saveState();
+      render();
+    }
+
+    function insertImportSample() {
+      els.importText.value = `タイトル,著者,分類,タグ,読みやすさ,次におすすめ,メモ
+エルマーのぼうけん,ルース・スタイルス・ガネット,物語,"冒険;動物;友情",2,,最初の長めの物語に
+ふたりはともだち,アーノルド・ローベル,物語,"友情;短編;ユーモア",1,エルマーのぼうけん,短い章で読みやすい`;
+    }
+
+    function importBooks() {
+      const text = els.importText.value.trim();
+      if (!text) return;
+      const rows = parseTable(text);
+      if (rows.length < 2) return;
+      const headers = rows[0].map((cell) => normalizeHeader(cell));
+      const imported = rows.slice(1).filter((row) => row.some(Boolean)).map((row) => {
+        const record = Object.fromEntries(headers.map((header, index) => [header, row[index] || ""]));
+        return {
+          id: crypto.randomUUID(),
+          title: record.title?.trim() || "無題",
+          author: record.author?.trim() || "",
+          publisher: record.publisher?.trim() || "",
+          isbn: record.isbn?.trim() || "",
+          category: record.category?.trim() || "",
+          tags: splitTags(record.tags || ""),
+          level: clamp(Number(record.level) || 3, 1, 5),
+          course: record.course?.trim() || "",
+          courseGrade: record.courseGrade?.trim() || "",
+          status: "want",
+          readDate: "",
+          rating: 0,
+          nextAfter: record.nextAfter?.trim() || "",
+          memo: record.memo?.trim() || ""
+        };
+      });
+      books = mergeBooks(books, imported);
+      persist();
+      els.importText.value = "";
+      setView("library");
+    }
+
+    function parseTable(text) {
+      const delimiter = text.includes("\t") ? "\t" : ",";
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let quoted = false;
+
+      for (let index = 0; index < text.length; index += 1) {
+        const char = text[index];
+        const next = text[index + 1];
+        if (char === '"' && quoted && next === '"') {
+          cell += '"';
+          index += 1;
+        } else if (char === '"') {
+          quoted = !quoted;
+        } else if (char === delimiter && !quoted) {
+          row.push(cell);
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !quoted) {
+          if (char === "\r" && next === "\n") index += 1;
+          row.push(cell);
+          rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+      row.push(cell);
+      rows.push(row);
+      return rows;
+    }
+
+    function mergeBooks(current, imported) {
+      const seen = new Set(current.map((book) => normalize(book.title)));
+      const additions = imported.filter((book) => {
+        const key = normalize(book.title);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      return [...current, ...additions];
+    }
+
+    function exportCsv() {
+      const headers = ["タイトル", "著者", "出版社", "ISBN", "分類", "タグ", "難易度", "コース", "推奨学年", "状態", "読んだ日", "反応", "次におすすめ", "メモ"];
+      const rows = books.map((book) => [
+        book.title,
+        book.author,
+        book.publisher || "",
+        book.isbn || "",
+        book.category,
+        (book.tags || []).join(";"),
+        book.level,
+        book.course || "",
+        book.courseGrade || levelGradeLabel(book.level),
+        statusLabel(book.status),
+        book.readDate,
+        book.rating,
+        book.nextAfter,
+        book.memo
+      ]);
+      const csv = [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
+      const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "読書管理.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportBackup() {
+      persist();
+      const today = new Date().toISOString().slice(0, 10);
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `読書管理バックアップ_${today}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function handleBackupFile(event) {
+      const file = event.target.files && event.target.files[0];
+      event.target.value = "";
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        let restored;
+        try {
+          restored = normalizeState(JSON.parse(reader.result));
+        } catch {
+          alert("このファイルは読み込めませんでした。バックアップ用のJSONファイルを選んでください。");
+          return;
+        }
+        const childCount = restored.profiles.length;
+        const bookCount = restored.catalog.length;
+        if (!confirm(`今のデータを、バックアップ（子ども${childCount}人・本${bookCount}冊）で上書きします。よろしいですか？`)) return;
+        state = restored;
+        books = buildBooks();
+        saveState();
+        render();
+        setView("library");
+        alert("バックアップから復元しました。");
+      };
+      reader.readAsText(file);
+    }
+
+    function normalizeHeader(value) {
+      const key = normalize(value).replace(/\s/g, "");
+      const map = {
+        "タイトル": "title",
+        "書名": "title",
+        "title": "title",
+        "著者": "author",
+        "作者": "author",
+        "author": "author",
+        "分類": "category",
+        "ジャンル": "category",
+        "category": "category",
+        "出版社": "publisher",
+        "出版": "publisher",
+        "publisher": "publisher",
+        "isbn": "isbn",
+        "タグ": "tags",
+        "tags": "tags",
+        "読みやすさ": "level",
+        "難易度": "level",
+        "level": "level",
+        "コース": "course",
+        "course": "course",
+        "推奨学年": "courseGrade",
+        "学年": "courseGrade",
+        "次におすすめ": "nextAfter",
+        "このあと": "nextAfter",
+        "next": "nextAfter",
+        "メモ": "memo",
+        "memo": "memo"
+      };
+      return map[key] || key;
+    }
+
+    function splitTags(value) {
+      return [...new Set(String(value)
+        .split(/[;、,\n]/)
+        .map((tag) => tag.trim())
+        .filter(Boolean))];
+    }
+
+    function statusLabel(status) {
+      return {
+        want: "未読",
+        reading: "読書中",
+        done: "読了",
+        pause: "保留"
+      }[status] || "未読";
+    }
+
+    function statusWeight(status) {
+      return { reading: 0, want: 1, pause: 2, done: 3 }[status] ?? 1;
+    }
+
+    function normalize(value) {
+      return String(value || "").trim().toLowerCase().normalize("NFKC");
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function csvCell(value) {
+      const text = String(value ?? "");
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+  </script>
+</body>
+</html>
