@@ -1064,6 +1064,39 @@
       font-size: 15px;
     }
 
+    .sync-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+      gap: 12px;
+      align-items: end;
+      margin-top: 12px;
+    }
+
+    .sync-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .sync-toggle input {
+      width: auto;
+      min-height: 0;
+      accent-color: var(--green);
+    }
+
+    .sync-status {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .sync-status.ok { color: var(--green-dark); }
+    .sync-status.warn { color: var(--red); }
+
     .records-summary {
       display: flex;
       gap: 14px;
@@ -1696,6 +1729,27 @@
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
             <div class="hint">
+              <strong>Google同期</strong>：iPad・携帯・PCで同じ読書記録を使います。同期URLと合言葉は端末内だけに保存されます。自動同期をオンにすると、開いた時に読み込み、変更後に自動保存します。
+            </div>
+            <div class="sync-grid">
+              <div class="field">
+                <label for="syncUrlInput">同期URL</label>
+                <input id="syncUrlInput" placeholder="Google Apps Script の /exec URL">
+              </div>
+              <div class="field">
+                <label for="syncTokenInput">合言葉</label>
+                <input id="syncTokenInput" type="password" placeholder="家族だけの合言葉">
+              </div>
+            </div>
+            <div class="toolbar" style="justify-content:flex-start;">
+              <label class="sync-toggle"><input type="checkbox" id="syncEnabledInput">自動同期</label>
+              <button class="ghost" id="syncPullButton"><span class="icon">↓</span>読み込む</button>
+              <button class="primary" id="syncPushButton"><span class="icon">↑</span>保存する</button>
+              <span id="syncStatus" class="sync-status">未設定</span>
+            </div>
+          </div>
+          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
+            <div class="hint">
               <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。買った/借りた・隠した本も引き継ぎます。</strong>
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
@@ -1901,6 +1955,8 @@
   <script>
     const storageKey = "reading-manager-v2";
     const legacyKey = "reading-manager-books-v1";
+    const syncConfigKey = "reading-manager-sync-v1";
+    const clientIdKey = "reading-manager-client-id";
     const GENDER_AFFINITY = {
       girl: ["友だち", "友情", "家族", "動物", "ファンタジー", "魔法", "詩", "おはなし", "生活", "学校"],
       boy: ["冒険", "恐竜", "のりもの", "乗り物", "宇宙", "科学・自然", "科学", "歴史", "スポーツ", "図鑑", "昔話・神話"]
@@ -1959,6 +2015,10 @@
       }
     ];
 
+    const clientId = loadClientId();
+    let syncConfig = loadSyncConfig();
+    let syncTimer = null;
+    let syncing = false;
     let state = loadState();
     let books = buildBooks();
     let activeView = "library";
@@ -1992,6 +2052,12 @@
       bookForm: document.getElementById("bookForm"),
       hideButton: document.getElementById("hideButton"),
       importText: document.getElementById("importText"),
+      syncEnabledInput: document.getElementById("syncEnabledInput"),
+      syncUrlInput: document.getElementById("syncUrlInput"),
+      syncTokenInput: document.getElementById("syncTokenInput"),
+      syncPullButton: document.getElementById("syncPullButton"),
+      syncPushButton: document.getElementById("syncPushButton"),
+      syncStatus: document.getElementById("syncStatus"),
       profileTabs: document.getElementById("profileTabs"),
       profileManage: document.getElementById("profileManage"),
       profileDrawer: document.getElementById("profileDrawer"),
@@ -2018,6 +2084,11 @@
     document.getElementById("backupExportButton").addEventListener("click", exportBackup);
     document.getElementById("backupImportButton").addEventListener("click", () => document.getElementById("backupFileInput").click());
     document.getElementById("backupFileInput").addEventListener("change", handleBackupFile);
+    els.syncEnabledInput.addEventListener("change", saveSyncSettingsFromForm);
+    els.syncUrlInput.addEventListener("change", saveSyncSettingsFromForm);
+    els.syncTokenInput.addEventListener("change", saveSyncSettingsFromForm);
+    els.syncPullButton.addEventListener("click", () => pullSync({ force: true }));
+    els.syncPushButton.addEventListener("click", () => pushSync({ force: true }));
     document.getElementById("loadOcrButton").addEventListener("click", loadRecommendedBooks);
     let searchTimer;
     els.searchInput.addEventListener("input", () => {
@@ -2061,10 +2132,64 @@
       if (event.target === els.profileDrawer) closeProfileDrawer();
     });
 
+    renderSyncSettings();
     render();
+    startAutoSync();
 
     function uid() {
       return crypto.randomUUID();
+    }
+
+    function loadClientId() {
+      let id = localStorage.getItem(clientIdKey);
+      if (!id) {
+        id = crypto.randomUUID();
+        localStorage.setItem(clientIdKey, id);
+      }
+      return id;
+    }
+
+    function loadSyncConfig() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(syncConfigKey) || "{}");
+        return {
+          enabled: !!raw.enabled,
+          url: raw.url || "",
+          token: raw.token || "",
+          lastSyncedAt: raw.lastSyncedAt || ""
+        };
+      } catch {
+        return { enabled: false, url: "", token: "", lastSyncedAt: "" };
+      }
+    }
+
+    function saveSyncConfig() {
+      localStorage.setItem(syncConfigKey, JSON.stringify(syncConfig));
+    }
+
+    function renderSyncSettings() {
+      els.syncEnabledInput.checked = !!syncConfig.enabled;
+      els.syncUrlInput.value = syncConfig.url || "";
+      els.syncTokenInput.value = syncConfig.token || "";
+      updateSyncStatus(syncConfig.enabled ? "自動同期オン" : "未設定", syncConfig.enabled ? "ok" : "");
+    }
+
+    function saveSyncSettingsFromForm() {
+      syncConfig = {
+        ...syncConfig,
+        enabled: els.syncEnabledInput.checked,
+        url: els.syncUrlInput.value.trim(),
+        token: els.syncTokenInput.value
+      };
+      saveSyncConfig();
+      updateSyncStatus(syncConfig.enabled ? "自動同期オン" : "自動同期オフ", syncConfig.enabled ? "ok" : "");
+      if (syncConfig.enabled) startAutoSync();
+    }
+
+    function updateSyncStatus(message, tone = "") {
+      if (!els.syncStatus) return;
+      els.syncStatus.textContent = message;
+      els.syncStatus.className = `sync-status ${tone}`.trim();
     }
 
     function visibleBooks() {
@@ -2159,6 +2284,9 @@
     function normalizeState(s) {
       if (!s || s.v !== 2 || !Array.isArray(s.catalog) || !Array.isArray(s.profiles)) throw new Error("bad state");
       if (!s.records || typeof s.records !== "object") s.records = {};
+      if (!s.meta || typeof s.meta !== "object") s.meta = {};
+      if (!s.meta.updatedAt) s.meta.updatedAt = "";
+      if (!s.meta.clientId) s.meta.clientId = clientId;
       if (!s.profiles.length) {
         s.profiles = [newProfile("こども")];
       }
@@ -2193,11 +2321,17 @@
       return state.catalog.map((c) => ({ ...defaultRecord(), ...(rec[c.id] || {}), ...c }));
     }
 
-    function saveState() {
-      localStorage.setItem(storageKey, JSON.stringify(state));
+    function touchState() {
+      state.meta = { ...(state.meta || {}), updatedAt: new Date().toISOString(), clientId };
     }
 
-    function persist() {
+    function saveState(options = {}) {
+      if (options.touch !== false) touchState();
+      localStorage.setItem(storageKey, JSON.stringify(state));
+      if (options.sync !== false) scheduleAutoSync();
+    }
+
+    function persist(options = {}) {
       state.catalog = books.map(catalogFromBook);
       const rec = {};
       books.forEach((b) => {
@@ -2205,7 +2339,123 @@
         if (!isDefaultRecord(r)) rec[b.id] = r;
       });
       state.records[state.activeProfileId] = rec;
-      saveState();
+      saveState(options);
+    }
+
+    function canSync() {
+      return !!(syncConfig.enabled && syncConfig.url && syncConfig.token);
+    }
+
+    function scheduleAutoSync() {
+      if (!canSync()) return;
+      clearTimeout(syncTimer);
+      updateSyncStatus("変更を保存待ち...", "");
+      syncTimer = setTimeout(() => pushSync({ force: false }), 1800);
+    }
+
+    async function startAutoSync() {
+      if (!canSync()) {
+        updateSyncStatus(syncConfig.enabled ? "同期URLと合言葉を入れてください" : "未設定", syncConfig.enabled ? "warn" : "");
+        return;
+      }
+      await pullSync({ force: false });
+    }
+
+    async function syncRequest(action, payload = {}) {
+      if (!syncConfig.url || !syncConfig.token) throw new Error("同期URLと合言葉を設定してください。");
+      const res = await fetch(syncConfig.url, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action, token: syncConfig.token, clientId, payload })
+      });
+      const text = await res.text();
+      let data;
+      try { data = JSON.parse(text); } catch {
+        throw new Error("同期先から正しい返事がありません。URLを確認してください。");
+      }
+      if (!data.ok) throw new Error(data.error || "同期に失敗しました。");
+      return data;
+    }
+
+    function remoteIsNewer(remoteState) {
+      const remoteTime = Date.parse(remoteState?.meta?.updatedAt || "");
+      const localTime = Date.parse(state?.meta?.updatedAt || "");
+      return remoteTime && (!localTime || remoteTime > localTime);
+    }
+
+    async function pullSync({ force = false } = {}) {
+      if (!canSync()) {
+        updateSyncStatus("同期URLと合言葉を入れてください", "warn");
+        return;
+      }
+      if (syncing) return;
+      syncing = true;
+      updateSyncStatus("読み込み中...", "");
+      try {
+        const data = await syncRequest("load");
+        if (!data.state) {
+          updateSyncStatus("クラウドは空です。現在の記録を保存します", "");
+          await pushSync({ force: true, keepLock: true });
+          return;
+        }
+        const remoteState = normalizeState(data.state);
+        if (force || remoteIsNewer(remoteState)) {
+          state = remoteState;
+          books = buildBooks();
+          saveState({ touch: false, sync: false });
+          render();
+          updateSyncStatus(`読み込み完了 ${formatSyncTime(state.meta.updatedAt)}`, "ok");
+        } else {
+          updateSyncStatus("この端末の記録が最新です", "ok");
+        }
+        syncConfig.lastSyncedAt = new Date().toISOString();
+        saveSyncConfig();
+      } catch (error) {
+        updateSyncStatus(error.message || "読み込みに失敗しました", "warn");
+      } finally {
+        syncing = false;
+      }
+    }
+
+    async function pushSync({ force = false, keepLock = false } = {}) {
+      if (!canSync()) {
+        updateSyncStatus("同期URLと合言葉を入れてください", "warn");
+        return;
+      }
+      if (syncing && !keepLock) return;
+      if (!keepLock) syncing = true;
+      clearTimeout(syncTimer);
+      updateSyncStatus("保存中...", "");
+      try {
+        persist({ touch: false, sync: false });
+        const data = await syncRequest("save", { state, force });
+        if (data.conflict && data.state && !force) {
+          const remoteState = normalizeState(data.state);
+          if (confirm("別の端末で新しい記録があります。そちらを読み込みますか？\n\nキャンセルすると、この端末の記録を上書き保存します。")) {
+            state = remoteState;
+            books = buildBooks();
+            saveState({ touch: false, sync: false });
+            render();
+            updateSyncStatus(`別端末の記録を読み込みました ${formatSyncTime(state.meta.updatedAt)}`, "ok");
+          } else {
+            await pushSync({ force: true, keepLock: true });
+          }
+          return;
+        }
+        syncConfig.lastSyncedAt = new Date().toISOString();
+        saveSyncConfig();
+        updateSyncStatus(`保存完了 ${formatSyncTime(state.meta.updatedAt)}`, "ok");
+      } catch (error) {
+        updateSyncStatus(error.message || "保存に失敗しました", "warn");
+      } finally {
+        if (!keepLock) syncing = false;
+      }
+    }
+
+    function formatSyncTime(value) {
+      const d = value ? new Date(value) : new Date();
+      if (Number.isNaN(d.getTime())) return "";
+      return `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
     }
 
     function catalogLookupMaps(catalog) {
@@ -3590,7 +3840,7 @@
     }
 
     function exportBackup() {
-      persist();
+      persist({ touch: false, sync: false });
       const today = new Date().toISOString().slice(0, 10);
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
