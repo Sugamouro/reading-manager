@@ -341,6 +341,13 @@
       padding: 18px;
     }
 
+    .load-more {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      padding: 4px 0 8px;
+    }
+
     .card {
       display: flex;
       flex-direction: column;
@@ -1201,8 +1208,31 @@
     }
 
     .hero-avatar {
-      font-size: 52px;
-      line-height: 1;
+      width: 92px;
+      min-width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: radial-gradient(circle at 35% 22%, #fffef7 0 18%, #e7f6f0 19% 58%, #d6eadf 59% 100%);
+      box-shadow: inset 0 0 0 1px rgba(47, 125, 104, 0.12), 0 10px 24px rgba(47, 125, 104, 0.16);
+    }
+
+    .pet-avatar {
+      width: 86px;
+      height: 86px;
+      display: block;
+      filter: drop-shadow(0 6px 8px rgba(47, 60, 56, 0.18));
+    }
+
+    .pet-avatar .pet-bob {
+      transform-origin: 48px 54px;
+      animation: petBob 2.8s ease-in-out infinite;
+    }
+
+    @keyframes petBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
 
     .hero-main {
@@ -1500,7 +1530,7 @@
           <p id="viewLead">推薦図書を一覧し、読んだ日・反応・メモを残します。</p>
         </div>
         <div class="toolbar">
-          <button class="ghost" id="exportButton"><span class="icon">↓</span>CSV保存</button>
+              <button class="ghost" id="exportButton"><span class="icon">↓</span>全員分CSV</button>
           <button class="ghost" id="scanButton"><span class="icon">📷</span>バーコード追加</button>
           <button class="primary" id="addButton"><span class="icon">＋</span>本を追加</button>
         </div>
@@ -1666,7 +1696,7 @@
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
             <div class="hint">
-              <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書（648冊）の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>各お子さんの記録（読んだ・評価・感想・買った/借りた）は本ごとに引き継がれます。</strong>
+              <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。買った/借りた・隠した本も引き継ぎます。</strong>
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
               <button class="ghost" id="loadOcrButton"><span class="icon">⟳</span>おすすめ図書リストを読み込み直す</button>
@@ -1932,6 +1962,8 @@
     let state = loadState();
     let books = buildBooks();
     let activeView = "library";
+    const LIBRARY_PAGE_SIZE = 80;
+    let libraryLimit = LIBRARY_PAGE_SIZE;
 
     const els = {
       viewTitle: document.getElementById("viewTitle"),
@@ -1990,12 +2022,12 @@
     let searchTimer;
     els.searchInput.addEventListener("input", () => {
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(render, 160);
+      searchTimer = setTimeout(resetLibraryAndRender, 160);
     });
-    els.statusFilter.addEventListener("change", render);
-    els.levelFilter.addEventListener("change", render);
-    els.tagFilter.addEventListener("change", render);
-    els.ownershipFilter.addEventListener("change", render);
+    els.statusFilter.addEventListener("change", resetLibraryAndRender);
+    els.levelFilter.addEventListener("change", resetLibraryAndRender);
+    els.tagFilter.addEventListener("change", resetLibraryAndRender);
+    els.ownershipFilter.addEventListener("change", resetLibraryAndRender);
     els.bookForm.addEventListener("submit", saveFromForm);
     els.hideButton.addEventListener("click", hideCurrentBook);
     document.getElementById("amazonButton").addEventListener("click", () => {
@@ -2174,6 +2206,35 @@
       });
       state.records[state.activeProfileId] = rec;
       saveState();
+    }
+
+    function catalogLookupMaps(catalog) {
+      const byIsbn = new Map();
+      const byTitle = new Map();
+      catalog.forEach((c) => {
+        const isbn = String(c.isbn || "").replace(/[^0-9Xx]/g, "");
+        if (isbn) byIsbn.set(isbn, c);
+        byTitle.set(normalize(c.title), c);
+      });
+      return { byIsbn, byTitle };
+    }
+
+    function findMatchingCatalog(book, maps) {
+      const isbn = String(book.isbn || "").replace(/[^0-9Xx]/g, "");
+      return (isbn && maps.byIsbn.get(isbn)) || maps.byTitle.get(normalize(book.title)) || null;
+    }
+
+    function mergeRefreshedCatalogBook(freshBook, oldBook) {
+      if (!oldBook) return freshBook;
+      return {
+        ...freshBook,
+        ownership: oldBook.ownership || "",
+        archived: !!oldBook.archived,
+        nextAfter: oldBook.nextAfter || "",
+        description: oldBook.description || freshBook.description || "",
+        gRating: oldBook.gRating || freshBook.gRating || "",
+        gRatingsCount: oldBook.gRatingsCount || freshBook.gRatingsCount || ""
+      };
     }
 
     function activeProfile() {
@@ -2388,14 +2449,28 @@
     function render() {
       renderProfiles();
       renderStats();
-      renderTagFilter();
-      renderLibrary();
-      renderReading();
-      renderFinished();
-      renderRecords();
-      renderArchived();
-      renderSuggestions();
-      renderTrends();
+      if (activeView === "library") {
+        renderTagFilter();
+        renderLibrary();
+        renderSuggestions();
+      } else if (activeView === "reading") {
+        renderReading();
+      } else if (activeView === "finished") {
+        renderFinished();
+      } else if (activeView === "records") {
+        renderRecords();
+      } else if (activeView === "next") {
+        renderSuggestions();
+      } else if (activeView === "trend") {
+        renderTrends();
+      } else if (activeView === "import") {
+        renderArchived();
+      }
+    }
+
+    function resetLibraryAndRender() {
+      libraryLimit = LIBRARY_PAGE_SIZE;
+      render();
     }
 
     function renderStats() {
@@ -2422,14 +2497,27 @@
 
     function renderLibrary() {
       const visible = getFilteredBooks();
-      els.listCount.textContent = `${visible.length}冊を表示`;
+      const shown = visible.slice(0, libraryLimit);
+      els.listCount.textContent = visible.length > shown.length
+        ? `${shown.length}/${visible.length}冊を表示`
+        : `${visible.length}冊を表示`;
       if (!visible.length) {
         els.bookList.innerHTML = '<div class="empty">条件に合う本がありません。</div>';
         return;
       }
 
-      els.bookList.innerHTML = visible.map((book) => bookCard(book)).join("");
+      const moreButton = visible.length > shown.length
+        ? `<div class="load-more"><button type="button" class="ghost" data-load-more>さらに${Math.min(LIBRARY_PAGE_SIZE, visible.length - shown.length)}冊表示</button></div>`
+        : "";
+      els.bookList.innerHTML = shown.map((book) => bookCard(book)).join("") + moreButton;
       wireCardHandlers(els.bookList);
+      const loadMore = els.bookList.querySelector("[data-load-more]");
+      if (loadMore) {
+        loadMore.addEventListener("click", () => {
+          libraryLimit += LIBRARY_PAGE_SIZE;
+          renderLibrary();
+        });
+      }
     }
 
     function wireCardHandlers(container) {
@@ -2527,17 +2615,81 @@
       const level = Math.floor(xp / 100) + 1;
       const xpInLevel = xp % 100;
       const stages = [
-        { min: 1, avatar: "🥚", title: "よみだしたまご" },
-        { min: 2, avatar: "🐣", title: "ひよこ読者" },
-        { min: 4, avatar: "🐥", title: "よちよち読者" },
-        { min: 6, avatar: "🐤", title: "げんき読者" },
-        { min: 9, avatar: "🦉", title: "もの知りふくろう" },
-        { min: 13, avatar: "🦅", title: "よむのたつじん" },
-        { min: 18, avatar: "🐉", title: "でんせつの読書家" }
+        { min: 1, key: "egg", title: "よみだしたまご", body: "#fff3bf", accent: "#f08c00" },
+        { min: 2, key: "peek", title: "ひよこ読者", body: "#ffe066", accent: "#f08c00" },
+        { min: 4, key: "sprout", title: "よちよち読者", body: "#8ce99a", accent: "#2f9e44" },
+        { min: 6, key: "runner", title: "げんき読者", body: "#74c0fc", accent: "#1c7ed6" },
+        { min: 9, key: "sage", title: "もの知り読者", body: "#b197fc", accent: "#7048e8" },
+        { min: 13, key: "master", title: "よむのたつじん", body: "#ff922b", accent: "#e8590c" },
+        { min: 18, key: "legend", title: "でんせつの読書家", body: "#63e6be", accent: "#0ca678" }
       ];
       let stage = stages[0];
       stages.forEach((s) => { if (level >= s.min) stage = s; });
-      return { level, xpInLevel, remain: 100 - xpInLevel, avatar: stage.avatar, title: stage.title };
+      return { level, xpInLevel, remain: 100 - xpInLevel, stage, title: stage.title };
+    }
+
+    function petAvatar(stage, level) {
+      const safeLevel = Math.max(1, Math.min(99, Number(level) || 1));
+      const body = stage.body;
+      const accent = stage.accent;
+      const isEgg = stage.key === "egg";
+      const isPeek = stage.key === "peek";
+      const hasSprout = ["sprout", "runner", "sage", "master", "legend"].includes(stage.key);
+      const hasCape = ["master", "legend"].includes(stage.key);
+      const hasCrown = stage.key === "legend";
+      const shell = isEgg || isPeek ? `
+        <path d="M29 64c5 10 33 10 38 0l-5 15H34z" fill="#fff8e1" stroke="#4a4037" stroke-width="2.3" stroke-linejoin="round"/>
+        <path d="M31 64l7-4 7 4 7-4 7 4 6-4" fill="none" stroke="#4a4037" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+      ` : "";
+      const sprout = hasSprout ? `
+        <path d="M48 24c-1-8 4-13 11-14 0 8-4 13-11 14z" fill="#69db7c" stroke="#254d3a" stroke-width="2"/>
+        <path d="M48 24c-6-6-13-5-18 0 6 5 13 5 18 0z" fill="#8ce99a" stroke="#254d3a" stroke-width="2"/>
+      ` : "";
+      const crown = hasCrown ? `
+        <path d="M34 25l7-10 7 10 8-10 6 10v9H34z" fill="#ffd43b" stroke="#5f3f00" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="41" cy="15" r="2" fill="#ff6b6b"/><circle cx="56" cy="15" r="2" fill="#4dabf7"/>
+      ` : "";
+      const cape = hasCape ? `
+        <path d="M24 50c-10 5-13 17-11 29 12-2 22-9 28-18z" fill="#ffdeeb" stroke="#704052" stroke-width="2"/>
+        <path d="M72 50c10 5 13 17 11 29-12-2-22-9-28-18z" fill="#d0ebff" stroke="#37536b" stroke-width="2"/>
+      ` : "";
+      const book = !isEgg ? `
+        <path d="M31 67c6-4 13-4 17 0v14c-5-4-11-4-17-1z" fill="#fff" stroke="#3f3a35" stroke-width="2"/>
+        <path d="M48 67c4-4 11-4 17 0v13c-6-3-12-3-17 1z" fill="#fff7e6" stroke="#3f3a35" stroke-width="2"/>
+        <path d="M48 67v14" stroke="#3f3a35" stroke-width="2"/>
+      ` : `
+        <path d="M38 70c4-2 7-2 10 0v8c-4-2-7-2-10 0z" fill="#fff" stroke="#3f3a35" stroke-width="1.7"/>
+        <path d="M48 70c3-2 6-2 10 0v8c-4-2-7-2-10 0z" fill="#fff7e6" stroke="#3f3a35" stroke-width="1.7"/>
+      `;
+      const cheeks = isEgg ? "" : `<circle cx="36" cy="52" r="3.2" fill="#ffb3c1"/><circle cx="60" cy="52" r="3.2" fill="#ffb3c1"/>`;
+      const mouth = stage.key === "legend"
+        ? `<path d="M43 57c3 4 7 4 10 0" fill="none" stroke="#3f3a35" stroke-width="2.2" stroke-linecap="round"/>`
+        : `<path d="M44 57q4 4 8 0" fill="none" stroke="#3f3a35" stroke-width="2.2" stroke-linecap="round"/>`;
+      const star = ["runner", "sage", "master", "legend"].includes(stage.key)
+        ? `<path d="M76 27l2.2 5 5.4.5-4.1 3.5 1.2 5.3-4.7-2.8-4.7 2.8 1.2-5.3-4.1-3.5 5.4-.5z" fill="#ffd43b" stroke="#6f5200" stroke-width="1.4"/>`
+        : "";
+      return `
+        <svg class="pet-avatar" viewBox="0 0 96 96" role="img" aria-label="${escapeHtml(stage.title)}">
+          <ellipse cx="48" cy="84" rx="28" ry="6" fill="rgba(47,60,56,.16)"/>
+          ${star}
+          <g class="pet-bob">
+            ${cape}
+            ${sprout}
+            ${crown}
+            <path d="M48 22c18 0 29 16 29 35 0 20-12 31-29 31S19 77 19 57c0-19 11-35 29-35z" fill="${body}" stroke="#3f3a35" stroke-width="2.6"/>
+            <path d="M28 42c6-10 16-15 31-14" fill="none" stroke="#fffef7" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+            <circle cx="38" cy="49" r="3.2" fill="#2f2a26"/>
+            <circle cx="58" cy="49" r="3.2" fill="#2f2a26"/>
+            <circle cx="39" cy="48" r="1" fill="#fff"/>
+            <circle cx="59" cy="48" r="1" fill="#fff"/>
+            ${cheeks}
+            ${mouth}
+            ${shell}
+            ${book}
+            <circle cx="72" cy="70" r="10" fill="#fff8e1" stroke="#3f3a35" stroke-width="2"/>
+            <text x="72" y="74" text-anchor="middle" font-size="9" font-weight="800" fill="${accent}">${safeLevel}</text>
+          </g>
+        </svg>`;
     }
 
     function streakCount() {
@@ -2561,7 +2713,7 @@
       const after = motivationSnapshot();
       if (before && after.level > before.level) {
         const li = levelInfo(xpTotal());
-        celebrate(`⬆️ レベルアップ！\n${li.avatar} Lv${li.level}「${li.title}」`);
+        celebrate(`レベルアップ！\nLv${li.level}「${li.title}」`);
       } else if (before && after.badges > before.badges) {
         celebrate("🏅 あたらしいバッジをゲット！");
       } else {
@@ -2966,11 +3118,14 @@
 
     function renderSuggestions() {
       const suggestions = getSuggestions();
-      const quick = suggestions.slice(0, 4);
-      els.quickSuggestions.innerHTML = quick.length ? quick.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
-      els.nextList.innerHTML = suggestions.length ? suggestions.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
-      wireCardHandlers(els.quickSuggestions);
-      wireCardHandlers(els.nextList);
+      if (activeView === "library") {
+        const quick = suggestions.slice(0, 4);
+        els.quickSuggestions.innerHTML = quick.length ? quick.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
+        wireCardHandlers(els.quickSuggestions);
+      } else if (activeView === "next") {
+        els.nextList.innerHTML = suggestions.length ? suggestions.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
+        wireCardHandlers(els.nextList);
+      }
     }
 
     function getSuggestions() {
@@ -3104,7 +3259,7 @@
 
       els.recordsBody.innerHTML = `
         <div class="hero">
-          <div class="hero-avatar">${li.avatar}</div>
+          <div class="hero-avatar">${petAvatar(li.stage, li.level)}</div>
           <div class="hero-main">
             <div class="hero-title">Lv${li.level}「${escapeHtml(li.title)}」</div>
             <div class="xp-bar"><span style="width:${li.xpInLevel}%"></span></div>
@@ -3284,30 +3439,32 @@
     function loadRecommendedBooks() {
       const fresh = initialCatalog().filter((c) => String(c.id).startsWith("ocr-"));
       if (!fresh.length) return;
-      if (!confirm("おすすめ図書リスト（648冊）を読み込み直します。\n各お子さんの記録（読んだ・評価・感想・買った/借りた）は本ごとに引き継がれます。\n\n読み込み直しますか？")) return;
-      const oldByIsbn = new Map();
-      const oldByTitle = new Map();
-      state.catalog.forEach((c) => {
-        const isbn = String(c.isbn || "").replace(/[^0-9Xx]/g, "");
-        if (isbn) oldByIsbn.set(isbn, c.id);
-        oldByTitle.set(normalize(c.title), c.id);
-      });
+      if (!confirm(`おすすめ図書リスト（${fresh.length}冊）を読み込み直します。\n手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。\n買った/借りた・隠した本も引き継ぎます。\n\n読み込み直しますか？`)) return;
+      const maps = catalogLookupMaps(state.catalog);
       const idMap = new Map();
-      fresh.forEach((c) => {
-        const isbn = String(c.isbn || "").replace(/[^0-9Xx]/g, "");
-        const oldId = (isbn && oldByIsbn.get(isbn)) || oldByTitle.get(normalize(c.title));
-        if (oldId) idMap.set(oldId, c.id);
+      const refreshed = fresh.map((c) => {
+        const oldBook = findMatchingCatalog(c, maps);
+        if (oldBook) idMap.set(oldBook.id, c.id);
+        return mergeRefreshedCatalogBook(c, oldBook);
       });
+      const refreshedMaps = catalogLookupMaps(refreshed);
+      const customBooks = state.catalog.filter((c) => {
+        if (String(c.id).startsWith("ocr-")) return false;
+        return !findMatchingCatalog(c, refreshedMaps);
+      });
+      const nextCatalog = [...refreshed, ...customBooks];
+      const nextCatalogIds = new Set(nextCatalog.map((c) => c.id));
       const newRecords = {};
       state.profiles.forEach((p) => {
         const old = state.records[p.id] || {};
         const remapped = {};
         Object.entries(old).forEach(([oldId, rec]) => {
-          remapped[idMap.get(oldId) || oldId] = rec;
+          const nextId = idMap.get(oldId) || oldId;
+          if (nextCatalogIds.has(nextId)) remapped[nextId] = rec;
         });
         newRecords[p.id] = remapped;
       });
-      state.catalog = fresh;
+      state.catalog = nextCatalog;
       state.records = newRecords;
       books = buildBooks();
       saveState();
@@ -3397,29 +3554,37 @@
     }
 
     function exportCsv() {
-      const headers = ["タイトル", "著者", "出版社", "ISBN", "分類", "タグ", "難易度", "コース", "推奨学年", "状態", "読んだ日", "反応", "次におすすめ", "メモ"];
-      const rows = books.map((book) => [
-        book.title,
-        book.author,
-        book.publisher || "",
-        book.isbn || "",
-        book.category,
-        (book.tags || []).join(";"),
-        book.level,
-        book.course || "",
-        book.courseGrade || levelGradeLabel(book.level),
-        statusLabel(book.status),
-        book.readDate,
-        book.rating,
-        book.nextAfter,
-        book.memo
-      ]);
+      persist();
+      const headers = ["子ども", "タイトル", "著者", "出版社", "ISBN", "分類", "タグ", "難易度", "コース", "推奨学年", "状態", "読んだ日", "反応", "次におすすめ", "メモ"];
+      const rows = state.profiles.flatMap((profile) => {
+        const profileRecords = state.records[profile.id] || {};
+        return state.catalog.map((catalogBook) => {
+          const book = { ...defaultRecord(), ...(profileRecords[catalogBook.id] || {}), ...catalogBook };
+          return [
+            profile.name || "こども",
+            book.title,
+            book.author,
+            book.publisher || "",
+            book.isbn || "",
+            book.category,
+            (book.tags || []).join(";"),
+            book.level,
+            book.course || "",
+            book.courseGrade || levelGradeLabel(book.level),
+            statusLabel(book.status),
+            book.readDate,
+            book.rating,
+            book.nextAfter,
+            book.memo
+          ];
+        });
+      });
       const csv = [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
       const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "読書管理.csv";
+      link.download = "読書管理_全員分.csv";
       link.click();
       URL.revokeObjectURL(url);
     }

@@ -51,6 +51,23 @@ window.recommendedBooksData = [
     "courseT": "T4"
   },
   {
+    "title": "モチモチの木",
+    "author": "斎藤隆介 作",
+    "publisher": "岩崎書店",
+    "isbn": "9784265909063",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "モチモチの木(創作絵本:6",
+    "source_page": "01-left-04",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
     "title": "酒呑童子",
     "author": "川村たかし 文",
     "publisher": "ポプラ社",
@@ -228,6 +245,23 @@ window.recommendedBooksData = [
     "courseT": "T4"
   },
   {
+    "title": "美術館ってどんなところ?",
+    "author": "Ducatteau,Florence,1961- Peten,Chantal,1974- ほか",
+    "publisher": "西村書店東京出版編集部",
+    "isbn": "9784890139439",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "01-left-15",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
     "title": "視覚ミステリーえほん Optical tricks",
     "author": "ウォルター・ウィック 作",
     "publisher": "あすなろ書房",
@@ -347,6 +381,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "EE",
     "source_page": "01-right-02",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "百まいのドレス",
+    "author": "Estes,Eleanor,1906-1988 石井,桃子,1907-2008 Slobodkin,Louis,1903-1975",
+    "publisher": "岩波書店",
+    "isbn": "9784001155792",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "01-right-03",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -487,6 +538,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=5OVrQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ぬくい山のきつね(風の文学館:22)",
     "source_page": "01-right-11",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "雨ふる本屋",
+    "author": "日向,理恵子 吉田,尚令,1971-",
+    "publisher": "童心社",
+    "isbn": "9784494019427",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "は",
+    "source_page": "01-right-12",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -650,6 +718,41 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "新ちゃんがないた!",
+    "author": "佐藤州男 作 ; 長谷川集平 絵",
+    "publisher": "文研出版",
+    "isbn": "9784580814714",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "新ちゃんがないた!(文研じゅべにーる)",
+    "source_page": "02-left-02",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "モグラ原っぱのなかまたち",
+    "author": "古田足日 作",
+    "publisher": "あかね書房",
+    "isbn": "4251100212",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "友だち"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "モグラ原っぱのなかまたち(創作児童文学選:8)",
+    "source_page": "02-left-03",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "ルドルフとイッパイアッテナ",
     "author": "斉藤洋 作",
     "publisher": "講談社",
@@ -662,6 +765,40 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "ルドルフとイッパイアッテナ(児童文学創作シリーズ)",
     "source_page": "02-left-04",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "きまぐれロボット",
+    "author": "星新一 著",
+    "publisher": "講談社",
+    "isbn": "4061860224",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "きまぐれロボット(角川つばさ文庫BIZ1-3)",
+    "source_page": "02-left-05",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "伊能忠敬 : 歩いて作った初めての日本地図",
+    "author": "たからしげる 文",
+    "publisher": "あかね書房",
+    "isbn": "9784251046048",
+    "genre": "伝記",
+    "tags": [
+      "伝記"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=W5SsjwEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "伊能忠敬歩いて作った初めての日本地図(伝記を読もう:4)",
+    "source_page": "02-left-06",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -684,6 +821,24 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "植村直己 : 極限に挑んだ冒険家",
+    "author": "滝田誠一郎 文",
+    "publisher": "あかね書房",
+    "isbn": "9784251046062",
+    "genre": "伝記",
+    "tags": [
+      "伝記",
+      "冒険"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=_FaQjwEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "植村直己:極限に挑んだ冒険家(伝記を読もう:6)",
+    "source_page": "02-left-08",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "荻野吟子 : 日本で初めての女性医師",
     "author": "加藤純子 文",
     "publisher": "あかね書房",
@@ -696,6 +851,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=6xuFjwEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "日本で初めての女性医師(伝記を読もう:7)",
     "source_page": "02-left-09",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "まど・みちお : みんなが歌った童謡の作者",
+    "author": "谷悦子 文",
+    "publisher": "あかね書房",
+    "isbn": "9784251046086",
+    "genre": "詩",
+    "tags": [
+      "詩",
+      "詩・ことば"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=32e3DAEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "まど・みちおみんなが歌った童謡の作者",
+    "source_page": "02-left-10",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -736,6 +909,23 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "円谷英二 : 怪獣やヒーローを生んだ映画監督",
+    "author": "田口成光 文",
+    "publisher": "あかね書房",
+    "isbn": "9784251046147",
+    "genre": "伝記",
+    "tags": [
+      "伝記"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=2JwgtgEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "(伝記を読もう:10)円谷英二怪獣やヒーローを生んだ映画監督",
+    "source_page": "02-left-13",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "平賀源内 : 江戸の天才アイデアマン",
     "author": "榎本秋 文",
     "publisher": "あかね書房",
@@ -749,6 +939,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=h71MtgEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "(伝記を読もう14)源内:江戸の天才アイデアマン(伝記を読もう:15)",
     "source_page": "02-left-14",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "しあわせの牛乳 : 牛もしあわせ!おれもしあわせ!",
+    "author": "佐藤慧 著",
+    "publisher": "ポプラ社",
+    "isbn": "9784591158135",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=LZzEtAEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "しあわせの牛乳牛もしあわせ!おれもしあわせ!",
+    "source_page": "02-left-15",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -771,6 +978,42 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "8本あしのゆかいな仲間クモ",
+    "author": "谷本雄治 文",
+    "publisher": "くもん出版",
+    "isbn": "9784774307749",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "友だち",
+      "わらい"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "Loなクモ",
+    "source_page": "02-left-17",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "素数ゼミの謎",
+    "author": "吉村,仁,1954- 石森,愛彦,1958-",
+    "publisher": "文藝春秋",
+    "isbn": "9784163672304",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "02-left-18",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "木の声が聞こえますか : 日本初の女性樹木医・塚本こなみ物語",
     "author": "池田まき子 著",
     "publisher": "岩崎書店",
@@ -783,6 +1026,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=eZ9WSAAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "木の声が聞こえますか日本初の女性樹木医・塚本こなみ物語",
     "source_page": "02-left-19",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "そいつの名前はエメラルド",
+    "author": "竹下文子 作 ; 鈴木まもる 画",
+    "publisher": "金の星社",
+    "isbn": "9784323071435",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "そいつの名前はエメラルド",
+    "source_page": "02-left-20",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -904,6 +1164,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=CxhrSrAZei0C&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "レンタルロボット",
     "source_page": "02-right-07",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
+    "title": "大パニック!よみがえる恐竜 A diplodocus trampled my teepee",
+    "author": "ニック・フォーク 作",
+    "publisher": "金の星社",
+    "isbn": "9784323058108",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "恐竜"
+    ],
+    "level": 3,
+    "cover": "https://books.google.com/books/content?id=aFoYjgEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "大パニック!よみがえる恐竜(サウルスストリート)",
+    "source_page": "02-right-08",
     "course": "E",
     "courseGrade": "中学年向き",
     "courseT": "T4"
@@ -1103,10 +1381,9 @@ window.recommendedBooksData = [
     "author": "レミー・チャーリップ さく",
     "publisher": "偕成社",
     "isbn": "9784032014303",
-    "genre": "科学・自然",
+    "genre": "物語",
     "tags": [
-      "科学・自然",
-      "自然・生きもの"
+      "物語"
     ],
     "level": 3,
     "cover": null,
@@ -1250,6 +1527,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=Rr4XMQAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "四年ザシキワラシ組(ジュニア文学館)",
     "source_page": "03-left-08",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
+    "title": "ダンプえんちょうやっつけた",
+    "author": "古田／足日 田畑／精一",
+    "publisher": "童心社",
+    "isbn": "9784494006076",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "ダンプえんちょうやっつけた(絵本・ぼくたちこどもだ)",
+    "source_page": "03-left-09",
     "course": "E",
     "courseGrade": "中学年向き",
     "courseT": "T4"
@@ -1705,6 +1999,23 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "れっつ!ダンス!!",
+    "author": "次良丸,忍,1963- 琴月,綾,1983-",
+    "publisher": "金の星社",
+    "isbn": "9784323073163",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "!",
+    "source_page": "03-right-16",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "ながいながいペンギンの話",
     "author": "いぬいとみこ 作",
     "publisher": "岩波書店",
@@ -1744,10 +2055,9 @@ window.recommendedBooksData = [
     "author": "マーガレット・J.アンダーソン 作",
     "publisher": "くもん出版",
     "isbn": "9784774302423",
-    "genre": "科学・自然",
+    "genre": "物語",
     "tags": [
-      "科学・自然",
-      "自然・生きもの"
+      "物語"
     ],
     "level": 4,
     "cover": "https://books.google.com/books/content?id=fvzNAAAACAAJ&printsec=frontcover&img=1&zoom=1",
@@ -1980,6 +2290,23 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "王さまのお菓子",
+    "author": "石井,睦美,1957- くらはし,れい",
+    "publisher": "世界文化社",
+    "isbn": "9784418218226",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "04-left-13",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "絵で読む広島の原爆",
     "author": "那須正幹 文",
     "publisher": "福音館書店",
@@ -1993,6 +2320,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "絵で読む広島の原爆(かがくのほん)",
     "source_page": "04-left-14",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "ぼくとキキとアトリエで",
+    "author": "中川洋典 作",
+    "publisher": "文研出版",
+    "isbn": "9784580824065",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "ぼくとキキとアトリエで(文ブックランド)",
+    "source_page": "04-left-15",
     "course": "D",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T5"
@@ -2069,6 +2413,40 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "バレエをおどりたかった馬",
+    "author": "ハーラル・ストルテンベルグ 作 ; さとうあや 絵",
+    "publisher": "福音館書店",
+    "isbn": "9784834014105",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "バレエをおどりたかった馬",
+    "source_page": "04-left-20",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "走れメロス",
+    "author": "太宰治 作",
+    "publisher": "偕成社",
+    "isbn": "4036516108",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": "https://books.google.com/books/content?id=rluBQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "まれメロ借成社文庫)",
+    "source_page": "04-right-01",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
     "title": "ただいま!マラング村 : タンザニアの男の子のお話 Tuso.Eine wahre Geschichte aus Afrika",
     "author": "ハンナ・ショット 作",
     "publisher": "徳間書店",
@@ -2116,6 +2494,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "ファーブル昆虫記(子どものための世界文学の森20)",
     "source_page": "04-right-04",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
+    "title": "宮沢賢治",
+    "author": "西本鶏介 文",
+    "publisher": "ポプラ社",
+    "isbn": "4591057577",
+    "genre": "伝記",
+    "tags": [
+      "伝記"
+    ],
+    "level": 3,
+    "cover": "https://books.google.com/books/content?id=o3RlQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "宮沢賢治(おもしろくてやくにたつ子どもの伝記:6)",
+    "source_page": "04-right-05",
     "course": "E",
     "courseGrade": "中学年向き",
     "courseT": "T4"
@@ -2398,6 +2793,23 @@ window.recommendedBooksData = [
     "courseT": "T4"
   },
   {
+    "title": "ヤマトシジミの食卓",
+    "author": "吉田道子 作 ; 大野八生 画",
+    "publisher": "くもん出版",
+    "isbn": "9784774317489",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "ヤマトシジミの食卓",
+    "source_page": "05-left-02",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
     "title": "旅のはじまり",
     "author": "竹下文子 作",
     "publisher": "偕成社",
@@ -2410,6 +2822,42 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "旅のはじまり(黒ねこサンゴロウ:1)",
     "source_page": "05-left-03",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
+    "title": "願いがかなうふしぎな日記",
+    "author": "本田有明 著",
+    "publisher": "PHP研究所",
+    "isbn": "9784569782539",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "科学・実験",
+      "おばけ・まほう"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "願いがかなうふしぎな日記",
+    "source_page": "05-left-04",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
+    "title": "さくら村は大さわぎ",
+    "author": "朽木,祥 大社,玲子,1946-",
+    "publisher": "小学館",
+    "isbn": "9784092893085",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "05-left-05",
     "course": "E",
     "courseGrade": "中学年向き",
     "courseT": "T4"
@@ -2659,6 +3107,23 @@ window.recommendedBooksData = [
     "courseT": "T4"
   },
   {
+    "title": "ガラスのうま",
+    "author": "征矢清 作 ; 林明子 絵",
+    "publisher": "偕成社",
+    "isbn": "9784034391501",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "ガラスのうま",
+    "source_page": "05-left-20",
+    "course": "E",
+    "courseGrade": "中学年向き",
+    "courseT": "T4"
+  },
+  {
     "title": "しろくまだって",
     "author": "斉藤洋 作",
     "publisher": "小峰書店",
@@ -2855,6 +3320,42 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "今森光彦世界昆虫記",
+    "author": "今森,光彦,1954-",
+    "publisher": "福音館書店",
+    "isbn": "9784834001792",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "2",
+    "source_page": "05-right-12",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
+    "title": "地球動物記",
+    "author": "岩合,光昭,1950-",
+    "publisher": "福音館書店",
+    "isbn": "9784834022582",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "05-right-13",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "アリになった数学者 = THE MATHEMATICAL ANT",
     "author": "森田真生 文",
     "publisher": "福音館書店",
@@ -2925,6 +3426,23 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "グリム童話集. 1",
+    "author": "グリム 作 ; 矢崎源九郎 訳",
+    "publisher": "偕成社",
+    "isbn": "9784036508402",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "グリム童話集.1(偕成社文庫)",
+    "source_page": "05-right-18",
+    "course": "D",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T5"
+  },
+  {
     "title": "坂本龍馬 : 世界を夢見た幕末のヒーロー",
     "author": "榎本秋 文",
     "publisher": "あかね書房",
@@ -2959,6 +3477,40 @@ window.recommendedBooksData = [
     "courseT": "T5"
   },
   {
+    "title": "びりっかすの神さま",
+    "author": "岡田淳 作・絵",
+    "publisher": "偕成社",
+    "isbn": "4036394606",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "びりっかすの神さま(倍成社文庫)",
+    "source_page": "06-left-01",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "星の王子さま LE PETIT PRINCE",
+    "author": "サン=テグジュペリ 作",
+    "publisher": "岩波書店",
+    "isbn": "9784003751312",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "星の王子さま(岩波文庫:37-516-1)",
+    "source_page": "06-left-02",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "ふたりのイーダ : 新装版",
     "author": "松谷みよ子著 ; 司修絵",
     "publisher": "講談社",
@@ -2971,6 +3523,41 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=ubYJPQAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ふたりのイーダ新装版(児童文学創作シリーズ)",
     "source_page": "06-left-03",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "注文の多い料理店",
+    "author": "宮沢賢治 著",
+    "publisher": "ポプラ社",
+    "isbn": "9784591088555",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "たべもの"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "注文の多い料理店(ポプラポケット文庫:351-1)",
+    "source_page": "06-left-04",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "大造じいさんとガン",
+    "author": "椋 鳩十 著",
+    "publisher": "偕成社",
+    "isbn": "9784036506200",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "大人造じいさんとガン(成社文庫3062)",
+    "source_page": "06-left-05",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -2989,6 +3576,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=XUd3PgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "のろのろひつじとせかせかひつじ(おはなしルネッサンス)",
     "source_page": "06-left-06",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "安房直子コレクション １ なくしてしまった魔法の時間",
+    "author": "安房直子",
+    "publisher": "偕成社",
+    "isbn": "9784035409106",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "おばけ・まほう"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "なくしてしまった法の時間(安房直子コレクション:1)",
+    "source_page": "06-left-07",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -3013,6 +3618,24 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "こども電車",
+    "author": "岡田潤 作・挿画",
+    "publisher": "金の星社",
+    "isbn": "9784323063300",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "乗りもの"
+    ],
+    "level": 4,
+    "cover": "https://books.google.com/books/content?id=0hBkYgEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "こども電車",
+    "source_page": "06-left-09",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "ふたりのロッテ Das doppelte Lottchen",
     "author": "エーリッヒ・ケストナー作 ; 高橋健二訳",
     "publisher": "岩波書店",
@@ -3025,6 +3648,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "1ふたりのロッテ(ケストナー少年文学全集",
     "source_page": "06-left-10",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "有松の庄九郎",
+    "author": "中川,なをみ,1946- こしだ,ミカ",
+    "publisher": "新日本出版社",
+    "isbn": "9784406056519",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "06-left-11",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -3077,6 +3717,27 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=6ZRmLwEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "arcu",
     "source_page": "06-left-14",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "ふしぎな木の実の料理法",
+    "author": "岡田淳 作",
+    "publisher": "理論社",
+    "isbn": "465200611X",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "科学・実験",
+      "自然・生きもの",
+      "おばけ・まほう",
+      "たべもの"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "ふしぎな木の実の料理法(こそあどの森の物語)",
+    "source_page": "06-left-15",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -3148,6 +3809,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=cJeeQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ラモーナとおかあさん改訂新版",
     "source_page": "06-left-19",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "ムーミン谷の彗星 KOMETEN KOMMER",
+    "author": "トーベ・ヤンソン 著",
+    "publisher": "講談社",
+    "isbn": "9784065360989",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "ムーミン谷の彗星RRR",
+    "source_page": "06-left-20",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -3279,6 +3957,23 @@ window.recommendedBooksData = [
     "courseT": "T3"
   },
   {
+    "title": "王さまばんざい : おしゃべりなたまごやき",
+    "author": "寺村輝夫 作 ; 和歌山静子 絵",
+    "publisher": "理論社",
+    "isbn": "9784652070376",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "王さまばんざい:おしゃべりなたまごやき(フォア文庫)",
+    "source_page": "06-right-08",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "どんぐりと山猫",
     "author": "宮沢賢治 作",
     "publisher": "偕成社",
@@ -3347,6 +4042,23 @@ window.recommendedBooksData = [
     "courseT": "T3"
   },
   {
+    "title": "世界のむかしばなし",
+    "author": "瀬田,貞二,1916-1979 太田,大八,1918-2016",
+    "publisher": "のら書店",
+    "isbn": "9784931129849",
+    "genre": "昔話・神話",
+    "tags": [
+      "昔話・神話"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "07-left-03",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "ほんとこうた・へんてこうた 阪田寛夫詩集・ほんとこうた・へんてこうた",
     "author": "阪田寛夫著 ; 織茂恭子画 ; 水内喜久雄編",
     "publisher": "大日本図書",
@@ -3378,6 +4090,41 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=-5_N0AEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ちいさいおうち",
     "source_page": "07-left-05",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "どきん : 谷川俊太郎少年詩集",
+    "author": "谷川俊太郎 著 ; 和田誠 絵",
+    "publisher": "理論社",
+    "isbn": "9784652038086",
+    "genre": "詩",
+    "tags": [
+      "詩",
+      "詩・ことば"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "どきん:谷川俊太郎少年詩集(詩の散歩道)",
+    "source_page": "07-left-06",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "木いちごつみ : 子どものための詩と絵の本",
+    "author": "岸田／衿子 山脇／百合子",
+    "publisher": "福音館書店",
+    "isbn": "9784834009484",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "木いちごつみ子どものための詩と絵の本(日本傑作絵本シリーズ)",
+    "source_page": "07-left-07",
     "course": "F",
     "courseGrade": "中学年向き",
     "courseT": "T3"
@@ -3678,6 +4425,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=weaJPgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "』こちらゆかいな窓ふき会社(ロアルド・ダールコレクション:15)",
     "source_page": "07-right-04",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "ガラスのうさぎ",
+    "author": "高木,敏子,1932-",
+    "publisher": "金の星社",
+    "isbn": "9784323070124",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "07-right-05",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -4010,6 +4775,24 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "しかられた神さま : 川崎洋少年詩集",
+    "author": "川崎洋 著 ; 杉浦範茂 絵",
+    "publisher": "理論社",
+    "isbn": "9784652038062",
+    "genre": "詩",
+    "tags": [
+      "詩",
+      "詩・ことば"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "しかられた神さま:川崎洋少年詩集(詩の散歩道)",
+    "source_page": "08-left-05",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "安房直子コレクション ３ ものいう動物たちのすみか",
     "author": "安房直子",
     "publisher": "偕成社",
@@ -4272,6 +5055,23 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "トレモスのパン屋",
+    "author": "小倉明 作",
+    "publisher": "くもん出版",
+    "isbn": "4875767633",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 3,
+    "cover": null,
+    "ocr_title": "トレモスのパン屋(くもんのおもしろ文学クラブ:16)",
+    "source_page": "08-right-01",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "ヘレン・ケラー",
     "author": "砂田弘 文",
     "publisher": "ポプラ社",
@@ -4284,6 +5084,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=eQeQPgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "へレン・ケラー(ポプラポケット文庫:072-7.子どもの伝記:7)",
     "source_page": "08-right-02",
+    "course": "F",
+    "courseGrade": "中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "キュリー夫人",
+    "author": "伊東信 文",
+    "publisher": "ポプラ社",
+    "isbn": "459105781X",
+    "genre": "伝記",
+    "tags": [
+      "伝記"
+    ],
+    "level": 3,
+    "cover": "https://books.google.com/books/content?id=AqSCQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "キュリー夫人(おもしろくてやくにたつ子どもの伝記:9)",
+    "source_page": "08-right-03",
     "course": "F",
     "courseGrade": "中学年向き",
     "courseT": "T3"
@@ -4983,6 +5800,24 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "今森光彦昆虫記",
+    "author": "今森,光彦,1954-",
+    "publisher": "福音館書店",
+    "isbn": "9784834008104",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "2",
+    "source_page": "09-right-14",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "植物記",
     "author": "埴沙萠 著",
     "publisher": "福音館書店",
@@ -5016,6 +5851,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=7319QgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ライト兄弟はなぜ飛べたのか紙飛行る成功のひみつ(やさしい科学)",
     "source_page": "09-right-16",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
+    "title": "奮闘するたすく",
+    "author": "まはら,三桃",
+    "publisher": "講談社",
+    "isbn": "9784062832458",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "09-right-17",
     "course": "C",
     "courseGrade": "中学年〜高学年向き",
     "courseT": "T6"
@@ -5269,6 +6121,24 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "川は生きている : 自然と人間",
+    "author": "富山,和子,1933-",
+    "publisher": "講談社",
+    "isbn": "9784062069663",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "10-left-12",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "冒険図鑑 : 野外で生活するために",
     "author": "さとうち藍 文",
     "publisher": "福音館書店",
@@ -5372,6 +6242,23 @@ window.recommendedBooksData = [
     "courseT": "T6"
   },
   {
+    "title": "西風号の遭難",
+    "author": "VanAllsburg,Chris,1949- 村上,春樹,1949-",
+    "publisher": "河出書房新社",
+    "isbn": "9784309260716",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 4,
+    "cover": null,
+    "ocr_title": "が",
+    "source_page": "10-left-19",
+    "course": "C",
+    "courseGrade": "中学年〜高学年向き",
+    "courseT": "T6"
+  },
+  {
     "title": "カレーライスを一から作る : 関野吉晴ゼミ",
     "author": "前田亜紀 著",
     "publisher": "ポプラ社",
@@ -5459,6 +6346,24 @@ window.recommendedBooksData = [
     "courseT": "T3"
   },
   {
+    "title": "どうぶつ句会",
+    "author": "あべ弘士 作・絵",
+    "publisher": "Gakken",
+    "isbn": "9784052016974",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "どうぶつ句会",
+    "source_page": "10-right-05",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "さくら : 原発被災地にのこされた犬たち",
     "author": "馬場国敏 作",
     "publisher": "金の星社",
@@ -5471,6 +6376,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=u8e7pwAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "さくら原発被地にのこされた犬たち",
     "source_page": "10-right-06",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "さくら子とおじいさん",
+    "author": "今西祐行 作",
+    "publisher": "あかね書房",
+    "isbn": "4251032721",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "さくら子とおじいさん",
+    "source_page": "10-right-07",
     "course": "G",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T3"
@@ -5505,6 +6427,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=9iF_QgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "あるひあひるがあるいていると(あいうえおパラダイス:あ)",
     "source_page": "10-right-09",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "たべもの",
+    "author": "村上康成他絵",
+    "publisher": "ひかりのくに",
+    "isbn": "4564200909",
+    "genre": "図鑑",
+    "tags": [
+      "図鑑",
+      "たべもの"
+    ],
+    "level": 2,
+    "cover": "https://books.google.com/books/content?id=HBZ7QgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "たべもの(こどものずかんmio:10)",
+    "source_page": "10-right-10",
     "course": "G",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T3"
@@ -5559,6 +6499,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "きょうりゅうが学校にやってきた",
     "source_page": "10-right-13",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "わたしたちのトビアス大きくなる",
+    "author": "ボー・スベドベリ 編 ; ヨルゲン・スベドベリ 著 ; ビヤネール多美子 訳",
+    "publisher": "偕成社",
+    "isbn": "9784036310302",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "わたしたちのトビアス大きくなる",
+    "source_page": "10-right-14",
     "course": "G",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T3"
@@ -5704,6 +6661,23 @@ window.recommendedBooksData = [
     "courseT": "T3"
   },
   {
+    "title": "ぼうしをかぶったオニの子",
+    "author": "",
+    "publisher": "あかね書房",
+    "isbn": "9784251032560",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "11-left-03",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "ぞくぞく村のミイラのラムさん",
     "author": "末吉暁子 作",
     "publisher": "あかね書房",
@@ -5809,6 +6783,23 @@ window.recommendedBooksData = [
     "courseT": "T3"
   },
   {
+    "title": "はじめてのちきゅうえほん = My first Earth picture book",
+    "author": "てづか,あけみ 斎藤,紀男",
+    "publisher": "パイインターナショナル",
+    "isbn": "9784756253316",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "11-left-10",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
     "title": "ロボット・カミイ",
     "author": "古田足日さく ; 堀内誠一え",
     "publisher": "福音館書店",
@@ -5855,6 +6846,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "(セロひきのゴーシュ(福音館創作童話シリーズ)",
     "source_page": "11-left-13",
+    "course": "G",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T3"
+  },
+  {
+    "title": "わたしたちのトビアス",
+    "author": "ヨルゲン・スベドベリ 著 ; セシリア・スベドベリ 編 ; 山内清子 訳",
+    "publisher": "偕成社",
+    "isbn": "9784036310203",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "わたしたちのトビアス",
+    "source_page": "11-left-14",
     "course": "G",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T3"
@@ -6060,6 +7068,40 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=1ISVQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "マチルダは小さな大天オ(ロアルド・ダールコレクション:16)",
     "source_page": "11-right-06",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "聖書物語",
+    "author": "山形孝夫",
+    "publisher": "岩波書店",
+    "isbn": "9784005000562",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "聖書物語(岩波ジュニア新書)",
+    "source_page": "11-right-07",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "紅玉",
+    "author": "後藤竜二 文 ; 高田三郎 絵",
+    "publisher": "新日本出版社",
+    "isbn": "9784406032117",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "紅玉",
+    "source_page": "11-right-08",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -6326,6 +7368,23 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "ガンジー Mahatma Gandhi",
+    "author": "マイケル・ニコルソン 著",
+    "publisher": "偕成社",
+    "isbn": "9784035420903",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "*ガンジー(伝記世界を変えた人々:9)",
+    "source_page": "12-left-04",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
     "title": "エイブラハム・リンカン : 「奴隷解放宣言」を発して奴隷制度を廃止し、民主主義の指針を示したアメリカの大統領 Abraham Lincoln",
     "author": "アンナ・スプロウル 著",
     "publisher": "偕成社",
@@ -6338,6 +7397,24 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "リンカンeee:指針解放を示し宣言たアメ」をリカの発し大て奴統領線制度を廃止し、民主主義の伝記世界を変えた人々:16)",
     "source_page": "12-left-05",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "ブライユ : 目の見えない人が読み書きできる\"点字\"を発明したフランス人 Louis Braille",
+    "author": "ビバリー・バーチ 著",
+    "publisher": "偕成社",
+    "isbn": "9784035420804",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "科学・実験"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "プライユ目の見えない人が読み書きできる\"点字\"を発明したフランス人(伝記世界を変えた人々:8)",
+    "source_page": "12-left-06",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -6406,6 +7483,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=jn6NQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "今ここにいるぼくらは(集英社文庫:か49-2)",
     "source_page": "12-left-10",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "みどりいろの童話集 改訂版",
+    "author": "アンドリュー・ラング 作 ; 川端康成・野上彰 編訳",
+    "publisher": "偕成社",
+    "isbn": "9784035510604",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "みどりいろの童話集 改訂版",
+    "source_page": "12-left-11",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -6514,6 +7608,24 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "宇宙においでよ!",
+    "author": "野口聡一 著",
+    "publisher": "講談社",
+    "isbn": "9784062145466",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "宇宙・星"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "4宇軍においでよ!",
+    "source_page": "12-left-18",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
     "title": "ブンナよ、木からおりてこい",
     "author": "水上勉著",
     "publisher": "新潮社",
@@ -6582,6 +7694,59 @@ window.recommendedBooksData = [
     "courseT": "T2"
   },
   {
+    "title": "すみれちゃんは一年生",
+    "author": "石井睦美 作",
+    "publisher": "偕成社",
+    "isbn": "9784033452906",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": "https://books.google.com/books/content?id=uIWVQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "すみれちゃんは一年生",
+    "source_page": "12-right-03",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "きつねものがたり",
+    "author": "Ｌａｄａ，Ｊｏｓｅｆ 内田／莉莎子",
+    "publisher": "福音館書店",
+    "isbn": "9784834000580",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "きつねものがたり(世界傑作童話シリーズ)",
+    "source_page": "12-right-04",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "くまの子ウーフ 新装版",
+    "author": "神沢利子 作 ; 井上洋介 絵",
+    "publisher": "ポプラ社",
+    "isbn": "9784591168189",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "くまの子ウーフ 新装版(くまの子ウーフの童話集:1)",
+    "source_page": "12-right-05",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "こんにちはウーフ ウーフはなんにもなれないか?",
     "author": "神沢利子 作",
     "publisher": "ポプラ社",
@@ -6613,6 +7778,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=0f8SzgEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "ウーフとツネタとミミちゃんと新装版(くまの子ウーフの童話集3)",
     "source_page": "12-right-07",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "手ぶくろを買いに",
+    "author": "新美南吉 作",
+    "publisher": "偕成社",
+    "isbn": "4039633105",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": "https://books.google.com/books/content?id=6TL0g2cN3tcC&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "手ぶくろを買いに",
+    "source_page": "12-right-08",
     "course": "H",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T2"
@@ -6670,6 +7852,23 @@ window.recommendedBooksData = [
     "courseT": "T2"
   },
   {
+    "title": "おこりじぞう",
+    "author": "山口勇子 著",
+    "publisher": "全国学校図書館協議会",
+    "isbn": "4793370411",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "おこりじぞう(新日本おはなし文庫)",
+    "source_page": "13-left-02",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "かいぞくポケット. 1 (なぞのたから島)",
     "author": "寺村輝夫 作",
     "publisher": "あかね書房",
@@ -6717,6 +7916,25 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "[rs",
     "source_page": "13-left-05",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "ぼくはおばけのおにいちゃん",
+    "author": "あまんきみこ 作 ; 武田美穂 絵",
+    "publisher": "教育画劇",
+    "isbn": "9784774606651",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "家族",
+      "おばけ・まほう"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "ぼくはおばけのおにいちゃん",
+    "source_page": "13-left-06",
     "course": "H",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T2"
@@ -6822,6 +8040,40 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "sos",
     "source_page": "13-left-12",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "あるはれたひに",
+    "author": "木村,裕一,1948- あべ,弘士,1948-",
+    "publisher": "講談社",
+    "isbn": "9784062528702",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "13-left-13",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "くものきれまに",
+    "author": "木村,裕一,1948- あべ,弘士,1948-",
+    "publisher": "講談社",
+    "isbn": "9784062528740",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "13-left-14",
     "course": "H",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T2"
@@ -6996,6 +8248,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=5fRsQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "あなたが世界を変える日FT12歳の少女が環境サミットで語った伝説のスピーチ",
     "source_page": "13-right-04",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "杜子春・くもの糸",
+    "author": "芥川龍之介 作",
+    "publisher": "偕成社",
+    "isbn": "9784036506507",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "杜子春・くもの糸(偕成社文庫)",
+    "source_page": "13-right-05",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -7608,6 +8877,23 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "げんきにおよげこいのぼり",
+    "author": "今関信子 作",
+    "publisher": "教育画劇",
+    "isbn": "4774604984",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": "https://books.google.com/books/content?id=W-F6AAAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "げんきにおよげこいのぼり(行事の由来をほん)",
+    "source_page": "14-right-01",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "きょうとあしたのさかいめ",
     "author": "最上一平 作",
     "publisher": "教育画劇",
@@ -7654,6 +8940,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=jrQ4OwAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "カモメがくれた三かくの海(シリーズ本のチカラ)",
     "source_page": "14-right-04",
+    "course": "H",
+    "courseGrade": "低学年〜中学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "ものぐさトミー",
+    "author": "ＤｕＢｏｉｓ，ＷｉｌｌｉａｍＰｅＮｅ． 松岡／享子",
+    "publisher": "岩波書店",
+    "isbn": "9784001151299",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 2,
+    "cover": null,
+    "ocr_title": "ものぐさトミー(岩波の子どもの本)",
+    "source_page": "14-right-05",
     "course": "H",
     "courseGrade": "低学年〜中学年向き",
     "courseT": "T2"
@@ -8120,6 +9423,23 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "あしたのことば",
+    "author": "森,絵都,1968-",
+    "publisher": "小峰書店",
+    "isbn": "9784338319041",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "15-right-02",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
     "title": "食べもの記 Eating on earth",
     "author": "森枝卓士 著",
     "publisher": "福音館書店",
@@ -8132,6 +9452,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=J1LtPAAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "食べもの記",
     "source_page": "15-right-03",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "マチュピチュをまもる : アンデス文明5000年の知恵",
+    "author": "白根全 文・写真",
+    "publisher": "福音館書店",
+    "isbn": "",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "マチュピチュをまもるーアンデス文明5000年の知恵(月刊たくさんのふしぎ:第343号)",
+    "source_page": "15-right-04",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -8185,6 +9522,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "さがしの子どもたち(福音館古典童話シリーズ:12)",
     "source_page": "15-right-07",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "夢を追う子",
+    "author": "Ｗ・Ｈ・ハドソン 西田,実",
+    "publisher": "福音館書店",
+    "isbn": "9784834003109",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "夢を追う子(福音館古典童話シリーズ:6)",
+    "source_page": "15-right-08",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -8253,6 +9607,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "おじいさんのランプ:新美南吉童話集(供成社文庫)",
     "source_page": "15-right-12",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "柿の木のある家",
+    "author": "壺井栄 作 ; 松井行正 絵",
+    "publisher": "偕成社",
+    "isbn": "9784036501502",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "柿の木のある家(偕成社文庫)",
+    "source_page": "15-right-13",
     "course": "B",
     "courseGrade": "高学年向き",
     "courseT": "T6〜T7"
@@ -8327,6 +9698,40 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "世界地図の下書き",
+    "author": "朝井リョウ 著",
+    "publisher": "集英社",
+    "isbn": "9784087715200",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": "https://books.google.com/books/content?id=0zxMnwEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "世界地図の下書き(集英社文庫:あ69-4)",
+    "source_page": "15-right-18",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
+    "title": "ガラスの地球を救え : 二十一世紀の君たちへ",
+    "author": "手塚治虫 作",
+    "publisher": "光文社",
+    "isbn": "9784334722883",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "ガラスの地球を救え:二十一世紀の君たちへ(光文社文庫)",
+    "source_page": "15-right-19",
+    "course": "B",
+    "courseGrade": "高学年向き",
+    "courseT": "T6〜T7"
+  },
+  {
     "title": "南総里見八犬伝. 第1の物語 (妖刀村雨丸)",
     "author": "滝沢馬琴 原作",
     "publisher": "偕成社",
@@ -8344,6 +9749,40 @@ window.recommendedBooksData = [
     "courseT": "T6〜T7"
   },
   {
+    "title": "ギリシア神話",
+    "author": "石井,桃子,1907-2008 富山,妙子,1921-",
+    "publisher": "のら書店",
+    "isbn": "9784931129122",
+    "genre": "昔話・神話",
+    "tags": [
+      "昔話・神話"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "16-left-01",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "種をまく人",
+    "author": "フライシュマン，P．（ポール）／著 片岡しのぶ／訳",
+    "publisher": "あすなろ書房",
+    "isbn": "9784751518052",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "16-left-02",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
     "title": "モモ Momo",
     "author": "ミヒャエル・エンデ 作",
     "publisher": "岩波書店",
@@ -8356,6 +9795,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=RnSWAAAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "モモ(岩波少年文庫:127)",
     "source_page": "16-left-03",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "はてしない物語",
+    "author": "Ｅｎｄｅ，Ｍｉｃｈａｅｌ 上田／真而子 佐藤／真理子",
+    "publisher": "岩波書店",
+    "isbn": "9784001109818",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "16-left-04",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
@@ -8429,6 +9885,40 @@ window.recommendedBooksData = [
     "courseT": "T8〜T9"
   },
   {
+    "title": "シェイクスピア物語 上",
+    "author": "ラム 作 ; 厨川圭子 訳",
+    "publisher": "偕成社",
+    "isbn": "9784038503504",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "シェイクスピア物語 上",
+    "source_page": "16-left-09",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "シェイクスピア物語 下",
+    "author": "ラム 作 ; 厨川圭子 訳",
+    "publisher": "偕成社",
+    "isbn": "9784038503603",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "シェイクスピア物語 下",
+    "source_page": "16-left-10",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
     "title": "ぼくがぼくであること",
     "author": "山中恒 作",
     "publisher": "岩波書店",
@@ -8459,6 +9949,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=-n9sQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "飛ぶ教室(岩波少年文庫:141)",
     "source_page": "16-left-12",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "ハリー・ポッターと賢者の石",
+    "author": "Rowling,J.K,1965- 松岡,佑子",
+    "publisher": "静山社",
+    "isbn": "9784915512377",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "i",
+    "source_page": "16-left-13",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
@@ -8584,6 +10091,24 @@ window.recommendedBooksData = [
     "courseT": "T8〜T9"
   },
   {
+    "title": "100万回生きたねこ",
+    "author": "佐野洋子 作・絵",
+    "publisher": "講談社",
+    "isbn": "9784061272743",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 1,
+    "cover": "https://books.google.com/books/content?id=Yb_hQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "100万回生きたねこ",
+    "source_page": "16-right-01",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "ふじさんとおひさま",
     "author": "たにかわしゅんたろう 詩",
     "publisher": "童話屋",
@@ -8653,6 +10178,23 @@ window.recommendedBooksData = [
     "courseT": "T2"
   },
   {
+    "title": "モモちゃんとプー",
+    "author": "松谷,みよ子",
+    "publisher": "講談社",
+    "isbn": "9784061192324",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "モモちゃんとアカネちゃんの本(2)モモちゃんとプー",
+    "source_page": "16-right-06",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "あれはだれの歌 : やなせたかし詩とメルヘンの世界",
     "author": "やなせたかし 著",
     "publisher": "瑞雲舎",
@@ -8700,6 +10242,23 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "1ねん1くみ1ばんワル(こどもおはなしランド)",
     "source_page": "16-right-09",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "したきりすずめ",
+    "author": "石井桃子 赤羽末吉",
+    "publisher": "福音館書店",
+    "isbn": "9784834008883",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "したきりすずめ(日本傑作絵本シリーズ)",
+    "source_page": "16-right-10",
     "course": "I",
     "courseGrade": "低学年向き",
     "courseT": "T2"
@@ -8843,6 +10402,40 @@ window.recommendedBooksData = [
     "courseT": "T2"
   },
   {
+    "title": "みんなであそぼう : いっしょにつくろう24のゲーム",
+    "author": "石井英行 文",
+    "publisher": "玉川大学出版部",
+    "isbn": "9784472404627",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": "https://books.google.com/books/content?id=hygxkwEACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "みんなであそぼういっしょにつくろう24のゲーム",
+    "source_page": "16-right-19",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "遊び図鑑 : いつでもどこでもだれとでも",
+    "author": "奥成達 文 ; ながたはるみ 絵",
+    "publisher": "福音館書店",
+    "isbn": "9784834001655",
+    "genre": "図鑑",
+    "tags": [
+      "図鑑"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "遊び図鑑いつでもどこでもだれとでも",
+    "source_page": "16-right-20",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
     "title": "番ねずみのヤカちゃん Loud mouse",
     "author": "リチャード・ウィルバー さく",
     "publisher": "福音館書店",
@@ -8946,6 +10539,250 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "かえるのエルタ51111123961262677.135773(511111354612172418.514328柱511111476611232690.793655音5111115112612322593.037750館5111116146611522679.865471創作5111117212613492479.115730童話5111118271594225493.252548シリ511111929262417393.297729ー51111110311615132080.351128ズ5111111133561362693.156830)41111203967643426-1511112139676252596.692650か511112267677462393.127441いじ5111123119683171993.256966ゅ5111124142676142693.270668う5111125167676182593.192993ポ5111126192676472696.792862ポリ5111127242677152396.899956は5111128261677372595.729774こう5111129309678182396.958984や51111210334688141396.913116っ51111211355679172296.848724て51111212377677402593.196579いか51111213423678222492.496040り51111214452677212593.041481を4111130070336933-151111310711132547.328835FL511113252704182382.493423の511113371703822596.660484りき5111134105699184296.972801っ5111135122699224289.151215た5111136157699154289.151215:5111137199703342764.948036RY5111138242704127260.000000MALS41111403873237127-1511114138732412694.687950(か511114286734272193.082390いじ5111143118739161793.299629ゅ5111144139733342396.641960うと5111145180734342296.547249ドク5111146217735342096.693123ター5111147261735162096.956665と5111148280734402496.679733取り5111149331723394292.713303組む51111410370723394291.960754:2)4111150078428192-151111510784279212.5733475111152588181132452.410831gceco5111153177819212483.040390キ5111154208825141892.619934ャ5111155229817522537.035698ンプ41111603991127526-1511116139914512095.434052ペン511116298913502496.929993ギン5111163155911212595.669502た5111164183913232395.940895ん5111165212912482596.539925けん5111166263912222593.243752た5111167291916231991.921783い4111170093630343-151111710936112523.551044「511117238932665469.547577(どう5111173103953402396.718521わが5111174148957431896.438377いっ5111175198953352293.236404ぱい5111176239953642661.283012:24)41111800100931792-1511118101009317929.230528MDIRNET41111900112325689-1511119101123578956.853867511119269115542240.000000だり51111931201156422351.643734い51111941751157232173.968552の51111952041155212465.315659な51111962311156252487.809410ね411120036124411129-151112013612441112940.270615一5111202741240284290.540947休51112031021240214293.228546さ51112041231240284296.723076ん41112100126931551-1511121101273102548.511692511121238128660270.000000(寺村5111213110128735240.000000絢51112141551290151971.487030夫51112151701269175183.533577の51112161871289102097.011665と51112172081289172093.100899ん51112182291288182293.006004ち51112192551288222490.467323話511121102801269145184.280228:511121112971288182685.8777311)41112200136017937-1511122101386101128.4093765111222431360222790.957954吉51112237013611092692.013412四51112241091354294788.565720六51112251371354204793.256912さ51112261561354254796.987885ん41112300140032029-151112310140031159.8861545111232391402612684.035881(寺村51112331101402642591.179451輝夫51112341731396184096.235901の51112351901405102096.902687と51112362101405172093.286827ん51112372321404182293.046837ち51112382541403262588.926338話5111239290139674085.218063:511123103001404202586.3190922)411124036146637828-15111241361466792890.016121火曜51112421221470232195.785301日51112431551469182297.009995の51112441791468132550.651318ご51112452051469142493.023880ち5111246234146892692.198677そ5111247257147052293.220253う51112482651469132393.243057は51112492921470382496.863472ヒキ511124103381469762595.929489ガエル41112500146040190-1511125101460249096.6393135111252391500672393.092110(評論51112531071501121990.523331社51112541261502141792.512100の51112551481499552394.523140児童51112562161493353894.796829図書51112572501500132284.826927館511125826915084589.691467・51112592881500292286.101357文511125103161493203890.075966学511125113351503101795.211861の511125123511501202193.242996部511125133801501142193.230537屋5111251439815173418.339748.411126051152827623-15111261511529361996.915039ヒキ5111262951528602084.374252ガエル51112631611529131896.972664と51112641811529131897.009979ん51112652031528152096.813889だ51112662241528222196.546097大51112672511528422266.094505冒険5111268300153221578.133461:51112693121528152388.7791371)41112700158327738-151112710161191019.800072-5111272381584212496.425919お5111273671584172496.885445し5111274921584522596.608513いれ51112751481586232196.688042の51112761771583442691.880310ぼう51112772301584472596.769897けん41112800162334428-1511128101623344280.000000(絵本51112821171619193791.005554・51112831351619203785.644547ぼ51112841541619223792.995529く51112851751619203793.110649た51112861941619223792.492096ち51112872151619633796.737686こども51112882771619193793.295593だ51112892961619533765.595322:1)41112900169622037-151112910172381061.8586655111292531688454996.630180ネコ5111293981698162295.382927の51112941221698432396.808060タク51112951711699492096.621582シー41113000173633728-15111301017431519.2977525111302351736592778.718689(福音51113031071737332593.234940館51113041421737532591.659943創作51113052081738512493.996590童話51113062671732263993.300171シリ5111307292174913393.270988ー51113083071740152093.241638ズ5111309331173862693.021904)41113100180826736-15111311018368836.3768815111312481808612750.279713恐竜51113131081803274593.167648の51113141351809162792.975113谷51113151651812132193.293312の51113161831809262696.214516大51113172171809502874.637383冒険411132034185130127-15111321341847573693.127731(マジ5111322961860141492.088921ッ51113231171853182093.207855ク511132414418605592.871017・51113251591855171892.934074ツ51113261851853372296.800682リー51113272261858221387.533394ハウ5111328261185292391.369995ス5111329291185531888.852463:511132103151852202691.0369261)41113300192435033-15111331019487939.595360.!5111332511924232496.765976は511133380192691496.268616が5111334991924462595.066177ぬけ51113351551924182492.995537た51113361811925162492.905716ら51113372071926212293.231453ど51113382341924442696.907440うす51113392851927182196.897369る511133103101927152193.296036の511133113371926132293.044601?411134045196436625-1511134145196831592.016785:5111342681964292492.411980せ5111343105197081092.949547か51113441211967201992.427170い51113451481966212190.845467の51113461761967182093.277809こ51113472041964422596.040398ども51113482561964192496.960518た51113492811964482596.418076ちの511134103361964212496.990356は511134113631964212596.991348な511134123931965182496.833206し41113500203322035-15111351020617738.736160151113523620331842680.094048オナ51113531012025444796.111397モミ51113541442025254796.592278の51113551682025244793.301949と51113561912025334792.539597げ411136033207432227-15111361332074262691.150726(5111362692077191988.974373花5111363872068173993.132339の51113641032075122296.777222た51113651232076172193.295845ね511136615220845592.840271・51113671722074302590.124084木51113682172074172592.801994の51113692442078201990.859009実511136102702076102296.903915の511136112792068303989.329720ちえ511136123222068333967.690475:5)41113700214634634-15111371021736774.3147665111372562146422492.553085こま51113731122146112496.413612っ51113741232154111697.011284た51113751472146422596.564362さん51113761992149182196.878067の51113772242149492192.523834スパ51113782782146232592.316544ゲ51113793062148162392.491440テ511137103312153151993.208015ィ411138033218730827-15111381332187472695.968872(お5111382792178224396.668701は51113831002188132296.606987な51113841222189142196.670937し51113851442188542396.089920りょう51113862082188352393.285034りき51113872502194131792.972710ょ51113882722189332293.268341うし51113893122193111593.086769つ51113810335218862693.096207)",
     "source_page": "17-left-06",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "かいじゅうポポリはこうやっていかりをのりきった : 怒り・かんしゃく",
+    "author": "新井洋行 著",
+    "publisher": "パイインターナショナル",
+    "isbn": "9784756257758",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "かいじゅうポポリはこうやっていかりをFLのりきった:RY(かいじゅうとドクターと取り組む:2)",
+    "source_page": "17-left-07",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "はじめてのキャンプ",
+    "author": "林明子 さく・え",
+    "publisher": "福音館書店",
+    "isbn": "9784834009729",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "gcecoキャンプ",
+    "source_page": "17-left-08",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "ペンギンたんけんたい",
+    "author": "斉藤洋 作",
+    "publisher": "講談社",
+    "isbn": "9784061978249",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "冒険"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ペンギンたんけんたい「(どうわがいっぱい:24)",
+    "source_page": "17-left-09",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "へんてこもりにいこうよ",
+    "author": "",
+    "publisher": "偕成社",
+    "isbn": "9784034601006",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "わらい"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "",
+    "source_page": "17-left-10",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "みどりいろのたね",
+    "author": "たかどのほうこ 作",
+    "publisher": "福音館書店",
+    "isbn": "9784834007671",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "いのなね",
+    "source_page": "17-left-11",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "一休さん",
+    "author": "",
+    "publisher": "あかね書房",
+    "isbn": "9784251060013",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "一休さん夫のとんち話:1)",
+    "source_page": "17-left-12",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "吉四六さん",
+    "author": "寺村輝夫／文 ; ヒサクニヒコ／画",
+    "publisher": "あかね書房",
+    "isbn": "9784251060020",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "吉四六さん(寺村輝夫のとんち話:2)",
+    "source_page": "17-left-13",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "火曜日のごちそうはヒキガエル A toad for Tuesday",
+    "author": "ラッセル・E.エリクソン 作",
+    "publisher": "評論社",
+    "isbn": "9784566013360",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "火曜日のごちそうはヒキガエル(評論社の児童図書館・文学の部屋.ヒキガエルとんだ大冒険:1)",
+    "source_page": "17-left-14",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "おしいれのぼうけん",
+    "author": "古田,足日 田畑,精一",
+    "publisher": "童心社",
+    "isbn": "9784494006069",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "冒険"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "おしいれのぼうけんぼくたちこどもだ:1)",
+    "source_page": "17-left-15",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "ネコのタクシー",
+    "author": "南部和也 さく",
+    "publisher": "福音館書店",
+    "isbn": "9784834017595",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ネコのタクシー(福音館創作童話シリーズ)",
+    "source_page": "17-left-16",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "恐竜の谷の大冒険 Dinosaurs Before Dark",
+    "author": "メアリー・ポープ・オズボーン著 ; 食野雅子訳",
+    "publisher": "KADOKAWA",
+    "isbn": "9784040664767",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "恐竜",
+      "冒険"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "恐竜の谷の大冒険(マジック・ツリーハウス:1)",
+    "source_page": "17-left-17",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "はがぬけたらどうするの? : せかいのこどもたちのはなし Throw your tooth on the roof",
+    "author": "セルビー・ビーラー 文",
+    "publisher": "フレーベル館",
+    "isbn": "9784577019870",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": ".!はがぬけたらどうするの?せかいのこどもたちのはなし",
+    "source_page": "17-left-18",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "オナモミのとげ",
+    "author": "多田多恵子 監修",
+    "publisher": "偕成社",
+    "isbn": "9784034143506",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "1オナモミのとげ(花のたね・木の実のちえ:5)",
+    "source_page": "17-left-19",
+    "course": "I",
+    "courseGrade": "低学年向き",
+    "courseT": "T2"
+  },
+  {
+    "title": "こまったさんのスパゲティ",
+    "author": "寺村輝夫",
+    "publisher": "あかね書房",
+    "isbn": "9784251036018",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "こまったさんのスパゲティ(おはなしりょうりきょうしつ)",
+    "source_page": "17-left-20",
     "course": "I",
     "courseGrade": "低学年向き",
     "courseT": "T2"
@@ -9329,6 +11166,23 @@ window.recommendedBooksData = [
     "courseT": "T8〜T9"
   },
   {
+    "title": "西遊記 上",
+    "author": "呉承恩作 ; 伊藤貴麿編訳",
+    "publisher": "岩波書店",
+    "isbn": "4001130238",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "西遊記.上(福音館古典童話シリーズ:15)",
+    "source_page": "18-left-03",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
     "title": "西遊記 下",
     "author": "呉承恩 作 ; 君島久子 訳 ; 瀬川康男 画",
     "publisher": "福音館書店",
@@ -9409,6 +11263,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=8GNkQgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "クオ・ヴァディス.下(福音館古典童話シリーズ:37)",
     "source_page": "18-left-08",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "啄木歌集",
+    "author": "石川啄木 作",
+    "publisher": "偕成社",
+    "isbn": "9784038504006",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "啄木歌集(偕成社文庫)",
+    "source_page": "18-left-09",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
@@ -9603,6 +11474,23 @@ window.recommendedBooksData = [
     "courseT": "T8〜T9"
   },
   {
+    "title": "さんまいのおふだ",
+    "author": "千葉幹夫 文",
+    "publisher": "小学館",
+    "isbn": "9784097268895",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": "https://books.google.com/books/content?id=uwaQcAAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "さんまいのおふだ日本名作おはなし絵本)",
+    "source_page": "18-right-01",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
     "title": "うらしまたろう Urashima Taro, the fisherman : an old Japanese tale",
     "author": "時田史郎再話 ; 秋野不矩画",
     "publisher": "福音館書店",
@@ -9615,6 +11503,41 @@ window.recommendedBooksData = [
     "cover": null,
     "ocr_title": "うらしまたろう!日本傑作絵本シリーズ)",
     "source_page": "18-right-02",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "くいしんぼうのはなこさん",
+    "author": "",
+    "publisher": "福音館書店",
+    "isbn": "9784834000474",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "くいしんぼうのはなこさん日本傑作絵本シリーズ)",
+    "source_page": "18-right-03",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "はるをさがしに",
+    "author": "久保秀一 写真",
+    "publisher": "偕成社",
+    "isbn": "4033442103",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 1,
+    "cover": "https://books.google.com/books/content?id=6jxzQgAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "はるをさがしに(新・自然きらきら:1)",
+    "source_page": "18-right-04",
     "course": "J",
     "courseGrade": "低学年向き",
     "courseT": "T1"
@@ -9737,6 +11660,333 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=R6wBmwEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "おこめができた!(しぜんにタッチ!)",
     "source_page": "19-left-01",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "がんばれ!名犬チロリ",
+    "author": "大木,トオル 漆原,冬児",
+    "publisher": "岩崎書店",
+    "isbn": "9784265083053",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ia",
+    "source_page": "19-left-02",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "いっすんぼうし いっすんぼうし ; したきりすずめ",
+    "author": "令丈ヒロ子文 ; 堀川理万子絵",
+    "publisher": "講談社",
+    "isbn": "9784061325081",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "いっすんぼうし:4・5歳からの(講談社の創作絵本.よみきかせ日本苦放",
+    "source_page": "19-left-03",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "大きなけやき",
+    "author": "神沢利子 詩",
+    "publisher": "国土社",
+    "isbn": "9784337247598",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "大きなけやき(現代日本童謡詩全集:9",
+    "source_page": "19-left-04",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "あひるのバーバちゃん",
+    "author": "かんざわとしこ さく ; やまわきゆりこ え",
+    "publisher": "偕成社",
+    "isbn": "9784033130200",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "あひるのバーバパちゃん(創作こども文庫)",
+    "source_page": "19-left-05",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "おさるはおさる",
+    "author": "いとうひろし作・絵",
+    "publisher": "講談社",
+    "isbn": "9784061978256",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "おさるはおさる(どうわがいっぱい:25)",
+    "source_page": "19-left-06",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "お父さんのVサイン",
+    "author": "そうまこうへい 作",
+    "publisher": "小峰書店",
+    "isbn": "9784338192231",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "お父さんのVサイン(おはなしだいすき)",
+    "source_page": "19-left-07",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "くまざわくんがもらったちず",
+    "author": "きたやまようこ 作",
+    "publisher": "あかね書房",
+    "isbn": "9784251007964",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "くまざわくんがもらったちず(いぬうえくんとくまざわくん:6)",
+    "source_page": "19-left-08",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "そらをとんだけいこのあやとり",
+    "author": "山脇,百合子,1941-2022",
+    "publisher": "福音館書店",
+    "isbn": "9784834003222",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "wtり",
+    "source_page": "19-left-09",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "なんやななちゃん なきべそしゅんちゃん",
+    "author": "灰谷健次郎 作 ; 坪谷令子 絵",
+    "publisher": "文研出版",
+    "isbn": "9784580813342",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "なんやななちゃんなきべそしゅんちゃん(文研の創作えどうわ)",
+    "source_page": "19-left-10",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "らくだいおばけがやってきた",
+    "author": "山田,知子,pub.2008 伊東,美貴,1955-",
+    "publisher": "金の星社",
+    "isbn": "9784323073088",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "おばけ・まほう"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "cs",
+    "source_page": "19-left-11",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "やかましむらのこどもの日",
+    "author": "アストリッド=リンドグレーン 作",
+    "publisher": "偕成社",
+    "isbn": "9784034310601",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "やかましむらのこどもの日(幼年翻訳どうわ)",
+    "source_page": "19-left-12",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "とりかえっこちびぞう",
+    "author": "工藤直子 作",
+    "publisher": "学研プラス",
+    "isbn": "9784052038549",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "とりかえっこちびぞう改訂版(キッズ文学館))",
+    "source_page": "19-left-13",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "雪の森のリサベット",
+    "author": "アストリッド・リンドグレーン 作 ; イロン・ヴィークランド 絵 ; 石井登志子 訳",
+    "publisher": "徳間書店",
+    "isbn": "9784198616366",
+    "genre": "科学・自然",
+    "tags": [
+      "科学・自然",
+      "自然・生きもの"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "雪の森のリサベット",
+    "source_page": "19-left-14",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "フル－ツポンチはいできあがり : 角野栄子の小さなおばけ（おばけのアッチ）シリ－ズ",
+    "author": "角野栄子 佐々木洋子",
+    "publisher": "ポプラ社",
+    "isbn": "9784591011072",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "おばけ・まほう"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "フルーツポンチはいできあがり(ポプラ社の小さな童話角野栄子の小さなおばけシリーズ)",
+    "source_page": "19-left-15",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "ハンバーグつくろうよ",
+    "author": "角野栄子 さく",
+    "publisher": "ポプラ社",
+    "isbn": "9784591010686",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ハンバーグつくろうよ(ポプラ社の小さな童話)",
+    "source_page": "19-left-16",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "どろんここぶた",
+    "author": "アーノルド・ローベル 作 ; 岸田衿子 訳",
+    "publisher": "文化出版局",
+    "isbn": "9784579402434",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "どろんここぶた(ミセスこどもの本)",
+    "source_page": "19-left-17",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "かぐやひめ",
+    "author": "舟崎克彦 文",
+    "publisher": "小学館",
+    "isbn": "9784097268789",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "かぐやひめ(日本名作おはなし絵本)",
+    "source_page": "19-left-18",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "キャベツくん",
+    "author": "長新太 文・絵",
+    "publisher": "文研出版",
+    "isbn": "9784580813977",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "キャベツくん",
+    "source_page": "19-left-19",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "ルラルさんのにわ",
+    "author": "いとうひろし さく",
+    "publisher": "ポプラ社",
+    "isbn": "9784591069424",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ルラルさんのにわ(いとうひろしの本:4)",
+    "source_page": "19-left-20",
     "course": "J",
     "courseGrade": "低学年向き",
     "courseT": "T1"
@@ -10230,7 +12480,7 @@ window.recommendedBooksData = [
     "courseT": "T8〜T9"
   },
   {
-    "title": "あらしの歌 上",
+    "title": "コタンの口笛 第1部 上",
     "author": "石森延男 [著]",
     "publisher": "偕成社",
     "isbn": "9784038501708",
@@ -10240,14 +12490,14 @@ window.recommendedBooksData = [
     ],
     "level": 5,
     "cover": null,
-    "ocr_title": "コタンの.第1部上(あらしの歌)(成社文庫)",
+    "ocr_title": "コタンの口笛 第1部 上 (あらしの歌)",
     "source_page": "20-left-09",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
   },
   {
-    "title": "あらしの歌 上",
+    "title": "コタンの口笛 第1部 下",
     "author": "石森延男 [著]",
     "publisher": "偕成社",
     "isbn": "9784038501807",
@@ -10257,8 +12507,25 @@ window.recommendedBooksData = [
     ],
     "level": 5,
     "cover": null,
-    "ocr_title": "コタンの.第1部下(あらしの歌)(供成社文庫)",
+    "ocr_title": "コタンの口笛 第1部 下 (あらしの歌)",
     "source_page": "20-left-10",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "次郎物語 第1部",
+    "author": "下村湖人著",
+    "publisher": "講談社",
+    "isbn": "4062617048",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "次郎物語.第1部(備成社文庫)",
+    "source_page": "20-left-11",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
@@ -10331,6 +12598,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=BVl8QgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "PERS(創元SF文庫)",
     "source_page": "20-left-15",
+    "course": "A",
+    "courseGrade": "高学年〜中高一般向き",
+    "courseT": "T8〜T9"
+  },
+  {
+    "title": "海底二万里",
+    "author": "ジュール・ヴェルヌ 荒川,浩充",
+    "publisher": "東京創元社",
+    "isbn": "9784488517045",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 5,
+    "cover": null,
+    "ocr_title": "海底二万里(創元推理文庫)",
+    "source_page": "20-left-16",
     "course": "A",
     "courseGrade": "高学年〜中高一般向き",
     "courseT": "T8〜T9"
@@ -10418,6 +12702,24 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=sZKjAAAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "おおさきなさがほしい{(創作をほん:4)",
     "source_page": "20-right-01",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "おとうとねずみチロのはなし",
+    "author": "森山京 作",
+    "publisher": "講談社",
+    "isbn": "4062082640",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "おとうとねずみチロのはなし",
+    "source_page": "20-right-02",
     "course": "J",
     "courseGrade": "低学年向き",
     "courseT": "T1"
@@ -10544,6 +12846,61 @@ window.recommendedBooksData = [
     "courseT": "T1"
   },
   {
+    "title": "ふたりはともだち",
+    "author": "アーノルド・ローベル 作 ; 三木卓 訳",
+    "publisher": "文化出版局",
+    "isbn": "9784579402472",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "友だち"
+    ],
+    "level": 1,
+    "cover": "https://books.google.com/books/content?id=WesWAAAACAAJ&printsec=frontcover&img=1&zoom=1",
+    "ocr_title": "ふたりはともだち",
+    "source_page": "20-right-10",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "ねずみのいもほり",
+    "author": "山下明生 作",
+    "publisher": "ひさかたチャイルド",
+    "isbn": "4893251996",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ねずみのいもはほり(ひさかたメルヘン)",
+    "source_page": "20-right-11",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "ねずみのでんしゃ",
+    "author": "山下明生 作",
+    "publisher": "ひさかたチャイルド",
+    "isbn": "4893251767",
+    "genre": "物語",
+    "tags": [
+      "物語",
+      "動物",
+      "乗りもの"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "ねずみのでんしゃ(ひさかたメルヘン)",
+    "source_page": "20-right-12",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
     "title": "14ひきのあさごはん",
     "author": "いわむらかずお さく",
     "publisher": "童心社",
@@ -10556,6 +12913,23 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=048lwgEACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "14ひきのあさごはん",
     "source_page": "20-right-13",
+    "course": "J",
+    "courseGrade": "低学年向き",
+    "courseT": "T1"
+  },
+  {
+    "title": "あおい目のこねこ",
+    "author": "Ｍａｔｈｉｅｓｅｎ，Ｅｇｏｎ 瀬田／貞二",
+    "publisher": "福音館書店",
+    "isbn": "9784834000405",
+    "genre": "物語",
+    "tags": [
+      "物語"
+    ],
+    "level": 1,
+    "cover": null,
+    "ocr_title": "あおい目のこねこ(世界傑作シリーズ:7)",
+    "source_page": "20-right-14",
     "course": "J",
     "courseGrade": "低学年向き",
     "courseT": "T1"
@@ -10661,618 +13035,6 @@ window.recommendedBooksData = [
     "cover": "https://books.google.com/books/content?id=GzQtOgAACAAJ&printsec=frontcover&img=1&zoom=1",
     "ocr_title": "いのちのカプセルまゆ(ふしぎいっぱい写真絵本:12)",
     "source_page": "20-right-20",
-    "course": "J",
-    "courseGrade": "低学年向き",
-    "courseT": "T1"
-  },
-  {
-    "title": "ふたりはともだち",
-    "author": "アーノルド・ローベル 作 ; 三木卓 訳",
-    "publisher": "文化出版局",
-    "isbn": "9784579402472",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "友だち"
-    ],
-    "level": 2,
-    "cover": "https://books.google.com/books/content?id=WesWAAAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "書しょせき籍のタイトルは国立こくりつこっ国会かい区と",
-    "source_page": "21-left-13",
-    "course": "",
-    "courseGrade": "",
-    "courseT": ""
-  },
-  {
-    "title": "モチモチの木",
-    "author": "斎藤隆介 作",
-    "publisher": "岩崎書店",
-    "isbn": "9784265909063",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 3,
-    "cover": null,
-    "ocr_title": "モチモチの木(創作絵本:6",
-    "source_page": "01-left-04",
-    "course": "E",
-    "courseGrade": "中学年向き",
-    "courseT": "T4"
-  },
-  {
-    "title": "モグラ原っぱのなかまたち",
-    "author": "古田足日 作",
-    "publisher": "あかね書房",
-    "isbn": "4251100212",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "友だち"
-    ],
-    "level": 4,
-    "cover": null,
-    "ocr_title": "モグラ原っぱのなかまたち(創作児童文学選:8)",
-    "source_page": "02-left-03",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "きまぐれロボット",
-    "author": "星新一 著",
-    "publisher": "講談社",
-    "isbn": "4061860224",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 4,
-    "cover": null,
-    "ocr_title": "きまぐれロボット(角川つばさ文庫BIZ1-3)",
-    "source_page": "02-left-05",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "伊能忠敬 : 歩いて作った初めての日本地図",
-    "author": "たからしげる 文",
-    "publisher": "あかね書房",
-    "isbn": "9784251046048",
-    "genre": "伝記",
-    "tags": [
-      "伝記"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=W5SsjwEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "伊能忠敬歩いて作った初めての日本地図(伝記を読もう:4)",
-    "source_page": "02-left-06",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "植村直己 : 極限に挑んだ冒険家",
-    "author": "滝田誠一郎 文",
-    "publisher": "あかね書房",
-    "isbn": "9784251046062",
-    "genre": "伝記",
-    "tags": [
-      "伝記",
-      "冒険"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=_FaQjwEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "植村直己:極限に挑んだ冒険家(伝記を読もう:6)",
-    "source_page": "02-left-08",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "まど・みちお : みんなが歌った童謡の作者",
-    "author": "谷悦子 文",
-    "publisher": "あかね書房",
-    "isbn": "9784251046086",
-    "genre": "詩",
-    "tags": [
-      "詩",
-      "詩・ことば"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=32e3DAEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "まど・みちおみんなが歌った童謡の作者",
-    "source_page": "02-left-10",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "円谷英二 : 怪獣やヒーローを生んだ映画監督",
-    "author": "田口成光 文",
-    "publisher": "あかね書房",
-    "isbn": "9784251046147",
-    "genre": "伝記",
-    "tags": [
-      "伝記"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=2JwgtgEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "(伝記を読もう:10)円谷英二怪獣やヒーローを生んだ映画監督",
-    "source_page": "02-left-13",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "しあわせの牛乳 : 牛もしあわせ!おれもしあわせ!",
-    "author": "佐藤慧 著",
-    "publisher": "ポプラ社",
-    "isbn": "9784591158135",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=LZzEtAEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "しあわせの牛乳牛もしあわせ!おれもしあわせ!",
-    "source_page": "02-left-15",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "大パニック!よみがえる恐竜 A diplodocus trampled my teepee",
-    "author": "ニック・フォーク 作",
-    "publisher": "金の星社",
-    "isbn": "9784323058108",
-    "genre": "科学・自然",
-    "tags": [
-      "科学・自然",
-      "恐竜"
-    ],
-    "level": 3,
-    "cover": "https://books.google.com/books/content?id=aFoYjgEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "大パニック!よみがえる恐竜(サウルスストリート)",
-    "source_page": "02-right-08",
-    "course": "E",
-    "courseGrade": "中学年向き",
-    "courseT": "T4"
-  },
-  {
-    "title": "ぼくとキキとアトリエで",
-    "author": "中川洋典 作",
-    "publisher": "文研出版",
-    "isbn": "9784580824065",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 4,
-    "cover": null,
-    "ocr_title": "ぼくとキキとアトリエで(文ブックランド)",
-    "source_page": "04-left-15",
-    "course": "D",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T5"
-  },
-  {
-    "title": "走れメロス",
-    "author": "太宰治 作",
-    "publisher": "偕成社",
-    "isbn": "4036516108",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 3,
-    "cover": "https://books.google.com/books/content?id=rluBQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "まれメロ借成社文庫)",
-    "source_page": "04-right-01",
-    "course": "E",
-    "courseGrade": "中学年向き",
-    "courseT": "T4"
-  },
-  {
-    "title": "宮沢賢治",
-    "author": "西本鶏介 文",
-    "publisher": "ポプラ社",
-    "isbn": "4591057577",
-    "genre": "伝記",
-    "tags": [
-      "伝記"
-    ],
-    "level": 3,
-    "cover": "https://books.google.com/books/content?id=o3RlQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "宮沢賢治(おもしろくてやくにたつ子どもの伝記:6)",
-    "source_page": "04-right-05",
-    "course": "E",
-    "courseGrade": "中学年向き",
-    "courseT": "T4"
-  },
-  {
-    "title": "びりっかすの神さま",
-    "author": "岡田淳 作・絵",
-    "publisher": "偕成社",
-    "isbn": "4036394606",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 4,
-    "cover": null,
-    "ocr_title": "びりっかすの神さま(倍成社文庫)",
-    "source_page": "06-left-01",
-    "course": "C",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T6"
-  },
-  {
-    "title": "こども電車",
-    "author": "岡田潤 作・挿画",
-    "publisher": "金の星社",
-    "isbn": "9784323063300",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "乗りもの"
-    ],
-    "level": 4,
-    "cover": "https://books.google.com/books/content?id=0hBkYgEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "こども電車",
-    "source_page": "06-left-09",
-    "course": "C",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T6"
-  },
-  {
-    "title": "ふしぎな木の実の料理法",
-    "author": "岡田淳 作",
-    "publisher": "理論社",
-    "isbn": "465200611X",
-    "genre": "科学・自然",
-    "tags": [
-      "科学・自然",
-      "科学・実験",
-      "自然・生きもの",
-      "おばけ・まほう",
-      "たべもの"
-    ],
-    "level": 4,
-    "cover": null,
-    "ocr_title": "ふしぎな木の実の料理法(こそあどの森の物語)",
-    "source_page": "06-left-15",
-    "course": "C",
-    "courseGrade": "中学年〜高学年向き",
-    "courseT": "T6"
-  },
-  {
-    "title": "トレモスのパン屋",
-    "author": "小倉明 作",
-    "publisher": "くもん出版",
-    "isbn": "4875767633",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 3,
-    "cover": null,
-    "ocr_title": "トレモスのパン屋(くもんのおもしろ文学クラブ:16)",
-    "source_page": "08-right-01",
-    "course": "F",
-    "courseGrade": "中学年向き",
-    "courseT": "T3"
-  },
-  {
-    "title": "キュリー夫人",
-    "author": "伊東信 文",
-    "publisher": "ポプラ社",
-    "isbn": "459105781X",
-    "genre": "伝記",
-    "tags": [
-      "伝記"
-    ],
-    "level": 3,
-    "cover": "https://books.google.com/books/content?id=AqSCQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "キュリー夫人(おもしろくてやくにたつ子どもの伝記:9)",
-    "source_page": "08-right-03",
-    "course": "F",
-    "courseGrade": "中学年向き",
-    "courseT": "T3"
-  },
-  {
-    "title": "さくら子とおじいさん",
-    "author": "今西祐行 作",
-    "publisher": "あかね書房",
-    "isbn": "4251032721",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 2,
-    "cover": null,
-    "ocr_title": "さくら子とおじいさん",
-    "source_page": "10-right-07",
-    "course": "G",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T3"
-  },
-  {
-    "title": "たべもの",
-    "author": "村上康成他絵",
-    "publisher": "ひかりのくに",
-    "isbn": "4564200909",
-    "genre": "図鑑",
-    "tags": [
-      "図鑑",
-      "たべもの"
-    ],
-    "level": 2,
-    "cover": "https://books.google.com/books/content?id=HBZ7QgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "たべもの(こどものずかんmio:10)",
-    "source_page": "10-right-10",
-    "course": "G",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T3"
-  },
-  {
-    "title": "すみれちゃんは一年生",
-    "author": "石井睦美 作",
-    "publisher": "偕成社",
-    "isbn": "9784033452906",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 2,
-    "cover": "https://books.google.com/books/content?id=uIWVQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "すみれちゃんは一年生",
-    "source_page": "12-right-03",
-    "course": "H",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "手ぶくろを買いに",
-    "author": "新美南吉 作",
-    "publisher": "偕成社",
-    "isbn": "4039633105",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 2,
-    "cover": "https://books.google.com/books/content?id=6TL0g2cN3tcC&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "手ぶくろを買いに",
-    "source_page": "12-right-08",
-    "course": "H",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "おこりじぞう",
-    "author": "山口勇子 著",
-    "publisher": "全国学校図書館協議会",
-    "isbn": "4793370411",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 2,
-    "cover": null,
-    "ocr_title": "おこりじぞう(新日本おはなし文庫)",
-    "source_page": "13-left-02",
-    "course": "H",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "げんきにおよげこいのぼり",
-    "author": "今関信子 作",
-    "publisher": "教育画劇",
-    "isbn": "4774604984",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 2,
-    "cover": "https://books.google.com/books/content?id=W-F6AAAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "げんきにおよげこいのぼり(行事の由来をほん)",
-    "source_page": "14-right-01",
-    "course": "H",
-    "courseGrade": "低学年〜中学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "世界地図の下書き",
-    "author": "朝井リョウ 著",
-    "publisher": "集英社",
-    "isbn": "9784087715200",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 5,
-    "cover": "https://books.google.com/books/content?id=0zxMnwEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "世界地図の下書き(集英社文庫:あ69-4)",
-    "source_page": "15-right-18",
-    "course": "B",
-    "courseGrade": "高学年向き",
-    "courseT": "T6〜T7"
-  },
-  {
-    "title": "100万回生きたねこ",
-    "author": "佐野洋子 作・絵",
-    "publisher": "講談社",
-    "isbn": "9784061272743",
-    "genre": "科学・自然",
-    "tags": [
-      "科学・自然",
-      "自然・生きもの"
-    ],
-    "level": 1,
-    "cover": "https://books.google.com/books/content?id=Yb_hQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "100万回生きたねこ",
-    "source_page": "16-right-01",
-    "course": "I",
-    "courseGrade": "低学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "みんなであそぼう : いっしょにつくろう24のゲーム",
-    "author": "石井英行 文",
-    "publisher": "玉川大学出版部",
-    "isbn": "9784472404627",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 1,
-    "cover": "https://books.google.com/books/content?id=hygxkwEACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "みんなであそぼういっしょにつくろう24のゲーム",
-    "source_page": "16-right-19",
-    "course": "I",
-    "courseGrade": "低学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "놀이도감 : 언제·어디서·누구나 遊び図鑑 : いつでもどこでもだれとでも",
-    "author": "우쿠나리나쓰 글",
-    "publisher": "진선출판사",
-    "isbn": "8972210307",
-    "genre": "図鑑",
-    "tags": [
-      "図鑑"
-    ],
-    "level": 1,
-    "cover": "https://books.google.com/books/content?id=XC5NMwAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "遊び図鑑いつでもどこでもだれとでも",
-    "source_page": "16-right-20",
-    "course": "I",
-    "courseGrade": "低学年向き",
-    "courseT": "T2"
-  },
-  {
-    "title": "西遊記 上",
-    "author": "呉承恩作 ; 伊藤貴麿編訳",
-    "publisher": "岩波書店",
-    "isbn": "4001130238",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 5,
-    "cover": null,
-    "ocr_title": "西遊記.上(福音館古典童話シリーズ:15)",
-    "source_page": "18-left-03",
-    "course": "A",
-    "courseGrade": "高学年〜中高一般向き",
-    "courseT": "T8〜T9"
-  },
-  {
-    "title": "さんまいのおふだ",
-    "author": "千葉幹夫 文",
-    "publisher": "小学館",
-    "isbn": "9784097268895",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 1,
-    "cover": "https://books.google.com/books/content?id=uwaQcAAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "さんまいのおふだ日本名作おはなし絵本)",
-    "source_page": "18-right-01",
-    "course": "J",
-    "courseGrade": "低学年向き",
-    "courseT": "T1"
-  },
-  {
-    "title": "はるをさがしに",
-    "author": "久保秀一 写真",
-    "publisher": "偕成社",
-    "isbn": "4033442103",
-    "genre": "科学・自然",
-    "tags": [
-      "科学・自然",
-      "自然・生きもの"
-    ],
-    "level": 1,
-    "cover": "https://books.google.com/books/content?id=6jxzQgAACAAJ&printsec=frontcover&img=1&zoom=1",
-    "ocr_title": "はるをさがしに(新・自然きらきら:1)",
-    "source_page": "18-right-04",
-    "course": "J",
-    "courseGrade": "低学年向き",
-    "courseT": "T1"
-  },
-  {
-    "title": "次郎物語 第1部",
-    "author": "下村湖人著",
-    "publisher": "講談社",
-    "isbn": "4062617048",
-    "genre": "物語",
-    "tags": [
-      "物語"
-    ],
-    "level": 5,
-    "cover": null,
-    "ocr_title": "次郎物語.第1部(備成社文庫)",
-    "source_page": "20-left-11",
-    "course": "A",
-    "courseGrade": "高学年〜中高一般向き",
-    "courseT": "T8〜T9"
-  },
-  {
-    "title": "おとうとねずみチロのはなし",
-    "author": "森山京 作",
-    "publisher": "講談社",
-    "isbn": "4062082640",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "動物"
-    ],
-    "level": 1,
-    "cover": null,
-    "ocr_title": "おとうとねずみチロのはなし",
-    "source_page": "20-right-02",
-    "course": "J",
-    "courseGrade": "低学年向き",
-    "courseT": "T1"
-  },
-  {
-    "title": "ねずみのいもほり",
-    "author": "山下明生 作",
-    "publisher": "ひさかたチャイルド",
-    "isbn": "4893251996",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "動物"
-    ],
-    "level": 1,
-    "cover": null,
-    "ocr_title": "ねずみのいもはほり(ひさかたメルヘン)",
-    "source_page": "20-right-11",
-    "course": "J",
-    "courseGrade": "低学年向き",
-    "courseT": "T1"
-  },
-  {
-    "title": "ねずみのでんしゃ",
-    "author": "山下明生 作",
-    "publisher": "ひさかたチャイルド",
-    "isbn": "4893251767",
-    "genre": "物語",
-    "tags": [
-      "物語",
-      "動物",
-      "乗りもの"
-    ],
-    "level": 1,
-    "cover": null,
-    "ocr_title": "ねずみのでんしゃ(ひさかたメルヘン)",
-    "source_page": "20-right-12",
     "course": "J",
     "courseGrade": "低学年向き",
     "courseT": "T1"
