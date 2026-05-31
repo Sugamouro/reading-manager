@@ -1475,16 +1475,24 @@
       }
 
       .nav {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+        gap: 8px;
       }
 
       .nav button {
-        justify-content: center;
-        padding: 0 8px;
+        justify-content: flex-start;
+        min-height: 46px;
+        padding: 0 10px;
+        gap: 6px;
+        font-size: 12px;
+        line-height: 1.2;
+        background: rgba(248, 251, 248, 0.08);
+        border: 1px solid rgba(248, 251, 248, 0.12);
       }
 
       .nav span:last-child {
-        display: none;
+        display: inline;
+        overflow-wrap: anywhere;
       }
 
       .sidebar-note {
