@@ -1349,6 +1349,104 @@
       color: var(--muted);
     }
 
+    .avatar-roadmap {
+      display: grid;
+      gap: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .roadmap-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .roadmap-head h4 {
+      margin: 0;
+    }
+
+    .roadmap-note {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .roadmap-list {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(92px, 1fr));
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .roadmap-item {
+      min-width: 92px;
+      display: grid;
+      gap: 6px;
+      justify-items: center;
+      padding: 10px 8px;
+      border: 1px solid #e1e8e1;
+      border-radius: 12px;
+      background: #fbfdf9;
+      color: var(--muted);
+    }
+
+    .roadmap-item.done {
+      background: #eef8f2;
+      border-color: #b9dfc8;
+      color: var(--ink);
+    }
+
+    .roadmap-item.current {
+      background: linear-gradient(180deg, #fff7dc, #eef8f2);
+      border-color: #c9a43a;
+      box-shadow: 0 8px 18px rgba(47, 125, 104, 0.12);
+      color: var(--ink);
+    }
+
+    .roadmap-item.next {
+      border-color: #b9d6d0;
+      background: #f7fbf9;
+      color: var(--ink);
+    }
+
+    .roadmap-item.locked .pet-avatar {
+      filter: grayscale(.55) opacity(.48);
+    }
+
+    .roadmap-item .pet-avatar {
+      width: 58px;
+      height: 58px;
+      filter: drop-shadow(0 4px 6px rgba(47, 60, 56, 0.12));
+      animation: none;
+    }
+
+    .roadmap-lv {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .roadmap-title {
+      min-height: 32px;
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 700;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .roadmap-status {
+      min-height: 16px;
+      font-size: 10px;
+      line-height: 1.2;
+      text-align: center;
+      color: var(--muted);
+    }
+
     .goal-block {
       display: flex;
       align-items: center;
@@ -3016,6 +3114,30 @@
       return `<img class="pet-avatar pet-avatar-img" src="${src}" alt="${escapeHtml(stage.title)}" loading="lazy" decoding="async">`;
     }
 
+    function avatarRoadmap(currentLevel, totalXp, gender) {
+      const stages = petStages();
+      const currentStage = levelInfo(totalXp).stage;
+      const nextStage = stages.find((stage) => stage.min > currentLevel);
+      return stages.map((stage) => {
+        const isCurrent = stage.min === currentStage.min;
+        const isDone = currentLevel >= stage.min && !isCurrent;
+        const isNext = nextStage && stage.min === nextStage.min;
+        const className = isCurrent ? "current" : isDone ? "done" : isNext ? "next" : "locked";
+        const status = isCurrent
+          ? "いまここ"
+          : isDone
+            ? "達成"
+            : `あと${Math.max(0, (stage.min - 1) * 100 - totalXp)}XP`;
+        return `
+          <div class="roadmap-item ${className}">
+            ${petAvatar(stage, stage.min, gender)}
+            <div class="roadmap-lv">Lv${stage.min}</div>
+            <div class="roadmap-title">${escapeHtml(stage.title)}</div>
+            <div class="roadmap-status">${status}</div>
+          </div>`;
+      }).join("");
+    }
+
     function streakCount() {
       const p = activeProfile();
       if (!p || !Array.isArray(p.readingDays) || !p.readingDays.length) return 0;
@@ -3593,6 +3715,14 @@
           </div>
           ${nextPetHtml}
           <div class="hero-streak"><span class="streak-num">🔥${streak}</span><span class="streak-label">日れんぞく</span></div>
+        </div>
+
+        <div class="avatar-roadmap">
+          <div class="roadmap-head">
+            <h4>勇者の成長</h4>
+            <span class="roadmap-note">読むほど装備と仲間がふえる</span>
+          </div>
+          <div class="roadmap-list">${avatarRoadmap(li.level, totalXp, avatarGender)}</div>
         </div>
 
         <div class="goal-block">
