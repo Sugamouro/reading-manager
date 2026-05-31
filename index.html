@@ -1300,6 +1300,37 @@
       color: var(--muted);
     }
 
+    .hero-next {
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid rgba(47, 125, 104, 0.16);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .hero-next .pet-avatar {
+      width: 54px;
+      height: 54px;
+      filter: drop-shadow(0 4px 6px rgba(47, 60, 56, 0.14));
+    }
+
+    .next-label {
+      display: grid;
+      gap: 2px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .next-label strong {
+      color: var(--ink);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
     .hero-streak {
       text-align: center;
       display: grid;
@@ -1465,6 +1496,62 @@
       color: var(--ink);
     }
 
+    .form-section {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 3px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head strong,
+    .advanced-section summary {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .advanced-section {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .advanced-section summary {
+      cursor: pointer;
+      list-style: none;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .advanced-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .advanced-section summary::after {
+      content: "開く";
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .advanced-section[open] summary::after {
+      content: "閉じる";
+    }
+
     @media (max-width: 980px) {
       .app {
         grid-template-columns: 1fr;
@@ -1527,6 +1614,16 @@
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 12px;
         padding: 14px;
+      }
+
+      .hero {
+        flex-wrap: wrap;
+        align-items: stretch;
+      }
+
+      .hero-next,
+      .hero-streak {
+        flex: 1 1 160px;
       }
 
       .form-grid {
@@ -1800,101 +1897,113 @@
         <div class="modal-body">
           <input type="hidden" id="bookId">
           <input type="hidden" id="coverInput">
-          <div class="form-grid">
-            <div class="field">
-              <label for="titleInput">タイトル</label>
-              <input id="titleInput" required>
+          <section class="form-section">
+            <div class="section-head">
+              <strong>基本情報</strong>
+              <span>読書の状態・日付・感想など、よく使う項目です。</span>
             </div>
-            <div class="field">
-              <label for="authorInput">著者</label>
-              <input id="authorInput">
-            </div>
-            <div class="field">
-              <label for="categoryInput">分類</label>
-              <input id="categoryInput" placeholder="物語、科学、歴史など">
-            </div>
-            <div class="field">
-              <label for="publisherInput">出版社</label>
-              <input id="publisherInput">
-            </div>
-            <div class="field">
-              <label for="isbnInput">ISBN</label>
-              <input id="isbnInput" placeholder="978...（表紙の取得に使います）">
-            </div>
-            <div class="field">
-              <label for="ownershipInput">持ち物（兄弟共通）</label>
-              <select id="ownershipInput">
-                <option value="">未設定</option>
-                <option value="bought">買った</option>
-                <option value="borrowed">借りた</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="levelInput">難易度（推奨学年）</label>
-              <select id="levelInput">
-                <option value="1">低学年向き</option>
-                <option value="2">低学年〜中学年</option>
-                <option value="3" selected>中学年向き</option>
-                <option value="4">中学年〜高学年</option>
-                <option value="5">高学年〜一般</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="statusInput">状態</label>
-              <select id="statusInput">
-                <option value="want">未読</option>
-                <option value="reading">読書中</option>
-                <option value="done">読了</option>
-                <option value="pause">保留</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="startDateInput">読み始めた日</label>
-              <input id="startDateInput" type="date">
-            </div>
-            <div class="field">
-              <label for="readDateInput">読み終わった日</label>
-              <input id="readDateInput" type="date">
-            </div>
-            <div class="field">
-              <label for="ratingInput">反応</label>
-              <select id="ratingInput">
-                <option value="0">未評価</option>
-                <option value="1">1 あまり合わない</option>
-                <option value="2">2 まあまあ</option>
-                <option value="3">3 よかった</option>
-                <option value="4">4 かなり好き</option>
-                <option value="5">5 とても好き</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="nextAfterInput">この本のあとにおすすめ</label>
-              <input id="nextAfterInput" placeholder="前に読むとよい本のタイトル">
-            </div>
-            <div class="field wide">
-              <label for="tagsInput">タグ</label>
-              <input id="tagsInput" placeholder="冒険; 友情; 科学">
-            </div>
-            <div class="field wide">
-              <label for="descriptionInput">あらすじ・みんなの評価（兄弟共通）</label>
-              <div class="info-tools">
-                <button type="button" class="ghost" id="fetchInfoButton"><span class="icon">📖</span>ネットから取得</button>
-                <button type="button" class="ghost" id="reviewButton"><span class="icon">📝</span>レビューを見る</button>
-                <span id="ratingInfo" class="rating-info"></span>
+            <div class="form-grid">
+              <div class="field">
+                <label for="titleInput">タイトル</label>
+                <input id="titleInput" required>
               </div>
-              <textarea id="descriptionInput" placeholder="あらすじ（「ネットから取得」で自動入力できます。手で書いてもOK）"></textarea>
-              <input type="hidden" id="gRatingInput">
-              <input type="hidden" id="gRatingsCountInput">
+              <div class="field">
+                <label for="authorInput">著者</label>
+                <input id="authorInput">
+              </div>
+              <div class="field">
+                <label for="ownershipInput">持ち物（兄弟共通）</label>
+                <select id="ownershipInput">
+                  <option value="">未設定</option>
+                  <option value="bought">買った</option>
+                  <option value="borrowed">借りた</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="statusInput">状態</label>
+                <select id="statusInput">
+                  <option value="want">未読</option>
+                  <option value="reading">読書中</option>
+                  <option value="done">読了</option>
+                  <option value="pause">保留</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="startDateInput">読み始めた日</label>
+                <input id="startDateInput" type="date">
+              </div>
+              <div class="field">
+                <label for="readDateInput">読み終わった日</label>
+                <input id="readDateInput" type="date">
+              </div>
+              <div class="field">
+                <label for="ratingInput">反応</label>
+                <select id="ratingInput">
+                  <option value="0">未評価</option>
+                  <option value="1">1 あまり合わない</option>
+                  <option value="2">2 まあまあ</option>
+                  <option value="3">3 よかった</option>
+                  <option value="4">4 かなり好き</option>
+                  <option value="5">5 とても好き</option>
+                </select>
+              </div>
+              <div class="field wide">
+                <label for="reviewInput">感想（このお子さんの）</label>
+                <textarea id="reviewInput" placeholder="おもしろかったところ、印象に残った場面など"></textarea>
+              </div>
             </div>
-            <div class="field wide">
-              <label for="reviewInput">感想（このお子さんの）</label>
-              <textarea id="reviewInput" placeholder="おもしろかったところ、印象に残った場面など"></textarea>
+          </section>
+
+          <details class="form-section advanced-section">
+            <summary>細かい設定</summary>
+            <div class="form-grid">
+              <div class="field">
+                <label for="categoryInput">分類</label>
+                <input id="categoryInput" placeholder="物語、科学、歴史など">
+              </div>
+              <div class="field">
+                <label for="publisherInput">出版社</label>
+                <input id="publisherInput">
+              </div>
+              <div class="field">
+                <label for="isbnInput">ISBN</label>
+                <input id="isbnInput" placeholder="978...（表紙の取得に使います）">
+              </div>
+              <div class="field">
+                <label for="levelInput">難易度（推奨学年）</label>
+                <select id="levelInput">
+                  <option value="1">低学年向き</option>
+                  <option value="2">低学年〜中学年</option>
+                  <option value="3" selected>中学年向き</option>
+                  <option value="4">中学年〜高学年</option>
+                  <option value="5">高学年〜一般</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="nextAfterInput">この本のあとにおすすめ</label>
+                <input id="nextAfterInput" placeholder="前に読むとよい本のタイトル">
+              </div>
+              <div class="field wide">
+                <label for="tagsInput">タグ</label>
+                <input id="tagsInput" placeholder="冒険; 友情; 科学">
+              </div>
+              <div class="field wide">
+                <label for="descriptionInput">あらすじ・みんなの評価（兄弟共通）</label>
+                <div class="info-tools">
+                  <button type="button" class="ghost" id="fetchInfoButton"><span class="icon">📖</span>ネットから取得</button>
+                  <button type="button" class="ghost" id="reviewButton"><span class="icon">📝</span>レビューを見る</button>
+                  <span id="ratingInfo" class="rating-info"></span>
+                </div>
+                <textarea id="descriptionInput" placeholder="あらすじ（「ネットから取得」で自動入力できます。手で書いてもOK）"></textarea>
+                <input type="hidden" id="gRatingInput">
+                <input type="hidden" id="gRatingsCountInput">
+              </div>
+              <div class="field wide">
+                <label for="memoInput">メモ</label>
+                <textarea id="memoInput" placeholder="反応、難しかったところ、読み聞かせ向きなど"></textarea>
+              </div>
             </div>
-            <div class="field wide">
-              <label for="memoInput">メモ</label>
-              <textarea id="memoInput" placeholder="反応、難しかったところ、読み聞かせ向きなど"></textarea>
-            </div>
-          </div>
+          </details>
         </div>
         <div class="modal-actions">
           <button type="button" class="ghost" id="hideButton"><span class="icon">🙈</span>棚から隠す</button>
@@ -2871,10 +2980,8 @@
         .reduce((sum, b) => sum + (Number(b.level) || 3) * 10, 0);
     }
 
-    function levelInfo(xp) {
-      const level = Math.floor(xp / 100) + 1;
-      const xpInLevel = xp % 100;
-      const stages = [
+    function petStages() {
+      return [
         { min: 1, key: "egg", title: "よみだしたまご", body: "#fff3bf", accent: "#f08c00" },
         { min: 2, key: "peek", title: "ひよこ読者", body: "#ffe066", accent: "#f08c00" },
         { min: 4, key: "sprout", title: "よちよち読者", body: "#8ce99a", accent: "#2f9e44" },
@@ -2883,9 +2990,19 @@
         { min: 13, key: "master", title: "よむのたつじん", body: "#ff922b", accent: "#e8590c" },
         { min: 18, key: "legend", title: "でんせつの読書家", body: "#63e6be", accent: "#0ca678" }
       ];
+    }
+
+    function levelInfo(xp) {
+      const level = Math.floor(xp / 100) + 1;
+      const xpInLevel = xp % 100;
+      const stages = petStages();
       let stage = stages[0];
       stages.forEach((s) => { if (level >= s.min) stage = s; });
       return { level, xpInLevel, remain: 100 - xpInLevel, stage, title: stage.title };
+    }
+
+    function nextPetStage(level) {
+      return petStages().find((stage) => stage.min > level) || null;
     }
 
     function petAvatar(stage, level) {
@@ -3495,7 +3612,15 @@
       const months = monthlyCounts();
       const maxCount = Math.max(1, ...months.map((m) => m.count));
       const earned = BADGES.filter((b) => b.test(s)).length;
-      const li = levelInfo(xpTotal());
+      const totalXp = xpTotal();
+      const li = levelInfo(totalXp);
+      const nextPet = nextPetStage(li.level);
+      const nextPetHtml = nextPet
+        ? `<div class="hero-next">
+            ${petAvatar(nextPet, nextPet.min)}
+            <div class="next-label"><span>つぎのすがた</span><strong>Lv${nextPet.min}「${escapeHtml(nextPet.title)}」</strong><span>あと${Math.max(0, (nextPet.min - 1) * 100 - totalXp)}XP</span></div>
+          </div>`
+        : `<div class="hero-next"><div class="next-label"><span>いまのすがた</span><strong>最高レベルの読書家</strong><span>このまま記録をふやそう</span></div></div>`;
       const streak = streakCount();
       const prof = activeProfile();
       const goal = prof ? Number(prof.monthlyGoal) || 0 : 0;
@@ -3516,8 +3641,9 @@
           <div class="hero-main">
             <div class="hero-title">Lv${li.level}「${escapeHtml(li.title)}」</div>
             <div class="xp-bar"><span style="width:${li.xpInLevel}%"></span></div>
-            <div class="hero-sub">よみXP ${xpTotal()}（つぎのレベルまで あと${li.remain}）</div>
+            <div class="hero-sub">よみXP ${totalXp}（つぎのレベルまで あと${li.remain}）</div>
           </div>
+          ${nextPetHtml}
           <div class="hero-streak"><span class="streak-num">🔥${streak}</span><span class="streak-label">日れんぞく</span></div>
         </div>
 
