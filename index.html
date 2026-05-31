@@ -3174,7 +3174,7 @@
     function petAvatar(stage, level, gender = "") {
       const lv = Math.max(1, Math.min(18, Number(level) || stage.min || 1));
       const displayStage = petStages().reduce((current, item) => lv >= item.min ? item : current, stage);
-      const variant = gender === "girl" ? "girl" : "boy";
+      const variant = gender === "girl" ? "girl" : gender === "boy" ? "boy" : "neutral";
       const src = `assets/avatar/reading-hero-${variant}-${String(lv).padStart(2, "0")}.png`;
       return `
         <span class="pet-avatar pet-avatar-wrap" role="img" aria-label="${escapeHtml(displayStage.title)}">
