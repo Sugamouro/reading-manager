@@ -1257,11 +1257,12 @@
       width: 86px;
       height: 86px;
       display: block;
+      object-fit: contain;
       filter: drop-shadow(0 6px 8px rgba(47, 60, 56, 0.18));
     }
 
-    .pet-avatar .pet-bob {
-      transform-origin: 48px 54px;
+    .pet-avatar-img {
+      transform-origin: 50% 80%;
       animation: petBob 2.8s ease-in-out infinite;
     }
 
@@ -2982,24 +2983,13 @@
 
     function petStages() {
       return [
-        { min: 1, key: "apprentice", title: "見習い読者", body: "#ffd8a8", accent: "#e67700" },
-        { min: 2, key: "cap", title: "布帽子の読者", body: "#ffe066", accent: "#f08c00" },
-        { min: 3, key: "pack", title: "旅じたく読者", body: "#ffd43b", accent: "#f08c00" },
-        { min: 4, key: "shield", title: "本の盾使い", body: "#8ce99a", accent: "#2f9e44" },
-        { min: 5, key: "woodSword", title: "木の剣読者", body: "#69db7c", accent: "#2f9e44" },
-        { min: 6, key: "cape", title: "マントの読者", body: "#74c0fc", accent: "#1c7ed6" },
-        { min: 7, key: "buddy", title: "しおりの相棒", body: "#74c0fc", accent: "#1c7ed6" },
-        { min: 8, key: "badge", title: "星バッジ読者", body: "#4dabf7", accent: "#1971c2" },
-        { min: 9, key: "map", title: "地図読み冒険者", body: "#b197fc", accent: "#7048e8" },
-        { min: 10, key: "party", title: "読書パーティ", body: "#b197fc", accent: "#7048e8" },
-        { min: 11, key: "bronzeShield", title: "銅の本盾", body: "#ffa94d", accent: "#e8590c" },
-        { min: 12, key: "starCape", title: "星マント読者", body: "#ff922b", accent: "#e8590c" },
-        { min: 13, key: "silverSword", title: "銀の剣読者", body: "#ff8787", accent: "#c92a2a" },
-        { min: 14, key: "glowBook", title: "光る本の読者", body: "#ff8787", accent: "#c92a2a" },
-        { min: 15, key: "bigParty", title: "にぎやかパーティ", body: "#f783ac", accent: "#a61e4d" },
-        { min: 16, key: "feather", title: "羽根帽子の勇者", body: "#63e6be", accent: "#0ca678" },
-        { min: 17, key: "starlight", title: "星あかりの勇者", body: "#63e6be", accent: "#0ca678" },
-        { min: 18, key: "legendHero", title: "伝説の読書勇者", body: "#38d9a9", accent: "#087f5b" }
+        { min: 1, key: "apprentice", title: "見習い読者" },
+        { min: 2, key: "cap", title: "布帽子の読者" },
+        { min: 4, key: "pack", title: "旅じたく読者" },
+        { min: 6, key: "shield", title: "本の盾使い" },
+        { min: 9, key: "sword", title: "本をひらく剣士" },
+        { min: 13, key: "cape", title: "マントの読書冒険者" },
+        { min: 18, key: "legendHero", title: "伝説の読書勇者" }
       ];
     }
 
@@ -3013,101 +3003,17 @@
     }
 
     function nextPetStage(level) {
-      const nextLevel = Math.min(18, level + 1);
       if (level >= 18) return null;
-      return petStages().find((stage) => stage.min === nextLevel) || null;
+      return petStages().find((stage) => stage.min > level) || null;
     }
 
     function petAvatar(stage, level, gender = "") {
+      const stages = petStages();
       const lv = Math.max(1, Math.min(18, Number(level) || stage.min || 1));
-      const body = stage.body;
-      const accent = stage.accent;
-      const outline = "#2f2a26";
-      const skin = "#ffd8b8";
-      const hair = gender === "girl" ? "#5c3b28" : gender === "boy" ? "#3f2b20" : "#6b4f36";
-      const tunic = gender === "girl" ? "#f783ac" : gender === "boy" ? "#4dabf7" : body;
-      const trim = gender === "girl" ? "#862e9c" : gender === "boy" ? "#1864ab" : accent;
-      const face = (y = 50, happy = false) => `
-        <circle cx="39" cy="${y}" r="2.7" fill="${outline}"/>
-        <circle cx="57" cy="${y}" r="2.7" fill="${outline}"/>
-        <circle cx="40" cy="${y - 1}" r="1" fill="#fff"/>
-        <circle cx="58" cy="${y - 1}" r="1" fill="#fff"/>
-        <path d="${happy ? "M43 59c3 4 7 4 10 0" : "M44 59q4 3 8 0"}" fill="none" stroke="${outline}" stroke-width="2.1" stroke-linecap="round"/>
-      `;
-      const cheeks = `<circle cx="34" cy="55" r="2.8" fill="#ffb3c1"/><circle cx="62" cy="55" r="2.8" fill="#ffb3c1"/>`;
-      const openBook = (y = 70) => `
-        <path d="M31 ${y}c6-4 12-4 17 0v12c-5-3-11-3-17 0z" fill="#fff" stroke="${outline}" stroke-width="2"/>
-        <path d="M48 ${y}c5-4 11-4 17 0v12c-6-3-12-3-17 0z" fill="#fff7e6" stroke="${outline}" stroke-width="2"/>
-        <path d="M48 ${y}v12" stroke="${outline}" stroke-width="2"/>
-      `;
-      const sparkle = `<path d="M76 25l2 5 5 .4-3.8 3.3 1.1 5-4.3-2.6-4.3 2.6 1.1-5-3.8-3.3 5-.4z" fill="#ffd43b" stroke="#6f5200" stroke-width="1.3"/>`;
-      const helper = (x, y, fill, kind = "dot") => `
-        <g transform="translate(${x} ${y})">
-          <circle cx="0" cy="0" r="7" fill="${fill}" stroke="${outline}" stroke-width="1.8"/>
-          <circle cx="-2.4" cy="-1" r="1" fill="${outline}"/><circle cx="2.4" cy="-1" r="1" fill="${outline}"/>
-          ${kind === "book" ? `<path d="M-5 5c3-2 7-2 10 0" fill="none" stroke="${outline}" stroke-width="1.4" stroke-linecap="round"/>` : ""}
-        </g>`;
-      const cape = lv >= 6 ? `
-        <path d="M27 48c-9 6-12 17-10 29 10-2 18-8 25-17z" fill="${lv >= 12 ? "#845ef7" : "#ffdeeb"}" stroke="#704052" stroke-width="2"/>
-        <path d="M69 48c9 6 12 17 10 29-10-2-18-8-25-17z" fill="${lv >= 12 ? "#91a7ff" : "#d0ebff"}" stroke="#37536b" stroke-width="2"/>
-      ` : "";
-      const sword = lv >= 13 ? `
-        <path d="M73 26l9-13" stroke="#ced4da" stroke-width="4" stroke-linecap="round"/>
-        <path d="M70 29l6-6" stroke="${outline}" stroke-width="2" stroke-linecap="round"/>
-      ` : lv >= 5 ? `
-        <path d="M72 30l8-12" stroke="#b08968" stroke-width="4" stroke-linecap="round"/>
-        <path d="M69 32l7-5" stroke="${outline}" stroke-width="2" stroke-linecap="round"/>
-      ` : "";
-      const shield = lv >= 4 ? `
-        <path d="M23 57c0-8 4-13 12-15 8 2 12 7 12 15 0 9-5 16-12 20-7-4-12-11-12-20z" fill="${lv >= 11 ? "#f4a261" : "#fff7e6"}" stroke="${outline}" stroke-width="2"/>
-        <path d="M29 54c4-2 8-2 12 0v12c-4-2-8-2-12 0z" fill="#fff" stroke="${outline}" stroke-width="1.5"/>
-      ` : "";
-      const pack = lv >= 3 ? `<path d="M27 60h-8v16h10V64c0-2-1-4-2-4z" fill="#c9a46a" stroke="${outline}" stroke-width="2"/>` : "";
-      const map = lv >= 9 ? `<path d="M65 60l11-4 8 4v16l-9-4-10 4z" fill="#fff3bf" stroke="${outline}" stroke-width="1.8"/><path d="M76 56v16" stroke="#c9a46a" stroke-width="1.2"/>` : "";
-      const hat = lv >= 2 ? `
-        <path d="M29 34c5-12 31-12 38 0-12-5-26-5-38 0z" fill="${lv >= 16 ? "#2f9e44" : "#7048e8"}" stroke="${outline}" stroke-width="2"/>
-        ${lv >= 16 ? `<path d="M61 25c8-5 14-5 19 1-8 1-13 4-19 9z" fill="#ffd43b" stroke="${outline}" stroke-width="1.8"/>` : ""}
-      ` : "";
-      const crown = lv >= 18 ? `<path d="M35 27l6-10 7 9 8-9 6 10v7H35z" fill="#ffd43b" stroke="#6f5200" stroke-width="2" stroke-linejoin="round"/>` : "";
-      const badge = lv >= 8 ? `<path d="M59 63l2 4.3 4.7.4-3.6 3 1.1 4.5-4.2-2.4-4.1 2.4 1-4.5-3.5-3 4.7-.4z" fill="#ffd43b" stroke="#6f5200" stroke-width="1.2"/>` : "";
-      const starAura = lv >= 17 ? `<path d="M18 39l2 4 4 .3-3 2.8.8 4-3.8-2-3.7 2 .8-4-3-2.8 4-.3z" fill="#fff3bf" stroke="#6f5200" stroke-width="1.1"/>${sparkle}` : lv >= 8 ? sparkle : "";
-      const companions = `
-        ${lv >= 7 ? helper(18, 36, "#ffd43b") : ""}
-        ${lv >= 10 ? helper(79, 55, "#91a7ff", "book") : ""}
-        ${lv >= 15 ? helper(24, 79, "#b2f2bb", "book") : ""}
-      `;
-      const bodyGlow = lv >= 14 ? `<path d="M28 76c7-9 33-9 40 0" fill="none" stroke="#fff3bf" stroke-width="5" stroke-linecap="round" opacity=".7"/>` : "";
-      const hairShape = gender === "girl"
-        ? `<path d="M30 43c1-12 8-19 18-19s17 7 18 19c-6-5-30-5-36 0z" fill="${hair}" stroke="${outline}" stroke-width="2"/>`
-        : `<path d="M31 41c3-12 12-17 24-14 7 2 11 7 12 14-9-5-25-5-36 0z" fill="${hair}" stroke="${outline}" stroke-width="2"/>`;
-      const art = `
-        ${lv >= 17 ? `<path d="M15 55c8-22 58-22 66 0" fill="none" stroke="#b2f2bb" stroke-width="4" stroke-linecap="round" opacity=".65"/>` : ""}
-        ${companions}
-        ${starAura}
-        ${sword}
-        ${pack}
-        ${cape}
-        ${shield}
-        <path d="M30 48c0-15 8-26 18-26s18 11 18 26c0 7-3 13-8 17H38c-5-4-8-10-8-17z" fill="${skin}" stroke="${outline}" stroke-width="2.5"/>
-        ${hairShape}
-        ${hat}
-        ${crown}
-        ${cheeks}
-        ${face(50, lv >= 6)}
-        <path d="M35 63h26l5 18H30z" fill="${tunic}" stroke="${outline}" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M38 64h20" stroke="${trim}" stroke-width="2" stroke-linecap="round"/>
-        ${badge}
-        ${map}
-        ${bodyGlow}
-        ${openBook(70)}
-      `;
-      return `
-        <svg class="pet-avatar" viewBox="0 0 96 96" role="img" aria-label="${escapeHtml(stage.title)}">
-          <ellipse cx="48" cy="84" rx="28" ry="6" fill="rgba(47,60,56,.16)"/>
-          <g class="pet-bob">
-            ${art}
-          </g>
-        </svg>`;
+      const step = stages.reduce((current, item, index) => lv >= item.min ? index + 1 : current, 1);
+      const variant = gender === "girl" ? "girl" : "boy";
+      const src = `assets/avatar/reading-hero-${variant}-${String(step).padStart(2, "0")}.png`;
+      return `<img class="pet-avatar pet-avatar-img" src="${src}" alt="${escapeHtml(stage.title)}" loading="lazy" decoding="async">`;
     }
 
     function streakCount() {
