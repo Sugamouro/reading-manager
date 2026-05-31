@@ -1544,6 +1544,40 @@
       animation: pop .35s ease;
     }
 
+    .celebrate-card.with-avatar {
+      min-width: min(340px, calc(100vw - 48px));
+      padding: 20px 24px 22px;
+    }
+
+    .celebrate-avatar {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 8px;
+      display: grid;
+      place-items: center;
+      border-radius: 32px;
+      background: radial-gradient(circle at 35% 20%, #fff8d8 0 18%, #e7f6f0 19% 58%, #d6eadf 59% 100%);
+      box-shadow: inset 0 0 0 1px rgba(47, 125, 104, 0.12);
+    }
+
+    .celebrate-avatar .pet-avatar {
+      width: 138px;
+      height: 138px;
+      filter: drop-shadow(0 10px 14px rgba(47, 60, 56, 0.2));
+    }
+
+    .celebrate-title {
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .celebrate-sub {
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
     @keyframes pop {
       from { transform: scale(.6); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
@@ -3152,14 +3186,19 @@
     }
 
     function motivationSnapshot() {
-      return { level: levelInfo(xpTotal()).level, badges: BADGES.filter((b) => b.test(readingStats())).length };
+      const li = levelInfo(xpTotal());
+      return { level: li.level, stageMin: li.stage.min, badges: BADGES.filter((b) => b.test(readingStats())).length };
     }
 
     function celebrateFinish(before) {
       const after = motivationSnapshot();
       if (before && after.level > before.level) {
         const li = levelInfo(xpTotal());
-        celebrate(`レベルアップ！\nLv${li.level}「${li.title}」`);
+        const stageChanged = before.stageMin !== li.stage.min;
+        celebrate(`レベルアップ！\nLv${li.level}「${li.title}」`, {
+          avatarHtml: petAvatar(li.stage, li.level, activeProfile()?.gender || ""),
+          subtitle: stageChanged ? "新しいすがたになったよ" : "また少し強くなったよ"
+        });
       } else if (before && after.badges > before.badges) {
         celebrate("🏅 あたらしいバッジをゲット！");
       } else {
@@ -3186,10 +3225,19 @@
       render();
     }
 
-    function celebrate(message) {
+    function celebrate(message, options = {}) {
       const overlay = document.createElement("div");
       overlay.className = "celebrate";
-      overlay.innerHTML = `<div class="celebrate-card">${message.split("\n").map((line) => escapeHtml(line)).join("<br>")}</div>`;
+      const lines = message.split("\n").map((line) => escapeHtml(line));
+      const title = lines.shift() || "";
+      const body = lines.join("<br>");
+      overlay.innerHTML = `
+        <div class="celebrate-card ${options.avatarHtml ? "with-avatar" : ""}">
+          ${options.avatarHtml ? `<div class="celebrate-avatar">${options.avatarHtml}</div>` : ""}
+          <div class="celebrate-title">${title}</div>
+          ${body ? `<div>${body}</div>` : ""}
+          ${options.subtitle ? `<div class="celebrate-sub">${escapeHtml(options.subtitle)}</div>` : ""}
+        </div>`;
       const colors = ["#2f7d68", "#f4c95d", "#b94747", "#3867a7", "#e8590c", "#12b886"];
       for (let i = 0; i < 40; i += 1) {
         const piece = document.createElement("span");
