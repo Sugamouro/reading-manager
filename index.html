@@ -1257,14 +1257,46 @@
       width: 86px;
       height: 86px;
       display: block;
-      object-fit: contain;
       filter: drop-shadow(0 6px 8px rgba(47, 60, 56, 0.18));
     }
 
+    .pet-avatar-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
     .pet-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       transform-origin: 50% 80%;
       animation: petBob 2.8s ease-in-out infinite;
     }
+
+    .avatar-gear {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 252, 238, 0.92);
+      border: 1px solid rgba(47, 125, 104, 0.2);
+      box-shadow: 0 4px 9px rgba(47, 60, 56, 0.14);
+      line-height: 1;
+    }
+
+    .avatar-gear svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+    }
+
+    .avatar-gear.g1 { right: 5px; bottom: 11px; }
+    .avatar-gear.g2 { left: 5px; bottom: 13px; }
+    .avatar-gear.g3 { right: 9px; top: 7px; }
+    .avatar-gear.g4 { left: 9px; top: 10px; }
 
     @keyframes petBob {
       0%, 100% { transform: translateY(0); }
@@ -1377,18 +1409,18 @@
 
     .roadmap-list {
       display: grid;
-      grid-template-columns: repeat(7, minmax(92px, 1fr));
+      grid-template-columns: repeat(18, minmax(82px, 1fr));
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 2px;
     }
 
     .roadmap-item {
-      min-width: 92px;
+      min-width: 82px;
       display: grid;
       gap: 6px;
       justify-items: center;
-      padding: 10px 8px;
+      padding: 10px 7px;
       border: 1px solid #e1e8e1;
       border-radius: 12px;
       background: #fbfdf9;
@@ -1419,10 +1451,23 @@
     }
 
     .roadmap-item .pet-avatar {
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       filter: drop-shadow(0 4px 6px rgba(47, 60, 56, 0.12));
+    }
+
+    .roadmap-item .pet-avatar-img {
       animation: none;
+    }
+
+    .roadmap-item .avatar-gear {
+      width: 17px;
+      height: 17px;
+    }
+
+    .roadmap-item .avatar-gear svg {
+      width: 11px;
+      height: 11px;
     }
 
     .roadmap-lv {
@@ -1431,10 +1476,20 @@
     }
 
     .roadmap-title {
-      min-height: 32px;
+      min-height: 30px;
       font-size: 11px;
       line-height: 1.35;
       font-weight: 700;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .roadmap-growth {
+      min-height: 28px;
+      font-size: 10px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--green-dark);
       text-align: center;
       overflow-wrap: anywhere;
     }
@@ -3115,14 +3170,42 @@
 
     function petStages() {
       return [
-        { min: 1, key: "apprentice", title: "見習い読者" },
-        { min: 2, key: "cap", title: "布帽子の読者" },
-        { min: 4, key: "pack", title: "旅じたく読者" },
-        { min: 6, key: "shield", title: "本の盾使い" },
-        { min: 9, key: "sword", title: "本をひらく剣士" },
-        { min: 13, key: "cape", title: "マントの読書冒険者" },
-        { min: 18, key: "legendHero", title: "伝説の読書勇者" }
+        { min: 1, key: "apprentice", title: "見習い読者", growth: "本を持つ", imageStep: 1, gear: [] },
+        { min: 2, key: "cap", title: "布帽子の読者", growth: "帽子", imageStep: 2, gear: ["cap"] },
+        { min: 3, key: "bag", title: "旅かばん読者", growth: "バッグ", imageStep: 2, gear: ["bag"] },
+        { min: 4, key: "bookShield", title: "本の盾使い", growth: "本の盾", imageStep: 4, gear: ["shield"] },
+        { min: 5, key: "woodSword", title: "木の剣読者", growth: "木の剣", imageStep: 4, gear: ["sword"] },
+        { min: 6, key: "cape", title: "マントの読者", growth: "マント", imageStep: 4, gear: ["cape"] },
+        { min: 7, key: "bookmarkBuddy", title: "しおりの相棒", growth: "相棒", imageStep: 4, gear: ["bookmark"] },
+        { min: 8, key: "starBadge", title: "星バッジ読者", growth: "星バッジ", imageStep: 5, gear: ["star"] },
+        { min: 9, key: "map", title: "地図読み冒険者", growth: "地図", imageStep: 5, gear: ["map"] },
+        { min: 10, key: "firstFriend", title: "読書パーティ", growth: "仲間1人", imageStep: 5, gear: ["friend"] },
+        { min: 11, key: "bronzeShield", title: "銅の本盾", growth: "盾強化", imageStep: 5, gear: ["shield", "star"] },
+        { min: 12, key: "patternCape", title: "星マント読者", growth: "マント模様", imageStep: 5, gear: ["cape", "star"] },
+        { min: 13, key: "silverSword", title: "銀の剣読者", growth: "銀の剣", imageStep: 6, gear: ["sword", "star"] },
+        { min: 14, key: "glowBook", title: "光る本の読者", growth: "光る本", imageStep: 6, gear: ["spark"] },
+        { min: 15, key: "secondFriend", title: "にぎやかパーティ", growth: "仲間2人", imageStep: 6, gear: ["friend", "friend"] },
+        { min: 16, key: "featherCap", title: "羽根帽子の勇者", growth: "羽根帽子", imageStep: 6, gear: ["cap", "spark"] },
+        { min: 17, key: "starlight", title: "星あかりの勇者", growth: "星の背景", imageStep: 6, gear: ["spark", "star"] },
+        { min: 18, key: "legendHero", title: "伝説の読書勇者", growth: "完成形", imageStep: 7, gear: ["crown", "spark"] }
       ];
+    }
+
+    function avatarGearIcon(type) {
+      const icons = {
+        cap: '<path d="M3 10c3-5 9-5 12 0C11 8 7 8 3 10z" fill="#3867a7"/><path d="M3 10c4 2 9 2 13 0" fill="none" stroke="#2f2a26" stroke-width="1.5" stroke-linecap="round"/>',
+        bag: '<path d="M5 7h8l1 7H4z" fill="#c9a46a" stroke="#2f2a26" stroke-width="1.4"/><path d="M6 7c1-4 6-4 7 0" fill="none" stroke="#2f2a26" stroke-width="1.4"/>',
+        shield: '<path d="M8.5 2.8c2.6.7 4.4 2.1 5.2 4.2 0 3.8-1.8 6.5-5.2 8.2C5.1 13.5 3.3 10.8 3.3 7c.8-2.1 2.6-3.5 5.2-4.2z" fill="#f4c95d" stroke="#2f2a26" stroke-width="1.3"/>',
+        sword: '<path d="M11.8 2.5L5.6 10.3" stroke="#8a8f95" stroke-width="2" stroke-linecap="round"/><path d="M4.7 11.5l3-3" stroke="#2f2a26" stroke-width="1.5" stroke-linecap="round"/>',
+        cape: '<path d="M5 3c4 2 6 5 7 11-3-1-6-2-9-5 1-2 1-4 2-6z" fill="#b94747" stroke="#2f2a26" stroke-width="1.2"/>',
+        bookmark: '<path d="M5 2h7v13l-3.5-2.5L5 15z" fill="#e6a23c" stroke="#2f2a26" stroke-width="1.2"/>',
+        star: '<path d="M8.5 2.4l1.6 3.3 3.7.5-2.7 2.6.7 3.7-3.3-1.8-3.3 1.8.7-3.7L3.2 6.2l3.7-.5z" fill="#f4c95d" stroke="#7a5a00" stroke-width="1"/>',
+        map: '<path d="M3 5l4-1.5 4 1.5 3-1.2v9.2l-3 1.2-4-1.5L3 14z" fill="#fff3bf" stroke="#2f2a26" stroke-width="1.1"/><path d="M7 3.5v9.2M11 5v9.2" stroke="#c9a46a" stroke-width="1"/>',
+        friend: '<circle cx="6.2" cy="7" r="2.4" fill="#74c0fc" stroke="#2f2a26" stroke-width="1.1"/><circle cx="11" cy="8.2" r="2.4" fill="#ffd43b" stroke="#2f2a26" stroke-width="1.1"/>',
+        spark: '<path d="M8.5 2.5l1.1 4 4 1.1-4 1.1-1.1 4-1.1-4-4-1.1 4-1.1z" fill="#ffe066" stroke="#7a5a00" stroke-width="1"/>',
+        crown: '<path d="M3.5 12.5h10V6.2l-2.8 2.5-2.2-4-2.2 4-2.8-2.5z" fill="#f4c95d" stroke="#7a5a00" stroke-width="1.2" stroke-linejoin="round"/>'
+      };
+      return `<svg viewBox="0 0 17 17" aria-hidden="true">${icons[type] || icons.star}</svg>`;
     }
 
     function levelInfo(xp) {
@@ -3140,12 +3223,19 @@
     }
 
     function petAvatar(stage, level, gender = "") {
-      const stages = petStages();
       const lv = Math.max(1, Math.min(18, Number(level) || stage.min || 1));
-      const step = stages.reduce((current, item, index) => lv >= item.min ? index + 1 : current, 1);
+      const displayStage = petStages().reduce((current, item) => lv >= item.min ? item : current, stage);
+      const step = displayStage.imageStep || 1;
       const variant = gender === "girl" ? "girl" : "boy";
       const src = `assets/avatar/reading-hero-${variant}-${String(step).padStart(2, "0")}.png`;
-      return `<img class="pet-avatar pet-avatar-img" src="${src}" alt="${escapeHtml(stage.title)}" loading="lazy" decoding="async">`;
+      const gears = (displayStage.gear || []).slice(0, 4).map((type, index) =>
+        `<span class="avatar-gear g${index + 1}" aria-hidden="true">${avatarGearIcon(type)}</span>`
+      ).join("");
+      return `
+        <span class="pet-avatar pet-avatar-wrap" role="img" aria-label="${escapeHtml(displayStage.title)}">
+          <img class="pet-avatar-img" src="${src}" alt="" loading="lazy" decoding="async">
+          ${gears}
+        </span>`;
     }
 
     function avatarRoadmap(currentLevel, totalXp, gender) {
@@ -3167,6 +3257,7 @@
             ${petAvatar(stage, stage.min, gender)}
             <div class="roadmap-lv">Lv${stage.min}</div>
             <div class="roadmap-title">${escapeHtml(stage.title)}</div>
+            <div class="roadmap-growth">+ ${escapeHtml(stage.growth || "")}</div>
             <div class="roadmap-status">${status}</div>
           </div>`;
       }).join("");
