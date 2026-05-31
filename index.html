@@ -715,13 +715,15 @@
     }
 
     .sg-icon {
-      width: 38px;
+      min-width: 58px;
       min-height: 34px;
+      padding: 0 10px;
       border-radius: 8px;
       border: 1px solid var(--line);
       background: #fff;
       color: var(--ink);
-      font-size: 15px;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .sg-icon:hover {
@@ -1571,7 +1573,6 @@
           <p id="viewLead">推薦図書を一覧し、読んだ日・反応・メモを残します。</p>
         </div>
         <div class="toolbar">
-              <button class="ghost" id="exportButton"><span class="icon">↓</span>全員分CSV</button>
           <button class="ghost" id="scanButton"><span class="icon">📷</span>バーコード追加</button>
           <button class="primary" id="addButton"><span class="icon">＋</span>本を追加</button>
         </div>
@@ -1732,6 +1733,7 @@
             <div class="toolbar" style="justify-content:flex-start;">
               <button class="primary" id="backupExportButton"><span class="icon">↓</span>バックアップを保存</button>
               <button class="ghost" id="backupImportButton"><span class="icon">↑</span>バックアップから復元</button>
+              <button class="ghost" id="exportButton"><span class="icon">↓</span>全員分CSV</button>
               <input type="file" id="backupFileInput" accept="application/json,.json" class="hidden">
             </div>
           </div>
@@ -3038,9 +3040,6 @@
               ${book.ownership === "borrowed" ? ownershipChip(book) : ""}
               ${ratingChip(book)}
             </div>
-            <div class="stars" aria-label="反応">
-              ${[1, 2, 3, 4, 5].map((n) => `<button type="button" class="star ${n <= Number(book.rating) ? "on" : ""}" data-rate="${book.id}" data-val="${n}" aria-label="星${n}">★</button>`).join("")}
-            </div>
             <label class="buy-check ${book.ownership === "bought" ? "is-bought" : ""}">
               <input type="checkbox" data-buy="${book.id}" ${book.ownership === "bought" ? "checked" : ""}>🛒 買った
             </label>
@@ -3049,9 +3048,7 @@
             ${stageButton(book)}
             <div class="card-sub-actions">
               ${book.status === "reading" ? `<button type="button" class="edit-btn" data-stage="${book.id}" data-to="want" aria-label="本棚にもどす" title="本棚にもどす（まだ読まない）">↩</button>` : ""}
-              <button type="button" class="edit-btn" data-amazon="${book.id}" aria-label="Amazonで見る" title="Amazonで見る">🛒</button>
-              <button type="button" class="edit-btn" data-library="${book.id}" aria-label="図書館で探す" title="図書館で探す">📚</button>
-              <button type="button" class="edit-btn" data-edit="${book.id}" aria-label="詳細・編集" title="詳細・編集">✎</button>
+              <button type="button" class="edit-btn" data-edit="${book.id}">詳細</button>
             </div>
           </div>
         </article>
@@ -3458,9 +3455,7 @@
           </div>
           <div class="suggestion-actions">
             <button type="button" class="sg-go" data-stage="${book.id}" data-to="reading">読みはじめる</button>
-            <button type="button" class="sg-icon" data-amazon="${book.id}" aria-label="Amazonで買う" title="Amazonで買う">🛒</button>
-            <button type="button" class="sg-icon" data-library="${book.id}" aria-label="図書館で借りる" title="図書館で借りる">📚</button>
-            <button type="button" class="sg-icon" data-open="${book.id}" aria-label="詳細・編集" title="詳細・編集">✎</button>
+            <button type="button" class="sg-icon" data-open="${book.id}">詳細</button>
           </div>
         </article>
       `;
