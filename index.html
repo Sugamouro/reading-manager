@@ -524,6 +524,31 @@
       color: #9a6b00;
     }
 
+    .own-select {
+      width: 100%;
+      min-height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .shelf-summary {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .shelf-summary strong {
+      color: var(--ink);
+      font-size: 16px;
+    }
+
     .done-btn {
       flex: 1;
       min-height: 38px;
@@ -595,6 +620,22 @@
     .chip.own-borrowed {
       background: #e7f0ff;
       color: #2f5fb3;
+    }
+
+    .chip.own-home {
+      background: #fff4e0;
+      color: #9a6b00;
+    }
+
+    .chip.own-returned {
+      background: #f1f3f5;
+      color: #5c636a;
+    }
+
+    .chip.own-want-buy,
+    .chip.own-want-borrow {
+      background: #f3f0ff;
+      color: #5f3dc4;
     }
 
     .chip.rating-chip {
@@ -1845,6 +1886,7 @@
 
       <nav class="nav" aria-label="画面切り替え">
         <button class="active" data-view="library"><span class="icon">□</span><span>本棚（さがす）</span></button>
+        <button data-view="shelf"><span class="icon">▣</span><span>手元の本棚</span></button>
         <button data-view="reading"><span class="icon">▶</span><span>いま読んでる</span></button>
         <button data-view="finished"><span class="icon">✓</span><span>読み終わった</span></button>
         <button data-view="records"><span class="icon">★</span><span>きろく</span></button>
@@ -1929,9 +1971,13 @@
           <label for="ownershipFilter">持ち物</label>
           <select id="ownershipFilter">
             <option value="">すべて</option>
-            <option value="bought">買った</option>
-            <option value="borrowed">借りた</option>
-            <option value="unset">未設定</option>
+            <option value="in-hand">手元にある</option>
+            <option value="home">家にある</option>
+            <option value="borrowed">借りている</option>
+            <option value="want-buy">買いたい</option>
+            <option value="want-borrow">図書館で借りたい</option>
+            <option value="returned">返却済み</option>
+            <option value="unset">手元にない</option>
           </select>
         </div>
       </section>
@@ -1958,6 +2004,17 @@
             <div id="quickSuggestions"></div>
           </div>
         </div>
+      </section>
+
+      <section class="panel hidden" id="shelfView">
+        <div class="panel-head">
+          <div>
+            <h3>手元の本棚</h3>
+            <p>家にある・いま借りている本だけ。今日読む本を表紙から選びます。</p>
+          </div>
+          <div class="shelf-summary" id="shelfSummary"></div>
+        </div>
+        <div class="book-list" id="shelfList"></div>
       </section>
 
       <section class="panel hidden" id="nextView">
@@ -2052,7 +2109,7 @@
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
             <div class="hint">
-              <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。買った/借りた・隠した本も引き継ぎます。</strong>
+              <strong>おすすめ図書リストを読み込み直す</strong>：最初から入っている推薦図書の一覧を入れ直します。アプリ側で本の情報を更新したときに使います。<strong>手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。手元の状態・隠した本も引き継ぎます。</strong>
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
               <button class="ghost" id="loadOcrButton"><span class="icon">⟳</span>おすすめ図書リストを読み込み直す</button>
@@ -2109,9 +2166,12 @@
               <div class="field">
                 <label for="ownershipInput">持ち物（兄弟共通）</label>
                 <select id="ownershipInput">
-                  <option value="">未設定</option>
-                  <option value="bought">買った</option>
-                  <option value="borrowed">借りた</option>
+                  <option value="">手元にない</option>
+                  <option value="home">家にある</option>
+                  <option value="borrowed">図書館で借りている</option>
+                  <option value="want-buy">買いたい</option>
+                  <option value="want-borrow">図書館で借りたい</option>
+                  <option value="returned">返却済み</option>
                 </select>
               </div>
               <div class="field">
@@ -2386,6 +2446,8 @@
       ownershipFilter: document.getElementById("ownershipFilter"),
       bookList: document.getElementById("bookList"),
       listCount: document.getElementById("listCount"),
+      shelfList: document.getElementById("shelfList"),
+      shelfSummary: document.getElementById("shelfSummary"),
       quickSuggestions: document.getElementById("quickSuggestions"),
       nextList: document.getElementById("nextList"),
       readingList: document.getElementById("readingList"),
@@ -2559,6 +2621,28 @@
       return books.filter((book) => !book.archived);
     }
 
+    function normalizeOwnershipValue(value) {
+      const raw = String(value || "").trim();
+      return {
+        bought: "home",
+        owned: "home",
+        home: "home",
+        borrowed: "borrowed",
+        returned: "returned",
+        wantBuy: "want-buy",
+        want_buy: "want-buy",
+        "want-buy": "want-buy",
+        wantBorrow: "want-borrow",
+        want_borrow: "want-borrow",
+        "want-borrow": "want-borrow"
+      }[raw] || "";
+    }
+
+    function isInHand(book) {
+      const ownership = normalizeOwnershipValue(book.ownership);
+      return ownership === "home" || ownership === "borrowed";
+    }
+
     function defaultRecord() {
       return { status: "want", rating: 0, startDate: "", readDate: "", review: "", memo: "" };
     }
@@ -2581,7 +2665,7 @@
         course: b.course || "",
         courseGrade: b.courseGrade || "",
         nextAfter: b.nextAfter || "",
-        ownership: b.ownership || "",
+        ownership: normalizeOwnershipValue(b.ownership),
         archived: !!b.archived,
         description: b.description || "",
         gRating: b.gRating || "",
@@ -2681,7 +2765,7 @@
 
     function buildBooks() {
       const rec = state.records[state.activeProfileId] || {};
-      return state.catalog.map((c) => ({ ...defaultRecord(), ...(rec[c.id] || {}), ...c }));
+      return state.catalog.map((c) => ({ ...defaultRecord(), ...(rec[c.id] || {}), ...c, ownership: normalizeOwnershipValue(c.ownership) }));
     }
 
     function touchState() {
@@ -2841,7 +2925,7 @@
       if (!oldBook) return freshBook;
       return {
         ...freshBook,
-        ownership: oldBook.ownership || "",
+        ownership: normalizeOwnershipValue(oldBook.ownership),
         archived: !!oldBook.archived,
         nextAfter: oldBook.nextAfter || "",
         description: oldBook.description || freshBook.description || "",
@@ -3037,6 +3121,7 @@
       });
 
       document.getElementById("libraryView").classList.toggle("hidden", view !== "library");
+      document.getElementById("shelfView").classList.toggle("hidden", view !== "shelf");
       document.getElementById("readingView").classList.toggle("hidden", view !== "reading");
       document.getElementById("finishedView").classList.toggle("hidden", view !== "finished");
       document.getElementById("recordsView").classList.toggle("hidden", view !== "records");
@@ -3046,8 +3131,9 @@
       document.getElementById("libraryFilters").classList.toggle("hidden", view !== "library");
 
       const copy = {
-        library: ["本棚（さがす）", "推薦図書から読みたい本を選びます。「読みはじめる」で手元に移ります。"],
-        reading: ["いま読んでる", "手元にある本です。読み終わったらボタンで棚に移します。"],
+        library: ["本棚（さがす）", "推薦図書の地図です。家にある・借りている本は「手元の本棚」に並びます。"],
+        shelf: ["手元の本棚", "家にある・図書館で借りている本だけ。今日読む本を表紙から選びます。"],
+        reading: ["いま読んでる", "読み始めた本です。読み終わったらボタンで記録に移します。"],
         finished: ["読み終わった", "読み終わった本に、あとから期間と感想を書き残せます。"],
         records: ["きろく", "読んだ数とごほうびバッジ。お子さんのやる気アップに。"],
         next: ["次の候補", "今の好みと読書の順番から、次に合いそうな本を見ます。"],
@@ -3066,6 +3152,8 @@
         renderTagFilter();
         renderLibrary();
         renderSuggestions();
+      } else if (activeView === "shelf") {
+        renderShelf();
       } else if (activeView === "reading") {
         renderReading();
       } else if (activeView === "finished") {
@@ -3133,6 +3221,28 @@
       }
     }
 
+    function renderShelf() {
+      const hand = visibleBooks()
+        .filter((book) => isInHand(book))
+        .sort((a, b) =>
+          (a.status === "done") - (b.status === "done")
+          || (normalizeOwnershipValue(a.ownership) === "borrowed" ? 0 : 1) - (normalizeOwnershipValue(b.ownership) === "borrowed" ? 0 : 1)
+          || statusWeight(a.status) - statusWeight(b.status)
+          || Number(a.level) - Number(b.level)
+          || a.title.localeCompare(b.title, "ja"));
+      const borrowed = hand.filter((book) => normalizeOwnershipValue(book.ownership) === "borrowed").length;
+      const home = hand.filter((book) => normalizeOwnershipValue(book.ownership) === "home").length;
+      els.shelfSummary.innerHTML = hand.length
+        ? `<span><strong>${hand.length}</strong>冊</span><span>家 ${home}</span><span>借りている ${borrowed}</span>`
+        : "";
+      if (!hand.length) {
+        els.shelfList.innerHTML = '<div class="empty">まだ手元の本がありません。本棚（さがす）で「家にある」か「借りている」にすると、ここに並びます。</div>';
+        return;
+      }
+      els.shelfList.innerHTML = hand.map((book) => bookCard(book)).join("");
+      wireCardHandlers(els.shelfList);
+    }
+
     function wireCardHandlers(container) {
       container.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openModal(b.dataset.edit)));
       container.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => openModal(b.dataset.open)));
@@ -3140,7 +3250,7 @@
       container.querySelectorAll("[data-library]").forEach((b) => b.addEventListener("click", () => openLibrary(b.dataset.library)));
       container.querySelectorAll("[data-stage]").forEach((b) => b.addEventListener("click", () => setStage(b.dataset.stage, b.dataset.to)));
       container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
-      container.querySelectorAll("[data-buy]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.buy, b.checked ? "bought" : "")));
+      container.querySelectorAll("[data-own]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.own, b.value)));
     }
 
     function renderReading() {
@@ -3168,8 +3278,10 @@
         if (status && book.status !== status) return false;
         if (level && String(book.level) !== level) return false;
         if (tag && !(book.tags || []).includes(tag)) return false;
-        if (own === "unset" && book.ownership) return false;
-        if (own && own !== "unset" && book.ownership !== own) return false;
+        const bookOwnership = normalizeOwnershipValue(book.ownership);
+        if (own === "in-hand" && !isInHand(book)) return false;
+        if (own === "unset" && bookOwnership) return false;
+        if (own && own !== "unset" && own !== "in-hand" && bookOwnership !== own) return false;
         return true;
       }).sort((a, b) =>
         (a.status === "done") - (b.status === "done")
@@ -3397,12 +3509,10 @@
             <div class="card-meta">
               <span class="genre-chip">${genreEmoji(book.category)} ${escapeHtml(book.category || "物語")}</span>
               ${gradeChip(book)}
-              ${book.ownership === "borrowed" ? ownershipChip(book) : ""}
+              ${ownershipChip(book)}
               ${ratingChip(book)}
             </div>
-            <label class="buy-check ${book.ownership === "bought" ? "is-bought" : ""}">
-              <input type="checkbox" data-buy="${book.id}" ${book.ownership === "bought" ? "checked" : ""}>🛒 買った
-            </label>
+            ${ownershipSelect(book)}
           </div>
           <div class="card-actions">
             ${stageButton(book)}
@@ -3608,11 +3718,7 @@
             <div class="fin-dates">
               <label class="fin-date">読み始め<input type="date" data-field="startDate" data-book="${book.id}" value="${escapeHtml(book.startDate || "")}"></label>
               <label class="fin-date">読み終わり<input type="date" data-field="readDate" data-book="${book.id}" value="${escapeHtml(book.readDate || "")}"></label>
-              <label class="fin-date">持ち物（兄弟共通）<select data-own="${book.id}">
-                <option value=""${book.ownership ? "" : " selected"}>未設定</option>
-                <option value="bought"${book.ownership === "bought" ? " selected" : ""}>買った</option>
-                <option value="borrowed"${book.ownership === "borrowed" ? " selected" : ""}>借りた</option>
-              </select></label>
+              <label class="fin-date">手元の状態${ownershipSelect(book)}</label>
             </div>
             <label class="fin-review">感想<textarea data-field="review" data-book="${book.id}" placeholder="おもしろかったところ、印象に残った場面など">${escapeHtml(book.review || "")}</textarea></label>
           </div>
@@ -3652,7 +3758,7 @@
     function setOwnership(id, value) {
       const book = books.find((item) => item.id === id);
       if (!book) return;
-      book.ownership = value;
+      book.ownership = normalizeOwnershipValue(value);
       persist();
       render();
     }
@@ -3685,12 +3791,37 @@
     }
 
     function ownershipLabel(value) {
-      return { bought: "買った", borrowed: "借りた" }[value] || "";
+      return {
+        home: "家にある",
+        borrowed: "借りている",
+        returned: "返却済み",
+        "want-buy": "買いたい",
+        "want-borrow": "借りたい"
+      }[normalizeOwnershipValue(value)] || "";
+    }
+
+    function ownershipSelect(book) {
+      const current = normalizeOwnershipValue(book.ownership);
+      const options = [
+        ["", "手元にない"],
+        ["home", "家にある"],
+        ["borrowed", "借りている"],
+        ["want-buy", "買いたい"],
+        ["want-borrow", "図書館で借りたい"],
+        ["returned", "返却済み"]
+      ];
+      return `<select class="own-select" data-own="${book.id}" aria-label="手元の状態">${options.map(([value, label]) =>
+        `<option value="${value}"${current === value ? " selected" : ""}>${label}</option>`
+      ).join("")}</select>`;
     }
 
     function ownershipChip(book) {
-      if (book.ownership === "bought") return `<span class="chip own-chip own-bought">🛒 買った</span>`;
-      if (book.ownership === "borrowed") return `<span class="chip own-chip own-borrowed">📚 借りた</span>`;
+      const ownership = normalizeOwnershipValue(book.ownership);
+      if (ownership === "home") return `<span class="chip own-chip own-home">🏠 家にある</span>`;
+      if (ownership === "borrowed") return `<span class="chip own-chip own-borrowed">📚 借りている</span>`;
+      if (ownership === "returned") return `<span class="chip own-chip own-returned">↩ 返却済み</span>`;
+      if (ownership === "want-buy") return `<span class="chip own-chip own-want-buy">🛒 買いたい</span>`;
+      if (ownership === "want-borrow") return `<span class="chip own-chip own-want-borrow">🏛 借りたい</span>`;
       return "";
     }
 
@@ -3960,7 +4091,7 @@
       document.getElementById("categoryInput").value = book?.category || "";
       document.getElementById("publisherInput").value = book?.publisher || "";
       document.getElementById("isbnInput").value = book?.isbn || "";
-      document.getElementById("ownershipInput").value = book?.ownership || "";
+      document.getElementById("ownershipInput").value = normalizeOwnershipValue(book?.ownership);
       document.getElementById("levelInput").value = book?.level || "3";
       document.getElementById("statusInput").value = book?.status || "want";
       document.getElementById("startDateInput").value = book?.startDate || "";
@@ -4043,7 +4174,7 @@
         category: document.getElementById("categoryInput").value.trim(),
         publisher: document.getElementById("publisherInput").value.trim(),
         isbn: document.getElementById("isbnInput").value.trim(),
-        ownership: document.getElementById("ownershipInput").value,
+        ownership: normalizeOwnershipValue(document.getElementById("ownershipInput").value),
         level: Number(document.getElementById("levelInput").value),
         status: document.getElementById("statusInput").value,
         startDate: document.getElementById("startDateInput").value,
@@ -4109,7 +4240,7 @@
     function loadRecommendedBooks() {
       const fresh = initialCatalog().filter((c) => String(c.id).startsWith("ocr-"));
       if (!fresh.length) return;
-      if (!confirm(`おすすめ図書リスト（${fresh.length}冊）を読み込み直します。\n手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。\n買った/借りた・隠した本も引き継ぎます。\n\n読み込み直しますか？`)) return;
+      if (!confirm(`おすすめ図書リスト（${fresh.length}冊）を読み込み直します。\n手で追加した本と、各お子さんの記録（読んだ・評価・感想）は残ります。\n手元の状態・隠した本も引き継ぎます。\n\n読み込み直しますか？`)) return;
       const maps = catalogLookupMaps(state.catalog);
       const idMap = new Map();
       const refreshed = fresh.map((c) => {
