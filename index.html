@@ -799,6 +799,47 @@
       border-top: 1px solid var(--line);
     }
 
+    .quick-record-modal {
+      width: min(520px, 100%);
+    }
+
+    .quick-record-book {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcf9;
+      font-weight: 800;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .quick-record-stars {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quick-record-stars .star {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 25px;
+    }
+
+    .quick-record-stars .star.on {
+      border-color: #d6a900;
+      background: #fff7d8;
+      box-shadow: 0 5px 14px rgba(214, 169, 0, 0.16);
+    }
+
+    .quick-record-note {
+      min-height: 96px;
+    }
+
     .import-box {
       display: grid;
       gap: 12px;
@@ -2170,6 +2211,36 @@
     </div>
   </div>
 
+  <div class="drawer" id="quickRecordDrawer" role="dialog" aria-modal="true" aria-labelledby="quickRecordModalTitle">
+    <div class="modal quick-record-modal">
+      <div class="modal-head">
+        <h3 id="quickRecordModalTitle">よみおわりメモ</h3>
+        <button class="icon-button" id="quickRecordClose" aria-label="閉じる">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="quick-record-book" id="quickRecordTitle"></div>
+        <div class="field">
+          <label>どれくらい好きだった？</label>
+          <div class="quick-record-stars" id="quickRecordStars" aria-label="反応を星で記録">
+            <button type="button" class="star" data-quick-rate="1" aria-label="星1">★</button>
+            <button type="button" class="star" data-quick-rate="2" aria-label="星2">★</button>
+            <button type="button" class="star" data-quick-rate="3" aria-label="星3">★</button>
+            <button type="button" class="star" data-quick-rate="4" aria-label="星4">★</button>
+            <button type="button" class="star" data-quick-rate="5" aria-label="星5">★</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="quickRecordReview">ひとこと</label>
+          <textarea id="quickRecordReview" class="quick-record-note" placeholder="おもしろかったところ、すきな場面など"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="ghost" id="quickRecordLater">あとで</button>
+        <button type="button" class="primary" id="quickRecordSave"><span class="icon">✓</span>保存</button>
+      </div>
+    </div>
+  </div>
+
   <div class="drawer" id="profileDrawer" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
     <div class="modal">
       <div class="modal-head">
@@ -2297,6 +2368,8 @@
     let activeView = "library";
     const LIBRARY_PAGE_SIZE = 80;
     let libraryLimit = LIBRARY_PAGE_SIZE;
+    let quickRecordBookId = "";
+    let quickRecordRating = 0;
 
     const els = {
       viewTitle: document.getElementById("viewTitle"),
@@ -2322,6 +2395,10 @@
       scanDrawer: document.getElementById("scanDrawer"),
       trendList: document.getElementById("trendList"),
       drawer: document.getElementById("drawer"),
+      quickRecordDrawer: document.getElementById("quickRecordDrawer"),
+      quickRecordTitle: document.getElementById("quickRecordTitle"),
+      quickRecordReview: document.getElementById("quickRecordReview"),
+      quickRecordStars: document.getElementById("quickRecordStars"),
       bookForm: document.getElementById("bookForm"),
       hideButton: document.getElementById("hideButton"),
       importText: document.getElementById("importText"),
@@ -2391,6 +2468,19 @@
     document.getElementById("reviewButton").addEventListener("click", openReviewForModal);
     els.drawer.addEventListener("click", (event) => {
       if (event.target === els.drawer) closeModal();
+    });
+    document.getElementById("quickRecordClose").addEventListener("click", closeQuickRecord);
+    document.getElementById("quickRecordLater").addEventListener("click", closeQuickRecord);
+    document.getElementById("quickRecordSave").addEventListener("click", saveQuickRecord);
+    els.quickRecordStars.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-quick-rate]");
+      if (!button) return;
+      const next = Number(button.dataset.quickRate);
+      quickRecordRating = quickRecordRating === next ? 0 : next;
+      renderQuickRecordStars();
+    });
+    els.quickRecordDrawer.addEventListener("click", (event) => {
+      if (event.target === els.quickRecordDrawer) closeQuickRecord();
     });
 
     els.profileManage.addEventListener("click", openProfileDrawer);
@@ -3112,6 +3202,7 @@
       persist();
       if (to === "done") celebrateFinish(before);
       render();
+      if (to === "done") setTimeout(() => openQuickRecord(book.id), 2300);
     }
 
     // ===== モチベーション（レベル・連続・目標・お祝い）=====
@@ -3898,6 +3989,45 @@
     function closeModal() {
       els.drawer.classList.remove("open");
       els.bookForm.reset();
+    }
+
+    function openQuickRecord(id) {
+      const book = books.find((item) => item.id === id);
+      if (!book || book.status !== "done") return;
+      quickRecordBookId = id;
+      quickRecordRating = Number(book.rating) || 0;
+      els.quickRecordTitle.textContent = book.title;
+      els.quickRecordReview.value = book.review || "";
+      renderQuickRecordStars();
+      els.quickRecordDrawer.classList.add("open");
+      setTimeout(() => els.quickRecordReview.focus(), 0);
+    }
+
+    function closeQuickRecord() {
+      els.quickRecordDrawer.classList.remove("open");
+      quickRecordBookId = "";
+      quickRecordRating = 0;
+      els.quickRecordReview.value = "";
+      renderQuickRecordStars();
+    }
+
+    function renderQuickRecordStars() {
+      els.quickRecordStars.querySelectorAll("[data-quick-rate]").forEach((button) => {
+        button.classList.toggle("on", Number(button.dataset.quickRate) <= quickRecordRating);
+      });
+    }
+
+    function saveQuickRecord() {
+      const book = books.find((item) => item.id === quickRecordBookId);
+      if (!book) {
+        closeQuickRecord();
+        return;
+      }
+      book.rating = quickRecordRating;
+      book.review = els.quickRecordReview.value.trim();
+      persist();
+      closeQuickRecord();
+      render();
     }
 
     function saveFromForm(event) {
