@@ -612,6 +612,15 @@
     .today-actions button {
       min-height: 36px;
       border-radius: 10px;
+      padding-inline: 12px;
+    }
+
+    .today-actions .primary {
+      flex: 1 1 92px;
+    }
+
+    .today-actions .ghost {
+      flex: 0 1 auto;
     }
 
     @media (max-width: 520px) {
@@ -3522,9 +3531,9 @@
             <div class="today-title">${escapeHtml(book.title)}</div>
             <div class="today-reason">${escapeHtml(pick.reason)}</div>
             <div class="today-actions">
-              ${book.status === "reading"
-                ? `<button type="button" class="primary" data-stage="${book.id}" data-to="done">読み終わった！</button>`
-                : `<button type="button" class="primary" data-stage="${book.id}" data-to="reading">これを読む</button>`}
+              <button type="button" class="primary" data-today-progress="${book.id}" data-result="done">読めた！</button>
+              <button type="button" class="ghost" data-today-progress="${book.id}" data-result="partial">途中まで</button>
+              <button type="button" class="ghost" data-today-skip="${book.id}">別の本</button>
               <button type="button" class="ghost" data-open="${book.id}">詳細</button>
             </div>
           </div>
@@ -3533,11 +3542,19 @@
     }
 
     function pickTodayBook(handBooks) {
-      const candidates = handBooks.filter((book) => book.status !== "done");
+      const baseCandidates = handBooks.filter((book) => book.status !== "done");
+      if (!baseCandidates.length) return null;
+      const skipped = new Set(todayPickState().skipped);
+      const candidates = baseCandidates.filter((book) => !skipped.has(book.id));
+      if (!candidates.length) return scoreTodayBooks(baseCandidates)[0] || null;
+      return scoreTodayBooks(candidates)[0] || null;
+    }
+
+    function scoreTodayBooks(candidates) {
       if (!candidates.length) return null;
       const gi = activeGradeInfo();
       const tagScores = Object.fromEntries(getTagScores().map((entry) => [entry.tag, entry.score]));
-      const scored = candidates.map((book) => {
+      return candidates.map((book) => {
         let score = 20;
         const reasons = [];
         if (book.status === "reading") {
@@ -3568,7 +3585,40 @@
         if (book.status === "want") score += 5;
         return { book, score, reason: reasons.slice(0, 2).join("。") || "手元にあって始めやすい本です" };
       }).sort((a, b) => b.score - a.score || Number(a.book.level) - Number(b.book.level) || a.book.title.localeCompare(b.book.title, "ja"));
-      return scored[0];
+    }
+
+    function todayPickState() {
+      if (!state.meta || typeof state.meta !== "object") state.meta = {};
+      if (!state.meta.todayPick || typeof state.meta.todayPick !== "object") state.meta.todayPick = {};
+      const profileId = state.activeProfileId || "default";
+      const today = todayStr();
+      const current = state.meta.todayPick[profileId];
+      if (!current || current.date !== today || !Array.isArray(current.skipped)) {
+        state.meta.todayPick[profileId] = { date: today, skipped: [] };
+      }
+      return state.meta.todayPick[profileId];
+    }
+
+    function skipTodayBook(id) {
+      const todayPick = todayPickState();
+      if (!todayPick.skipped.includes(id)) todayPick.skipped.push(id);
+      saveState();
+      renderShelf();
+    }
+
+    function recordTodayProgress(id, result) {
+      if (result === "done") {
+        setStage(id, "done");
+        return;
+      }
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.status = "reading";
+      if (!book.startDate) book.startDate = todayStr();
+      addReadingDayToday();
+      persist();
+      render();
+      celebrate("📖 途中まで読んだよ！");
     }
 
     function quickShelfRow(book) {
@@ -3603,6 +3653,8 @@
       container.querySelectorAll("[data-amazon]").forEach((b) => b.addEventListener("click", () => openAmazon(b.dataset.amazon)));
       container.querySelectorAll("[data-library]").forEach((b) => b.addEventListener("click", () => openLibrary(b.dataset.library)));
       container.querySelectorAll("[data-stage]").forEach((b) => b.addEventListener("click", () => setStage(b.dataset.stage, b.dataset.to)));
+      container.querySelectorAll("[data-today-progress]").forEach((b) => b.addEventListener("click", () => recordTodayProgress(b.dataset.todayProgress, b.dataset.result)));
+      container.querySelectorAll("[data-today-skip]").forEach((b) => b.addEventListener("click", () => skipTodayBook(b.dataset.todaySkip)));
       container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
       container.querySelectorAll("[data-own]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.own, b.value)));
       container.querySelectorAll("[data-due]").forEach((b) => b.addEventListener("change", () => setDueDate(b.dataset.due, b.value)));
