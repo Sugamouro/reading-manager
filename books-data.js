@@ -60,7 +60,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/426590906X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "モチモチの木(創作絵本:6",
     "source_page": "01-left-04",
     "course": "E",
@@ -203,7 +203,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4875767099.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "水仙月の四日(宮沢賢治絵童話集:9",
     "source_page": "01-left-12",
     "course": "E",
@@ -254,7 +254,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4890139435.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "01-left-15",
     "course": "E",
@@ -361,7 +361,7 @@ window.recommendedBooksData = [
       "たべもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834009815.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "法使いのチョコレート・ケーキマーガレット・マーヒーお話集",
     "source_page": "01-right-01",
     "course": "D",
@@ -378,7 +378,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4102044019.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "EE",
     "source_page": "01-right-02",
     "course": "D",
@@ -395,7 +395,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001155796.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "01-right-03",
     "course": "D",
@@ -413,7 +413,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001083.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "!くまのパディントン(世界傑作童話シリーズ)",
     "source_page": "01-right-04",
     "course": "D",
@@ -447,7 +447,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035508500.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "#雨ややりはすべり台の下で(僅成社文庫)",
     "source_page": "01-right-06",
     "course": "D",
@@ -482,7 +482,7 @@ window.recommendedBooksData = [
       "戦争・平和"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4894232316.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "っう",
     "source_page": "01-right-08",
     "course": "D",
@@ -552,7 +552,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4494019429.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "は",
     "source_page": "01-right-12",
     "course": "D",
@@ -588,7 +588,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/456601245X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "子プクシープピッグ(評論社の児童図書館・文学の部屋)",
     "source_page": "01-right-14",
     "course": "D",
@@ -727,7 +727,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4580814711.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "新ちゃんがないた!(文研じゅべにーる)",
     "source_page": "02-left-02",
     "course": "D",
@@ -745,7 +745,7 @@ window.recommendedBooksData = [
       "友だち"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://www.akaneshobo.co.jp/data/book_imgs_250/9784251063618.jpg",
     "ocr_title": "モグラ原っぱのなかまたち(創作児童文学選:8)",
     "source_page": "02-left-03",
     "course": "D",
@@ -762,7 +762,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061335057.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ルドルフとイッパイアッテナ(児童文学創作シリーズ)",
     "source_page": "02-left-04",
     "course": "D",
@@ -779,7 +779,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/404631382X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "きまぐれロボット(角川つばさ文庫BIZ1-3)",
     "source_page": "02-left-05",
     "course": "D",
@@ -989,7 +989,7 @@ window.recommendedBooksData = [
       "わらい"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4774307742.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "Loなクモ",
     "source_page": "02-left-17",
     "course": "D",
@@ -1006,7 +1006,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4163672303.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "02-left-18",
     "course": "D",
@@ -1040,7 +1040,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4323071434.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "そいつの名前はエメラルド",
     "source_page": "02-left-20",
     "course": "D",
@@ -1076,7 +1076,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035301604.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "学校ウソサギをつかまえろ(創作こどもクラブ)",
     "source_page": "02-right-02",
     "course": "E",
@@ -1247,7 +1247,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378022109.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "新聞をつくろう(さ・え・ら図書館)",
     "source_page": "02-right-12",
     "course": "E",
@@ -1282,7 +1282,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834026493.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "みらくるミルク(たくさんのふしぎ傑作集)",
     "source_page": "02-right-14",
     "course": "E",
@@ -1386,7 +1386,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4032014302.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "よかったねネッドくん改訂版",
     "source_page": "02-right-20",
     "course": "E",
@@ -1404,7 +1404,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4052051947.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どっちがどっち!?:にたものずかん新装版(学研の図鑑LIVE.どうぶつプブック",
     "source_page": "03-left-01",
     "course": "E",
@@ -1438,7 +1438,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4477020953.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "てんぷらぴりぴり(子ども図書館)",
     "source_page": "03-left-03",
     "course": "E",
@@ -1455,7 +1455,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4877862633.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "げんげと星(ジュニアポエムシリーズ:20)",
     "source_page": "03-left-04",
     "course": "E",
@@ -1472,7 +1472,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4572004668.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "しゃべる詩あそぶ詩きこえる詩",
     "source_page": "03-left-05",
     "course": "E",
@@ -1541,7 +1541,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4494006076.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ダンプえんちょうやっつけた(絵本・ぼくたちこどもだ)",
     "source_page": "03-left-09",
     "course": "E",
@@ -1558,7 +1558,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/406261152X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "[accestomm",
     "source_page": "03-left-10",
     "course": "E",
@@ -1730,7 +1730,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251038215.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "なん者ひなた丸ねことんの術の巻(なん者・にん者・ぬん者:1)",
     "source_page": "03-left-20",
     "course": "E",
@@ -1781,7 +1781,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4477020961.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "マヤの一生(子ども図書館)",
     "source_page": "03-right-03",
     "course": "D",
@@ -1798,7 +1798,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001687.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "アデシoクリスマメ",
     "source_page": "03-right-04",
     "course": "D",
@@ -1868,7 +1868,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4580823761.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "うそつきタケちゃん(文研ブアックランド)",
     "source_page": "03-right-08",
     "course": "D",
@@ -1974,7 +1974,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035507709.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "先生のつうしんぼ(僅成社文庫)",
     "source_page": "03-right-14",
     "course": "D",
@@ -2008,7 +2008,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/432307316X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "!",
     "source_page": "03-right-16",
     "course": "D",
@@ -2077,7 +2077,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4052049128.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "自由への道:奴解放に命をかけたLybhOMS(ヒューマン/ンフィクション)",
     "source_page": "03-right-20",
     "course": "D",
@@ -2111,7 +2111,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061190962.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "クレヨン王国の十二か月(児童文学創作シリーズ)",
     "source_page": "04-left-02",
     "course": "D",
@@ -2163,7 +2163,7 @@ window.recommendedBooksData = [
       "友だち"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/406133509X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ルドルフともだちひとりだち続:ルドルフとイッパイアッテナ(児童文学創作シリーズ)",
     "source_page": "04-left-05",
     "course": "D",
@@ -2214,7 +2214,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4046314060.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "手足のないチアリーダー(角川つばさ文庫:Dさ2-1)",
     "source_page": "04-left-08",
     "course": "D",
@@ -2299,7 +2299,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/441821822X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "04-left-13",
     "course": "D",
@@ -2317,7 +2317,7 @@ window.recommendedBooksData = [
       "戦争・平和"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834012654.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "絵で読む広島の原爆(かがくのほん)",
     "source_page": "04-left-14",
     "course": "D",
@@ -2334,7 +2334,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4580824067.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ぼくとキキとアトリエで(文ブックランド)",
     "source_page": "04-left-15",
     "course": "D",
@@ -2422,7 +2422,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/483401410X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "バレエをおどりたかった馬",
     "source_page": "04-left-20",
     "course": "D",
@@ -2491,7 +2491,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4082740201.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ファーブル昆虫記(子どものための世界文学の森20)",
     "source_page": "04-right-04",
     "course": "E",
@@ -2680,7 +2680,7 @@ window.recommendedBooksData = [
       "ミステリー"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4040677064.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "サッカク探偵団あやかし月夜の宝石どろぼう",
     "source_page": "04-right-15",
     "course": "E",
@@ -2785,7 +2785,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001679.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ツさんのおきャくき",
     "source_page": "05-left-01",
     "course": "E",
@@ -2802,7 +2802,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4774317489.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ヤマトシジミの食卓",
     "source_page": "05-left-02",
     "course": "E",
@@ -2819,7 +2819,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035282103.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "旅のはじまり(黒ねこサンゴロウ:1)",
     "source_page": "05-left-03",
     "course": "E",
@@ -2838,7 +2838,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4569782531.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "願いがかなうふしぎな日記",
     "source_page": "05-left-04",
     "course": "E",
@@ -2855,7 +2855,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4092893086.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "05-left-05",
     "course": "E",
@@ -2925,7 +2925,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035401005.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1花豆の煮えるまで:小夜の物語(倍成社ワンダーランド:10)",
     "source_page": "05-left-09",
     "course": "E",
@@ -3013,7 +3013,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591088774.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "まつの花(ポプラポケット文庫:031-1)",
     "source_page": "05-left-14",
     "course": "E",
@@ -3064,7 +3064,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4082740368.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "名犬ラッシ(子どものための世界文学の森:36)",
     "source_page": "05-left-17",
     "course": "E",
@@ -3116,7 +3116,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4034391502.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ガラスのうま",
     "source_page": "05-left-20",
     "course": "E",
@@ -3169,7 +3169,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403634840X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "[Roxm:自然がぼくにくれたもの",
     "source_page": "05-right-03",
     "course": "D",
@@ -3241,7 +3241,7 @@ window.recommendedBooksData = [
       "ミステリー"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035503509.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "少年探偵プラウン.1(僅成社文庫)",
     "source_page": "05-right-07",
     "course": "D",
@@ -3330,7 +3330,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001792.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "2",
     "source_page": "05-right-12",
     "course": "D",
@@ -3348,7 +3348,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834022587.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "05-right-13",
     "course": "D",
@@ -3366,7 +3366,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834084345.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "アリになった数学者(たくさんのふしぎ傑作集)",
     "source_page": "05-right-14",
     "course": "D",
@@ -3435,7 +3435,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036508407.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "グリム童話集.1(偕成社文庫)",
     "source_page": "05-right-18",
     "course": "D",
@@ -3486,7 +3486,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036394606.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "びりっかすの神さま(倍成社文庫)",
     "source_page": "06-left-01",
     "course": "C",
@@ -3503,7 +3503,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4003751310.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "星の王子さま(岩波文庫:37-516-1)",
     "source_page": "06-left-02",
     "course": "C",
@@ -3538,7 +3538,7 @@ window.recommendedBooksData = [
       "たべもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591088553.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "注文の多い料理店(ポプラポケット文庫:351-1)",
     "source_page": "06-left-04",
     "course": "C",
@@ -3555,7 +3555,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403650620X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "大人造じいさんとガン(成社文庫3062)",
     "source_page": "06-left-05",
     "course": "C",
@@ -3591,7 +3591,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035409103.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "なくしてしまった法の時間(安房直子コレクション:1)",
     "source_page": "06-left-07",
     "course": "C",
@@ -3645,7 +3645,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001150565.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1ふたりのロッテ(ケストナー少年文学全集",
     "source_page": "06-left-10",
     "course": "C",
@@ -3662,7 +3662,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4406056513.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "06-left-11",
     "course": "C",
@@ -3735,7 +3735,7 @@ window.recommendedBooksData = [
       "たべもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/465200611X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ふしぎな木の実の料理法(こそあどの森の物語)",
     "source_page": "06-left-15",
     "course": "C",
@@ -3788,7 +3788,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001140217.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1ドリトル先生アフリカゆき新版上(岩波少年文庫)",
     "source_page": "06-left-18",
     "course": "C",
@@ -3823,7 +3823,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4065360986.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ムーミン谷の彗星RRR",
     "source_page": "06-left-20",
     "course": "C",
@@ -3893,7 +3893,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002985.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "もりのへなそうる",
     "source_page": "06-right-04",
     "course": "F",
@@ -3931,7 +3931,7 @@ window.recommendedBooksData = [
       "たべもの"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378038293.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "卵のひみつ:たのしい料理と実験(やさしい科学)",
     "source_page": "06-right-06",
     "course": "F",
@@ -3949,7 +3949,7 @@ window.recommendedBooksData = [
       "たべもの"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4652070977.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "王さまレストラン(フォア文庫:A087)",
     "source_page": "06-right-07",
     "course": "F",
@@ -3966,7 +3966,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4652070373.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "王さまばんざい:おしゃべりなたまごやき(フォア文庫)",
     "source_page": "06-right-08",
     "course": "F",
@@ -3983,7 +3983,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4039634101.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どんぐりと山猫(日本の童話名作選)",
     "source_page": "06-right-09",
     "course": "F",
@@ -4051,7 +4051,7 @@ window.recommendedBooksData = [
       "昔話・神話"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4931129846.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "07-left-03",
     "course": "F",
@@ -4105,7 +4105,7 @@ window.recommendedBooksData = [
       "詩・ことば"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4652038089.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どきん:谷川俊太郎少年詩集(詩の散歩道)",
     "source_page": "07-left-06",
     "course": "F",
@@ -4122,7 +4122,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834009483.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "木いちごつみ子どものための詩と絵の本(日本傑作絵本シリーズ)",
     "source_page": "07-left-07",
     "course": "F",
@@ -4229,7 +4229,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834007340.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ARBEIT(福音館創作童話シリーズ)",
     "source_page": "07-left-13",
     "course": "F",
@@ -4440,7 +4440,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4323070128.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "07-right-05",
     "course": "C",
@@ -4680,7 +4680,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001962.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "/ラネコの研究(たくさんのふしきぎ傑作集)",
     "source_page": "07-right-19",
     "course": "C",
@@ -4785,7 +4785,7 @@ window.recommendedBooksData = [
       "詩・ことば"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4652038062.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "しかられた神さま:川崎洋少年詩集(詩の散歩道)",
     "source_page": "08-left-05",
     "course": "C",
@@ -4892,7 +4892,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001140225.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ドリトル先生航海記改版(岩波少年文庫.ドリトル先生物語:2)",
     "source_page": "08-left-11",
     "course": "C",
@@ -5064,7 +5064,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4875767633.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "トレモスのパン屋(くもんのおもしろ文学クラブ:16)",
     "source_page": "08-right-01",
     "course": "F",
@@ -5292,7 +5292,7 @@ window.recommendedBooksData = [
       "家族"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591088782.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おかあさんの木(ポプラポケット文庫:032-1)",
     "source_page": "08-right-14",
     "course": "F",
@@ -5310,7 +5310,7 @@ window.recommendedBooksData = [
       "ミステリー"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4033451005.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "もしかしたら名探偵",
     "source_page": "08-right-15",
     "course": "F",
@@ -5395,7 +5395,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 3,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4885690501.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "エパミナンダス(おはなしのろうそく:愛蔵版:1)",
     "source_page": "08-right-20",
     "course": "F",
@@ -5413,7 +5413,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4494011045.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "チム・ラビットのぼうけん(チムとサムの本)",
     "source_page": "09-left-01",
     "course": "G",
@@ -5430,7 +5430,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591057224.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ライト兄第(おもしろくてやくにたつ子どもの伝記:4)",
     "source_page": "09-left-02",
     "course": "G",
@@ -5447,7 +5447,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591057216.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "BRAG(おもしろくてやくにたつ子どもの伝記:3)",
     "source_page": "09-left-03",
     "course": "G",
@@ -5481,7 +5481,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591057232.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ベートーベン(おもしろくてやくにたつ子どもの伝記:5)",
     "source_page": "09-left-05",
     "course": "G",
@@ -5515,7 +5515,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591057208.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "マザー・テレサ(おもしろくてやくにたつ子どもの伝記:2)",
     "source_page": "09-left-07",
     "course": "G",
@@ -5550,7 +5550,7 @@ window.recommendedBooksData = [
       "宇宙・星"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036512404.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "銀河鉄道の夜:宮沢賢治童話集(代社文庫)",
     "source_page": "09-left-09",
     "course": "G",
@@ -5810,7 +5810,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/483400810X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "2",
     "source_page": "09-right-14",
     "course": "C",
@@ -5828,7 +5828,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/483401195X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "oe",
     "source_page": "09-right-15",
     "course": "C",
@@ -5865,7 +5865,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062832453.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "09-right-17",
     "course": "C",
@@ -5934,7 +5934,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378038358.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ダイズ・大豆(やさしい科学)",
     "source_page": "10-left-01",
     "course": "C",
@@ -5952,7 +5952,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378038595.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "カルメ焼きはなぜふくらむ二酸化炭素の実験(やさしい科学)",
     "source_page": "10-left-02",
     "course": "C",
@@ -5970,7 +5970,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378038633.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ポップコーンの科学ふくらむなぞに挑戦(やさしい科学)",
     "source_page": "10-left-03",
     "course": "C",
@@ -5988,7 +5988,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/483408552X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "わたしたちのカメムシずかんやっかいものが宝ものになった話(たくさんのふしぎ傑作集)",
     "source_page": "10-left-04",
     "course": "C",
@@ -6006,7 +6006,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4378038773.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "光と見え方実験(やさしい科学)",
     "source_page": "10-left-05",
     "course": "C",
@@ -6131,7 +6131,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062069660.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "10-left-12",
     "course": "C",
@@ -6149,7 +6149,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002632.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "冒険図鑑野外で生活するために",
     "source_page": "10-left-13",
     "course": "C",
@@ -6251,7 +6251,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 4,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4309260713.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "が",
     "source_page": "10-left-19",
     "course": "C",
@@ -6286,7 +6286,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4039650808.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "白樺のテープル",
     "source_page": "10-right-01",
     "course": "G",
@@ -6303,7 +6303,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834014681.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "むし歯のもんだい(福音館のかがくのほん)",
     "source_page": "10-right-02",
     "course": "G",
@@ -6356,7 +6356,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4052016971.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どうぶつ句会",
     "source_page": "10-right-05",
     "course": "G",
@@ -6390,7 +6390,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251032721.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "さくら子とおじいさん",
     "source_page": "10-right-07",
     "course": "G",
@@ -6407,7 +6407,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4877868496.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ジャムパンみたいなお月さま(銀の小箱えほん)",
     "source_page": "10-right-08",
     "course": "G",
@@ -6496,7 +6496,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4323009429.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "きょうりゅうが学校にやってきた",
     "source_page": "10-right-13",
     "course": "G",
@@ -6513,7 +6513,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036310305.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "わたしたちのトビアス大きくなる",
     "source_page": "10-right-14",
     "course": "G",
@@ -6583,7 +6583,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4752002426.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "カマキリ(やあ!出会えたたね:2)",
     "source_page": "10-right-18",
     "course": "G",
@@ -6670,7 +6670,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/425103256X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "11-left-03",
     "course": "G",
@@ -6688,7 +6688,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251036719.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ぞくぞく村のミイラのラムさん3(ぞくぞく村のおばけシリーズ:1)",
     "source_page": "11-left-04",
     "course": "G",
@@ -6792,7 +6792,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4756253318.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "11-left-10",
     "course": "G",
@@ -6809,7 +6809,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002284.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "「ロボット・カミイ(往音館創作童話シリーズ)",
     "source_page": "11-left-11",
     "course": "G",
@@ -6826,7 +6826,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035320102.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ロッタちゃんのひっこしのどうわ傑作選:1)",
     "source_page": "11-left-12",
     "course": "G",
@@ -6843,7 +6843,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000567.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "(セロひきのゴーシュ(福音館創作童話シリーズ)",
     "source_page": "11-left-13",
     "course": "G",
@@ -6860,7 +6860,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036310208.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "わたしたちのトビアス",
     "source_page": "11-left-14",
     "course": "G",
@@ -6877,7 +6877,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000109.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "kwcwx",
     "source_page": "11-left-15",
     "course": "G",
@@ -6894,7 +6894,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001103044.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "山の上の火エチオピアのたのしいお話",
     "source_page": "11-left-16",
     "course": "G",
@@ -6911,7 +6911,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036082507.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "シブpッ",
     "source_page": "11-left-17",
     "course": "G",
@@ -7014,7 +7014,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4566012425.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "時をさまようタック図書館・文学の部屋)",
     "source_page": "11-right-03",
     "course": "B",
@@ -7082,7 +7082,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4005000568.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "聖書物語(岩波ジュニア新書)",
     "source_page": "11-right-07",
     "course": "B",
@@ -7099,7 +7099,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4406032118.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "紅玉",
     "source_page": "11-right-08",
     "course": "B",
@@ -7133,7 +7133,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036521306.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "F(倍成社文庫)",
     "source_page": "11-right-10",
     "course": "B",
@@ -7150,7 +7150,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035503908.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ーふぶさのぶどう(成社文庫2039)",
     "source_page": "11-right-11",
     "course": "B",
@@ -7167,7 +7167,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036502107.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "CVYORE(僅成社文庫)",
     "source_page": "11-right-12",
     "course": "B",
@@ -7222,7 +7222,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834010422.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "オズの法使い(福音館古典童話シリーズ:28)",
     "source_page": "11-right-15",
     "course": "B",
@@ -7326,7 +7326,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001108178.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "たのしい川べヒキガエルの冒険",
     "source_page": "12-left-01",
     "course": "B",
@@ -7377,7 +7377,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035420905.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "*ガンジー(伝記世界を変えた人々:9)",
     "source_page": "12-left-04",
     "course": "B",
@@ -7394,7 +7394,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403542160X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "リンカンeee:指針解放を示し宣言たアメ」をリカの発し大て奴統領線制度を廃止し、民主主義の伝記世界を変えた人々:16)",
     "source_page": "12-left-05",
     "course": "B",
@@ -7412,7 +7412,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035420808.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "プライユ目の見えない人が読み書きできる\"点字\"を発明したフランス人(伝記世界を変えた人々:8)",
     "source_page": "12-left-06",
     "course": "B",
@@ -7429,7 +7429,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834027619.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "』ハッピー/ート(福音館文庫S-65)",
     "source_page": "12-left-07",
     "course": "B",
@@ -7446,7 +7446,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061475614.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "武田信玄:風林火山の旗風(講談社火の鳥伝記文庫)",
     "source_page": "12-left-08",
     "course": "B",
@@ -7497,7 +7497,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035510602.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "みどりいろの童話集 改訂版",
     "source_page": "12-left-11",
     "course": "B",
@@ -7531,7 +7531,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035421707.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ガリレオ・ガリレイがAREAS伝記世界を変えた人々:17)",
     "source_page": "12-left-13",
     "course": "B",
@@ -7583,7 +7583,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035420204.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "キング牧師(伝記世界を変えた人々:2)",
     "source_page": "12-left-16",
     "course": "B",
@@ -7600,7 +7600,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4101361215.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "そこに僕はいたamit",
     "source_page": "12-left-17",
     "course": "B",
@@ -7618,7 +7618,7 @@ window.recommendedBooksData = [
       "宇宙・星"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062145464.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "4宇軍においでよ!",
     "source_page": "12-left-18",
     "course": "B",
@@ -7721,7 +7721,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000583.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "きつねものがたり(世界傑作童話シリーズ)",
     "source_page": "12-right-04",
     "course": "H",
@@ -7739,7 +7739,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591168182.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "くまの子ウーフ 新装版(くまの子ウーフの童話集:1)",
     "source_page": "12-right-05",
     "course": "H",
@@ -7861,7 +7861,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4793370411.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おこりじぞう(新日本おはなし文庫)",
     "source_page": "13-left-02",
     "course": "H",
@@ -7879,7 +7879,7 @@ window.recommendedBooksData = [
       "ミステリー"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251037715.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かいぞくポケット.1(なぞのたから島)",
     "source_page": "13-left-03",
     "course": "H",
@@ -7913,7 +7913,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4894231913.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "[rs",
     "source_page": "13-left-05",
     "course": "H",
@@ -7932,7 +7932,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4774606650.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ぼくはおばけのおにいちゃん",
     "source_page": "13-left-06",
     "course": "H",
@@ -7966,7 +7966,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035283207.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "スズナ沼の大ナマズ(UNSWARYHE)",
     "source_page": "13-left-08",
     "course": "H",
@@ -8037,7 +8037,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062528525.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "sos",
     "source_page": "13-left-12",
     "course": "H",
@@ -8054,7 +8054,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062528703.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "13-left-13",
     "course": "H",
@@ -8071,7 +8071,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062528746.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "13-left-14",
     "course": "H",
@@ -8106,7 +8106,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4051046575.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "スプーンおばさんのぼうけん(新しい世界の童話シリーズ)",
     "source_page": "13-left-16",
     "course": "H",
@@ -8124,7 +8124,7 @@ window.recommendedBooksData = [
       "わらい"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4051046583.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "スプーンおばさんのゆかいな旅(新しい世界の童話シリーズ)",
     "source_page": "13-left-17",
     "course": "H",
@@ -8194,7 +8194,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035420603.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ワレンバーグます:(伝記スウナチスェーの世界デ大ン虐殺をの外交変えから官10た人万々:6)人のユダヤ人を救った",
     "source_page": "13-right-01",
     "course": "B",
@@ -8211,7 +8211,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4790233480.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "イクバルの間い一勇気ある少年新装版(鈴木出版の児童文学:この地球を生きる子どもたも)",
     "source_page": "13-right-02",
     "course": "B",
@@ -8262,7 +8262,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036506501.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "杜子春・くもの糸(偕成社文庫)",
     "source_page": "13-right-05",
     "course": "B",
@@ -8452,7 +8452,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4005001718.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ブッダ物語(岩波ジュニア新書:171)",
     "source_page": "13-right-16",
     "course": "B",
@@ -8624,7 +8624,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061380036.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "肥後の石エ(講談社文庫)",
     "source_page": "14-left-06",
     "course": "B",
@@ -8795,7 +8795,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591153428.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "koreyesa",
     "source_page": "14-left-16",
     "course": "B",
@@ -8812,7 +8812,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062083752.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "チョコレートのアル",
     "source_page": "14-left-17",
     "course": "B",
@@ -8851,7 +8851,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4082310010.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ファーブル昆虫記1ふしぎなスカラベ",
     "source_page": "14-left-19",
     "course": "B",
@@ -8954,7 +8954,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001151294.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ものぐさトミー(岩波の子どもの本)",
     "source_page": "14-right-05",
     "course": "H",
@@ -8972,7 +8972,7 @@ window.recommendedBooksData = [
       "家族"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4593503248.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おじいちゃんの口笛",
     "source_page": "14-right-06",
     "course": "H",
@@ -9059,7 +9059,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403528310X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "小さな山神スズナ姫(小さなスズナ)",
     "source_page": "14-right-11",
     "course": "H",
@@ -9076,7 +9076,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035110108.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "大きい1年生と小さな2年生(創作どうわ傑作選:1)",
     "source_page": "14-right-12",
     "course": "H",
@@ -9113,7 +9113,7 @@ window.recommendedBooksData = [
       "詩・ことば"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4652008694.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "なぞなぞライオン(おはなしパレード:7)",
     "source_page": "14-right-14",
     "course": "H",
@@ -9130,7 +9130,7 @@ window.recommendedBooksData = [
       "図鑑"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834004937.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "世界のあいさつ(みるずかん・かんじるずかん(銀の本))",
     "source_page": "14-right-15",
     "course": "H",
@@ -9166,7 +9166,7 @@ window.recommendedBooksData = [
       "科学・実験"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002152.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "野尻湖のぞう新版(福音館の科学の本)",
     "source_page": "14-right-17",
     "course": "H",
@@ -9183,7 +9183,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 2,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4051046508.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "小さなスプーンおばさん(新しい世界の童話)",
     "source_page": "14-right-18",
     "course": "H",
@@ -9254,7 +9254,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/426502906X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どうぶつのあしがたずかん(絵本図鑑シリーズ:6)",
     "source_page": "15-left-02",
     "course": "I",
@@ -9272,7 +9272,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4752003805.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "んたい",
     "source_page": "15-left-03",
     "course": "I",
@@ -9326,7 +9326,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4540910493.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かこさとしあそびの大惑星9そろったわになったのあそび",
     "source_page": "15-left-06",
     "course": "I",
@@ -9381,7 +9381,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001151022.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ふしぎなたいこ:にほんむかしばなし(岩波のこどもの本)",
     "source_page": "15-left-09",
     "course": "I",
@@ -9398,7 +9398,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061192337.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "モモちゃんとアカネちゃんの本(3)モモちゃんとアカネちゃん",
     "source_page": "15-left-10",
     "course": "I",
@@ -9432,7 +9432,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4338319046.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "15-right-02",
     "course": "B",
@@ -9466,7 +9466,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://img20.shop-pro.jp/PA01322/970/product/142568375.jpg?cmsp_timestamp=20190427174819",
     "ocr_title": "マチュピチュをまもるーアンデス文明5000年の知恵(月刊たくさんのふしぎ:第343号)",
     "source_page": "15-right-04",
     "course": "B",
@@ -9483,7 +9483,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002411.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "あしながおじさん(福音館古典童話シリーズ:2)",
     "source_page": "15-right-05",
     "course": "B",
@@ -9501,7 +9501,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834002446.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ピ/ッキオのぼうけん(福音館古典童話シリーズ;3)",
     "source_page": "15-right-06",
     "course": "B",
@@ -9519,7 +9519,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/483400421X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "さがしの子どもたち(福音館古典童話シリーズ:12)",
     "source_page": "15-right-07",
     "course": "B",
@@ -9536,7 +9536,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834003108.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "夢を追う子(福音館古典童話シリーズ:6)",
     "source_page": "15-right-08",
     "course": "B",
@@ -9553,7 +9553,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036515500.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "怪談:小泉八雲怪奇短編集(供成社文庫)",
     "source_page": "15-right-09",
     "course": "B",
@@ -9570,7 +9570,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036500902.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "KHOKYA(供成社文庫)",
     "source_page": "15-right-10",
     "course": "B",
@@ -9604,7 +9604,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036509705.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おじいさんのランプ:新美南吉童話集(供成社文庫)",
     "source_page": "15-right-12",
     "course": "B",
@@ -9621,7 +9621,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403650150X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "柿の木のある家(偕成社文庫)",
     "source_page": "15-right-13",
     "course": "B",
@@ -9638,7 +9638,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4036504509.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "三太物語(僅成社文庫)",
     "source_page": "15-right-14",
     "course": "B",
@@ -9672,7 +9672,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4065199727.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "14歳の水平線(講談社青い鳥文庫E1-3)",
     "source_page": "15-right-16",
     "course": "B",
@@ -9724,7 +9724,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4334722881.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ガラスの地球を救え:二十一世紀の君たちへ(光文社文庫)",
     "source_page": "15-right-19",
     "course": "B",
@@ -9758,7 +9758,7 @@ window.recommendedBooksData = [
       "昔話・神話"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4931129129.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "16-left-01",
     "course": "A",
@@ -9775,7 +9775,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://cover.openbd.jp/9784751518052.jpg",
     "ocr_title": "",
     "source_page": "16-left-02",
     "course": "A",
@@ -9809,7 +9809,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001109816.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "16-left-04",
     "course": "A",
@@ -9860,7 +9860,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834014207.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "!アラビアン・ナイト(福音館古典童話シリーズ:33)",
     "source_page": "16-left-07",
     "course": "A",
@@ -9894,7 +9894,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403850350X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "シェイクスピア物語 上",
     "source_page": "16-left-09",
     "course": "A",
@@ -9911,7 +9911,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4038503607.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "シェイクスピア物語 下",
     "source_page": "16-left-10",
     "course": "A",
@@ -9928,7 +9928,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001140861.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1ぼくがぼくでてあること[岩波少年文庫)",
     "source_page": "16-left-11",
     "course": "A",
@@ -9963,7 +9963,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4915512371.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "i",
     "source_page": "16-left-13",
     "course": "A",
@@ -10014,7 +10014,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001145081.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "古事記物語新版「(音波少年文庫)",
     "source_page": "16-left-16",
     "course": "A",
@@ -10031,7 +10031,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4087520226.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "清兵衛と筆・小僧の神様「(集英社文庫)",
     "source_page": "16-left-17",
     "course": "A",
@@ -10187,7 +10187,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061192329.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "モモちゃんとアカネちゃんの本(2)モモちゃんとプー",
     "source_page": "16-right-06",
     "course": "I",
@@ -10221,7 +10221,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4931129625.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "へんなかくれんぼ子どもの季節とあそびのうた",
     "source_page": "16-right-08",
     "course": "I",
@@ -10239,7 +10239,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591015440.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1ねん1くみ1ばんワル(こどもおはなしランド)",
     "source_page": "16-right-09",
     "course": "I",
@@ -10256,7 +10256,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834008886.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "したきりすずめ(日本傑作絵本シリーズ)",
     "source_page": "16-right-10",
     "course": "I",
@@ -10273,7 +10273,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834007693.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かちかちやま(日本傑作絵本シリーズ)",
     "source_page": "16-right-11",
     "course": "I",
@@ -10307,7 +10307,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4033032509.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "にんぎょひめ",
     "source_page": "16-right-13",
     "course": "I",
@@ -10324,7 +10324,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4033020101.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "りゅうのめのなみだ",
     "source_page": "16-right-14",
     "course": "I",
@@ -10359,7 +10359,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4034042303.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ジェインのもうふ",
     "source_page": "16-right-16",
     "course": "I",
@@ -10376,7 +10376,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001512.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "くしゃみくしゃみ天のめぐみ(福音館創作童話シリーズ)",
     "source_page": "16-right-17",
     "course": "I",
@@ -10394,7 +10394,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4931129315.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "けんた・うさぎ(子どもとお母さんのおはなし)",
     "source_page": "16-right-18",
     "course": "I",
@@ -10428,7 +10428,7 @@ window.recommendedBooksData = [
       "図鑑"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001652.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "遊び図鑑いつでもどこでもだれとでも",
     "source_page": "16-right-20",
     "course": "I",
@@ -10446,7 +10446,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834010996.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "番ねずみのヤカちゃん(界傑作童話シリーズ)",
     "source_page": "17-left-01",
     "course": "I",
@@ -10463,7 +10463,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061192310.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ちいさいモモちゃん(モモちゃんとアカネちゃんの本:1)",
     "source_page": "17-left-02",
     "course": "I",
@@ -10536,7 +10536,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000303.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かえるのエルタ51111123961262677.135773(511111354612172418.514328柱511111476611232690.793655音5111115112612322593.037750館5111116146611522679.865471創作5111117212613492479.115730童話5111118271594225493.252548シリ511111929262417393.297729ー51111110311615132080.351128ズ5111111133561362693.156830)41111203967643426-1511112139676252596.692650か511112267677462393.127441いじ5111123119683171993.256966ゅ5111124142676142693.270668う5111125167676182593.192993ポ5111126192676472696.792862ポリ5111127242677152396.899956は5111128261677372595.729774こう5111129309678182396.958984や51111210334688141396.913116っ51111211355679172296.848724て51111212377677402593.196579いか51111213423678222492.496040り51111214452677212593.041481を4111130070336933-151111310711132547.328835FL511113252704182382.493423の511113371703822596.660484りき5111134105699184296.972801っ5111135122699224289.151215た5111136157699154289.151215:5111137199703342764.948036RY5111138242704127260.000000MALS41111403873237127-1511114138732412694.687950(か511114286734272193.082390いじ5111143118739161793.299629ゅ5111144139733342396.641960うと5111145180734342296.547249ドク5111146217735342096.693123ター5111147261735162096.956665と5111148280734402496.679733取り5111149331723394292.713303組む51111410370723394291.960754:2)4111150078428192-151111510784279212.5733475111152588181132452.410831gceco5111153177819212483.040390キ5111154208825141892.619934ャ5111155229817522537.035698ンプ41111603991127526-1511116139914512095.434052ペン511116298913502496.929993ギン5111163155911212595.669502た5111164183913232395.940895ん5111165212912482596.539925けん5111166263912222593.243752た5111167291916231991.921783い4111170093630343-151111710936112523.551044「511117238932665469.547577(どう5111173103953402396.718521わが5111174148957431896.438377いっ5111175198953352293.236404ぱい5111176239953642661.283012:24)41111800100931792-1511118101009317929.230528MDIRNET41111900112325689-1511119101123578956.853867511119269115542240.000000だり51111931201156422351.643734い51111941751157232173.968552の51111952041155212465.315659な51111962311156252487.809410ね411120036124411129-151112013612441112940.270615一5111202741240284290.540947休51112031021240214293.228546さ51112041231240284296.723076ん41112100126931551-1511121101273102548.511692511121238128660270.000000(寺村5111213110128735240.000000絢51112141551290151971.487030夫51112151701269175183.533577の51112161871289102097.011665と51112172081289172093.100899ん51112182291288182293.006004ち51112192551288222490.467323話511121102801269145184.280228:511121112971288182685.8777311)41112200136017937-1511122101386101128.4093765111222431360222790.957954吉51112237013611092692.013412四51112241091354294788.565720六51112251371354204793.256912さ51112261561354254796.987885ん41112300140032029-151112310140031159.8861545111232391402612684.035881(寺村51112331101402642591.179451輝夫51112341731396184096.235901の51112351901405102096.902687と51112362101405172093.286827ん51112372321404182293.046837ち51112382541403262588.926338話5111239290139674085.218063:511123103001404202586.3190922)411124036146637828-15111241361466792890.016121火曜51112421221470232195.785301日51112431551469182297.009995の51112441791468132550.651318ご51112452051469142493.023880ち5111246234146892692.198677そ5111247257147052293.220253う51112482651469132393.243057は51112492921470382496.863472ヒキ511124103381469762595.929489ガエル41112500146040190-1511125101460249096.6393135111252391500672393.092110(評論51112531071501121990.523331社51112541261502141792.512100の51112551481499552394.523140児童51112562161493353894.796829図書51112572501500132284.826927館511125826915084589.691467・51112592881500292286.101357文511125103161493203890.075966学511125113351503101795.211861の511125123511501202193.242996部511125133801501142193.230537屋5111251439815173418.339748.411126051152827623-15111261511529361996.915039ヒキ5111262951528602084.374252ガエル51112631611529131896.972664と51112641811529131897.009979ん51112652031528152096.813889だ51112662241528222196.546097大51112672511528422266.094505冒険5111268300153221578.133461:51112693121528152388.7791371)41112700158327738-151112710161191019.800072-5111272381584212496.425919お5111273671584172496.885445し5111274921584522596.608513いれ51112751481586232196.688042の51112761771583442691.880310ぼう51112772301584472596.769897けん41112800162334428-1511128101623344280.000000(絵本51112821171619193791.005554・51112831351619203785.644547ぼ51112841541619223792.995529く51112851751619203793.110649た51112861941619223792.492096ち51112872151619633796.737686こども51112882771619193793.295593だ51112892961619533765.595322:1)41112900169622037-151112910172381061.8586655111292531688454996.630180ネコ5111293981698162295.382927の51112941221698432396.808060タク51112951711699492096.621582シー41113000173633728-15111301017431519.2977525111302351736592778.718689(福音51113031071737332593.234940館51113041421737532591.659943創作51113052081738512493.996590童話51113062671732263993.300171シリ5111307292174913393.270988ー51113083071740152093.241638ズ5111309331173862693.021904)41113100180826736-15111311018368836.3768815111312481808612750.279713恐竜51113131081803274593.167648の51113141351809162792.975113谷51113151651812132193.293312の51113161831809262696.214516大51113172171809502874.637383冒険411132034185130127-15111321341847573693.127731(マジ5111322961860141492.088921ッ51113231171853182093.207855ク511132414418605592.871017・51113251591855171892.934074ツ51113261851853372296.800682リー51113272261858221387.533394ハウ5111328261185292391.369995ス5111329291185531888.852463:511132103151852202691.0369261)41113300192435033-15111331019487939.595360.!5111332511924232496.765976は511133380192691496.268616が5111334991924462595.066177ぬけ51113351551924182492.995537た51113361811925162492.905716ら51113372071926212293.231453ど51113382341924442696.907440うす51113392851927182196.897369る511133103101927152193.296036の511133113371926132293.044601?411134045196436625-1511134145196831592.016785:5111342681964292492.411980せ5111343105197081092.949547か51113441211967201992.427170い51113451481966212190.845467の51113461761967182093.277809こ51113472041964422596.040398ども51113482561964192496.960518た51113492811964482596.418076ちの511134103361964212496.990356は511134113631964212596.991348な511134123931965182496.833206し41113500203322035-15111351020617738.736160151113523620331842680.094048オナ51113531012025444796.111397モミ51113541442025254796.592278の51113551682025244793.301949と51113561912025334792.539597げ411136033207432227-15111361332074262691.150726(5111362692077191988.974373花5111363872068173993.132339の51113641032075122296.777222た51113651232076172193.295845ね511136615220845592.840271・51113671722074302590.124084木51113682172074172592.801994の51113692442078201990.859009実511136102702076102296.903915の511136112792068303989.329720ちえ511136123222068333967.690475:5)41113700214634634-15111371021736774.3147665111372562146422492.553085こま51113731122146112496.413612っ51113741232154111697.011284た51113751472146422596.564362さん51113761992149182196.878067の51113772242149492192.523834スパ51113782782146232592.316544ゲ51113793062148162392.491440テ511137103312153151993.208015ィ411138033218730827-15111381332187472695.968872(お5111382792178224396.668701は51113831002188132296.606987な51113841222189142196.670937し51113851442188542396.089920りょう51113862082188352393.285034りき51113872502194131792.972710ょ51113882722189332293.268341うし51113893122193111593.086769つ51113810335218862693.096207)",
     "source_page": "17-left-06",
     "course": "I",
@@ -10553,7 +10553,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4756257755.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かいじゅうポポリはこうやっていかりをFLのりきった:RY(かいじゅうとドクターと取り組む:2)",
     "source_page": "17-left-07",
     "course": "I",
@@ -10570,7 +10570,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834009726.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "gcecoキャンプ",
     "source_page": "17-left-08",
     "course": "I",
@@ -10588,7 +10588,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061978241.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ペンギンたんけんたい「(どうわがいっぱい:24)",
     "source_page": "17-left-09",
     "course": "I",
@@ -10606,7 +10606,7 @@ window.recommendedBooksData = [
       "わらい"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4034601000.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "",
     "source_page": "17-left-10",
     "course": "I",
@@ -10624,7 +10624,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834007677.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "いのなね",
     "source_page": "17-left-11",
     "course": "I",
@@ -10641,7 +10641,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251060016.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "一休さん夫のとんち話:1)",
     "source_page": "17-left-12",
     "course": "I",
@@ -10658,7 +10658,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251060024.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "吉四六さん(寺村輝夫のとんち話:2)",
     "source_page": "17-left-13",
     "course": "I",
@@ -10675,7 +10675,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4566013367.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "火曜日のごちそうはヒキガエル(評論社の児童図書館・文学の部屋.ヒキガエルとんだ大冒険:1)",
     "source_page": "17-left-14",
     "course": "I",
@@ -10693,7 +10693,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4494006068.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おしいれのぼうけんぼくたちこどもだ:1)",
     "source_page": "17-left-15",
     "course": "I",
@@ -10710,7 +10710,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834017591.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ネコのタクシー(福音館創作童話シリーズ)",
     "source_page": "17-left-16",
     "course": "I",
@@ -10729,7 +10729,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4040664760.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "恐竜の谷の大冒険(マジック・ツリーハウス:1)",
     "source_page": "17-left-17",
     "course": "I",
@@ -10746,7 +10746,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4577019876.09._SCLZZZZZZZ_.jpg",
     "ocr_title": ".!はがぬけたらどうするの?せかいのこどもたちのはなし",
     "source_page": "17-left-18",
     "course": "I",
@@ -10763,7 +10763,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4034143509.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "1オナモミのとげ(花のたね・木の実のちえ:5)",
     "source_page": "17-left-19",
     "course": "I",
@@ -10780,7 +10780,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251036018.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "こまったさんのスパゲティ(おはなしりょうりきょうしつ)",
     "source_page": "17-left-20",
     "course": "I",
@@ -10883,7 +10883,7 @@ window.recommendedBooksData = [
       "伝記"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4035421006.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "パストゥール(伝記世界を変えたた人々:10)",
     "source_page": "17-right-06",
     "course": "A",
@@ -11054,7 +11054,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4480025952.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "心の底をのぞいたら(ちくま文庫)",
     "source_page": "17-right-16",
     "course": "A",
@@ -11072,7 +11072,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834014312.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ハックルベリー・フィンの冒険.上(福音館古典童話シリーズ:34)",
     "source_page": "17-right-17",
     "course": "A",
@@ -11090,7 +11090,7 @@ window.recommendedBooksData = [
       "冒険"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834014320.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ハックルベリー・フィンの冒険下(福音館古典童話シリーズ:35)",
     "source_page": "17-right-18",
     "course": "A",
@@ -11107,7 +11107,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834003310.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "アーサー王と円卓の騎士(福音館古典童話シリーズ:8)",
     "source_page": "17-right-19",
     "course": "A",
@@ -11124,7 +11124,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834013529.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "レ・ミゼラブル.上(福音館古典童話シリーズ:31)",
     "source_page": "17-right-20",
     "course": "A",
@@ -11141,7 +11141,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834013537.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "レ・ミゼラブル.下(福音館古典童話シリーズ:32)",
     "source_page": "18-left-01",
     "course": "A",
@@ -11158,7 +11158,7 @@ window.recommendedBooksData = [
       "昔話・神話"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834003086.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "トルストイの民話(福音館古典童話シリーズ:27)",
     "source_page": "18-left-02",
     "course": "A",
@@ -11175,7 +11175,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4001145472.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "西遊記.上(福音館古典童話シリーズ:15)",
     "source_page": "18-left-03",
     "course": "A",
@@ -11192,7 +11192,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834004775.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "西遊記.下(福音館古典童話シリーズ:16)",
     "source_page": "18-left-04",
     "course": "A",
@@ -11209,7 +11209,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001482.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "がガリヴァー旅行記(福音館古典童話シリーズ)",
     "source_page": "18-left-05",
     "course": "A",
@@ -11226,7 +11226,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834004473.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ロビピンソン・クルーソー(福音館古典童話シリーズ:14)",
     "source_page": "18-left-06",
     "course": "A",
@@ -11277,7 +11277,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403850400X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "啄木歌集(偕成社文庫)",
     "source_page": "18-left-09",
     "course": "A",
@@ -11311,7 +11311,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062632101.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "空飛び(講談社文庫)",
     "source_page": "18-left-11",
     "course": "A",
@@ -11414,7 +11414,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4101063125.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "しろばんば83MBHR(新潮文庫)",
     "source_page": "18-left-17",
     "course": "A",
@@ -11500,7 +11500,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834004139.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "うらしまたろう!日本傑作絵本シリーズ)",
     "source_page": "18-right-02",
     "course": "J",
@@ -11517,7 +11517,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000478.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "くいしんぼうのはなこさん日本傑作絵本シリーズ)",
     "source_page": "18-right-03",
     "course": "J",
@@ -11570,7 +11570,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834012697.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "みんなのかお",
     "source_page": "18-right-06",
     "course": "J",
@@ -11622,7 +11622,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4033320903.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "はやくちまちしょうてんがいはやくちはやあるきたいかい",
     "source_page": "18-right-09",
     "course": "J",
@@ -11640,7 +11640,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591026892.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おラシンがパにげだじた(ポプラ社の小さな.自野栄子の小さなおばけシリーズ)",
     "source_page": "18-right-10",
     "course": "J",
@@ -11674,7 +11674,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4265083056.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ia",
     "source_page": "19-left-02",
     "course": "J",
@@ -11691,7 +11691,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4061325086.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "いっすんぼうし:4・5歳からの(講談社の創作絵本.よみきかせ日本苦放",
     "source_page": "19-left-03",
     "course": "J",
@@ -11708,7 +11708,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4337247599.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "大きなけやき(現代日本童謡詩全集:9",
     "source_page": "19-left-04",
     "course": "J",
@@ -11725,7 +11725,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4033130209.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "あひるのバーバパちゃん(創作こども文庫)",
     "source_page": "19-left-05",
     "course": "J",
@@ -11742,7 +11742,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/406197825X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おさるはおさる(どうわがいっぱい:25)",
     "source_page": "19-left-06",
     "course": "J",
@@ -11759,7 +11759,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4338192232.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "お父さんのVサイン(おはなしだいすき)",
     "source_page": "19-left-07",
     "course": "J",
@@ -11776,7 +11776,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251007964.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "くまざわくんがもらったちず(いぬうえくんとくまざわくん:6)",
     "source_page": "19-left-08",
     "course": "J",
@@ -11793,7 +11793,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834003221.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "wtり",
     "source_page": "19-left-09",
     "course": "J",
@@ -11810,7 +11810,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4580813340.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "なんやななちゃんなきべそしゅんちゃん(文研の創作えどうわ)",
     "source_page": "19-left-10",
     "course": "J",
@@ -11828,7 +11828,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4323073089.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "cs",
     "source_page": "19-left-11",
     "course": "J",
@@ -11845,7 +11845,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403431060X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "やかましむらのこどもの日(幼年翻訳どうわ)",
     "source_page": "19-left-12",
     "course": "J",
@@ -11862,7 +11862,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4052038541.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "とりかえっこちびぞう改訂版(キッズ文学館))",
     "source_page": "19-left-13",
     "course": "J",
@@ -11880,7 +11880,7 @@ window.recommendedBooksData = [
       "自然・生きもの"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4198616361.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "雪の森のリサベット",
     "source_page": "19-left-14",
     "course": "J",
@@ -11898,7 +11898,7 @@ window.recommendedBooksData = [
       "おばけ・まほう"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591011070.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "フルーツポンチはいできあがり(ポプラ社の小さな童話角野栄子の小さなおばけシリーズ)",
     "source_page": "19-left-15",
     "course": "J",
@@ -11915,7 +11915,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591010686.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ハンバーグつくろうよ(ポプラ社の小さな童話)",
     "source_page": "19-left-16",
     "course": "J",
@@ -11933,7 +11933,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/457940243X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "どろんここぶた(ミセスこどもの本)",
     "source_page": "19-left-17",
     "course": "J",
@@ -11950,7 +11950,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4097268783.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "かぐやひめ(日本名作おはなし絵本)",
     "source_page": "19-left-18",
     "course": "J",
@@ -11967,7 +11967,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4580813979.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "キャベツくん",
     "source_page": "19-left-19",
     "course": "J",
@@ -11984,7 +11984,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4591069427.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ルラルさんのにわ(いとうひろしの本:4)",
     "source_page": "19-left-20",
     "course": "J",
@@ -12161,7 +12161,7 @@ window.recommendedBooksData = [
       "家族"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4887061056.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "地球家族世界30か国のふつうの暮らし",
     "source_page": "19-right-10",
     "course": "A",
@@ -12370,7 +12370,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834007278.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "Bb(福音館古典童話シリーズ)",
     "source_page": "20-left-02",
     "course": "A",
@@ -12387,7 +12387,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834007286.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "神税の島下(福音館古典童話シリーズ)",
     "source_page": "20-left-03",
     "course": "A",
@@ -12438,7 +12438,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834003361.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "さらわれたデービッド(福音館古典童話シリーズ:10)",
     "source_page": "20-left-06",
     "course": "A",
@@ -12455,7 +12455,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834001075.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ニワトリ号一番のり(福音館古典童話シリーズ:7)",
     "source_page": "20-left-07",
     "course": "A",
@@ -12489,7 +12489,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4038501701.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "コタンの口笛 第1部 上 (あらしの歌)",
     "source_page": "20-left-09",
     "course": "A",
@@ -12506,7 +12506,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4038501809.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "コタンの口笛 第1部 下 (あらしの歌)",
     "source_page": "20-left-10",
     "course": "A",
@@ -12523,7 +12523,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062617048.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "次郎物語.第1部(備成社文庫)",
     "source_page": "20-left-11",
     "course": "A",
@@ -12541,7 +12541,7 @@ window.recommendedBooksData = [
       "学校"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4038502201.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "天の園:雲の学校第一部",
     "source_page": "20-left-12",
     "course": "A",
@@ -12559,7 +12559,7 @@ window.recommendedBooksData = [
       "ミステリー"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/403651220X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "エドガー=アラン=ポー怪奇・探偵小説集.1社文庫)",
     "source_page": "20-left-13",
     "course": "A",
@@ -12612,7 +12612,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 5,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4488517048.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "海底二万里(創元推理文庫)",
     "source_page": "20-left-16",
     "course": "A",
@@ -12717,7 +12717,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062082640.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おとうとねずみチロのはなし",
     "source_page": "20-right-02",
     "course": "J",
@@ -12734,7 +12734,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000877.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ちいさなねこ(こどものとも)傑作集33)",
     "source_page": "20-right-03",
     "course": "J",
@@ -12769,7 +12769,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4062528630.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "だいじょうぶだいじょうぶ(ちいさな絵童語りとる:13)",
     "source_page": "20-right-05",
     "course": "J",
@@ -12821,7 +12821,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/459101066X.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "スパゲッティがたべたいよう(ポプラ社の小さな童話)",
     "source_page": "20-right-08",
     "course": "J",
@@ -12874,7 +12874,7 @@ window.recommendedBooksData = [
       "動物"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4893251996.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ねずみのいもはほり(ひさかたメルヘン)",
     "source_page": "20-right-11",
     "course": "J",
@@ -12893,7 +12893,7 @@ window.recommendedBooksData = [
       "乗りもの"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4893251767.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "ねずみのでんしゃ(ひさかたメルヘン)",
     "source_page": "20-right-12",
     "course": "J",
@@ -12927,7 +12927,7 @@ window.recommendedBooksData = [
       "物語"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4834000400.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "あおい目のこねこ(世界傑作シリーズ:7)",
     "source_page": "20-right-14",
     "course": "J",
@@ -12945,7 +12945,7 @@ window.recommendedBooksData = [
       "友だち"
     ],
     "level": 1,
-    "cover": null,
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/4251006097.09._SCLZZZZZZZ_.jpg",
     "ocr_title": "おつきさまでたよ(くりのきえんのおともだち)",
     "source_page": "20-right-15",
     "course": "J",

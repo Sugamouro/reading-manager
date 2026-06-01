@@ -3387,7 +3387,7 @@
               <span class="emoji">${genreEmoji(book.category)}</span>
               <span class="fb-title">${escapeHtml(book.title)}</span>
             </div>
-            ${coverSrc ? `<img loading="lazy" src="${escapeHtml(coverSrc)}" alt="" onerror="this.style.display='none'">` : ""}
+            ${coverSrc ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(coverSrc)}" alt="" onerror="this.style.display='none'">` : ""}
             <span class="status-badge ${book.status}">${statusLabel(book.status)}</span>
             ${fitBadge(book)}
           </div>
@@ -3592,7 +3592,7 @@
         <article class="finished-row">
           <div class="fin-cover" data-open="${book.id}" title="詳細・編集" role="button">
             <div class="fin-cover-fallback" style="background:${genreGradient(book.category)}">${genreEmoji(book.category)}</div>
-            ${cover ? `<img loading="lazy" src="${escapeHtml(cover)}" alt="" onerror="this.style.display='none'">` : ""}
+            ${cover ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(cover)}" alt="" onerror="this.style.display='none'">` : ""}
           </div>
           <div class="fin-main">
             <strong class="fin-title" data-open="${book.id}">${escapeHtml(book.title)}${ownershipChip(book)}</strong>
