@@ -557,6 +557,78 @@
       background: #fbfcfb;
     }
 
+    .today-book {
+      margin: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffdf6;
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      box-shadow: 0 8px 20px rgba(32, 37, 38, 0.07);
+    }
+
+    .today-book img {
+      width: 112px;
+      aspect-ratio: 3 / 4;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #eef2ee;
+    }
+
+    .today-book-main {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .today-label {
+      color: #9a6b00;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .today-title {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+
+    .today-reason {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .today-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .today-actions button {
+      min-height: 36px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .today-book {
+        grid-template-columns: 92px minmax(0, 1fr);
+        margin: 14px;
+      }
+
+      .today-book img {
+        width: 92px;
+      }
+
+      .today-title {
+        font-size: 17px;
+      }
+    }
+
     .quick-shelf-results {
       display: grid;
       gap: 8px;
@@ -2142,6 +2214,7 @@
           </div>
           <div class="shelf-summary" id="shelfSummary"></div>
         </div>
+        <div id="todayBookSlot"></div>
         <div class="shelf-tools">
           <div class="field">
             <label for="shelfQuickInput">手元に追加</label>
@@ -2487,6 +2560,21 @@
       <div class="modal-body">
         <p class="hint" id="scanStatus">本の裏のバーコード（978〜で始まるISBN）をカメラに映してください。</p>
         <video id="scanVideo" playsinline muted style="width:100%;border-radius:8px;background:#000;aspect-ratio:4/3;object-fit:cover"></video>
+        <div class="form-grid">
+          <div class="field">
+            <label for="scanOwnershipInput">読み取ったら</label>
+            <select id="scanOwnershipInput">
+              <option value="home">家にある</option>
+              <option value="borrowed">借りている</option>
+              <option value="want-borrow">図書館で借りたい</option>
+              <option value="want-buy">買いたい</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="scanDueDateInput">返却日</label>
+            <input id="scanDueDateInput" type="date">
+          </div>
+        </div>
         <div class="toolbar" style="justify-content:flex-start;">
           <button class="ghost" id="scanManualButton"><span class="icon">⌨</span>番号を手で入力</button>
         </div>
@@ -2585,6 +2673,7 @@
       ownershipFilter: document.getElementById("ownershipFilter"),
       bookList: document.getElementById("bookList"),
       listCount: document.getElementById("listCount"),
+      todayBookSlot: document.getElementById("todayBookSlot"),
       shelfList: document.getElementById("shelfList"),
       shelfSummary: document.getElementById("shelfSummary"),
       shelfQuickInput: document.getElementById("shelfQuickInput"),
@@ -3381,6 +3470,7 @@
       els.shelfSummary.innerHTML = hand.length
         ? `<span><strong>${hand.length}</strong>冊</span><span>家 ${home}</span><span>借りている ${borrowed}</span>`
         : "";
+      renderTodayBook(hand);
       if (!hand.length) {
         els.shelfList.innerHTML = '<div class="empty">まだ手元の本がありません。本棚（さがす）で「家にある」か「借りている」にすると、ここに並びます。</div>';
         renderShelfQuickResults();
@@ -3414,6 +3504,71 @@
       els.shelfQuickResults.querySelectorAll("[data-open]").forEach((button) => {
         button.addEventListener("click", () => openModal(button.dataset.open));
       });
+    }
+
+    function renderTodayBook(handBooks) {
+      const pick = pickTodayBook(handBooks);
+      if (!pick) {
+        els.todayBookSlot.innerHTML = '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">今日の1冊</div><div class="today-title">手元の本を追加しよう</div><div class="today-reason">家にある本や借りている本を登録すると、ここに今日読む候補が1冊だけ出ます。</div></div></div>';
+        return;
+      }
+      const book = pick.book;
+      const cover = bookCoverSrc(book);
+      els.todayBookSlot.innerHTML = `
+        <article class="today-book">
+          ${cover ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(cover)}" alt="">` : `<div></div>`}
+          <div class="today-book-main">
+            <div class="today-label">今日の1冊</div>
+            <div class="today-title">${escapeHtml(book.title)}</div>
+            <div class="today-reason">${escapeHtml(pick.reason)}</div>
+            <div class="today-actions">
+              ${book.status === "reading"
+                ? `<button type="button" class="primary" data-stage="${book.id}" data-to="done">読み終わった！</button>`
+                : `<button type="button" class="primary" data-stage="${book.id}" data-to="reading">これを読む</button>`}
+              <button type="button" class="ghost" data-open="${book.id}">詳細</button>
+            </div>
+          </div>
+        </article>`;
+      wireCardHandlers(els.todayBookSlot);
+    }
+
+    function pickTodayBook(handBooks) {
+      const candidates = handBooks.filter((book) => book.status !== "done");
+      if (!candidates.length) return null;
+      const gi = activeGradeInfo();
+      const tagScores = Object.fromEntries(getTagScores().map((entry) => [entry.tag, entry.score]));
+      const scored = candidates.map((book) => {
+        let score = 20;
+        const reasons = [];
+        if (book.status === "reading") {
+          score += 45;
+          reasons.push("いま読んでいる本なので続きにしやすい");
+        }
+        if (normalizeOwnershipValue(book.ownership) === "borrowed") {
+          score += 8;
+          reasons.push("図書館で借りている本");
+        }
+        const due = dueDays(book);
+        if (due !== null) {
+          if (due < 0) { score += 40; reasons.push("返却日を過ぎている"); }
+          else if (due <= 2) { score += 30; reasons.push(`返却まで${due}日`); }
+          else if (due <= 7) { score += 15; reasons.push(`返却日が近い`); }
+        }
+        const level = Number(book.level) || 3;
+        if (gi) {
+          if (level === gi.targetLevel) { score += 18; reasons.push(`${gi.label}にちょうどよい`); }
+          else if (gi.band.includes(level)) { score += 10; reasons.push("今の年齢に合いやすい"); }
+          else score -= 6;
+        }
+        const tagScore = (book.tags || []).reduce((sum, tag) => sum + (tagScores[tag] || 0), 0);
+        if (tagScore) {
+          score += Math.min(18, tagScore * 4);
+          reasons.push("最近の好みに近い");
+        }
+        if (book.status === "want") score += 5;
+        return { book, score, reason: reasons.slice(0, 2).join("。") || "手元にあって始めやすい本です" };
+      }).sort((a, b) => b.score - a.score || Number(a.book.level) - Number(b.book.level) || a.book.title.localeCompare(b.book.title, "ja"));
+      return scored[0];
     }
 
     function quickShelfRow(book) {
@@ -3811,7 +3966,7 @@
           const hit = codes.map((c) => c.rawValue).find((v) => /^97[89]\d{10}$/.test(v));
           if (hit) {
             stopScan();
-            lookupIsbn(hit);
+            lookupIsbn(hit, scanTargetOptions());
           }
         } catch (err) { /* フレーム読み取り失敗は無視 */ }
       }, 400);
@@ -3831,7 +3986,15 @@
       const isbn = input.replace(/[^0-9Xx]/g, "");
       if (!isbn) return;
       stopScan();
-      lookupIsbn(isbn);
+      lookupIsbn(isbn, scanTargetOptions());
+    }
+
+    function scanTargetOptions() {
+      const ownership = normalizeOwnershipValue(document.getElementById("scanOwnershipInput").value) || "home";
+      return {
+        ownership,
+        dueDate: ownership === "borrowed" ? document.getElementById("scanDueDateInput").value : ""
+      };
     }
 
     async function fetchBookInfo(isbn, title, author) {
@@ -3857,11 +4020,23 @@
       };
     }
 
-    async function lookupIsbn(isbn) {
-      let data = { isbn };
+    async function lookupIsbn(isbn, options = {}) {
+      const clean = String(isbn || "").replace(/[^0-9Xx]/g, "");
+      const existing = books.find((book) => String(book.isbn || "").replace(/[^0-9Xx]/g, "") === clean);
+      if (existing && options.ownership) {
+        existing.ownership = normalizeOwnershipValue(options.ownership);
+        existing.dueDate = existing.ownership === "borrowed" ? (options.dueDate || "") : "";
+        persist();
+        setView("shelf");
+        els.shelfQuickInput.value = "";
+        renderShelf();
+        celebrate(`手元の本棚に入れたよ\n${existing.title}`);
+        return;
+      }
+      let data = { isbn: clean, ...options };
       try {
-        const info = await fetchBookInfo(isbn, "", "");
-        if (info) data = { ...info, isbn: info.isbn || isbn };
+        const info = await fetchBookInfo(clean, "", "");
+        if (info) data = { ...data, ...info, isbn: info.isbn || clean };
       } catch (err) { /* オフライン等は番号だけ埋める */ }
       fillAddForm(data);
       if (!data.title) {
@@ -3876,6 +4051,8 @@
       if (data.publisher) document.getElementById("publisherInput").value = data.publisher;
       if (data.isbn) document.getElementById("isbnInput").value = data.isbn;
       if (data.cover) document.getElementById("coverInput").value = data.cover;
+      if (data.ownership) document.getElementById("ownershipInput").value = normalizeOwnershipValue(data.ownership);
+      if (data.dueDate) document.getElementById("dueDateInput").value = data.dueDate;
       if (data.description) document.getElementById("descriptionInput").value = data.description;
       if (data.gRating) document.getElementById("gRatingInput").value = data.gRating;
       if (data.gRatingsCount) document.getElementById("gRatingsCountInput").value = data.gRatingsCount;
@@ -4063,13 +4240,19 @@
 
     function dueChip(book) {
       if (normalizeOwnershipValue(book.ownership) !== "borrowed" || !book.dueDate) return "";
-      const today = new Date(todayStr());
-      const due = new Date(book.dueDate);
-      if (Number.isNaN(due.getTime())) return "";
-      const diff = Math.round((due - today) / 86400000);
+      const diff = dueDays(book);
+      if (diff === null) return "";
       if (diff < 0) return `<span class="chip due-chip soon">返却日すぎた</span>`;
       if (diff <= 2) return `<span class="chip due-chip soon">返却まで${diff}日</span>`;
       return `<span class="chip due-chip ok">返却 ${escapeHtml(book.dueDate.slice(5).replace("-", "/"))}</span>`;
+    }
+
+    function dueDays(book) {
+      if (!book.dueDate) return null;
+      const today = new Date(todayStr());
+      const due = new Date(book.dueDate);
+      if (Number.isNaN(due.getTime())) return null;
+      return Math.round((due - today) / 86400000);
     }
 
     function ownershipChip(book) {
