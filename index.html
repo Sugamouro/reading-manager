@@ -549,6 +549,134 @@
       font-size: 16px;
     }
 
+    .shelf-tools {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+      background: #fbfcfb;
+    }
+
+    .quick-shelf-results {
+      display: grid;
+      gap: 8px;
+    }
+
+    .quick-shelf-row {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .quick-shelf-row img {
+      width: 44px;
+      height: 58px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #eef2ee;
+    }
+
+    .quick-shelf-main {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .quick-shelf-title {
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .quick-shelf-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .quick-shelf-actions button {
+      min-height: 30px;
+      padding: 0 9px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    .shelf-book-list {
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+
+    .shelf-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(32, 37, 38, 0.07);
+      display: grid;
+    }
+
+    .shelf-card .cover {
+      aspect-ratio: 3 / 4.25;
+    }
+
+    .shelf-card .edit-btn {
+      width: 100%;
+    }
+
+    .shelf-card-body {
+      padding: 12px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .shelf-card-title {
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .shelf-card-sub {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .due-field {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .due-field input {
+      min-height: 32px;
+      font-size: 13px;
+    }
+
+    .due-chip {
+      background: #fff1e8;
+      color: #954718;
+      font-weight: 800;
+    }
+
+    .due-chip.soon {
+      background: #ffe3e3;
+      color: #b02a37;
+    }
+
+    .due-chip.ok {
+      background: #e7f5ff;
+      color: #1864ab;
+    }
+
     .done-btn {
       flex: 1;
       min-height: 38px;
@@ -1912,7 +2040,7 @@
         </div>
       </section>
 
-      <section class="stats" aria-label="読書状況">
+      <section class="stats" id="statsSection" aria-label="読書状況">
         <div class="stat">
           <span>登録冊数</span>
           <strong id="statTotal">0</strong>
@@ -2014,7 +2142,14 @@
           </div>
           <div class="shelf-summary" id="shelfSummary"></div>
         </div>
-        <div class="book-list" id="shelfList"></div>
+        <div class="shelf-tools">
+          <div class="field">
+            <label for="shelfQuickInput">手元に追加</label>
+            <input id="shelfQuickInput" type="search" placeholder="家にある本・借りた本を検索">
+          </div>
+          <div class="quick-shelf-results" id="shelfQuickResults"></div>
+        </div>
+        <div class="book-list shelf-book-list" id="shelfList"></div>
       </section>
 
       <section class="panel hidden" id="nextView">
@@ -2173,6 +2308,10 @@
                   <option value="want-borrow">図書館で借りたい</option>
                   <option value="returned">返却済み</option>
                 </select>
+              </div>
+              <div class="field">
+                <label for="dueDateInput">返却日</label>
+                <input id="dueDateInput" type="date">
               </div>
               <div class="field">
                 <label for="statusInput">状態</label>
@@ -2448,6 +2587,8 @@
       listCount: document.getElementById("listCount"),
       shelfList: document.getElementById("shelfList"),
       shelfSummary: document.getElementById("shelfSummary"),
+      shelfQuickInput: document.getElementById("shelfQuickInput"),
+      shelfQuickResults: document.getElementById("shelfQuickResults"),
       quickSuggestions: document.getElementById("quickSuggestions"),
       nextList: document.getElementById("nextList"),
       readingList: document.getElementById("readingList"),
@@ -2511,6 +2652,7 @@
     els.levelFilter.addEventListener("change", resetLibraryAndRender);
     els.tagFilter.addEventListener("change", resetLibraryAndRender);
     els.ownershipFilter.addEventListener("change", resetLibraryAndRender);
+    els.shelfQuickInput.addEventListener("input", renderShelfQuickResults);
     els.bookForm.addEventListener("submit", saveFromForm);
     els.hideButton.addEventListener("click", hideCurrentBook);
     document.getElementById("amazonButton").addEventListener("click", () => {
@@ -2666,6 +2808,7 @@
         courseGrade: b.courseGrade || "",
         nextAfter: b.nextAfter || "",
         ownership: normalizeOwnershipValue(b.ownership),
+        dueDate: b.dueDate || "",
         archived: !!b.archived,
         description: b.description || "",
         gRating: b.gRating || "",
@@ -2700,6 +2843,7 @@
           courseGrade: book.courseGrade || "",
           nextAfter: "",
           ownership: "",
+          dueDate: "",
           archived: false,
           description: book.description || "",
           gRating: "",
@@ -2926,6 +3070,7 @@
       return {
         ...freshBook,
         ownership: normalizeOwnershipValue(oldBook.ownership),
+        dueDate: oldBook.dueDate || "",
         archived: !!oldBook.archived,
         nextAfter: oldBook.nextAfter || "",
         description: oldBook.description || freshBook.description || "",
@@ -3129,6 +3274,7 @@
       document.getElementById("trendView").classList.toggle("hidden", view !== "trend");
       document.getElementById("importView").classList.toggle("hidden", view !== "import");
       document.getElementById("libraryFilters").classList.toggle("hidden", view !== "library");
+      document.getElementById("statsSection").classList.toggle("hidden", view === "shelf");
 
       const copy = {
         library: ["本棚（さがす）", "推薦図書の地図です。家にある・借りている本は「手元の本棚」に並びます。"],
@@ -3237,10 +3383,63 @@
         : "";
       if (!hand.length) {
         els.shelfList.innerHTML = '<div class="empty">まだ手元の本がありません。本棚（さがす）で「家にある」か「借りている」にすると、ここに並びます。</div>';
+        renderShelfQuickResults();
         return;
       }
-      els.shelfList.innerHTML = hand.map((book) => bookCard(book)).join("");
+      els.shelfList.innerHTML = hand.map((book) => shelfCard(book)).join("");
       wireCardHandlers(els.shelfList);
+      renderShelfQuickResults();
+    }
+
+    function renderShelfQuickResults() {
+      const query = normalize(els.shelfQuickInput.value);
+      if (!query) {
+        els.shelfQuickResults.innerHTML = '<div class="hint">本のタイトルや著者で検索して、家にある・借りているをまとめて登録できます。</div>';
+        return;
+      }
+      const matches = visibleBooks()
+        .filter((book) => {
+          const haystack = normalize([book.title, book.author, book.publisher, book.isbn].join(" "));
+          return haystack.includes(query);
+        })
+        .slice(0, 6);
+      if (!matches.length) {
+        els.shelfQuickResults.innerHTML = '<div class="hint">見つかりませんでした。</div>';
+        return;
+      }
+      els.shelfQuickResults.innerHTML = matches.map((book) => quickShelfRow(book)).join("");
+      els.shelfQuickResults.querySelectorAll("[data-quick-own]").forEach((button) => {
+        button.addEventListener("click", () => quickSetOwnership(button.dataset.quickOwn, button.dataset.value));
+      });
+      els.shelfQuickResults.querySelectorAll("[data-open]").forEach((button) => {
+        button.addEventListener("click", () => openModal(button.dataset.open));
+      });
+    }
+
+    function quickShelfRow(book) {
+      const cover = bookCoverSrc(book);
+      return `
+        <article class="quick-shelf-row">
+          ${cover ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(cover)}" alt="">` : `<div></div>`}
+          <div class="quick-shelf-main">
+            <div class="quick-shelf-title">${escapeHtml(book.title)}${ownershipChip(book)}</div>
+            <div class="quick-shelf-actions">
+              <button type="button" class="ghost" data-quick-own="${book.id}" data-value="home">家にある</button>
+              <button type="button" class="ghost" data-quick-own="${book.id}" data-value="borrowed">借りている</button>
+              <button type="button" class="ghost" data-quick-own="${book.id}" data-value="want-borrow">借りたい</button>
+              <button type="button" class="ghost" data-open="${book.id}">詳細</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function quickSetOwnership(id, value) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.ownership = normalizeOwnershipValue(value);
+      if (book.ownership !== "borrowed") book.dueDate = "";
+      persist();
+      renderShelf();
     }
 
     function wireCardHandlers(container) {
@@ -3251,6 +3450,7 @@
       container.querySelectorAll("[data-stage]").forEach((b) => b.addEventListener("click", () => setStage(b.dataset.stage, b.dataset.to)));
       container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
       container.querySelectorAll("[data-own]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.own, b.value)));
+      container.querySelectorAll("[data-due]").forEach((b) => b.addEventListener("change", () => setDueDate(b.dataset.due, b.value)));
     }
 
     function renderReading() {
@@ -3525,6 +3725,34 @@
       `;
     }
 
+    function shelfCard(book) {
+      const coverSrc = bookCoverSrc(book);
+      return `
+        <article class="shelf-card">
+          <div class="cover" data-open="${book.id}" title="詳細・編集" role="button">
+            <div class="cover-fallback" style="background:${genreGradient(book.category)}">
+              <span class="emoji">${genreEmoji(book.category)}</span>
+              <span class="fb-title">${escapeHtml(book.title)}</span>
+            </div>
+            ${coverSrc ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(coverSrc)}" alt="" onerror="this.style.display='none'">` : ""}
+            <span class="status-badge ${book.status}">${statusLabel(book.status)}</span>
+          </div>
+          <div class="shelf-card-body">
+            <strong class="shelf-card-title">${escapeHtml(book.title)}</strong>
+            <span class="shelf-card-sub">${escapeHtml(book.author || "著者不明")}</span>
+            <div class="card-meta">
+              ${ownershipChip(book)}
+              ${dueChip(book)}
+            </div>
+            ${ownershipSelect(book)}
+            ${dueDateControl(book)}
+            ${stageButton(book)}
+            <button type="button" class="edit-btn" data-edit="${book.id}">詳細</button>
+          </div>
+        </article>
+      `;
+    }
+
     function bookCoverSrc(book) {
       return book.cover || "";
     }
@@ -3719,6 +3947,7 @@
               <label class="fin-date">読み始め<input type="date" data-field="startDate" data-book="${book.id}" value="${escapeHtml(book.startDate || "")}"></label>
               <label class="fin-date">読み終わり<input type="date" data-field="readDate" data-book="${book.id}" value="${escapeHtml(book.readDate || "")}"></label>
               <label class="fin-date">手元の状態${ownershipSelect(book)}</label>
+              ${dueDateControl(book)}
             </div>
             <label class="fin-review">感想<textarea data-field="review" data-book="${book.id}" placeholder="おもしろかったところ、印象に残った場面など">${escapeHtml(book.review || "")}</textarea></label>
           </div>
@@ -3743,6 +3972,9 @@
       els.finishedList.querySelectorAll("[data-own]").forEach((el) => {
         el.addEventListener("change", () => setOwnership(el.dataset.own, el.value));
       });
+      els.finishedList.querySelectorAll("[data-due]").forEach((el) => {
+        el.addEventListener("change", () => setDueDate(el.dataset.due, el.value));
+      });
       els.finishedList.querySelectorAll("[data-stage]").forEach((el) => {
         el.addEventListener("click", () => setStage(el.dataset.stage, el.dataset.to));
       });
@@ -3759,6 +3991,15 @@
       const book = books.find((item) => item.id === id);
       if (!book) return;
       book.ownership = normalizeOwnershipValue(value);
+      if (book.ownership !== "borrowed") book.dueDate = "";
+      persist();
+      render();
+    }
+
+    function setDueDate(id, value) {
+      const book = books.find((item) => item.id === id);
+      if (!book) return;
+      book.dueDate = value || "";
       persist();
       render();
     }
@@ -3813,6 +4054,22 @@
       return `<select class="own-select" data-own="${book.id}" aria-label="手元の状態">${options.map(([value, label]) =>
         `<option value="${value}"${current === value ? " selected" : ""}>${label}</option>`
       ).join("")}</select>`;
+    }
+
+    function dueDateControl(book) {
+      if (normalizeOwnershipValue(book.ownership) !== "borrowed") return "";
+      return `<label class="due-field">返却日<input type="date" data-due="${book.id}" value="${escapeHtml(book.dueDate || "")}"></label>`;
+    }
+
+    function dueChip(book) {
+      if (normalizeOwnershipValue(book.ownership) !== "borrowed" || !book.dueDate) return "";
+      const today = new Date(todayStr());
+      const due = new Date(book.dueDate);
+      if (Number.isNaN(due.getTime())) return "";
+      const diff = Math.round((due - today) / 86400000);
+      if (diff < 0) return `<span class="chip due-chip soon">返却日すぎた</span>`;
+      if (diff <= 2) return `<span class="chip due-chip soon">返却まで${diff}日</span>`;
+      return `<span class="chip due-chip ok">返却 ${escapeHtml(book.dueDate.slice(5).replace("-", "/"))}</span>`;
     }
 
     function ownershipChip(book) {
@@ -4092,6 +4349,7 @@
       document.getElementById("publisherInput").value = book?.publisher || "";
       document.getElementById("isbnInput").value = book?.isbn || "";
       document.getElementById("ownershipInput").value = normalizeOwnershipValue(book?.ownership);
+      document.getElementById("dueDateInput").value = book?.dueDate || "";
       document.getElementById("levelInput").value = book?.level || "3";
       document.getElementById("statusInput").value = book?.status || "want";
       document.getElementById("startDateInput").value = book?.startDate || "";
@@ -4175,6 +4433,7 @@
         publisher: document.getElementById("publisherInput").value.trim(),
         isbn: document.getElementById("isbnInput").value.trim(),
         ownership: normalizeOwnershipValue(document.getElementById("ownershipInput").value),
+        dueDate: document.getElementById("dueDateInput").value,
         level: Number(document.getElementById("levelInput").value),
         status: document.getElementById("statusInput").value,
         startDate: document.getElementById("startDateInput").value,
@@ -4191,6 +4450,9 @@
 
       if (book.status === "done" && !book.readDate) {
         book.readDate = new Date().toISOString().slice(0, 10);
+      }
+      if (book.ownership !== "borrowed") {
+        book.dueDate = "";
       }
 
       const index = books.findIndex((item) => item.id === id);
@@ -4297,6 +4559,8 @@
           level: clamp(Number(record.level) || 3, 1, 5),
           course: record.course?.trim() || "",
           courseGrade: record.courseGrade?.trim() || "",
+          ownership: normalizeOwnershipValue(record.ownership || record.owned || ""),
+          dueDate: record.dueDate?.trim() || "",
           status: "want",
           readDate: "",
           rating: 0,
@@ -4356,7 +4620,7 @@
 
     function exportCsv() {
       persist();
-      const headers = ["子ども", "タイトル", "著者", "出版社", "ISBN", "分類", "タグ", "難易度", "コース", "推奨学年", "状態", "読んだ日", "反応", "次におすすめ", "メモ"];
+      const headers = ["子ども", "タイトル", "著者", "出版社", "ISBN", "分類", "タグ", "難易度", "コース", "推奨学年", "手元の状態", "返却日", "状態", "読んだ日", "反応", "次におすすめ", "メモ"];
       const rows = state.profiles.flatMap((profile) => {
         const profileRecords = state.records[profile.id] || {};
         return state.catalog.map((catalogBook) => {
@@ -4372,6 +4636,8 @@
             book.level,
             book.course || "",
             book.courseGrade || levelGradeLabel(book.level),
+            ownershipLabel(book.ownership),
+            book.dueDate || "",
             statusLabel(book.status),
             book.readDate,
             book.rating,
@@ -4453,6 +4719,12 @@
         "course": "course",
         "推奨学年": "courseGrade",
         "学年": "courseGrade",
+        "手元の状態": "ownership",
+        "持ち物": "ownership",
+        "ownership": "ownership",
+        "返却日": "dueDate",
+        "due": "dueDate",
+        "duedate": "dueDate",
         "次におすすめ": "nextAfter",
         "このあと": "nextAfter",
         "next": "nextAfter",
