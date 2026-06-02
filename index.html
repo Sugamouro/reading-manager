@@ -1191,6 +1191,21 @@
       border-color: rgba(248, 251, 248, 0.5);
     }
 
+    .parent-mode-button {
+      width: 100%;
+      min-height: 38px;
+      border-radius: 10px;
+      background: rgba(244, 201, 93, 0.18);
+      color: #fff;
+      border: 1px solid rgba(244, 201, 93, 0.45);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .parent-mode-button:hover {
+      background: rgba(244, 201, 93, 0.28);
+    }
+
     .fit-badge {
       position: absolute;
       top: 8px;
@@ -1272,6 +1287,21 @@
 
     .radio-row .radio input {
       width: auto;
+      min-height: 0;
+    }
+
+    .check-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .check-row input {
+      width: 18px;
+      height: 18px;
       min-height: 0;
     }
 
@@ -1997,6 +2027,78 @@
       content: "閉じる";
     }
 
+    body.simple-mode .profile-manage,
+    body.simple-mode .sidebar-note,
+    body.simple-mode .topbar .toolbar,
+    body.simple-mode #statsSection,
+    body.simple-mode #libraryFilters,
+    body.simple-mode #shelfView .shelf-tools,
+    body.simple-mode #shelfView .shelf-summary,
+    body.simple-mode #shelfList {
+      display: none !important;
+    }
+
+    body.simple-mode .nav button:not([data-view="shelf"]):not([data-view="records"]) {
+      display: none;
+    }
+
+    body.simple-mode main {
+      gap: 16px;
+    }
+
+    body.simple-mode .topbar h2 {
+      font-size: clamp(30px, 6vw, 46px);
+    }
+
+    body.simple-mode .topbar p {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    body.simple-mode #shelfView {
+      padding-bottom: 8px;
+    }
+
+    body.simple-mode .today-book {
+      margin: 0;
+      padding: clamp(16px, 4vw, 28px);
+      border-radius: 16px;
+      grid-template-columns: minmax(128px, 190px) minmax(0, 1fr);
+      gap: clamp(16px, 4vw, 28px);
+      background: #fffaf0;
+      box-shadow: 0 14px 34px rgba(32, 37, 38, 0.1);
+    }
+
+    body.simple-mode .today-book img {
+      width: 100%;
+      border-radius: 14px;
+    }
+
+    body.simple-mode .today-label {
+      font-size: 14px;
+    }
+
+    body.simple-mode .today-title {
+      font-size: clamp(24px, 5vw, 40px);
+    }
+
+    body.simple-mode .today-reason {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    body.simple-mode .today-actions {
+      gap: 10px;
+    }
+
+    body.simple-mode .today-actions button {
+      min-height: 54px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 900;
+      flex: 1 1 130px;
+    }
+
     @media (max-width: 980px) {
       .app {
         grid-template-columns: 1fr;
@@ -2075,6 +2177,22 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 520px) {
+      body.simple-mode .today-book {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      body.simple-mode .today-book img {
+        width: min(190px, 70vw);
+        justify-self: center;
+      }
+
+      body.simple-mode .today-actions button {
+        flex-basis: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2091,6 +2209,7 @@
       <div class="profile-area">
         <div class="profile-tabs" id="profileTabs"></div>
         <button class="profile-manage" id="profileManage">＋ プロフィール設定</button>
+        <button class="parent-mode-button hidden" id="parentModeButton">おうちの人用</button>
       </div>
 
       <nav class="nav" aria-label="画面切り替え">
@@ -2549,6 +2668,10 @@
                 <label class="radio"><input type="radio" name="pGender" value="" checked>未設定</label>
               </div>
             </div>
+            <div class="field wide">
+              <label class="check-row"><input type="checkbox" id="pSimpleModeInput">かんたんモード（小さい子向け）</label>
+              <div class="hint">本人の画面を「よむ」と「きろく」だけにします。管理画面はおうちの人用から戻せます。</div>
+            </div>
           </div>
           <div class="modal-actions">
             <input type="hidden" id="profileId">
@@ -2666,6 +2789,8 @@
     let libraryLimit = LIBRARY_PAGE_SIZE;
     let quickRecordBookId = "";
     let quickRecordRating = 0;
+    let parentModeOverride = false;
+    const simpleViews = ["shelf", "records"];
 
     const els = {
       viewTitle: document.getElementById("viewTitle"),
@@ -2711,6 +2836,7 @@
       syncStatus: document.getElementById("syncStatus"),
       profileTabs: document.getElementById("profileTabs"),
       profileManage: document.getElementById("profileManage"),
+      parentModeButton: document.getElementById("parentModeButton"),
       profileDrawer: document.getElementById("profileDrawer"),
       profileEditList: document.getElementById("profileEditList"),
       profileForm: document.getElementById("profileForm")
@@ -2786,6 +2912,7 @@
     });
 
     els.profileManage.addEventListener("click", openProfileDrawer);
+    els.parentModeButton.addEventListener("click", toggleParentModeOverride);
     document.getElementById("closeProfile").addEventListener("click", closeProfileDrawer);
     document.getElementById("pCancelButton").addEventListener("click", resetProfileForm);
     document.getElementById("newProfileButton").addEventListener("click", () => {
@@ -2952,7 +3079,7 @@
     }
 
     function newProfile(name) {
-      return { id: uid(), name: name || "こども", birthdate: "", gender: "", monthlyGoal: 0, readingDays: [] };
+      return { id: uid(), name: name || "こども", birthdate: "", gender: "", simpleMode: false, monthlyGoal: 0, readingDays: [] };
     }
 
     function freshState() {
@@ -2983,6 +3110,7 @@
         if (!s.records[p.id]) s.records[p.id] = {};
         if (typeof p.monthlyGoal !== "number") p.monthlyGoal = 0;
         if (!Array.isArray(p.readingDays)) p.readingDays = [];
+        p.simpleMode = !!p.simpleMode;
       });
       if (!s.activeProfileId || !s.profiles.some((p) => p.id === s.activeProfileId)) {
         s.activeProfileId = s.profiles[0].id;
@@ -3181,6 +3309,23 @@
       return state.profiles.find((p) => p.id === state.activeProfileId) || state.profiles[0] || null;
     }
 
+    function activeProfileUsesSimpleMode() {
+      return !!activeProfile()?.simpleMode;
+    }
+
+    function childModeActive() {
+      return activeProfileUsesSimpleMode() && !parentModeOverride;
+    }
+
+    function isSimpleView(view) {
+      return simpleViews.includes(view);
+    }
+
+    function toggleParentModeOverride() {
+      parentModeOverride = !parentModeOverride;
+      setView(parentModeOverride ? "library" : "shelf");
+    }
+
     function activeGradeInfo() {
       const p = activeProfile();
       return p ? gradeInfo(p.birthdate) : null;
@@ -3191,6 +3336,8 @@
       persist();
       state.activeProfileId = pid;
       books = buildBooks();
+      parentModeOverride = false;
+      if (childModeActive()) activeView = "shelf";
       saveState();
       render();
     }
@@ -3252,7 +3399,7 @@
     function renderProfiles() {
       els.profileTabs.innerHTML = state.profiles.map((p) => {
         const gi = gradeInfo(p.birthdate);
-        const meta = gi ? gi.label : "年齢未設定";
+        const meta = [gi ? gi.label : "年齢未設定", p.simpleMode ? "かんたん" : ""].filter(Boolean).join(" ・ ");
         const active = p.id === state.activeProfileId;
         return `<button class="profile-tab ${active ? "active" : ""}" data-profile="${p.id}">
           <span class="ptab-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
@@ -3278,7 +3425,7 @@
       els.profileEditList.innerHTML = state.profiles.map((p) => {
         const age = ageFromBirthdate(p.birthdate);
         const gi = gradeInfo(p.birthdate);
-        const meta = [gi ? gi.label : null, age != null ? `${age}さい` : null, genderLabel(p.gender)].filter(Boolean).join(" ・ ") || "未設定";
+        const meta = [gi ? gi.label : null, age != null ? `${age}さい` : null, genderLabel(p.gender), p.simpleMode ? "かんたんモード" : null].filter(Boolean).join(" ・ ") || "未設定";
         const active = p.id === state.activeProfileId;
         return `<div class="profile-row ${active ? "active" : ""}">
           <span class="prow-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
@@ -3307,6 +3454,7 @@
       document.getElementById("pBirthInput").value = p.birthdate || "";
       const radio = document.querySelector(`input[name="pGender"][value="${p.gender || ""}"]`);
       if (radio) radio.checked = true;
+      document.getElementById("pSimpleModeInput").checked = !!p.simpleMode;
       document.getElementById("pNameInput").focus();
     }
 
@@ -3315,6 +3463,7 @@
       document.getElementById("profileId").value = "";
       const radio = document.querySelector('input[name="pGender"][value=""]');
       if (radio) radio.checked = true;
+      document.getElementById("pSimpleModeInput").checked = false;
     }
 
     function saveProfileFromForm(event) {
@@ -3323,15 +3472,19 @@
       const name = document.getElementById("pNameInput").value.trim() || "こども";
       const birthdate = document.getElementById("pBirthInput").value;
       const gender = (document.querySelector('input[name="pGender"]:checked') || {}).value || "";
+      const simpleMode = document.getElementById("pSimpleModeInput").checked;
       const existing = state.profiles.find((p) => p.id === id);
       if (existing) {
         existing.name = name;
         existing.birthdate = birthdate;
         existing.gender = gender;
+        existing.simpleMode = simpleMode;
       } else {
-        state.profiles.push({ id, name, birthdate, gender, monthlyGoal: 0, readingDays: [] });
+        state.profiles.push({ id, name, birthdate, gender, simpleMode, monthlyGoal: 0, readingDays: [] });
         if (!state.records[id]) state.records[id] = {};
       }
+      parentModeOverride = false;
+      if (state.activeProfileId === id && simpleMode) activeView = "shelf";
       saveState();
       resetProfileForm();
       renderProfileEditList();
@@ -3358,23 +3511,44 @@
     }
 
     function setView(view) {
+      if (childModeActive() && !isSimpleView(view)) view = "shelf";
       activeView = view;
+      updateViewChrome();
+      render();
+    }
+
+    function updateViewChrome() {
+      if (childModeActive() && !isSimpleView(activeView)) activeView = "shelf";
+      const simple = childModeActive();
+      document.body.classList.toggle("simple-mode", simple);
+      document.body.classList.toggle("parent-mode", activeProfileUsesSimpleMode() && parentModeOverride);
+
       document.querySelectorAll(".nav button").forEach((button) => {
-        button.classList.toggle("active", button.dataset.view === view);
+        const label = button.querySelector("span:last-child");
+        if (label && !button.dataset.fullLabel) button.dataset.fullLabel = label.textContent;
+        if (label) {
+          if (simple && button.dataset.view === "shelf") label.textContent = "よむ";
+          else if (simple && button.dataset.view === "records") label.textContent = "きろく";
+          else label.textContent = button.dataset.fullLabel || label.textContent;
+        }
+        button.classList.toggle("active", button.dataset.view === activeView);
       });
 
-      document.getElementById("libraryView").classList.toggle("hidden", view !== "library");
-      document.getElementById("shelfView").classList.toggle("hidden", view !== "shelf");
-      document.getElementById("readingView").classList.toggle("hidden", view !== "reading");
-      document.getElementById("finishedView").classList.toggle("hidden", view !== "finished");
-      document.getElementById("recordsView").classList.toggle("hidden", view !== "records");
-      document.getElementById("nextView").classList.toggle("hidden", view !== "next");
-      document.getElementById("trendView").classList.toggle("hidden", view !== "trend");
-      document.getElementById("importView").classList.toggle("hidden", view !== "import");
-      document.getElementById("libraryFilters").classList.toggle("hidden", view !== "library");
-      document.getElementById("statsSection").classList.toggle("hidden", view === "shelf");
+      els.parentModeButton.classList.toggle("hidden", !activeProfileUsesSimpleMode());
+      els.parentModeButton.textContent = simple ? "おうちの人用" : "こども画面にもどる";
 
-      const copy = {
+      document.getElementById("libraryView").classList.toggle("hidden", activeView !== "library");
+      document.getElementById("shelfView").classList.toggle("hidden", activeView !== "shelf");
+      document.getElementById("readingView").classList.toggle("hidden", activeView !== "reading");
+      document.getElementById("finishedView").classList.toggle("hidden", activeView !== "finished");
+      document.getElementById("recordsView").classList.toggle("hidden", activeView !== "records");
+      document.getElementById("nextView").classList.toggle("hidden", activeView !== "next");
+      document.getElementById("trendView").classList.toggle("hidden", activeView !== "trend");
+      document.getElementById("importView").classList.toggle("hidden", activeView !== "import");
+      document.getElementById("libraryFilters").classList.toggle("hidden", activeView !== "library");
+      document.getElementById("statsSection").classList.toggle("hidden", activeView === "shelf" || simple);
+
+      const normalCopy = {
         library: ["本棚（さがす）", "推薦図書の地図です。家にある・借りている本は「手元の本棚」に並びます。"],
         shelf: ["手元の本棚", "家にある・図書館で借りている本だけ。今日読む本を表紙から選びます。"],
         reading: ["いま読んでる", "読み始めた本です。読み終わったらボタンで記録に移します。"],
@@ -3384,12 +3558,17 @@
         trend: ["傾向", "どんな分類・タグをよく読んでいるかを確認します。"],
         import: ["取り込み・バックアップ", "推薦図書リストの取り込みと、記録のバックアップができます。"]
       };
-      els.viewTitle.textContent = copy[view][0];
-      els.viewLead.textContent = copy[view][1];
-      render();
+      const simpleCopy = {
+        shelf: ["よむ", "きょう読む本をえらぼう。"],
+        records: ["きろく", "読んだ数とアバターの成長を見よう。"]
+      };
+      const copy = (simple ? simpleCopy : normalCopy)[activeView] || normalCopy[activeView] || normalCopy.library;
+      els.viewTitle.textContent = copy[0];
+      els.viewLead.textContent = copy[1];
     }
 
     function render() {
+      updateViewChrome();
       renderProfiles();
       renderStats();
       if (activeView === "library") {
@@ -3480,6 +3659,11 @@
         ? `<span><strong>${hand.length}</strong>冊</span><span>家 ${home}</span><span>借りている ${borrowed}</span>`
         : "";
       renderTodayBook(hand);
+      if (childModeActive()) {
+        els.shelfList.innerHTML = "";
+        els.shelfQuickResults.innerHTML = "";
+        return;
+      }
       if (!hand.length) {
         els.shelfList.innerHTML = '<div class="empty">まだ手元の本がありません。本棚（さがす）で「家にある」か「借りている」にすると、ここに並びます。</div>';
         renderShelfQuickResults();
@@ -3516,9 +3700,12 @@
     }
 
     function renderTodayBook(handBooks) {
+      const simple = childModeActive();
       const pick = pickTodayBook(handBooks);
       if (!pick) {
-        els.todayBookSlot.innerHTML = '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">今日の1冊</div><div class="today-title">手元の本を追加しよう</div><div class="today-reason">家にある本や借りている本を登録すると、ここに今日読む候補が1冊だけ出ます。</div></div></div>';
+        els.todayBookSlot.innerHTML = simple
+          ? '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">よむ</div><div class="today-title">おうちの人に本を入れてもらおう</div><div class="today-reason">家にある本や借りている本が入ると、ここに今日読む本が出ます。</div></div></div>'
+          : '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">今日の1冊</div><div class="today-title">手元の本を追加しよう</div><div class="today-reason">家にある本や借りている本を登録すると、ここに今日読む候補が1冊だけ出ます。</div></div></div>';
         return;
       }
       const book = pick.book;
@@ -3534,7 +3721,7 @@
               <button type="button" class="primary" data-today-progress="${book.id}" data-result="done">読めた！</button>
               <button type="button" class="ghost" data-today-progress="${book.id}" data-result="partial">途中まで</button>
               <button type="button" class="ghost" data-today-skip="${book.id}">別の本</button>
-              <button type="button" class="ghost" data-open="${book.id}">詳細</button>
+              ${simple ? "" : `<button type="button" class="ghost" data-open="${book.id}">詳細</button>`}
             </div>
           </div>
         </article>`;
@@ -3721,7 +3908,7 @@
       persist();
       if (to === "done") celebrateFinish(before);
       render();
-      if (to === "done") setTimeout(() => openQuickRecord(book.id), 2300);
+      if (to === "done" && !childModeActive()) setTimeout(() => openQuickRecord(book.id), 2300);
     }
 
     // ===== モチベーション（レベル・連続・目標・お祝い）=====
@@ -4494,6 +4681,7 @@
       const goalPct = goal ? Math.min(100, Math.round((s.thisMonth / goal) * 100)) : 0;
       const goalRemain = goal ? Math.max(0, goal - s.thisMonth) : 0;
       const readToday = prof && Array.isArray(prof.readingDays) && prof.readingDays.includes(todayStr());
+      const simple = childModeActive();
 
       const chart = months.map((m) =>
         `<div class="bar-col"><span class="bar-num">${m.count || ""}</span><div class="bar" style="height:${Math.round((m.count / maxCount) * 100)}%"></div><span class="bar-label">${m.label}</span></div>`
@@ -4501,6 +4689,15 @@
       const badges = BADGES.map((b) =>
         `<div class="badge ${b.test(s) ? "earned" : ""}"><span class="b-icon">${b.icon}</span><span class="b-name">${escapeHtml(b.name)}</span><span class="b-desc">${escapeHtml(b.desc)}</span></div>`
       ).join("");
+      const recordDetails = simple
+        ? `<div><h4>ごほうびバッジ</h4><div class="badge-grid">${badges}</div></div>`
+        : `<div class="records-summary">
+          <div class="rec-stat"><span>読み終わった</span><strong>${s.done}<small style="font-size:14px"> さつ</small></strong></div>
+          <div class="rec-stat"><span>今月</span><strong>${s.thisMonth}<small style="font-size:14px"> さつ</small></strong></div>
+          <div class="rec-stat"><span>ごほうびバッジ</span><strong>${earned}<small style="font-size:14px"> / ${BADGES.length}</small></strong></div>
+        </div>
+        <div><h4>月べつの冊数（この12かげつ）</h4><div class="chart">${chart}</div></div>
+        <div><h4>ごほうびバッジ</h4><div class="badge-grid">${badges}</div></div>`;
 
       els.recordsBody.innerHTML = `
         <div class="hero">
@@ -4531,13 +4728,7 @@
           <button type="button" class="primary checkin-btn ${readToday ? "done" : ""}" id="checkinBtn">${readToday ? "✓ 今日は読んだ" : "今日も読んだ！"}</button>
         </div>
 
-        <div class="records-summary">
-          <div class="rec-stat"><span>読み終わった</span><strong>${s.done}<small style="font-size:14px"> さつ</small></strong></div>
-          <div class="rec-stat"><span>今月</span><strong>${s.thisMonth}<small style="font-size:14px"> さつ</small></strong></div>
-          <div class="rec-stat"><span>ごほうびバッジ</span><strong>${earned}<small style="font-size:14px"> / ${BADGES.length}</small></strong></div>
-        </div>
-        <div><h4>月べつの冊数（この12かげつ）</h4><div class="chart">${chart}</div></div>
-        <div><h4>ごほうびバッジ</h4><div class="badge-grid">${badges}</div></div>
+        ${recordDetails}
       `;
       document.getElementById("checkinBtn").addEventListener("click", recordCheckin);
       document.getElementById("setGoalBtn").addEventListener("click", setMonthlyGoal);
