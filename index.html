@@ -3528,7 +3528,7 @@
         if (label && !button.dataset.fullLabel) button.dataset.fullLabel = label.textContent;
         if (label) {
           if (simple && button.dataset.view === "shelf") label.textContent = "よむ";
-          else if (simple && button.dataset.view === "records") label.textContent = "きろく";
+          else if (simple && button.dataset.view === "records") label.textContent = "がんばり";
           else label.textContent = button.dataset.fullLabel || label.textContent;
         }
         button.classList.toggle("active", button.dataset.view === activeView);
@@ -3559,8 +3559,8 @@
         import: ["取り込み・バックアップ", "推薦図書リストの取り込みと、記録のバックアップができます。"]
       };
       const simpleCopy = {
-        shelf: ["よむ", "きょう読む本をえらぼう。"],
-        records: ["きろく", "読んだ数とアバターの成長を見よう。"]
+        shelf: ["よむ", "きょうの本をえらぼう。"],
+        records: ["がんばり", "よんだぶんだけ、アバターが育つよ。"]
       };
       const copy = (simple ? simpleCopy : normalCopy)[activeView] || normalCopy[activeView] || normalCopy.library;
       els.viewTitle.textContent = copy[0];
@@ -3704,7 +3704,7 @@
       const pick = pickTodayBook(handBooks);
       if (!pick) {
         els.todayBookSlot.innerHTML = simple
-          ? '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">よむ</div><div class="today-title">おうちの人に本を入れてもらおう</div><div class="today-reason">家にある本や借りている本が入ると、ここに今日読む本が出ます。</div></div></div>'
+          ? '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">よむ</div><div class="today-title">おうちの人に本をいれてもらおう</div><div class="today-reason">本が入ると、ここにきょうの本が出ます。</div></div></div>'
           : '<div class="today-book"><div></div><div class="today-book-main"><div class="today-label">今日の1冊</div><div class="today-title">手元の本を追加しよう</div><div class="today-reason">家にある本や借りている本を登録すると、ここに今日読む候補が1冊だけ出ます。</div></div></div>';
         return;
       }
@@ -3714,13 +3714,13 @@
         <article class="today-book">
           ${cover ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(cover)}" alt="">` : `<div></div>`}
           <div class="today-book-main">
-            <div class="today-label">今日の1冊</div>
+            <div class="today-label">${simple ? "きょうの本" : "今日の1冊"}</div>
             <div class="today-title">${escapeHtml(book.title)}</div>
             <div class="today-reason">${escapeHtml(pick.reason)}</div>
             <div class="today-actions">
-              <button type="button" class="primary" data-today-progress="${book.id}" data-result="done">読めた！</button>
-              <button type="button" class="ghost" data-today-progress="${book.id}" data-result="partial">途中まで</button>
-              <button type="button" class="ghost" data-today-skip="${book.id}">別の本</button>
+              <button type="button" class="primary" data-today-progress="${book.id}" data-result="done">${simple ? "よめた！" : "読めた！"}</button>
+              <button type="button" class="ghost" data-today-progress="${book.id}" data-result="partial">${simple ? "ちょっと読んだ" : "途中まで"}</button>
+              <button type="button" class="ghost" data-today-skip="${book.id}">${simple ? "ほかの本" : "別の本"}</button>
               ${simple ? "" : `<button type="button" class="ghost" data-open="${book.id}">詳細</button>`}
             </div>
           </div>
@@ -3805,7 +3805,7 @@
       addReadingDayToday();
       persist();
       render();
-      celebrate("📖 途中まで読んだよ！");
+      celebrate(childModeActive() ? "📖 ちょっと読んだよ！" : "📖 途中まで読んだよ！");
     }
 
     function quickShelfRow(book) {
@@ -4689,6 +4689,13 @@
       const badges = BADGES.map((b) =>
         `<div class="badge ${b.test(s) ? "earned" : ""}"><span class="b-icon">${b.icon}</span><span class="b-name">${escapeHtml(b.name)}</span><span class="b-desc">${escapeHtml(b.desc)}</span></div>`
       ).join("");
+      const goalTitle = simple ? "こんげつのもくひょう" : "今月の目標";
+      const goalButton = simple ? (goal ? "かえる" : "きめる") : (goal ? "変える" : "決める");
+      const goalEmpty = simple ? "もくひょうをきめよう" : "目標を決めるとやる気アップ";
+      const goalDone = simple ? "やったね！もくひょうたっせい🎉" : "目標たっせい！おめでとう🎉";
+      const checkinText = readToday
+        ? (simple ? "✓ きょうはよんだ" : "✓ 今日は読んだ")
+        : (simple ? "よんだよ！" : "今日も読んだ！");
       const recordDetails = simple
         ? `<div><h4>ごほうびバッジ</h4><div class="badge-grid">${badges}</div></div>`
         : `<div class="records-summary">
@@ -4722,10 +4729,10 @@
         <div class="goal-block">
           <div class="goal-ring" style="--p:${goalPct}"><div class="goal-ring-hole">${s.thisMonth}<small>/${goal || "—"}</small></div></div>
           <div class="goal-text">
-            <div class="goal-head">今月の目標 <button type="button" class="ghost" id="setGoalBtn">${goal ? "変える" : "決める"}</button></div>
-            <div class="goal-sub">${goal ? (goalRemain > 0 ? `あと <strong>${goalRemain}</strong> さつ！` : "目標たっせい！おめでとう🎉") : "目標を決めるとやる気アップ"}</div>
+            <div class="goal-head">${goalTitle} <button type="button" class="ghost" id="setGoalBtn">${goalButton}</button></div>
+            <div class="goal-sub">${goal ? (goalRemain > 0 ? `あと <strong>${goalRemain}</strong> さつ！` : goalDone) : goalEmpty}</div>
           </div>
-          <button type="button" class="primary checkin-btn ${readToday ? "done" : ""}" id="checkinBtn">${readToday ? "✓ 今日は読んだ" : "今日も読んだ！"}</button>
+          <button type="button" class="primary checkin-btn ${readToday ? "done" : ""}" id="checkinBtn">${checkinText}</button>
         </div>
 
         ${recordDetails}
