@@ -2033,8 +2033,7 @@
     body.simple-mode #statsSection,
     body.simple-mode #libraryFilters,
     body.simple-mode #shelfView .shelf-tools,
-    body.simple-mode #shelfView .shelf-summary,
-    body.simple-mode #shelfList {
+    body.simple-mode #shelfView .shelf-summary {
       display: none !important;
     }
 
@@ -2097,6 +2096,61 @@
       font-size: 17px;
       font-weight: 900;
       flex: 1 1 130px;
+    }
+
+    body.simple-mode #shelfList {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+      gap: 12px;
+      padding: 16px 0 0;
+    }
+
+    .simple-shelf-card {
+      border: 2px solid transparent;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(32, 37, 38, 0.08);
+      overflow: hidden;
+      display: grid;
+    }
+
+    .simple-shelf-card.current {
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 4px rgba(244, 201, 93, 0.18), 0 10px 20px rgba(32, 37, 38, 0.1);
+    }
+
+    .simple-shelf-card .cover {
+      aspect-ratio: 3 / 4;
+    }
+
+    .simple-shelf-body {
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .simple-shelf-title {
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .simple-shelf-card button {
+      min-height: 38px;
+      border-radius: 10px;
+      font-weight: 900;
+    }
+
+    .simple-shelf-card .simple-done {
+      min-height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #e9f5ee;
+      color: var(--green-dark);
+      font-weight: 900;
+      font-size: 13px;
     }
 
     @media (max-width: 980px) {
@@ -3660,7 +3714,7 @@
         : "";
       renderTodayBook(hand);
       if (childModeActive()) {
-        els.shelfList.innerHTML = "";
+        renderSimpleShelfChoices(hand);
         els.shelfQuickResults.innerHTML = "";
         return;
       }
@@ -3672,6 +3726,17 @@
       els.shelfList.innerHTML = hand.map((book) => shelfCard(book)).join("");
       wireCardHandlers(els.shelfList);
       renderShelfQuickResults();
+    }
+
+    function renderSimpleShelfChoices(handBooks) {
+      if (!handBooks.length) {
+        els.shelfList.innerHTML = "";
+        return;
+      }
+      const todayPick = todayPickState();
+      const pick = pickTodayBook(handBooks);
+      els.shelfList.innerHTML = handBooks.map((book) => simpleShelfCard(book, pick?.book?.id || todayPick.selected || "")).join("");
+      wireCardHandlers(els.shelfList);
     }
 
     function renderShelfQuickResults() {
@@ -3734,6 +3799,11 @@
       const skipped = new Set(todayPickState().skipped);
       const candidates = baseCandidates.filter((book) => !skipped.has(book.id));
       if (!candidates.length) return scoreTodayBooks(baseCandidates)[0] || null;
+      const selected = todayPickState().selected;
+      const selectedBook = candidates.find((book) => book.id === selected);
+      if (selectedBook) {
+        return { book: selectedBook, score: 999, reason: "自分でえらんだ本" };
+      }
       return scoreTodayBooks(candidates)[0] || null;
     }
 
@@ -3781,14 +3851,26 @@
       const today = todayStr();
       const current = state.meta.todayPick[profileId];
       if (!current || current.date !== today || !Array.isArray(current.skipped)) {
-        state.meta.todayPick[profileId] = { date: today, skipped: [] };
+        state.meta.todayPick[profileId] = { date: today, skipped: [], selected: "" };
       }
+      if (typeof state.meta.todayPick[profileId].selected !== "string") state.meta.todayPick[profileId].selected = "";
       return state.meta.todayPick[profileId];
     }
 
     function skipTodayBook(id) {
       const todayPick = todayPickState();
       if (!todayPick.skipped.includes(id)) todayPick.skipped.push(id);
+      if (todayPick.selected === id) todayPick.selected = "";
+      saveState();
+      renderShelf();
+    }
+
+    function chooseTodayBook(id) {
+      const book = books.find((item) => item.id === id && item.status !== "done" && isInHand(item));
+      if (!book) return;
+      const todayPick = todayPickState();
+      todayPick.selected = id;
+      todayPick.skipped = todayPick.skipped.filter((item) => item !== id);
       saveState();
       renderShelf();
     }
@@ -3806,6 +3888,27 @@
       persist();
       render();
       celebrate(childModeActive() ? "📖 ちょっと読んだよ！" : "📖 途中まで読んだよ！");
+    }
+
+    function simpleShelfCard(book, currentId) {
+      const coverSrc = bookCoverSrc(book);
+      const current = book.id === currentId && book.status !== "done";
+      return `
+        <article class="simple-shelf-card ${current ? "current" : ""}">
+          <div class="cover" data-today-choice="${book.id}" title="この本にする" role="button">
+            <div class="cover-fallback" style="background:${genreGradient(book.category)}">
+              <span class="emoji">${genreEmoji(book.category)}</span>
+              <span class="fb-title">${escapeHtml(book.title)}</span>
+            </div>
+            ${coverSrc ? `<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHtml(coverSrc)}" alt="" onerror="this.style.display='none'">` : ""}
+          </div>
+          <div class="simple-shelf-body">
+            <strong class="simple-shelf-title">${escapeHtml(book.title)}</strong>
+            ${book.status === "done"
+              ? `<span class="simple-done">よんだ</span>`
+              : `<button type="button" class="${current ? "primary" : "ghost"}" data-today-choice="${book.id}">${current ? "きょうの本" : "これにする"}</button>`}
+          </div>
+        </article>`;
     }
 
     function quickShelfRow(book) {
@@ -3842,6 +3945,7 @@
       container.querySelectorAll("[data-stage]").forEach((b) => b.addEventListener("click", () => setStage(b.dataset.stage, b.dataset.to)));
       container.querySelectorAll("[data-today-progress]").forEach((b) => b.addEventListener("click", () => recordTodayProgress(b.dataset.todayProgress, b.dataset.result)));
       container.querySelectorAll("[data-today-skip]").forEach((b) => b.addEventListener("click", () => skipTodayBook(b.dataset.todaySkip)));
+      container.querySelectorAll("[data-today-choice]").forEach((b) => b.addEventListener("click", () => chooseTodayBook(b.dataset.todayChoice)));
       container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
       container.querySelectorAll("[data-own]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.own, b.value)));
       container.querySelectorAll("[data-due]").forEach((b) => b.addEventListener("change", () => setDueDate(b.dataset.due, b.value)));
