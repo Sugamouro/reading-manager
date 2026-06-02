@@ -2191,6 +2191,22 @@
       font-size: 13px;
     }
 
+    .simple-feeling-chip {
+      min-height: 34px;
+      border-radius: 10px;
+      background: #fff8dc;
+      color: #7a5200;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 4px 8px;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+    }
+
     @media (max-width: 980px) {
       .app {
         grid-template-columns: 1fr;
@@ -3948,6 +3964,18 @@
       celebrate(childModeActive() ? "📖 ちょっと読んだよ！" : "📖 途中まで読んだよ！");
     }
 
+    function feelingForBook(book) {
+      const review = String(book.review || "").trim();
+      if (!review) return null;
+      return quickFeelings.find((item) => item.review === review || item.label === review) || null;
+    }
+
+    function simpleFeelingChip(book) {
+      const feeling = feelingForBook(book);
+      if (!feeling) return "";
+      return `<span class="simple-feeling-chip"><span>${feeling.emoji}</span><span>${escapeHtml(feeling.label)}</span></span>`;
+    }
+
     function simpleShelfCard(book, currentId) {
       const coverSrc = bookCoverSrc(book);
       const current = book.id === currentId && book.status !== "done";
@@ -3963,7 +3991,7 @@
           <div class="simple-shelf-body">
             <strong class="simple-shelf-title">${escapeHtml(book.title)}</strong>
             ${book.status === "done"
-              ? `<span class="simple-done">よんだ</span>`
+              ? `<span class="simple-done">よんだ</span>${simpleFeelingChip(book)}`
               : `<button type="button" class="${current ? "primary" : "ghost"}" data-today-choice="${book.id}">${current ? "きょうの本" : "これにする"}</button>`}
           </div>
         </article>`;
