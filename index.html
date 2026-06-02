@@ -1458,6 +1458,130 @@
     .sync-status.ok { color: var(--green-dark); }
     .sync-status.warn { color: var(--red); }
 
+    .handoff-hero {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: clamp(18px, 3vw, 24px);
+      background: #fffaf0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .handoff-hero h4 {
+      margin: 0;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: 0;
+    }
+
+    .handoff-hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .handoff-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .handoff-actions button {
+      min-height: 68px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .handoff-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .handoff-meta-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      display: grid;
+      gap: 5px;
+      min-height: 84px;
+    }
+
+    .handoff-meta-item span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .handoff-meta-item strong {
+      font-size: 15px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .handoff-preview {
+      border: 2px solid var(--green);
+      border-radius: 12px;
+      padding: 16px;
+      background: #f4fbf7;
+      display: grid;
+      gap: 14px;
+    }
+
+    .handoff-preview.warn {
+      border-color: var(--orange);
+      background: #fff8ec;
+    }
+
+    .handoff-preview-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .handoff-preview-title strong {
+      font-size: 17px;
+    }
+
+    .handoff-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .handoff-preview-grid div {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
+      display: grid;
+      gap: 4px;
+    }
+
+    .handoff-preview-grid span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .handoff-preview-grid strong {
+      font-size: 18px;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+
+    .handoff-status {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .handoff-status.ok { color: var(--green-dark); }
+    .handoff-status.warn { color: var(--red); }
+
     .records-summary {
       display: flex;
       gap: 14px;
@@ -2284,6 +2408,12 @@
       .form-grid {
         grid-template-columns: 1fr;
       }
+
+      .handoff-actions,
+      .handoff-meta,
+      .handoff-preview-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 520px) {
@@ -2328,7 +2458,8 @@
         <button data-view="records"><span class="icon">★</span><span>きろく</span></button>
         <button data-view="next"><span class="icon">→</span><span>次の候補</span></button>
         <button data-view="trend"><span class="icon">◇</span><span>傾向</span></button>
-        <button data-view="import"><span class="icon">＋</span><span>取り込み</span></button>
+        <button data-view="handoff"><span class="icon">↔</span><span>ひきつぎ</span></button>
+        <button data-view="import"><span class="icon">⚙</span><span>こまかい設定</span></button>
       </nav>
 
       <div class="sidebar-note">
@@ -2511,21 +2642,64 @@
         <div id="trendList"></div>
       </section>
 
+      <section class="panel hidden" id="handoffView">
+        <div class="panel-head">
+          <div>
+            <h3>ひきつぎ</h3>
+            <p>家族全員分の読書データを、iPad・iPhone・Macの間で受け渡します。</p>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="handoff-hero">
+            <div>
+              <h4>家族データのバトン</h4>
+              <p>別の端末で使う前に読みこみ、使い終わったら保存します。家族全員のプロフィール、手元の本棚、読書記録、感想、アバター、目標、バッジをまとめて移せます。</p>
+            </div>
+            <div class="handoff-meta">
+              <div class="handoff-meta-item">
+                <span>この端末</span>
+                <strong id="handoffDeviceLabel">-</strong>
+              </div>
+              <div class="handoff-meta-item">
+                <span>最後の保存</span>
+                <strong id="handoffSavedAt">まだありません</strong>
+              </div>
+              <div class="handoff-meta-item">
+                <span>最後の読みこみ</span>
+                <strong id="handoffLoadedAt">まだありません</strong>
+              </div>
+            </div>
+            <div class="field">
+              <label for="handoffDeviceInput">この端末の名前</label>
+              <input id="handoffDeviceInput" placeholder="リビングiPad、ママのiPhoneなど">
+            </div>
+            <div class="handoff-actions">
+              <button class="primary" id="handoffExportButton"><span class="icon">↓</span>家族データを保存</button>
+              <button class="ghost" id="handoffImportButton"><span class="icon">↑</span>家族データを読みこむ</button>
+              <input type="file" id="handoffFileInput" accept="application/json,.json" class="hidden">
+            </div>
+            <div id="handoffStatus" class="handoff-status">保存したファイルは、iCloud Drive・Dropbox・AirDropなどで別の端末へ渡せます。</div>
+          </div>
+
+          <div class="handoff-preview hidden" id="handoffPreview"></div>
+        </div>
+      </section>
+
       <section class="panel hidden" id="importView">
         <div class="panel-head">
           <div>
-            <h3>バックアップ・取り込み</h3>
-            <p>記録のバックアップ／復元と、推薦リストの貼り付け取り込みができます。</p>
+            <h3>こまかい設定</h3>
+            <p>CSV、同期、推薦リストの再取り込みなど、必要なときだけ使う管理項目です。</p>
           </div>
         </div>
         <div class="modal-body">
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
             <div class="hint">
-              <strong>バックアップ</strong>：すべての子どもの記録・プロフィール・本のデータをファイルに保存します。機種変更やブラウザのデータ消去に備えて、ときどき保存しておくと安心です。復元すると<strong>今のデータは上書き</strong>されます。
+              <strong>バックアップ</strong>：家族データの保存・読みこみは、通常は「ひきつぎ」画面を使ってください。ここではCSV出力もできます。
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
-              <button class="primary" id="backupExportButton"><span class="icon">↓</span>バックアップを保存</button>
-              <button class="ghost" id="backupImportButton"><span class="icon">↑</span>バックアップから復元</button>
+              <button class="primary" id="backupExportButton"><span class="icon">↓</span>家族データを保存</button>
+              <button class="ghost" id="backupImportButton"><span class="icon">↑</span>家族データを読みこむ</button>
               <button class="ghost" id="exportButton"><span class="icon">↓</span>全員分CSV</button>
               <input type="file" id="backupFileInput" accept="application/json,.json" class="hidden">
             </div>
@@ -2832,6 +3006,7 @@
     const legacyKey = "reading-manager-books-v1";
     const syncConfigKey = "reading-manager-sync-v1";
     const clientIdKey = "reading-manager-client-id";
+    const handoffDeviceKey = "reading-manager-handoff-device-v1";
     const GENDER_AFFINITY = {
       girl: ["友だち", "友情", "家族", "動物", "ファンタジー", "魔法", "詩", "おはなし", "生活", "学校"],
       boy: ["冒険", "恐竜", "のりもの", "乗り物", "宇宙", "科学・自然", "科学", "歴史", "スポーツ", "図鑑", "昔話・神話"]
@@ -2903,6 +3078,7 @@
     let quickRecordRating = 0;
     let quickRecordFeeling = "";
     let parentModeOverride = false;
+    let pendingHandoff = null;
     const simpleViews = ["shelf", "records"];
     const quickFeelings = [
       { key: "love", label: "すき！", emoji: "💛", rating: 5, review: "すき！" },
@@ -2957,6 +3133,15 @@
       syncPullButton: document.getElementById("syncPullButton"),
       syncPushButton: document.getElementById("syncPushButton"),
       syncStatus: document.getElementById("syncStatus"),
+      handoffDeviceInput: document.getElementById("handoffDeviceInput"),
+      handoffDeviceLabel: document.getElementById("handoffDeviceLabel"),
+      handoffSavedAt: document.getElementById("handoffSavedAt"),
+      handoffLoadedAt: document.getElementById("handoffLoadedAt"),
+      handoffStatus: document.getElementById("handoffStatus"),
+      handoffPreview: document.getElementById("handoffPreview"),
+      handoffExportButton: document.getElementById("handoffExportButton"),
+      handoffImportButton: document.getElementById("handoffImportButton"),
+      handoffFileInput: document.getElementById("handoffFileInput"),
       profileTabs: document.getElementById("profileTabs"),
       profileManage: document.getElementById("profileManage"),
       parentModeButton: document.getElementById("parentModeButton"),
@@ -2984,6 +3169,10 @@
     document.getElementById("backupExportButton").addEventListener("click", exportBackup);
     document.getElementById("backupImportButton").addEventListener("click", () => document.getElementById("backupFileInput").click());
     document.getElementById("backupFileInput").addEventListener("change", handleBackupFile);
+    els.handoffExportButton.addEventListener("click", exportBackup);
+    els.handoffImportButton.addEventListener("click", () => els.handoffFileInput.click());
+    els.handoffFileInput.addEventListener("change", handleBackupFile);
+    els.handoffDeviceInput.addEventListener("change", saveHandoffDeviceName);
     els.syncEnabledInput.addEventListener("change", saveSyncSettingsFromForm);
     els.syncUrlInput.addEventListener("change", saveSyncSettingsFromForm);
     els.syncTokenInput.addEventListener("change", saveSyncSettingsFromForm);
@@ -3058,6 +3247,29 @@
 
     function uid() {
       return crypto.randomUUID();
+    }
+
+    function detectDeviceName() {
+      const ua = navigator.userAgent || "";
+      const platform = navigator.platform || "";
+      if (/iPad/i.test(ua) || (platform === "MacIntel" && navigator.maxTouchPoints > 1)) return "iPad";
+      if (/iPhone/i.test(ua)) return "iPhone";
+      if (/Mac/i.test(platform)) return "Mac";
+      if (/Android/i.test(ua)) return "Android";
+      return "この端末";
+    }
+
+    function currentHandoffDeviceName() {
+      return (localStorage.getItem(handoffDeviceKey) || "").trim() || detectDeviceName();
+    }
+
+    function saveHandoffDeviceName() {
+      const name = els.handoffDeviceInput.value.trim() || detectDeviceName();
+      localStorage.setItem(handoffDeviceKey, name);
+      if (!state.meta || typeof state.meta !== "object") state.meta = {};
+      state.meta.handoffDeviceName = name;
+      saveState({ touch: false, sync: false });
+      renderHandoff();
     }
 
     function loadClientId() {
@@ -3231,6 +3443,12 @@
       if (!s.meta || typeof s.meta !== "object") s.meta = {};
       if (!s.meta.updatedAt) s.meta.updatedAt = "";
       if (!s.meta.clientId) s.meta.clientId = clientId;
+      if (!s.meta.handoffDeviceName) s.meta.handoffDeviceName = currentHandoffDeviceName();
+      if (!s.meta.lastHandoffSavedAt) s.meta.lastHandoffSavedAt = "";
+      if (!s.meta.lastHandoffLoadedAt) s.meta.lastHandoffLoadedAt = "";
+      if (!s.meta.lastHandoffLoadedFrom) s.meta.lastHandoffLoadedFrom = "";
+      if (!s.meta.lastHandoffExportedAt) s.meta.lastHandoffExportedAt = "";
+      if (!s.meta.lastHandoffExportedFrom) s.meta.lastHandoffExportedFrom = "";
       if (!s.profiles.length) {
         s.profiles = [newProfile("こども")];
       }
@@ -3610,6 +3828,8 @@
       } else {
         state.profiles.push({ id, name, birthdate, gender, simpleMode, monthlyGoal: 0, readingDays: [] });
         if (!state.records[id]) state.records[id] = {};
+        state.activeProfileId = id;
+        books = buildBooks();
       }
       parentModeOverride = false;
       if (state.activeProfileId === id && simpleMode) activeView = "shelf";
@@ -3672,6 +3892,7 @@
       document.getElementById("recordsView").classList.toggle("hidden", activeView !== "records");
       document.getElementById("nextView").classList.toggle("hidden", activeView !== "next");
       document.getElementById("trendView").classList.toggle("hidden", activeView !== "trend");
+      document.getElementById("handoffView").classList.toggle("hidden", activeView !== "handoff");
       document.getElementById("importView").classList.toggle("hidden", activeView !== "import");
       document.getElementById("libraryFilters").classList.toggle("hidden", activeView !== "library");
       document.getElementById("statsSection").classList.toggle("hidden", activeView === "shelf" || simple);
@@ -3684,7 +3905,8 @@
         records: ["きろく", "読んだ数とごほうびバッジ。お子さんのやる気アップに。"],
         next: ["次の候補", "今の好みと読書の順番から、次に合いそうな本を見ます。"],
         trend: ["傾向", "どんな分類・タグをよく読んでいるかを確認します。"],
-        import: ["取り込み・バックアップ", "推薦図書リストの取り込みと、記録のバックアップができます。"]
+        handoff: ["ひきつぎ", "家族データを保存・読みこみして、端末間で受け渡します。"],
+        import: ["こまかい設定", "CSV、同期、推薦リストの再取り込みなど、必要なときだけ使います。"]
       };
       const simpleCopy = {
         shelf: ["よむ", "きょうの本をえらぼう。"],
@@ -3715,6 +3937,8 @@
         renderSuggestions();
       } else if (activeView === "trend") {
         renderTrends();
+      } else if (activeView === "handoff") {
+        renderHandoff();
       } else if (activeView === "import") {
         renderArchived();
       }
@@ -5317,16 +5541,119 @@
       URL.revokeObjectURL(url);
     }
 
+    function formatHandoffDate(value, fallback = "まだありません") {
+      const d = value ? new Date(value) : null;
+      if (!d || Number.isNaN(d.getTime())) return fallback;
+      return `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+    }
+
+    function countHandoffRecords(targetState) {
+      return Object.values(targetState.records || {}).reduce((total, profileRecords) => {
+        if (!profileRecords || typeof profileRecords !== "object") return total;
+        return total + Object.keys(profileRecords).length;
+      }, 0);
+    }
+
+    function handoffSummary(targetState) {
+      const meta = targetState.meta || {};
+      const profileNames = (targetState.profiles || []).map((p) => p.name || "こども").join("、");
+      return {
+        profileCount: (targetState.profiles || []).length,
+        profileNames,
+        bookCount: (targetState.catalog || []).length,
+        recordCount: countHandoffRecords(targetState),
+        updatedAt: meta.updatedAt || "",
+        exportedAt: meta.lastHandoffExportedAt || meta.lastHandoffSavedAt || "",
+        deviceName: meta.lastHandoffExportedFrom || meta.handoffDeviceName || "不明な端末"
+      };
+    }
+
+    function handoffIsOlder(targetState) {
+      const incoming = Date.parse(targetState?.meta?.updatedAt || "");
+      const local = Date.parse(state?.meta?.updatedAt || "");
+      return !!(incoming && local && incoming < local);
+    }
+
+    function setHandoffStatus(message, tone = "") {
+      if (!els.handoffStatus) return;
+      els.handoffStatus.textContent = message;
+      els.handoffStatus.className = `handoff-status ${tone}`.trim();
+    }
+
+    function renderHandoff() {
+      if (!els.handoffDeviceInput) return;
+      const deviceName = currentHandoffDeviceName();
+      els.handoffDeviceInput.value = deviceName;
+      els.handoffDeviceLabel.textContent = deviceName;
+      els.handoffSavedAt.textContent = formatHandoffDate(state.meta?.lastHandoffSavedAt);
+      const loadedFrom = state.meta?.lastHandoffLoadedFrom ? `（${state.meta.lastHandoffLoadedFrom}から）` : "";
+      els.handoffLoadedAt.textContent = `${formatHandoffDate(state.meta?.lastHandoffLoadedAt)}${loadedFrom}`;
+      if (pendingHandoff) renderHandoffPreview();
+      else els.handoffPreview.classList.add("hidden");
+    }
+
+    function renderHandoffPreview() {
+      if (!pendingHandoff) return;
+      const summary = handoffSummary(pendingHandoff.state);
+      const older = handoffIsOlder(pendingHandoff.state);
+      const warning = older
+        ? `<div class="hint" style="color:var(--orange);font-weight:800;">注意：この端末の今のデータより古い可能性があります。読みこむと、今のデータはこの家族データに入れ替わります。</div>`
+        : `<div class="hint">内容を確認してから入れ替えます。まだ今のデータは上書きされていません。</div>`;
+      els.handoffPreview.className = `handoff-preview ${older ? "warn" : ""}`;
+      els.handoffPreview.innerHTML = `
+        <div class="handoff-preview-title">
+          <strong>読みこむ家族データ</strong>
+          <span class="handoff-status">${escapeHtml(pendingHandoff.fileName || "選択したファイル")}</span>
+        </div>
+        ${warning}
+        <div class="handoff-preview-grid">
+          <div><span>家族</span><strong>${summary.profileCount}人</strong></div>
+          <div><span>読書記録</span><strong>${summary.recordCount}件</strong></div>
+          <div><span>本</span><strong>${summary.bookCount}冊</strong></div>
+          <div><span>保存元</span><strong>${escapeHtml(summary.deviceName)}</strong></div>
+        </div>
+        <div class="handoff-preview-grid">
+          <div><span>最終更新</span><strong>${escapeHtml(formatHandoffDate(summary.updatedAt, "不明"))}</strong></div>
+          <div><span>保存日時</span><strong>${escapeHtml(formatHandoffDate(summary.exportedAt, "不明"))}</strong></div>
+          <div style="grid-column:span 2;"><span>プロフィール</span><strong>${escapeHtml(summary.profileNames || "不明")}</strong></div>
+        </div>
+        <div class="toolbar" style="justify-content:flex-start;">
+          <button type="button" class="primary" id="handoffApplyImport"><span class="icon">✓</span>この家族データに入れ替える</button>
+          <button type="button" class="ghost" id="handoffCancelImport">キャンセル</button>
+        </div>
+      `;
+      document.getElementById("handoffApplyImport").addEventListener("click", applyPendingHandoff);
+      document.getElementById("handoffCancelImport").addEventListener("click", () => {
+        pendingHandoff = null;
+        setHandoffStatus("読みこみをキャンセルしました。", "");
+        renderHandoff();
+      });
+    }
+
     function exportBackup() {
       persist({ touch: false, sync: false });
+      const now = new Date().toISOString();
       const today = new Date().toISOString().slice(0, 10);
+      const deviceName = currentHandoffDeviceName();
+      state.meta = {
+        ...(state.meta || {}),
+        handoffDeviceName: deviceName,
+        lastHandoffSavedAt: now,
+        lastHandoffExportedAt: now,
+        lastHandoffExportedFrom: deviceName
+      };
+      localStorage.setItem(handoffDeviceKey, deviceName);
+      saveState({ touch: false, sync: false });
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `読書管理バックアップ_${today}.json`;
+      link.download = `読書管理-家族データ-${today}.json`;
       link.click();
       URL.revokeObjectURL(url);
+      pendingHandoff = null;
+      renderHandoff();
+      setHandoffStatus(`家族データを保存しました。別の端末で使う前に、このファイルを読みこんでください。`, "ok");
     }
 
     function handleBackupFile(event) {
@@ -5342,17 +5669,33 @@
           alert("このファイルは読み込めませんでした。バックアップ用のJSONファイルを選んでください。");
           return;
         }
-        const childCount = restored.profiles.length;
-        const bookCount = restored.catalog.length;
-        if (!confirm(`今のデータを、バックアップ（子ども${childCount}人・本${bookCount}冊）で上書きします。よろしいですか？`)) return;
-        state = restored;
-        books = buildBooks();
-        saveState();
-        render();
-        setView("library");
-        alert("バックアップから復元しました。");
+        pendingHandoff = { state: restored, fileName: file.name };
+        parentModeOverride = activeProfileUsesSimpleMode();
+        setView("handoff");
+        setHandoffStatus("読みこむ前に、下の内容を確認してください。", handoffIsOlder(restored) ? "warn" : "");
       };
       reader.readAsText(file);
+    }
+
+    function applyPendingHandoff() {
+      if (!pendingHandoff) return;
+      const summary = handoffSummary(pendingHandoff.state);
+      const now = new Date().toISOString();
+      state = pendingHandoff.state;
+      state.meta = {
+        ...(state.meta || {}),
+        clientId,
+        handoffDeviceName: currentHandoffDeviceName(),
+        lastHandoffLoadedAt: now,
+        lastHandoffLoadedFrom: summary.deviceName
+      };
+      books = buildBooks();
+      pendingHandoff = null;
+      parentModeOverride = activeProfileUsesSimpleMode();
+      saveState({ touch: false, sync: false });
+      render();
+      setView("handoff");
+      setHandoffStatus(`家族データを読みこみました。使い終わったら「家族データを保存」で次の端末へ渡せます。`, "ok");
     }
 
     function normalizeHeader(value) {
