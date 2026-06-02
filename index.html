@@ -1090,6 +1090,44 @@
       min-height: 96px;
     }
 
+    .feeling-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .feeling-btn {
+      min-height: 62px;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .feeling-btn .feeling-emoji {
+      font-size: 25px;
+    }
+
+    .feeling-btn.selected {
+      border-color: var(--yellow);
+      background: #fff8dc;
+      box-shadow: 0 0 0 4px rgba(244, 201, 93, 0.18);
+    }
+
+    @media (max-width: 520px) {
+      .feeling-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .import-box {
       display: grid;
       gap: 12px;
@@ -2673,6 +2711,10 @@
       </div>
       <div class="modal-body">
         <div class="quick-record-book" id="quickRecordTitle"></div>
+        <div class="field hidden" id="quickFeelingField">
+          <label>どうだった？</label>
+          <div class="feeling-grid" id="quickFeelingButtons"></div>
+        </div>
         <div class="field">
           <label>どれくらい好きだった？</label>
           <div class="quick-record-stars" id="quickRecordStars" aria-label="反応を星で記録">
@@ -2843,8 +2885,17 @@
     let libraryLimit = LIBRARY_PAGE_SIZE;
     let quickRecordBookId = "";
     let quickRecordRating = 0;
+    let quickRecordFeeling = "";
     let parentModeOverride = false;
     const simpleViews = ["shelf", "records"];
+    const quickFeelings = [
+      { key: "love", label: "すき！", emoji: "💛", rating: 5, review: "すき！" },
+      { key: "fun", label: "おもしろい", emoji: "😄", rating: 5, review: "おもしろい" },
+      { key: "again", label: "もういっかい", emoji: "🔁", rating: 5, review: "もういっかい読みたい" },
+      { key: "hard", label: "むずかしい", emoji: "🤔", rating: 3, review: "むずかしい" },
+      { key: "scary", label: "こわい", emoji: "😳", rating: 3, review: "こわい" },
+      { key: "notNow", label: "いまはちがう", emoji: "🌙", rating: 2, review: "いまはちがう" }
+    ];
 
     const els = {
       viewTitle: document.getElementById("viewTitle"),
@@ -2879,6 +2930,8 @@
       quickRecordTitle: document.getElementById("quickRecordTitle"),
       quickRecordReview: document.getElementById("quickRecordReview"),
       quickRecordStars: document.getElementById("quickRecordStars"),
+      quickFeelingField: document.getElementById("quickFeelingField"),
+      quickFeelingButtons: document.getElementById("quickFeelingButtons"),
       bookForm: document.getElementById("bookForm"),
       hideButton: document.getElementById("hideButton"),
       importText: document.getElementById("importText"),
@@ -2960,6 +3013,11 @@
       const next = Number(button.dataset.quickRate);
       quickRecordRating = quickRecordRating === next ? 0 : next;
       renderQuickRecordStars();
+    });
+    els.quickFeelingButtons.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-feeling]");
+      if (!button) return;
+      setQuickFeeling(button.dataset.feeling);
     });
     els.quickRecordDrawer.addEventListener("click", (event) => {
       if (event.target === els.quickRecordDrawer) closeQuickRecord();
@@ -4012,7 +4070,7 @@
       persist();
       if (to === "done") celebrateFinish(before);
       render();
-      if (to === "done" && !childModeActive()) setTimeout(() => openQuickRecord(book.id), 2300);
+      if (to === "done") setTimeout(() => openQuickRecord(book.id, { simple: childModeActive() }), 2300);
     }
 
     // ===== モチベーション（レベル・連続・目標・お祝い）=====
@@ -4917,24 +4975,39 @@
       els.bookForm.reset();
     }
 
-    function openQuickRecord(id) {
+    function openQuickRecord(id, options = {}) {
       const book = books.find((item) => item.id === id);
       if (!book || book.status !== "done") return;
+      const simple = !!options.simple;
       quickRecordBookId = id;
       quickRecordRating = Number(book.rating) || 0;
+      quickRecordFeeling = quickFeelings.find((item) => item.review === book.review)?.key || "";
       els.quickRecordTitle.textContent = book.title;
       els.quickRecordReview.value = book.review || "";
+      els.quickFeelingField.classList.toggle("hidden", !simple);
+      els.quickRecordStars.closest(".field").classList.toggle("hidden", simple);
+      els.quickRecordReview.closest(".field").classList.toggle("hidden", simple);
+      document.getElementById("quickRecordModalTitle").textContent = simple ? "どうだった？" : "よみおわりメモ";
+      document.getElementById("quickRecordSave").innerHTML = simple ? '<span class="icon">✓</span>これにする' : '<span class="icon">✓</span>保存';
       renderQuickRecordStars();
+      renderQuickFeelingButtons();
       els.quickRecordDrawer.classList.add("open");
-      setTimeout(() => els.quickRecordReview.focus(), 0);
+      if (!simple) setTimeout(() => els.quickRecordReview.focus(), 0);
     }
 
     function closeQuickRecord() {
       els.quickRecordDrawer.classList.remove("open");
       quickRecordBookId = "";
       quickRecordRating = 0;
+      quickRecordFeeling = "";
       els.quickRecordReview.value = "";
+      els.quickFeelingField.classList.add("hidden");
+      els.quickRecordStars.closest(".field").classList.remove("hidden");
+      els.quickRecordReview.closest(".field").classList.remove("hidden");
+      document.getElementById("quickRecordModalTitle").textContent = "よみおわりメモ";
+      document.getElementById("quickRecordSave").innerHTML = '<span class="icon">✓</span>保存';
       renderQuickRecordStars();
+      renderQuickFeelingButtons();
     }
 
     function renderQuickRecordStars() {
@@ -4943,10 +5016,33 @@
       });
     }
 
+    function renderQuickFeelingButtons() {
+      els.quickFeelingButtons.innerHTML = quickFeelings.map((item) => `
+        <button type="button" class="feeling-btn ${quickRecordFeeling === item.key ? "selected" : ""}" data-feeling="${item.key}">
+          <span class="feeling-emoji">${item.emoji}</span>
+          <span>${escapeHtml(item.label)}</span>
+        </button>
+      `).join("");
+    }
+
+    function setQuickFeeling(key) {
+      const item = quickFeelings.find((entry) => entry.key === key);
+      if (!item) return;
+      quickRecordFeeling = key;
+      quickRecordRating = item.rating;
+      els.quickRecordReview.value = item.review;
+      renderQuickRecordStars();
+      renderQuickFeelingButtons();
+    }
+
     function saveQuickRecord() {
       const book = books.find((item) => item.id === quickRecordBookId);
       if (!book) {
         closeQuickRecord();
+        return;
+      }
+      if (els.quickFeelingField && !els.quickFeelingField.classList.contains("hidden") && !quickRecordFeeling) {
+        alert("きもちをひとつえらんでね。");
         return;
       }
       book.rating = quickRecordRating;
