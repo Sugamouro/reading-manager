@@ -1458,6 +1458,35 @@
     .sync-status.ok { color: var(--green-dark); }
     .sync-status.warn { color: var(--red); }
 
+    .sync-card {
+      border: 1px solid rgba(47, 125, 104, 0.28);
+      border-radius: 12px;
+      padding: clamp(18px, 3vw, 24px);
+      background: #f4fbf7;
+      display: grid;
+      gap: 14px;
+    }
+
+    .sync-card h4 {
+      margin: 0;
+      font-size: clamp(20px, 3vw, 26px);
+      letter-spacing: 0;
+    }
+
+    .sync-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .sync-card .sync-toggle {
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
     .handoff-hero {
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -2411,7 +2440,8 @@
 
       .handoff-actions,
       .handoff-meta,
-      .handoff-preview-grid {
+      .handoff-preview-grid,
+      .sync-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -2646,7 +2676,7 @@
         <div class="panel-head">
           <div>
             <h3>ひきつぎ</h3>
-            <p>家族全員分の読書データを、iPad・iPhone・Macの間で受け渡します。</p>
+            <p>家族全員分の読書データを、iPad・iPhone・Macの間で共有します。</p>
           </div>
         </div>
         <div class="modal-body">
@@ -2682,6 +2712,30 @@
           </div>
 
           <div class="handoff-preview hidden" id="handoffPreview"></div>
+
+          <div class="sync-card">
+            <div>
+              <h4>家族合言葉つき自動同期</h4>
+              <p>各端末に同じ保存先URLと家族の合言葉を入れると、アプリを開いた時に読みこみ、読書記録を変えたあと自動で保存します。</p>
+            </div>
+            <div class="sync-grid">
+              <div class="field">
+                <label for="syncUrlInput">保存先URL</label>
+                <input id="syncUrlInput" placeholder="Google Apps Script の /exec URL">
+              </div>
+              <div class="field">
+                <label for="syncTokenInput">家族の合言葉</label>
+                <input id="syncTokenInput" type="password" placeholder="家族だけの合言葉">
+              </div>
+            </div>
+            <div class="toolbar" style="justify-content:flex-start;">
+              <label class="sync-toggle"><input type="checkbox" id="syncEnabledInput">自動同期する</label>
+              <button class="ghost" id="syncPullButton"><span class="icon">↓</span>今すぐ読みこむ</button>
+              <button class="primary" id="syncPushButton"><span class="icon">↑</span>今すぐ保存</button>
+              <span id="syncStatus" class="sync-status">未設定</span>
+            </div>
+            <div class="hint">最初の一度だけ、Googleスプレッドシート側の保存先URLを作る必要があります。設定後は、家族の端末で同じURLと合言葉を入れれば使えます。</div>
+          </div>
         </div>
       </section>
 
@@ -2706,23 +2760,7 @@
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
             <div class="hint">
-              <strong>Google同期</strong>：iPad・携帯・PCで同じ読書記録を使います。同期URLと合言葉は端末内だけに保存されます。自動同期をオンにすると、開いた時に読み込み、変更後に自動保存します。
-            </div>
-            <div class="sync-grid">
-              <div class="field">
-                <label for="syncUrlInput">同期URL</label>
-                <input id="syncUrlInput" placeholder="Google Apps Script の /exec URL">
-              </div>
-              <div class="field">
-                <label for="syncTokenInput">合言葉</label>
-                <input id="syncTokenInput" type="password" placeholder="家族だけの合言葉">
-              </div>
-            </div>
-            <div class="toolbar" style="justify-content:flex-start;">
-              <label class="sync-toggle"><input type="checkbox" id="syncEnabledInput">自動同期</label>
-              <button class="ghost" id="syncPullButton"><span class="icon">↓</span>読み込む</button>
-              <button class="primary" id="syncPushButton"><span class="icon">↑</span>保存する</button>
-              <span id="syncStatus" class="sync-status">未設定</span>
+              <strong>家族同期</strong>：自動同期の設定は、通常は「ひきつぎ」画面の「家族合言葉つき自動同期」から行います。
             </div>
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
@@ -3303,7 +3341,13 @@
       els.syncEnabledInput.checked = !!syncConfig.enabled;
       els.syncUrlInput.value = syncConfig.url || "";
       els.syncTokenInput.value = syncConfig.token || "";
-      updateSyncStatus(syncConfig.enabled ? "自動同期オン" : "未設定", syncConfig.enabled ? "ok" : "");
+      if (syncConfig.enabled && syncConfig.url && syncConfig.token) {
+        updateSyncStatus(`家族同期オン${syncConfig.lastSyncedAt ? `（最終 ${formatSyncTime(syncConfig.lastSyncedAt)}）` : ""}`, "ok");
+      } else if (syncConfig.enabled) {
+        updateSyncStatus("保存先URLと家族の合言葉を入れてください", "warn");
+      } else {
+        updateSyncStatus("未設定", "");
+      }
     }
 
     function saveSyncSettingsFromForm() {
@@ -3314,7 +3358,7 @@
         token: els.syncTokenInput.value
       };
       saveSyncConfig();
-      updateSyncStatus(syncConfig.enabled ? "自動同期オン" : "自動同期オフ", syncConfig.enabled ? "ok" : "");
+      updateSyncStatus(syncConfig.enabled ? "家族同期オン" : "家族同期オフ", syncConfig.enabled ? "ok" : "");
       if (syncConfig.enabled) startAutoSync();
     }
 
@@ -3518,14 +3562,14 @@
 
     async function startAutoSync() {
       if (!canSync()) {
-        updateSyncStatus(syncConfig.enabled ? "同期URLと合言葉を入れてください" : "未設定", syncConfig.enabled ? "warn" : "");
+        updateSyncStatus(syncConfig.enabled ? "保存先URLと家族の合言葉を入れてください" : "未設定", syncConfig.enabled ? "warn" : "");
         return;
       }
       await pullSync({ force: false });
     }
 
     async function syncRequest(action, payload = {}) {
-      if (!syncConfig.url || !syncConfig.token) throw new Error("同期URLと合言葉を設定してください。");
+      if (!syncConfig.url || !syncConfig.token) throw new Error("保存先URLと家族の合言葉を設定してください。");
       const res = await fetch(syncConfig.url, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -3548,7 +3592,7 @@
 
     async function pullSync({ force = false } = {}) {
       if (!canSync()) {
-        updateSyncStatus("同期URLと合言葉を入れてください", "warn");
+        updateSyncStatus("保存先URLと家族の合言葉を入れてください", "warn");
         return;
       }
       if (syncing) return;
@@ -3582,7 +3626,7 @@
 
     async function pushSync({ force = false, keepLock = false } = {}) {
       if (!canSync()) {
-        updateSyncStatus("同期URLと合言葉を入れてください", "warn");
+        updateSyncStatus("保存先URLと家族の合言葉を入れてください", "warn");
         return;
       }
       if (syncing && !keepLock) return;
@@ -3905,7 +3949,7 @@
         records: ["きろく", "読んだ数とごほうびバッジ。お子さんのやる気アップに。"],
         next: ["次の候補", "今の好みと読書の順番から、次に合いそうな本を見ます。"],
         trend: ["傾向", "どんな分類・タグをよく読んでいるかを確認します。"],
-        handoff: ["ひきつぎ", "家族データを保存・読みこみして、端末間で受け渡します。"],
+        handoff: ["ひきつぎ", "家族データの手動ひきつぎと、自動同期を設定します。"],
         import: ["こまかい設定", "CSV、同期、推薦リストの再取り込みなど、必要なときだけ使います。"]
       };
       const simpleCopy = {
