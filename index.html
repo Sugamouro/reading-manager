@@ -225,29 +225,29 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 16px;
+      padding: 10px 14px;
       box-shadow: var(--shadow);
-      min-height: 112px;
       display: grid;
-      align-content: space-between;
+      align-content: center;
+      gap: 2px;
     }
 
     .stat span {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .stat strong {
       display: block;
-      margin-top: 8px;
-      font-size: 32px;
-      line-height: 1;
+      font-size: 22px;
+      line-height: 1.1;
       letter-spacing: 0;
     }
 
     .stat small {
       color: var(--muted);
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.3;
     }
 
     .filters {
@@ -2232,6 +2232,36 @@
       display: none;
     }
 
+    body.simple-mode #bookForm .field:not(.kid-field),
+    body.simple-mode #bookForm .advanced-section,
+    body.simple-mode #bookForm .section-head,
+    body.simple-mode #hideButton,
+    body.simple-mode #amazonButton,
+    body.simple-mode #libraryButton,
+    body.simple-mode #recordsTrend {
+      display: none !important;
+    }
+
+    .records-trend {
+      padding: 0 20px 20px;
+    }
+
+    .records-trend h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    .sync-card details > summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--green-dark);
+      padding: 6px 0;
+    }
+
+    .sync-card details[open] > summary {
+      margin-bottom: 10px;
+    }
+
     body.simple-mode main {
       gap: 16px;
     }
@@ -2372,24 +2402,35 @@
       }
 
       .nav {
-        grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-        gap: 8px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      body.simple-mode .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .nav button {
-        justify-content: flex-start;
-        min-height: 46px;
-        padding: 0 10px;
-        gap: 6px;
-        font-size: 12px;
-        line-height: 1.2;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 54px;
+        padding: 6px 2px;
+        gap: 3px;
+        font-size: 11px;
+        line-height: 1.1;
         background: rgba(248, 251, 248, 0.08);
         border: 1px solid rgba(248, 251, 248, 0.12);
       }
 
+      .nav .icon {
+        width: auto;
+        min-width: 0;
+        font-size: 16px;
+      }
+
       .nav span:last-child {
         display: inline;
-        overflow-wrap: anywhere;
+        white-space: nowrap;
       }
 
       .sidebar-note {
@@ -2400,7 +2441,11 @@
         padding: 18px;
       }
 
-      .stats,
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
       .filters,
       .content-grid {
         grid-template-columns: 1fr;
@@ -2477,23 +2522,19 @@
       <div class="profile-area">
         <div class="profile-tabs" id="profileTabs"></div>
         <button class="profile-manage" id="profileManage">＋ プロフィール設定</button>
-        <button class="parent-mode-button hidden" id="parentModeButton">おうちの人用</button>
+        <button class="parent-mode-button" id="parentModeButton">🧒 こどもモードにする</button>
       </div>
 
       <nav class="nav" aria-label="画面切り替え">
-        <button class="active" data-view="library"><span class="icon">□</span><span>本棚（さがす）</span></button>
-        <button data-view="shelf"><span class="icon">▣</span><span>手元の本棚</span></button>
-        <button data-view="reading"><span class="icon">▶</span><span>いま読んでる</span></button>
-        <button data-view="finished"><span class="icon">✓</span><span>読み終わった</span></button>
-        <button data-view="records"><span class="icon">★</span><span>きろく</span></button>
-        <button data-view="next"><span class="icon">→</span><span>次の候補</span></button>
-        <button data-view="trend"><span class="icon">◇</span><span>傾向</span></button>
-        <button data-view="handoff"><span class="icon">↔</span><span>ひきつぎ</span></button>
-        <button data-view="import"><span class="icon">⚙</span><span>こまかい設定</span></button>
+        <button class="active" data-view="library"><span class="icon">🔍</span><span>さがす</span></button>
+        <button data-view="shelf"><span class="icon">📖</span><span>手元の本</span></button>
+        <button data-view="finished"><span class="icon">✓</span><span>読んだ本</span></button>
+        <button data-view="records"><span class="icon">⭐</span><span>きろく</span></button>
+        <button data-view="import"><span class="icon">⚙</span><span>設定</span></button>
       </nav>
 
       <div class="sidebar-note">
-        推薦リストを登録しておくと、読了日・評価・好みのタグから、次に読みやすい本を並べ替えます。
+        「こどもモード」にすると、お子さんには「よむ」と「きろく」だけのかんたんな画面になります。
       </div>
     </aside>
 
@@ -2606,8 +2647,8 @@
       <section class="panel hidden" id="shelfView">
         <div class="panel-head">
           <div>
-            <h3>手元の本棚</h3>
-            <p>家にある・いま借りている本だけ。今日読む本を表紙から選びます。</p>
+            <h3>手元の本</h3>
+            <p>家にある本・借りている本・いま読んでいる本。今日読む本をここから選びます。</p>
           </div>
           <div class="shelf-summary" id="shelfSummary"></div>
         </div>
@@ -2620,26 +2661,6 @@
           <div class="quick-shelf-results" id="shelfQuickResults"></div>
         </div>
         <div class="book-list shelf-book-list" id="shelfList"></div>
-      </section>
-
-      <section class="panel hidden" id="nextView">
-        <div class="panel-head">
-          <div>
-            <h3>次の候補</h3>
-            <p>読了した本と高評価のタグをもとに、未読の本を並べています。</p>
-          </div>
-        </div>
-        <div id="nextList"></div>
-      </section>
-
-      <section class="panel hidden" id="readingView">
-        <div class="panel-head">
-          <div>
-            <h3>いま読んでる</h3>
-            <p>手元にある（読書中の）本です。読み終わったらボタンで棚に移します。</p>
-          </div>
-        </div>
-        <div class="book-list" id="readingList"></div>
       </section>
 
       <section class="panel hidden" id="finishedView">
@@ -2660,30 +2681,24 @@
           </div>
         </div>
         <div class="records-body" id="recordsBody"></div>
-      </section>
-
-      <section class="panel hidden" id="trendView">
-        <div class="panel-head">
-          <div>
-            <h3>傾向</h3>
-            <p>どんな本に反応がよいかを、タグと評価で見ます。</p>
-          </div>
+        <div class="records-trend" id="recordsTrend">
+          <h4>よく反応しているタグ（傾向）</h4>
+          <div id="trendList"></div>
         </div>
-        <div id="trendList"></div>
       </section>
 
-      <section class="panel hidden" id="handoffView">
+      <section class="panel hidden" id="importView">
         <div class="panel-head">
           <div>
-            <h3>ひきつぎ</h3>
-            <p>家族全員分の読書データを、iPad・iPhone・Macの間で共有します。</p>
+            <h3>設定</h3>
+            <p>家族データの共有・バックアップと、細かい管理。おうちの人用の画面です。</p>
           </div>
         </div>
         <div class="modal-body">
           <div class="handoff-hero">
             <div>
-              <h4>家族データのバトン</h4>
-              <p>別の端末で使う前に読みこみ、使い終わったら保存します。家族全員のプロフィール、手元の本棚、読書記録、感想、アバター、目標、バッジをまとめて移せます。</p>
+              <h4>家族データのバックアップ（ファイル）</h4>
+              <p>家族全員のプロフィール・記録・感想をファイルに保存し、別の端末で読みこめます。自動同期を使っていれば、ふだんは使いません。</p>
             </div>
             <div class="handoff-meta">
               <div class="handoff-meta-item">
@@ -2715,18 +2730,8 @@
 
           <div class="sync-card">
             <div>
-              <h4>家族合言葉つき自動同期</h4>
-              <p>各端末に同じ保存先URLと家族の合言葉を入れると、アプリを開いた時に読みこみ、読書記録を変えたあと自動で保存します。</p>
-            </div>
-            <div class="sync-grid">
-              <div class="field">
-                <label for="syncUrlInput">保存先URL</label>
-                <input id="syncUrlInput" placeholder="Google Apps Script の /exec URL">
-              </div>
-              <div class="field">
-                <label for="syncTokenInput">家族の合言葉</label>
-                <input id="syncTokenInput" type="password" placeholder="家族だけの合言葉">
-              </div>
+              <h4>自動同期（家族の合言葉）</h4>
+              <p>設定すると、家族の端末どうしで読書記録が自動でそろいます。</p>
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
               <label class="sync-toggle"><input type="checkbox" id="syncEnabledInput">自動同期する</label>
@@ -2734,33 +2739,28 @@
               <button class="primary" id="syncPushButton"><span class="icon">↑</span>今すぐ保存</button>
               <span id="syncStatus" class="sync-status">未設定</span>
             </div>
-            <div class="hint">最初の一度だけ、Googleスプレッドシート側の保存先URLを作る必要があります。設定後は、家族の端末で同じURLと合言葉を入れれば使えます。</div>
+            <details id="syncSetupDetails">
+              <summary>同期の設定（はじめて・変えるとき）</summary>
+              <div class="sync-grid">
+                <div class="field">
+                  <label for="syncUrlInput">家族の保存先URL</label>
+                  <input id="syncUrlInput" placeholder="https://script.google.com/…（設定手順書で作ったURL）">
+                </div>
+                <div class="field">
+                  <label for="syncTokenInput">家族の合言葉</label>
+                  <input id="syncTokenInput" type="password" placeholder="家族だけの合言葉">
+                </div>
+              </div>
+              <div class="hint">最初の一度だけ「Google同期セットアップ手順」を見ながら保存先URLを作ります。あとは家族の各端末で同じURLと合言葉を入れるだけです。</div>
+            </details>
           </div>
-        </div>
-      </section>
 
-      <section class="panel hidden" id="importView">
-        <div class="panel-head">
-          <div>
-            <h3>こまかい設定</h3>
-            <p>CSV、同期、推薦リストの再取り込みなど、必要なときだけ使う管理項目です。</p>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
+          <div class="import-box" style="border-top:1px solid var(--line); padding-top:18px;">
             <div class="hint">
-              <strong>バックアップ</strong>：家族データの保存・読みこみは、通常は「ひきつぎ」画面を使ってください。ここではCSV出力もできます。
+              <strong>CSV出力</strong>：全員分の読書記録を、Excelなどで見られる形で保存します。
             </div>
             <div class="toolbar" style="justify-content:flex-start;">
-              <button class="primary" id="backupExportButton"><span class="icon">↓</span>家族データを保存</button>
-              <button class="ghost" id="backupImportButton"><span class="icon">↑</span>家族データを読みこむ</button>
               <button class="ghost" id="exportButton"><span class="icon">↓</span>全員分CSV</button>
-              <input type="file" id="backupFileInput" accept="application/json,.json" class="hidden">
-            </div>
-          </div>
-          <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
-            <div class="hint">
-              <strong>家族同期</strong>：自動同期の設定は、通常は「ひきつぎ」画面の「家族合言葉つき自動同期」から行います。
             </div>
           </div>
           <div class="import-box" style="border-bottom:1px solid var(--line); padding-bottom:18px;">
@@ -2834,7 +2834,7 @@
                 <label for="dueDateInput">返却日</label>
                 <input id="dueDateInput" type="date">
               </div>
-              <div class="field">
+              <div class="field kid-field">
                 <label for="statusInput">状態</label>
                 <select id="statusInput">
                   <option value="want">未読</option>
@@ -2851,7 +2851,7 @@
                 <label for="readDateInput">読み終わった日</label>
                 <input id="readDateInput" type="date">
               </div>
-              <div class="field">
+              <div class="field kid-field">
                 <label for="ratingInput">反応</label>
                 <select id="ratingInput">
                   <option value="0">未評価</option>
@@ -2862,7 +2862,7 @@
                   <option value="5">5 とても好き</option>
                 </select>
               </div>
-              <div class="field wide">
+              <div class="field wide kid-field">
                 <label for="reviewInput">感想（このお子さんの）</label>
                 <textarea id="reviewInput" placeholder="おもしろかったところ、印象に残った場面など"></textarea>
               </div>
@@ -2993,7 +2993,7 @@
               </div>
             </div>
             <div class="field wide">
-              <label class="check-row"><input type="checkbox" id="pSimpleModeInput">かんたんモード（小さい子向け）</label>
+              <label class="check-row"><input type="checkbox" id="pSimpleModeInput">こどもモード（「よむ」と「きろく」だけの画面）</label>
               <div class="hint">本人の画面を「よむ」と「きろく」だけにします。管理画面はおうちの人用から戻せます。</div>
             </div>
           </div>
@@ -3148,8 +3148,6 @@
       shelfQuickInput: document.getElementById("shelfQuickInput"),
       shelfQuickResults: document.getElementById("shelfQuickResults"),
       quickSuggestions: document.getElementById("quickSuggestions"),
-      nextList: document.getElementById("nextList"),
-      readingList: document.getElementById("readingList"),
       finishedList: document.getElementById("finishedList"),
       recordsBody: document.getElementById("recordsBody"),
       archivedList: document.getElementById("archivedList"),
@@ -3204,9 +3202,6 @@
     document.getElementById("sampleButton").addEventListener("click", insertImportSample);
     document.getElementById("importButton").addEventListener("click", importBooks);
     document.getElementById("exportButton").addEventListener("click", exportCsv);
-    document.getElementById("backupExportButton").addEventListener("click", exportBackup);
-    document.getElementById("backupImportButton").addEventListener("click", () => document.getElementById("backupFileInput").click());
-    document.getElementById("backupFileInput").addEventListener("change", handleBackupFile);
     els.handoffExportButton.addEventListener("click", exportBackup);
     els.handoffImportButton.addEventListener("click", () => els.handoffFileInput.click());
     els.handoffFileInput.addEventListener("change", handleBackupFile);
@@ -3216,6 +3211,9 @@
     els.syncTokenInput.addEventListener("change", saveSyncSettingsFromForm);
     els.syncPullButton.addEventListener("click", () => pullSync({ force: true }));
     els.syncPushButton.addEventListener("click", () => pushSync({ force: true }));
+    document.getElementById("syncSetupDetails").addEventListener("toggle", (event) => {
+      event.target.dataset.userToggled = "1";
+    });
     document.getElementById("loadOcrButton").addEventListener("click", loadRecommendedBooks);
     let searchTimer;
     els.searchInput.addEventListener("input", () => {
@@ -3267,7 +3265,30 @@
     });
 
     els.profileManage.addEventListener("click", openProfileDrawer);
-    els.parentModeButton.addEventListener("click", toggleParentModeOverride);
+    let parentHoldTimer = null;
+    let parentHoldFired = false;
+    els.parentModeButton.addEventListener("pointerdown", () => {
+      if (!childModeActive()) return;
+      parentHoldFired = false;
+      clearTimeout(parentHoldTimer);
+      parentHoldTimer = setTimeout(() => {
+        parentHoldFired = true;
+        switchToParentMode();
+      }, 700);
+    });
+    ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => {
+      els.parentModeButton.addEventListener(ev, () => clearTimeout(parentHoldTimer));
+    });
+    els.parentModeButton.addEventListener("click", () => {
+      if (childModeActive()) {
+        if (!parentHoldFired) {
+          els.parentModeButton.textContent = "ボタンを ながおし してね";
+          setTimeout(updateViewChrome, 1400);
+        }
+        return;
+      }
+      switchToChildMode();
+    });
     document.getElementById("closeProfile").addEventListener("click", closeProfileDrawer);
     document.getElementById("pCancelButton").addEventListener("click", resetProfileForm);
     document.getElementById("newProfileButton").addEventListener("click", () => {
@@ -3341,10 +3362,12 @@
       els.syncEnabledInput.checked = !!syncConfig.enabled;
       els.syncUrlInput.value = syncConfig.url || "";
       els.syncTokenInput.value = syncConfig.token || "";
+      const setup = document.getElementById("syncSetupDetails");
+      if (setup && !setup.dataset.userToggled) setup.open = !(syncConfig.url && syncConfig.token);
       if (syncConfig.enabled && syncConfig.url && syncConfig.token) {
-        updateSyncStatus(`家族同期オン${syncConfig.lastSyncedAt ? `（最終 ${formatSyncTime(syncConfig.lastSyncedAt)}）` : ""}`, "ok");
+        updateSyncStatus(`同期オン${syncConfig.lastSyncedAt ? `（最終 ${formatSyncTime(syncConfig.lastSyncedAt)}）` : ""}`, "ok");
       } else if (syncConfig.enabled) {
-        updateSyncStatus("保存先URLと家族の合言葉を入れてください", "warn");
+        updateSyncStatus("下の「同期の設定」でURLと合言葉を入れてください", "warn");
       } else {
         updateSyncStatus("未設定", "");
       }
@@ -3463,7 +3486,7 @@
     }
 
     function newProfile(name) {
-      return { id: uid(), name: name || "こども", birthdate: "", gender: "", simpleMode: false, monthlyGoal: 0, readingDays: [] };
+      return { id: uid(), name: name || "こども", birthdate: "", gender: "", simpleMode: true, monthlyGoal: 0, readingDays: [] };
     }
 
     function freshState() {
@@ -3711,9 +3734,19 @@
       return simpleViews.includes(view);
     }
 
-    function toggleParentModeOverride() {
-      parentModeOverride = !parentModeOverride;
-      setView(parentModeOverride ? "library" : "shelf");
+    function switchToParentMode() {
+      parentModeOverride = true;
+      setView("library");
+    }
+
+    function switchToChildMode() {
+      const p = activeProfile();
+      if (p && !p.simpleMode) {
+        p.simpleMode = true;
+        saveState();
+      }
+      parentModeOverride = false;
+      setView("shelf");
     }
 
     function activeGradeInfo() {
@@ -3789,7 +3822,7 @@
     function renderProfiles() {
       els.profileTabs.innerHTML = state.profiles.map((p) => {
         const gi = gradeInfo(p.birthdate);
-        const meta = [gi ? gi.label : "年齢未設定", p.simpleMode ? "かんたん" : ""].filter(Boolean).join(" ・ ");
+        const meta = [gi ? gi.label : "年齢未設定", p.simpleMode ? "こども" : ""].filter(Boolean).join(" ・ ");
         const active = p.id === state.activeProfileId;
         return `<button class="profile-tab ${active ? "active" : ""}" data-profile="${p.id}">
           <span class="ptab-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
@@ -3815,7 +3848,7 @@
       els.profileEditList.innerHTML = state.profiles.map((p) => {
         const age = ageFromBirthdate(p.birthdate);
         const gi = gradeInfo(p.birthdate);
-        const meta = [gi ? gi.label : null, age != null ? `${age}さい` : null, genderLabel(p.gender), p.simpleMode ? "かんたんモード" : null].filter(Boolean).join(" ・ ") || "未設定";
+        const meta = [gi ? gi.label : null, age != null ? `${age}さい` : null, genderLabel(p.gender), p.simpleMode ? "こどもモード" : null].filter(Boolean).join(" ・ ") || "未設定";
         const active = p.id === state.activeProfileId;
         return `<div class="profile-row ${active ? "active" : ""}">
           <span class="prow-avatar" style="background:${genderColor(p.gender)}">${escapeHtml((p.name || "子").slice(0, 1))}</span>
@@ -3903,6 +3936,8 @@
     }
 
     function setView(view) {
+      const validViews = ["library", "shelf", "finished", "records", "import"];
+      if (!validViews.includes(view)) view = "library";
       if (childModeActive() && !isSimpleView(view)) view = "shelf";
       activeView = view;
       updateViewChrome();
@@ -3926,31 +3961,23 @@
         button.classList.toggle("active", button.dataset.view === activeView);
       });
 
-      els.parentModeButton.classList.toggle("hidden", !activeProfileUsesSimpleMode());
-      els.parentModeButton.textContent = simple ? "おうちの人用" : "こども画面にもどる";
+      els.parentModeButton.classList.remove("hidden");
+      els.parentModeButton.textContent = simple ? "🔓 おうちの人モード（長おし）" : "🧒 こどもモードにする";
 
       document.getElementById("libraryView").classList.toggle("hidden", activeView !== "library");
       document.getElementById("shelfView").classList.toggle("hidden", activeView !== "shelf");
-      document.getElementById("readingView").classList.toggle("hidden", activeView !== "reading");
       document.getElementById("finishedView").classList.toggle("hidden", activeView !== "finished");
       document.getElementById("recordsView").classList.toggle("hidden", activeView !== "records");
-      document.getElementById("nextView").classList.toggle("hidden", activeView !== "next");
-      document.getElementById("trendView").classList.toggle("hidden", activeView !== "trend");
-      document.getElementById("handoffView").classList.toggle("hidden", activeView !== "handoff");
       document.getElementById("importView").classList.toggle("hidden", activeView !== "import");
       document.getElementById("libraryFilters").classList.toggle("hidden", activeView !== "library");
-      document.getElementById("statsSection").classList.toggle("hidden", activeView === "shelf" || simple);
+      document.getElementById("statsSection").classList.toggle("hidden", activeView !== "library" || simple);
 
       const normalCopy = {
-        library: ["本棚（さがす）", "推薦図書の地図です。家にある・借りている本は「手元の本棚」に並びます。"],
-        shelf: ["手元の本棚", "家にある・図書館で借りている本だけ。今日読む本を表紙から選びます。"],
-        reading: ["いま読んでる", "読み始めた本です。読み終わったらボタンで記録に移します。"],
-        finished: ["読み終わった", "読み終わった本に、あとから期間と感想を書き残せます。"],
+        library: ["さがす", "推薦図書から次に読む本を探します。家にある・借りている本は「手元の本」に並びます。"],
+        shelf: ["手元の本", "家にある本・借りている本・いま読んでいる本。今日読む本をここから選びます。"],
+        finished: ["読んだ本", "読み終わった本に、あとから期間と感想を書き残せます。"],
         records: ["きろく", "読んだ数とごほうびバッジ。お子さんのやる気アップに。"],
-        next: ["次の候補", "今の好みと読書の順番から、次に合いそうな本を見ます。"],
-        trend: ["傾向", "どんな分類・タグをよく読んでいるかを確認します。"],
-        handoff: ["ひきつぎ", "家族データの手動ひきつぎと、自動同期を設定します。"],
-        import: ["こまかい設定", "CSV、同期、推薦リストの再取り込みなど、必要なときだけ使います。"]
+        import: ["設定", "家族データの共有・バックアップと、細かい管理。おうちの人用です。"]
       };
       const simpleCopy = {
         shelf: ["よむ", "きょうの本をえらぼう。"],
@@ -3971,19 +3998,14 @@
         renderSuggestions();
       } else if (activeView === "shelf") {
         renderShelf();
-      } else if (activeView === "reading") {
-        renderReading();
       } else if (activeView === "finished") {
         renderFinished();
       } else if (activeView === "records") {
         renderRecords();
-      } else if (activeView === "next") {
-        renderSuggestions();
-      } else if (activeView === "trend") {
         renderTrends();
-      } else if (activeView === "handoff") {
-        renderHandoff();
       } else if (activeView === "import") {
+        renderHandoff();
+        renderSyncSettings();
         renderArchived();
       }
     }
@@ -4004,6 +4026,7 @@
       els.statDoneRate.textContent = total ? `${Math.round((done / total) * 100)}%` : "0%";
       els.statReading.textContent = reading;
       els.statTopTag.textContent = topTag;
+      els.statTopTag.closest(".stat").classList.toggle("hidden", topTag === "-");
     }
 
     function renderTagFilter() {
@@ -4042,17 +4065,19 @@
 
     function renderShelf() {
       const hand = visibleBooks()
-        .filter((book) => isInHand(book))
+        .filter((book) => isInHand(book) || book.status === "reading")
         .sort((a, b) =>
-          (a.status === "done") - (b.status === "done")
+          (b.status === "reading") - (a.status === "reading")
+          || (a.status === "done") - (b.status === "done")
           || (normalizeOwnershipValue(a.ownership) === "borrowed" ? 0 : 1) - (normalizeOwnershipValue(b.ownership) === "borrowed" ? 0 : 1)
           || statusWeight(a.status) - statusWeight(b.status)
           || Number(a.level) - Number(b.level)
           || a.title.localeCompare(b.title, "ja"));
       const borrowed = hand.filter((book) => normalizeOwnershipValue(book.ownership) === "borrowed").length;
       const home = hand.filter((book) => normalizeOwnershipValue(book.ownership) === "home").length;
+      const reading = hand.filter((book) => book.status === "reading").length;
       els.shelfSummary.innerHTML = hand.length
-        ? `<span><strong>${hand.length}</strong>冊</span><span>家 ${home}</span><span>借りている ${borrowed}</span>`
+        ? `<span><strong>${hand.length}</strong>冊</span><span>よんでいる ${reading}</span><span>家 ${home}</span><span>借りている ${borrowed}</span>`
         : "";
       renderTodayBook(hand);
       if (childModeActive()) {
@@ -4303,18 +4328,6 @@
       container.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => setRating(b.dataset.rate, Number(b.dataset.val))));
       container.querySelectorAll("[data-own]").forEach((b) => b.addEventListener("change", () => setOwnership(b.dataset.own, b.value)));
       container.querySelectorAll("[data-due]").forEach((b) => b.addEventListener("change", () => setDueDate(b.dataset.due, b.value)));
-    }
-
-    function renderReading() {
-      const reading = visibleBooks()
-        .filter((book) => book.status === "reading")
-        .sort((a, b) => (b.startDate || "").localeCompare(a.startDate || "") || a.title.localeCompare(b.title, "ja"));
-      if (!reading.length) {
-        els.readingList.innerHTML = '<div class="empty">「本棚（さがす）」で気になる本の「読みはじめる」を押すと、ここに入ります。</div>';
-        return;
-      }
-      els.readingList.innerHTML = reading.map((book) => bookCard(book)).join("");
-      wireCardHandlers(els.readingList);
     }
 
     function getFilteredBooks() {
@@ -5000,15 +5013,10 @@
     }
 
     function renderSuggestions() {
-      const suggestions = getSuggestions();
-      if (activeView === "library") {
-        const quick = suggestions.slice(0, 4);
-        els.quickSuggestions.innerHTML = quick.length ? quick.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
-        wireCardHandlers(els.quickSuggestions);
-      } else if (activeView === "next") {
-        els.nextList.innerHTML = suggestions.length ? suggestions.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
-        wireCardHandlers(els.nextList);
-      }
+      if (activeView !== "library") return;
+      const quick = getSuggestions().slice(0, 4);
+      els.quickSuggestions.innerHTML = quick.length ? quick.map(suggestionRow).join("") : '<div class="empty">未読の本があると候補が出ます。</div>';
+      wireCardHandlers(els.quickSuggestions);
     }
 
     function getSuggestions() {
@@ -5231,7 +5239,8 @@
 
     function openModal(id = "") {
       const book = books.find((item) => item.id === id);
-      document.getElementById("modalTitle").textContent = book ? "本を編集" : "本を追加";
+      document.getElementById("modalTitle").textContent = book ? book.title : "本を追加";
+      document.querySelector("#bookForm .advanced-section").open = !book;
       document.getElementById("bookId").value = book?.id || "";
       document.getElementById("coverInput").value = book?.cover || "";
       document.getElementById("titleInput").value = book?.title || "";
@@ -5256,7 +5265,7 @@
       renderRatingInfo();
       els.hideButton.classList.toggle("hidden", !book);
       els.drawer.classList.add("open");
-      document.getElementById("titleInput").focus();
+      if (!book) document.getElementById("titleInput").focus();
     }
 
     function renderRatingInfo() {
@@ -5715,7 +5724,7 @@
         }
         pendingHandoff = { state: restored, fileName: file.name };
         parentModeOverride = activeProfileUsesSimpleMode();
-        setView("handoff");
+        setView("import");
         setHandoffStatus("読みこむ前に、下の内容を確認してください。", handoffIsOlder(restored) ? "warn" : "");
       };
       reader.readAsText(file);
@@ -5738,7 +5747,7 @@
       parentModeOverride = activeProfileUsesSimpleMode();
       saveState({ touch: false, sync: false });
       render();
-      setView("handoff");
+      setView("import");
       setHandoffStatus(`家族データを読みこみました。使い終わったら「家族データを保存」で次の端末へ渡せます。`, "ok");
     }
 
